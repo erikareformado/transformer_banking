@@ -109,6 +109,7 @@
 
 
     Private Sub tranformer_Details_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        txt_primary_voltage.Text = "250"
+        txt_secondary_voltage.Text = "30"
     End Sub
 End Class

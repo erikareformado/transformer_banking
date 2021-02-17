@@ -494,10 +494,12 @@ Public Class WyeWyeActivities
         If clamp_meter = 1 Then
             ctr = ctr + 1
             ctr_lines = ctr_lines + 1
-            clamp = myButton.Name
+            'clamp = myButton.Name
 
-            Dim split_value() As String = clamp.Split("_")
+            Dim split_value() As String = myButton.Name.Split("_")
             Dim btn_color = split_value(2).ToString
+            clamp = btn_color.ToString
+            'MsgBox(clamp.ToString)
             Dim pen_color As String
             If btn_color = "red" Then
                 pen_color = "Red"
@@ -521,7 +523,8 @@ Public Class WyeWyeActivities
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
                 End If
-
+                clamp_meter = 0
+                Me.Refresh()
             End If
         End If
     End Sub
@@ -530,10 +533,11 @@ Public Class WyeWyeActivities
         If clamp_meter = 1 Then
             ctr = ctr + 1
             ctr_lines = ctr_lines + 1
-            clamp = myButton.Name
 
-            Dim split_value() As String = clamp.Split("_")
-            Dim btn_color = split_value(1).ToString
+
+            Dim split_value() As String = myButton.Name.Split("_")
+            Dim current = split_value(1).ToString
+            'MsgBox(current.ToString)
             'Dim pen_color As String
             'If btn_color = "red" Then
             '    pen_color = "Red"
@@ -546,11 +550,12 @@ Public Class WyeWyeActivities
                 counter_1(myButton.Name, "", "2")
 
             Else
+
                 If clamp = "red" And current = "clred" Or clamp = "black" And current = "clblack" Or clamp = "red" And current = "cpred" Or clamp = "black" And current = "cpblack" Then
-                    counter_2(myButton.Name, "", "2")
+                        counter_2(myButton.Name, "", "2")
 
 
-                Else
+                    Else
                     ctr_lines = ctr_lines - 2
                     points.RemoveAt(ctr_lines)
                     delete_unwanted_connection()
@@ -560,6 +565,7 @@ Public Class WyeWyeActivities
 
             End If
             clamp_meter = 0
+            Me.Refresh()
         End If
     End Sub
 
