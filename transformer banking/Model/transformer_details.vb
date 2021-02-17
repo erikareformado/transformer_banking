@@ -3,7 +3,6 @@
     Dim return_message As String
     Public transformer_details_id As Integer
 
-
     Public Function save_transformer_details(polarity, rating, connection_type, primary_voltage, secondary_voltage)
         Dim query_search = "select * from transformer_details where polarity = '" & polarity & "'and rating = '" & rating & "' and 
         connection = '" & connection_type & "' and primary_voltage = '" & primary_voltage & "' and secondary_voltage = '" & secondary_voltage & "'"
@@ -30,11 +29,39 @@
         Dim dt_search As New DataTable
         da_search.Fill(dt_search)
 
-        If dt_search.Rows.Count = 1 Then
+        If dt_search.Rows.Count <> 0 Then
             transformer_details_id = dt_search(0)(0).ToString
             Return transformer_details_id
+        Else
+            Return 0
         End If
 
     End Function
 
+    Public Function select_voltage_primary(transformer_id)
+        Dim query_search = "select primary_voltage from transformer_details where id = '" & transformer_id & "'"
+        Dim da_search As New Odbc.OdbcDataAdapter(query_search, conn)
+        Dim dt_search As New DataTable
+        da_search.Fill(dt_search)
+
+        If dt_search.Rows.Count <> 0 Then
+            Return dt_search(0)(0).ToString
+        Else
+            Return "No data"
+        End If
+    End Function
+
+    Public Function select_rating(transformer_id)
+
+        Dim query_search = "select rating from transformer_details where id = '" & transformer_id & "'"
+        Dim da_search As New Odbc.OdbcDataAdapter(query_search, conn)
+        Dim dt_search As New DataTable
+        da_search.Fill(dt_search)
+
+        If dt_search.Rows.Count <> 0 Then
+            Return dt_search(0)(0).ToString
+        Else
+            Return "No data"
+        End If
+    End Function
 End Module

@@ -1,8 +1,12 @@
 ﻿Imports System.Drawing.Drawing2D
 Public Class WyeWyeActivities
+    Dim appPath As String = Application.StartupPath()
+
     Dim ctr As Integer = 0
     Dim ctr_lines As Integer = 0
     Dim ctr_points As Integer = 0
+
+    Dim switch As Integer = 0
 
     Dim point1_x As Integer
     Dim point1_y As Integer
@@ -39,7 +43,12 @@ Public Class WyeWyeActivities
     Private Sub WyeWyeActivities_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbopen()
         get_point()
-        transformer_id = search_transformer_id(lbl_polarity.Text, lbl_rating.Text, Home.lbl_connection_type.Text, lbl_primary_voltage.Text, lbl_secondary_voltage.Text)
+        Dim result = search_transformer_id(lbl_polarity.Text, lbl_rating.Text, Home.lbl_connection_type.Text, lbl_primary_voltage.Text, lbl_secondary_voltage.Text)
+
+        If result <> 0 Then
+            transformer_id = result
+        End If
+        'transformer_id = search_transformer_id(lbl_polarity.Text, lbl_rating.Text, Home.lbl_connection_type.Text, lbl_primary_voltage.Text, lbl_secondary_voltage.Text)
         select_clamp()
 
 
@@ -552,10 +561,10 @@ Public Class WyeWyeActivities
             Else
 
                 If clamp = "red" And current = "clred" Or clamp = "black" And current = "clblack" Or clamp = "red" And current = "cpred" Or clamp = "black" And current = "cpblack" Then
-                        counter_2(myButton.Name, "", "2")
+                    counter_2(myButton.Name, "", "2")
 
 
-                    Else
+                Else
                     ctr_lines = ctr_lines - 2
                     points.RemoveAt(ctr_lines)
                     delete_unwanted_connection()
@@ -736,7 +745,55 @@ Public Class WyeWyeActivities
 
     End Sub
 
+    Private Sub pic_switch_Click(sender As Object, e As EventArgs) Handles pic_switch.Click
+        Dim query = "select * from wye_wye_lines where clamp_meter = '2' and transformer_details_id = '" & transformer_id & "' order by id asc"
+        Dim da As New Odbc.OdbcDataAdapter(query, conn)
+        Dim dt As New DataTable
+        da.Fill(dt)
 
+        If dt.Rows.Count = 4 Then
+            switch = 1
+        Else
+            switch = 0
+        End If
+        If switch = 1 Then
+            pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker_on.png")
+            pic_switch.SizeMode = PictureBoxSizeMode.Zoom
+
+            pic_color.Image = Image.FromFile(appPath & "\pictures\LED_LIGHT_INDICATOR_ON.png")
+            pic_color.SizeMode = PictureBoxSizeMode.Zoom
+
+            Dim primary_voltage, rating As Double
+
+            Dim result = select_voltage_primary(transformer_id)
+            If result <> "No data" Then
+                primary_voltage = result
+            End If
+
+            Dim result_rating = select_rating(transformer_id)
+            If result_rating <> "No data" Then
+                Dim split_value() As String = result_rating.Split(" ")
+                rating = CDbl(split_value(0))
+                'rating = CDbl(result_rating)
+            End If
+
+            MsgBox(result_rating.ToString & " " & result.ToString)
+
+            Dim cp = CDbl(rating) / CDbl(primary_voltage)
+            txt_cp.Text = cp.ToString
+
+
+        Else
+            pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker.png")
+            pic_switch.SizeMode = PictureBoxSizeMode.Zoom
+
+            pic_color.Image = Image.FromFile(appPath & "\pictures\LED_LIGHT_INDICATOR_OFF.png")
+            pic_color.SizeMode = PictureBoxSizeMode.Zoom
+
+        End If
+
+
+    End Sub
 
     Private Sub btn_connect_wires_Click(sender As Object, e As EventArgs) Handles btn_connect_wires.Click
         wire_conenction = 1

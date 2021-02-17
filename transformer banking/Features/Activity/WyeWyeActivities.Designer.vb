@@ -30,6 +30,8 @@ Partial Class WyeWyeActivities
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.btn_done = New System.Windows.Forms.Button()
         Me.panel_activity = New System.Windows.Forms.Panel()
+        Me.lbl_secondary_voltage = New System.Windows.Forms.Label()
+        Me.lbl_primary_voltage = New System.Windows.Forms.Label()
         Me.btn_clamp_red = New System.Windows.Forms.Button()
         Me.btn_clamp_black = New System.Windows.Forms.Button()
         Me.pic_clamp_meter = New System.Windows.Forms.PictureBox()
@@ -154,8 +156,6 @@ Partial Class WyeWyeActivities
         Me.btn_prim_b_6 = New System.Windows.Forms.Button()
         Me.btn_prim_b_1 = New System.Windows.Forms.Button()
         Me.btn_clamp_meter = New System.Windows.Forms.Button()
-        Me.lbl_primary_voltage = New System.Windows.Forms.Label()
-        Me.lbl_secondary_voltage = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel_activity.SuspendLayout()
@@ -371,6 +371,28 @@ Partial Class WyeWyeActivities
         Me.panel_activity.Name = "panel_activity"
         Me.panel_activity.Size = New System.Drawing.Size(824, 553)
         Me.panel_activity.TabIndex = 126
+        '
+        'lbl_secondary_voltage
+        '
+        Me.lbl_secondary_voltage.AutoSize = True
+        Me.lbl_secondary_voltage.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_secondary_voltage.ForeColor = System.Drawing.Color.Transparent
+        Me.lbl_secondary_voltage.Location = New System.Drawing.Point(25, 207)
+        Me.lbl_secondary_voltage.Name = "lbl_secondary_voltage"
+        Me.lbl_secondary_voltage.Size = New System.Drawing.Size(32, 25)
+        Me.lbl_secondary_voltage.TabIndex = 167
+        Me.lbl_secondary_voltage.Text = "30"
+        '
+        'lbl_primary_voltage
+        '
+        Me.lbl_primary_voltage.AutoSize = True
+        Me.lbl_primary_voltage.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_primary_voltage.ForeColor = System.Drawing.Color.Transparent
+        Me.lbl_primary_voltage.Location = New System.Drawing.Point(25, 182)
+        Me.lbl_primary_voltage.Name = "lbl_primary_voltage"
+        Me.lbl_primary_voltage.Size = New System.Drawing.Size(42, 25)
+        Me.lbl_primary_voltage.TabIndex = 166
+        Me.lbl_primary_voltage.Text = "250"
         '
         'btn_clamp_red
         '
@@ -951,7 +973,7 @@ Partial Class WyeWyeActivities
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label20.ForeColor = System.Drawing.Color.White
-        Me.Label20.Location = New System.Drawing.Point(776, 410)
+        Me.Label20.Location = New System.Drawing.Point(767, 410)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(28, 19)
         Me.Label20.TabIndex = 105
@@ -1814,28 +1836,6 @@ Partial Class WyeWyeActivities
         Me.btn_clamp_meter.Size = New System.Drawing.Size(48, 67)
         Me.btn_clamp_meter.TabIndex = 163
         Me.btn_clamp_meter.UseVisualStyleBackColor = True
-        '
-        'lbl_primary_voltage
-        '
-        Me.lbl_primary_voltage.AutoSize = True
-        Me.lbl_primary_voltage.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_primary_voltage.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_primary_voltage.Location = New System.Drawing.Point(25, 182)
-        Me.lbl_primary_voltage.Name = "lbl_primary_voltage"
-        Me.lbl_primary_voltage.Size = New System.Drawing.Size(42, 25)
-        Me.lbl_primary_voltage.TabIndex = 166
-        Me.lbl_primary_voltage.Text = "250"
-        '
-        'lbl_secondary_voltage
-        '
-        Me.lbl_secondary_voltage.AutoSize = True
-        Me.lbl_secondary_voltage.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_secondary_voltage.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_secondary_voltage.Location = New System.Drawing.Point(25, 207)
-        Me.lbl_secondary_voltage.Name = "lbl_secondary_voltage"
-        Me.lbl_secondary_voltage.Size = New System.Drawing.Size(32, 25)
-        Me.lbl_secondary_voltage.TabIndex = 167
-        Me.lbl_secondary_voltage.Text = "30"
         '
         'WyeWyeActivities
         '

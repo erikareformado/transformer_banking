@@ -102,7 +102,6 @@
 
         Return result
     End Function
-
     Public Sub delete_unwanted_connection()
         query = "DELETE FROM wye_wye_lines WHERE id in (
                 SELECT id FROM wye_wye_lines ORDER BY id desc LIMIT 1)"
@@ -128,7 +127,6 @@
         'Return return_message = ex.ToString
         'End Try
     End Function
-
     Public Function select_points_count(transformer_btn, primary_btn, no)
         'Try
         Dim result As New List(Of String)
@@ -139,7 +137,6 @@
 
         Return dt.Rows.Count
     End Function
-
     Public Function select_clamp_count()
         Dim result As Integer
 
@@ -152,4 +149,5 @@
 
         Return result
     End Function
+
 End Module
