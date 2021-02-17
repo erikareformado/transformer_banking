@@ -154,6 +154,8 @@ Partial Class WyeWyeActivities
         Me.btn_prim_b_6 = New System.Windows.Forms.Button()
         Me.btn_prim_b_1 = New System.Windows.Forms.Button()
         Me.btn_clamp_meter = New System.Windows.Forms.Button()
+        Me.lbl_primary_voltage = New System.Windows.Forms.Label()
+        Me.lbl_secondary_voltage = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel_activity.SuspendLayout()
@@ -239,6 +241,8 @@ Partial Class WyeWyeActivities
         Me.panel_activity.BackColor = System.Drawing.Color.Transparent
         Me.panel_activity.BackgroundImage = CType(resources.GetObject("panel_activity.BackgroundImage"), System.Drawing.Image)
         Me.panel_activity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.panel_activity.Controls.Add(Me.lbl_secondary_voltage)
+        Me.panel_activity.Controls.Add(Me.lbl_primary_voltage)
         Me.panel_activity.Controls.Add(Me.btn_clamp_red)
         Me.panel_activity.Controls.Add(Me.btn_clamp_black)
         Me.panel_activity.Controls.Add(Me.pic_clamp_meter)
@@ -563,7 +567,7 @@ Partial Class WyeWyeActivities
         Me.lbl_impedance.AutoSize = True
         Me.lbl_impedance.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_impedance.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_impedance.Location = New System.Drawing.Point(25, 287)
+        Me.lbl_impedance.Location = New System.Drawing.Point(25, 299)
         Me.lbl_impedance.Name = "lbl_impedance"
         Me.lbl_impedance.Size = New System.Drawing.Size(42, 25)
         Me.lbl_impedance.TabIndex = 150
@@ -583,7 +587,7 @@ Partial Class WyeWyeActivities
         Me.lbl_frequency.AutoSize = True
         Me.lbl_frequency.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_frequency.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_frequency.Location = New System.Drawing.Point(18, 263)
+        Me.lbl_frequency.Location = New System.Drawing.Point(18, 276)
         Me.lbl_frequency.Name = "lbl_frequency"
         Me.lbl_frequency.Size = New System.Drawing.Size(59, 25)
         Me.lbl_frequency.TabIndex = 149
@@ -594,7 +598,7 @@ Partial Class WyeWyeActivities
         Me.lbl_rating.AutoSize = True
         Me.lbl_rating.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_rating.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_rating.Location = New System.Drawing.Point(13, 239)
+        Me.lbl_rating.Location = New System.Drawing.Point(13, 252)
         Me.lbl_rating.Name = "lbl_rating"
         Me.lbl_rating.Size = New System.Drawing.Size(69, 25)
         Me.lbl_rating.TabIndex = 148
@@ -605,7 +609,7 @@ Partial Class WyeWyeActivities
         Me.lbl_polarity.AutoSize = True
         Me.lbl_polarity.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_polarity.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_polarity.Location = New System.Drawing.Point(11, 216)
+        Me.lbl_polarity.Location = New System.Drawing.Point(10, 229)
         Me.lbl_polarity.Name = "lbl_polarity"
         Me.lbl_polarity.Size = New System.Drawing.Size(79, 25)
         Me.lbl_polarity.TabIndex = 147
@@ -616,7 +620,7 @@ Partial Class WyeWyeActivities
         Me.lbl_dt.AutoSize = True
         Me.lbl_dt.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_dt.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_dt.Location = New System.Drawing.Point(26, 193)
+        Me.lbl_dt.Location = New System.Drawing.Point(33, 162)
         Me.lbl_dt.Name = "lbl_dt"
         Me.lbl_dt.Size = New System.Drawing.Size(34, 25)
         Me.lbl_dt.TabIndex = 146
@@ -1811,6 +1815,28 @@ Partial Class WyeWyeActivities
         Me.btn_clamp_meter.TabIndex = 163
         Me.btn_clamp_meter.UseVisualStyleBackColor = True
         '
+        'lbl_primary_voltage
+        '
+        Me.lbl_primary_voltage.AutoSize = True
+        Me.lbl_primary_voltage.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_primary_voltage.ForeColor = System.Drawing.Color.Transparent
+        Me.lbl_primary_voltage.Location = New System.Drawing.Point(25, 182)
+        Me.lbl_primary_voltage.Name = "lbl_primary_voltage"
+        Me.lbl_primary_voltage.Size = New System.Drawing.Size(42, 25)
+        Me.lbl_primary_voltage.TabIndex = 166
+        Me.lbl_primary_voltage.Text = "250"
+        '
+        'lbl_secondary_voltage
+        '
+        Me.lbl_secondary_voltage.AutoSize = True
+        Me.lbl_secondary_voltage.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_secondary_voltage.ForeColor = System.Drawing.Color.Transparent
+        Me.lbl_secondary_voltage.Location = New System.Drawing.Point(25, 207)
+        Me.lbl_secondary_voltage.Name = "lbl_secondary_voltage"
+        Me.lbl_secondary_voltage.Size = New System.Drawing.Size(32, 25)
+        Me.lbl_secondary_voltage.TabIndex = 167
+        Me.lbl_secondary_voltage.Text = "30"
+        '
         'WyeWyeActivities
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1969,4 +1995,6 @@ Partial Class WyeWyeActivities
     Friend WithEvents btn_clamp_meter As Button
     Friend WithEvents btn_connect_wires As Button
     Friend WithEvents pic_clamp_meter As PictureBox
+    Friend WithEvents lbl_secondary_voltage As Label
+    Friend WithEvents lbl_primary_voltage As Label
 End Class

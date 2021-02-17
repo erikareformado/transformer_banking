@@ -2,13 +2,18 @@
 
     Private Sub btn_done_Click(sender As Object, e As EventArgs) Handles btn_done.Click
 
-        If Home.uc_transformer_details.cmb_polarity.Text = "" Then
-            MsgBox("Please Select Polarity!")
-        ElseIf Home.uc_transformer_details.cmb_rating.Text = "" Then
-            MsgBox("Please Select Rating!")
-        ElseIf Home.uc_transformer_details.cmb_rating.Text = "" Then
-            MsgBox("Please Input Frequency!")
-
+        If cmb_polarity.Text = "" Then
+            MsgBox("Please Select Polarity!", MsgBoxStyle.Exclamation, "Transformer Banking")
+        ElseIf cmb_rating.Text = "" Then
+            MsgBox("Please Select Rating!", MsgBoxStyle.Exclamation, "Transformer Banking")
+        ElseIf cmb_rating.Text = "" Then
+            MsgBox("Please Input Frequency!", MsgBoxStyle.Exclamation, "Transformer Banking")
+        ElseIf cmb_rating.Text = "" Then
+            MsgBox("Please Input Frequency!", MsgBoxStyle.Exclamation, "Transformer Banking")
+        ElseIf txt_primary_voltage.Text = ""
+            MsgBox("Please Input Primary Voltage!", MsgBoxStyle.Exclamation, "Transformer Banking")
+        ElseIf txt_secondary_voltage.Text = ""
+            MsgBox("Please Input Secondary Voltage!", MsgBoxStyle.Exclamation, "Transformer Banking")
         Else
 
             If Home.lbl_connection_type.Text = "WYE-WYE CONNECTION" Then
@@ -84,13 +89,15 @@
                     Home.uc_open_wye_open_delta_activity.Label25.Text = "X1"
                 End If
             End If
-            Dim result = save_transformer_details(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text)
+            Dim result = save_transformer_details(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
 
             If result <> "1" Then
                 MsgBox(result.ToString)
             Else
-                Home.uc_open_wye_open_delta_activity.lbl_polarity.Text = cmb_polarity.Text
-                Home.uc_open_wye_open_delta_activity.lbl_rating.Text = cmb_rating.Text
+                Home.uc_wye_wye_activity.lbl_primary_voltage.Text = txt_primary_voltage.Text
+                Home.uc_wye_wye_activity.lbl_secondary_voltage.Text = txt_secondary_voltage.Text
+                Home.uc_wye_wye_activity.lbl_polarity.Text = cmb_polarity.Text
+                Home.uc_wye_wye_activity.lbl_rating.Text = cmb_rating.Text
             End If
         End If
     End Sub

@@ -39,7 +39,7 @@ Public Class WyeWyeActivities
     Private Sub WyeWyeActivities_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbopen()
         get_point()
-        transformer_id = search_transformer_id(lbl_polarity.Text, lbl_rating.Text, Home.lbl_connection_type.Text)
+        transformer_id = search_transformer_id(lbl_polarity.Text, lbl_rating.Text, Home.lbl_connection_type.Text, lbl_primary_voltage.Text, lbl_secondary_voltage.Text)
         select_clamp()
 
 
@@ -534,7 +534,7 @@ Public Class WyeWyeActivities
 
             Dim split_value() As String = clamp.Split("_")
             Dim btn_color = split_value(1).ToString
-            Dim pen_color As String
+            'Dim pen_color As String
             'If btn_color = "red" Then
             '    pen_color = "Red"
             'Else
@@ -565,7 +565,7 @@ Public Class WyeWyeActivities
 
 #Region "subs"
     Private Sub select_clamp()
-        Dim query = "select * from wye_wye_lines where clamp_meter = '1' order by id asc"
+        Dim query = "select * from wye_wye_lines where clamp_meter = '1' and transformer_details_id = '" & transformer_id & "' order by id asc"
         Dim da As New Odbc.OdbcDataAdapter(query, conn)
         Dim dt As New DataTable
         da.Fill(dt)
