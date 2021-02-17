@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E7BD9D52-B30F-4454-BE5B-357789BC34C7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>transformer_banking.My.MyApplication</StartupObject>
+    <RootNamespace>transformer_banking</RootNamespace>
+    <AssemblyName>transformer banking</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>transformer banking.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>transformer banking.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="db_connection.vb" />
+    <Compile Include="Features\Activity\DeltaDeltaActivity.Designer.vb">
+      <DependentUpon>DeltaDeltaActivity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Activity\DeltaDeltaActivity.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Activity\DeltaWyeActivity.Designer.vb">
+      <DependentUpon>DeltaWyeActivity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Activity\DeltaWyeActivity.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Activity\OpenDeltaActivity.Designer.vb">
+      <DependentUpon>OpenDeltaActivity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Activity\OpenDeltaActivity.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Activity\WyeDeltaActivity.Designer.vb">
+      <DependentUpon>WyeDeltaActivity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Activity\WyeDeltaActivity.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Activity\WyeWyeActivities.Designer.vb">
+      <DependentUpon>WyeWyeActivities.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Activity\WyeWyeActivities.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Descriptions\delta_delta_introduction.Designer.vb">
+      <DependentUpon>delta_delta_introduction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Descriptions\delta_delta_introduction.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Descriptions\open_delta_introduction.Designer.vb">
+      <DependentUpon>open_delta_introduction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Descriptions\open_delta_introduction.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Descriptions\open_wye_open_delta_introduction.Designer.vb">
+      <DependentUpon>open_wye_open_delta_introduction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Descriptions\open_wye_open_delta_introduction.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Descriptions\wye_delta_introduction.Designer.vb">
+      <DependentUpon>wye_delta_introduction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Descriptions\wye_delta_introduction.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Descriptions\wye_wye_introduction.Designer.vb">
+      <DependentUpon>wye_wye_introduction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Descriptions\wye_wye_introduction.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Activity\OpenwyeOpendeltaActivity.Designer.vb">
+      <DependentUpon>OpenwyeOpendeltaActivity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Activity\OpenwyeOpendeltaActivity.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\tranformer_Details.Designer.vb">
+      <DependentUpon>tranformer_Details.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\tranformer_Details.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Exercise\WyeWyeActivity.Designer.vb">
+      <DependentUpon>WyeWyeActivity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Exercise\WyeWyeActivity.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Descriptions\delta_wye_introduction.Designer.vb">
+      <DependentUpon>delta_wye_introduction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Descriptions\delta_wye_introduction.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="functions.vb" />
+    <Compile Include="Model\transformer_details.vb" />
+    <Compile Include="transformer_banking_connections.Designer.vb">
+      <DependentUpon>transformer_banking_connections.vb</DependentUpon>
+    </Compile>
+    <Compile Include="transformer_banking_connections.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="manual_menu.Designer.vb">
+      <DependentUpon>manual_menu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="manual_menu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="introduction_menu.Designer.vb">
+      <DependentUpon>introduction_menu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="introduction_menu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="objective_menu.Designer.vb">
+      <DependentUpon>objective_menu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="objective_menu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="overview.Designer.vb">
+      <DependentUpon>overview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="overview.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="home_page.Designer.vb">
+      <DependentUpon>home_page.vb</DependentUpon>
+    </Compile>
+    <Compile Include="home_page.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\Test.Designer.vb">
+      <DependentUpon>Test.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Test.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\wyewye.Designer.vb">
+      <DependentUpon>wyewye.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\wyewye.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home.Designer.vb">
+      <DependentUpon>Home.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Model\wye_wye_lines.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Features\Activity\DeltaDeltaActivity.resx">
+      <DependentUpon>DeltaDeltaActivity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Activity\DeltaWyeActivity.resx">
+      <DependentUpon>DeltaWyeActivity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Activity\OpenDeltaActivity.resx">
+      <DependentUpon>OpenDeltaActivity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Activity\WyeDeltaActivity.resx">
+      <DependentUpon>WyeDeltaActivity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Activity\WyeWyeActivities.resx">
+      <DependentUpon>WyeWyeActivities.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Descriptions\delta_delta_introduction.resx">
+      <DependentUpon>delta_delta_introduction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Descriptions\open_delta_introduction.resx">
+      <DependentUpon>open_delta_introduction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Descriptions\open_wye_open_delta_introduction.resx">
+      <DependentUpon>open_wye_open_delta_introduction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Descriptions\wye_delta_introduction.resx">
+      <DependentUpon>wye_delta_introduction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Descriptions\wye_wye_introduction.resx">
+      <DependentUpon>wye_wye_introduction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Activity\OpenwyeOpendeltaActivity.resx">
+      <DependentUpon>OpenwyeOpendeltaActivity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\tranformer_Details.resx">
+      <DependentUpon>tranformer_Details.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Exercise\WyeWyeActivity.resx">
+      <DependentUpon>WyeWyeActivity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Descriptions\delta_wye_introduction.resx">
+      <DependentUpon>delta_wye_introduction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="home_page.resx">
+      <DependentUpon>home_page.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Test.resx">
+      <DependentUpon>Test.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\wyewye.resx">
+      <DependentUpon>wyewye.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home.resx">
+      <DependentUpon>Home.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="introduction_menu.resx">
+      <DependentUpon>introduction_menu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="manual_menu.resx">
+      <DependentUpon>manual_menu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="objective_menu.resx">
+      <DependentUpon>objective_menu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="overview.resx">
+      <DependentUpon>overview.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="transformer_banking_connections.resx">
+      <DependentUpon>transformer_banking_connections.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

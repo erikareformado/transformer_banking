@@ -1,0 +1,1 @@
+Driver={PostgreSQL ANSI};database=transformer_banking;server=localhost;port=5433;uid=postgres;sslmode=disable;readonly=0;protocol=7.4;User ID=postgres;password=123456;
