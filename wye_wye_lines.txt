@@ -1,0 +1,21 @@
+-- Table: public.wye_wye_lines
+
+-- DROP TABLE public.wye_wye_lines;
+
+CREATE TABLE public.wye_wye_lines
+(
+    id integer NOT NULL DEFAULT nextval('wye_wye_lines_id_seq'::regclass),
+    btn character varying COLLATE pg_catalog."default",
+    points character varying COLLATE pg_catalog."default",
+    color character varying COLLATE pg_catalog."default",
+    clamp_meter character varying COLLATE pg_catalog."default",
+    transformer_details_id character varying COLLATE pg_catalog."default",
+    CONSTRAINT wye_wye_lines_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.wye_wye_lines
+    OWNER to postgres;

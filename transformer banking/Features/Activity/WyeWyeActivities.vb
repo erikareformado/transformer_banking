@@ -5,6 +5,7 @@ Public Class WyeWyeActivities
     Dim ctr As Integer = 0
     Dim ctr_lines As Integer = 0
     Dim ctr_points As Integer = 0
+    Dim ctr_switch As Integer = 0
 
     Dim switch As Integer = 0
 
@@ -23,7 +24,7 @@ Public Class WyeWyeActivities
 
     Dim primary, h_transformer As String
     Dim secondary, x_transformer As String
-    Dim clamp, current As String
+    Dim clamp, current, voltage As String
 
     Dim btn_remove As New Button()
 
@@ -228,7 +229,10 @@ Public Class WyeWyeActivities
                     Me.Refresh()
                 Else
 
-                    If h_transformer = "btn_t1_h1" And primary = "a" Or h_transformer = "btn_t1_h2" And primary = "n" Or h_transformer = "btn_t2_h1" And primary = "b" Or h_transformer = "btn_t2_h2" And primary = "n" Or h_transformer = "btn_t3_h1" And primary = "c" Or h_transformer = "btn_t3_h2" And primary = "n" Then
+                    If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
+                        counter_2(myButton.Name, "", "3")
+
+                    ElseIf h_transformer = "btn_t1_h1" And primary = "a" Or h_transformer = "btn_t1_h2" And primary = "n" Or h_transformer = "btn_t2_h1" And primary = "b" Or h_transformer = "btn_t2_h2" And primary = "n" Or h_transformer = "btn_t3_h1" And primary = "c" Or h_transformer = "btn_t3_h2" And primary = "n" Then
                         counter_2(myButton.Name, "", clamp_meter)
                     Else
                         ctr_lines = ctr_lines - 2
@@ -238,16 +242,6 @@ Public Class WyeWyeActivities
                     End If
                 End If
 
-
-                'If category_1 = category_2 Then
-                '    ctr_lines = ctr_lines - 2
-                '    points.RemoveAt(ctr_lines)
-                '    delete_unwanted_connection()
-                '    MsgBox("Cannot Connect! Please select other connection.", MsgBoxStyle.Exclamation)
-                'Else
-                '    Dim color_pen As String = ""
-                'counter_2(myButton.Name, color_pen)
-                'End If
                 ctr = 0
                 Me.Refresh()
                 wire_conenction = 0
@@ -533,51 +527,249 @@ Public Class WyeWyeActivities
 
                 End If
                 clamp_meter = 0
+                ctr = 0
                 Me.Refresh()
             End If
         End If
     End Sub
     Private Sub btn_cpred_Click(sender As Object, e As EventArgs) Handles btn_cpred.Click, btn_cpblack.Click, btn_clblack.Click, btn_clred.Click
         Dim myButton As Button = CType(sender, Button)
-        If clamp_meter = 1 Then
-            ctr = ctr + 1
-            ctr_lines = ctr_lines + 1
+
+        ctr = ctr + 1
+        ctr_lines = ctr_lines + 1
 
 
-            Dim split_value() As String = myButton.Name.Split("_")
-            Dim current = split_value(1).ToString
-            'MsgBox(current.ToString)
-            'Dim pen_color As String
-            'If btn_color = "red" Then
-            '    pen_color = "Red"
-            'Else
-            '    pen_color = "Black"
-            'End If
+        Dim split_value() As String = myButton.Name.Split("_")
+        current = split_value(1).ToString
+        'MsgBox(current.ToString)
+        'Dim pen_color As String
+        'If btn_color = "red" Then
+        '    pen_color = "Red"
+        'Else
+        '    pen_color = "Black"
+        'End If
 
-            If ctr = 1 Then
+        If ctr = 1 Then
                 ctr_points = ctr_points + 1
                 counter_1(myButton.Name, "", "2")
 
             Else
 
-                If clamp = "red" And current = "clred" Or clamp = "black" And current = "clblack" Or clamp = "red" And current = "cpred" Or clamp = "black" And current = "cpblack" Then
-                    counter_2(myButton.Name, "", "2")
+            If clamp = "red" And current = "clred" Or clamp = "black" And current = "clblack" Or clamp = "red" And current = "cpred" Or clamp = "black" And current = "cpblack" Then
+                counter_2(myButton.Name, "", "2")
 
 
-                Else
+            Else
                     ctr_lines = ctr_lines - 2
                     points.RemoveAt(ctr_lines)
                     delete_unwanted_connection()
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
                 End If
+            ctr = 0
+            Me.Refresh()
+        End If
+
+    End Sub
+    Private Sub btn_vpred_Click(sender As Object, e As EventArgs) Handles btn_vpred.Click, btn_vpblack.Click, btn_vlblack.Click, btn_vlred.Click
+        Dim myButton As Button = CType(sender, Button)
+
+        ctr = ctr + 1
+        ctr_lines = ctr_lines + 1
+
+        Dim split_value() As String = myButton.Name.Split("_")
+        voltage = split_value(1).ToString
+        'MsgBox(current.ToString)
+        Dim pen_color As String
+        If voltage = "vpred" Or voltage = "vlred" Then
+            pen_color = "Red"
+        Else
+            pen_color = "Black"
+        End If
+
+        If ctr = 1 Then
+            ctr_points = ctr_points + 1
+            counter_1(myButton.Name, pen_color, "3")
+
+        Else
+
+            If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
+                counter_2(myButton.Name, pen_color, "3")
+            Else
+                ctr_lines = ctr_lines - 2
+                points.RemoveAt(ctr_lines)
+                delete_unwanted_connection()
+                MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
             End If
+            ctr = 0
             clamp_meter = 0
             Me.Refresh()
         End If
+
+
+
+    End Sub
+    Private Sub btn_connect_wires_Click(sender As Object, e As EventArgs) Handles btn_connect_wires.Click   'wire connection
+        wire_conenction = 1
+        If ctr = 1 Then
+            ctr = 0
+            ctr_lines = ctr_lines - 1
+            delete_unwanted_connection()
+        Else
+
+        End If
+    End Sub
+    Private Sub pic_switch_Click(sender As Object, e As EventArgs) Handles pic_switch.Click 'switch
+        ctr_switch = ctr_switch + 1
+        Dim category As String
+
+        Dim query = "select * from wye_wye_lines where clamp_meter > '1' and transformer_details_id = '" & transformer_id & "' order by id asc"
+        Dim da As New Odbc.OdbcDataAdapter(query, conn)
+        Dim dt As New DataTable
+        da.Fill(dt)
+        Dim ctr_clamp As Integer = 0
+        Dim ctr_voltage As Integer = 0
+
+        For counter As Integer = 0 To dt.Rows.Count - 1
+
+            If dt.Rows(counter)(4) = 2 Then
+                ctr_clamp = ctr_clamp + 1
+                If dt.Rows(counter)(3).ToString = "" Then
+                    MsgBox(dt.Rows(counter)(1).ToString)
+                    Dim split_value() As String = dt.Rows(counter)(1).Split("_")
+                    Dim val As String = split_value(2)
+                    If val = "h1" Or val = "h2" Then
+                        category = "primary"
+                    Else
+                        category = "secondary"
+                    End If
+                End If
+            ElseIf dt.Rows(counter)(4) = 3
+                ctr_voltage = ctr_voltage + 1
+            End If
+        Next
+        '    If dt.Rows.Count > 3 Then
+        '    validation = 1
+        'Else
+        '    validation = 0
+        'End If
+        If ctr_switch = 1 And ctr_clamp <> 0 Or ctr_switch = 1 And ctr_voltage <> 0 Then
+            pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker_on.png")
+            pic_switch.SizeMode = PictureBoxSizeMode.Zoom
+
+            pic_color.Image = Image.FromFile(appPath & "\pictures\LED_LIGHT_INDICATOR_ON.png")
+            pic_color.SizeMode = PictureBoxSizeMode.Zoom
+
+            Dim primary_voltage, secondary_voltage, rating As Double
+
+            Dim result_primary = select_voltage_primary(transformer_id)
+            If result_primary <> "No data" Then
+                primary_voltage = result_primary
+            End If
+
+            Dim result_secondary = select_secondary_primary(transformer_id)
+            If result_secondary <> "No data" Then
+                secondary_voltage = result_secondary
+            End If
+
+            Dim result_rating = select_rating(transformer_id)
+            If result_rating <> "No data" Then
+                Dim split_value() As String = result_rating.Split(" ")
+                rating = CDbl(split_value(0))
+            End If
+            If ctr_clamp > 3 Then
+                Dim cp As Double
+                If category = "primary" Then
+                    cp = CDbl(rating) / CDbl(primary_voltage)
+                End If
+
+                txt_cp.Text = cp.ToString
+                txt_cl.Text = cp.ToString
+            End If
+            If ctr_voltage > 3 Then
+                If category = "primary" Then
+                    txt_vp.Text = primary_voltage
+                Else
+                    txt_vp.Text = secondary_voltage
+                End If
+
+            End If
+
+
+            ctr_switch = 1
+        Else
+            pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker.png")
+            pic_switch.SizeMode = PictureBoxSizeMode.Zoom
+
+            pic_color.Image = Image.FromFile(appPath & "\pictures\LED_LIGHT_INDICATOR_OFF.png")
+            pic_color.SizeMode = PictureBoxSizeMode.Zoom
+            ctr_switch = 0
+
+            txt_cl.Clear()
+            txt_cp.Clear()
+            txt_vl.Clear()
+            txt_vp.Clear()
+
+        End If
+
+
     End Sub
 
+    Private Sub btn_vpred_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_vpred.MouseDown, btn_vpblack.MouseDown, btn_vlblack.MouseDown, btn_vlred.MouseDown
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                Dim myButton As Button = CType(sender, Button)
+
+                Dim btn = myButton.Name
+                Dim query, query_delete As String
+                query = "select * from wye_wye_lines order by id asc"
+                Dim da As New Odbc.OdbcDataAdapter(query, conn)
+                Dim dt As New DataTable
+                da.Fill(dt)
+                For counter As Integer = 0 To dt.Rows.Count - 1
+
+                    If dt.Rows(counter)(1) = btn.ToString Then
+                        If dt.Rows(counter + 1)(3) = "" Then
+                            query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                            Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                            Dim dt_delete As New DataTable
+                            da_delete.Fill(dt_delete)
+
+                            ctr_lines = ctr_lines - 2
+                            get_point()
+                        ElseIf dt.Rows(counter - 1)(3) = "" Then
+                            query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                            Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                            Dim dt_delete As New DataTable
+                            da_delete.Fill(dt_delete)
+
+                            ctr_lines = ctr_lines - 2
+                            get_point()
+
+                        End If
+                        Exit For
+                    End If
+                Next
+                'For i = 0 To 
+                'Dim row As DataRow
+                'For Each row In dt.Rows
+                '    If row("btn") = btn_primary.ToString Then
+                '        MsgBox("yes")
+                '    End If
+                'Next
+
+
+
+            End If
+        End If
+        Me.Refresh()
+    End Sub
+    Private Sub btn_try_again_Click(sender As Object, e As EventArgs) Handles btn_try_again.Click
+        Me.Refresh()
+    End Sub
 #Region "subs"
     Private Sub select_clamp()
         Dim query = "select * from wye_wye_lines where clamp_meter = '1' and transformer_details_id = '" & transformer_id & "' order by id asc"
@@ -712,6 +904,29 @@ Public Class WyeWyeActivities
             'ctr_lines = 5
         End If
     End Sub
+
+    Private Sub pic_clamp_meter_MouseDown(sender As Object, e As MouseEventArgs) Handles pic_clamp_meter.MouseDown
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+
+
+                Dim query_delete As String
+                query_delete = "delete from wye_wye_lines where clamp_meter in ('1','2')"
+                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                            Dim dt_delete As New DataTable
+                            da_delete.Fill(dt_delete)
+
+                            ctr_lines = ctr_lines - 2
+                            get_point()
+
+
+            End If
+        End If
+        Me.Refresh()
+    End Sub
+
     Private Sub counter_1(btn_name, pen_color, clamp)
 
         point1_x = panel_activity.Controls.Item(btn_name).Location.X + panel_activity.Controls.Item(btn_name).Width / 2
@@ -735,7 +950,6 @@ Public Class WyeWyeActivities
         'points.Add(point_1)
         'points.Add(268, 33)
     End Sub
-
     Private Sub panel_activity_MouseDown(sender As Object, e As MouseEventArgs) Handles panel_activity.MouseDown
 
         If e.Button = MouseButtons.Left Then
@@ -744,69 +958,6 @@ Public Class WyeWyeActivities
         End If
 
     End Sub
-
-    Private Sub pic_switch_Click(sender As Object, e As EventArgs) Handles pic_switch.Click
-        Dim query = "select * from wye_wye_lines where clamp_meter = '2' and transformer_details_id = '" & transformer_id & "' order by id asc"
-        Dim da As New Odbc.OdbcDataAdapter(query, conn)
-        Dim dt As New DataTable
-        da.Fill(dt)
-
-        If dt.Rows.Count = 4 Then
-            switch = 1
-        Else
-            switch = 0
-        End If
-        If switch = 1 Then
-            pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker_on.png")
-            pic_switch.SizeMode = PictureBoxSizeMode.Zoom
-
-            pic_color.Image = Image.FromFile(appPath & "\pictures\LED_LIGHT_INDICATOR_ON.png")
-            pic_color.SizeMode = PictureBoxSizeMode.Zoom
-
-            Dim primary_voltage, rating As Double
-
-            Dim result = select_voltage_primary(transformer_id)
-            If result <> "No data" Then
-                primary_voltage = result
-            End If
-
-            Dim result_rating = select_rating(transformer_id)
-            If result_rating <> "No data" Then
-                Dim split_value() As String = result_rating.Split(" ")
-                rating = CDbl(split_value(0))
-                'rating = CDbl(result_rating)
-            End If
-
-            MsgBox(result_rating.ToString & " " & result.ToString)
-
-            Dim cp = CDbl(rating) / CDbl(primary_voltage)
-            txt_cp.Text = cp.ToString
-
-
-        Else
-            pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker.png")
-            pic_switch.SizeMode = PictureBoxSizeMode.Zoom
-
-            pic_color.Image = Image.FromFile(appPath & "\pictures\LED_LIGHT_INDICATOR_OFF.png")
-            pic_color.SizeMode = PictureBoxSizeMode.Zoom
-
-        End If
-
-
-    End Sub
-
-    Private Sub btn_connect_wires_Click(sender As Object, e As EventArgs) Handles btn_connect_wires.Click
-        wire_conenction = 1
-        If ctr = 1 Then
-            ctr = 0
-            ctr_lines = ctr_lines - 1
-            delete_unwanted_connection()
-        Else
-
-        End If
-    End Sub
-
-
 
     Private Sub counter_2(btn_name, pen_color, clamp)
 

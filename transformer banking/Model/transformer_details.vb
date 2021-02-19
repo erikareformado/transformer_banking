@@ -50,6 +50,18 @@
             Return "No data"
         End If
     End Function
+    Public Function select_secondary_primary(transformer_id)
+        Dim query_search = "select secondary_voltage from transformer_details where id = '" & transformer_id & "'"
+        Dim da_search As New Odbc.OdbcDataAdapter(query_search, conn)
+        Dim dt_search As New DataTable
+        da_search.Fill(dt_search)
+
+        If dt_search.Rows.Count <> 0 Then
+            Return dt_search(0)(0).ToString
+        Else
+            Return "No data"
+        End If
+    End Function
 
     Public Function select_rating(transformer_id)
 

@@ -103,10 +103,10 @@ Partial Class WyeWyeActivities
         Me.btn_clred = New System.Windows.Forms.Button()
         Me.btn_cpblack = New System.Windows.Forms.Button()
         Me.btn_cpred = New System.Windows.Forms.Button()
-        Me.btn_vl_black = New System.Windows.Forms.Button()
-        Me.btn_vl_red = New System.Windows.Forms.Button()
-        Me.btn_vp_black = New System.Windows.Forms.Button()
-        Me.btn_vp_red = New System.Windows.Forms.Button()
+        Me.btn_vlblack = New System.Windows.Forms.Button()
+        Me.btn_vlred = New System.Windows.Forms.Button()
+        Me.btn_vpblack = New System.Windows.Forms.Button()
+        Me.btn_vpred = New System.Windows.Forms.Button()
         Me.btn_t1_x1 = New System.Windows.Forms.Button()
         Me.btn_t1_x2 = New System.Windows.Forms.Button()
         Me.btn_t2_x1 = New System.Windows.Forms.Button()
@@ -314,10 +314,10 @@ Partial Class WyeWyeActivities
         Me.panel_activity.Controls.Add(Me.btn_clred)
         Me.panel_activity.Controls.Add(Me.btn_cpblack)
         Me.panel_activity.Controls.Add(Me.btn_cpred)
-        Me.panel_activity.Controls.Add(Me.btn_vl_black)
-        Me.panel_activity.Controls.Add(Me.btn_vl_red)
-        Me.panel_activity.Controls.Add(Me.btn_vp_black)
-        Me.panel_activity.Controls.Add(Me.btn_vp_red)
+        Me.panel_activity.Controls.Add(Me.btn_vlblack)
+        Me.panel_activity.Controls.Add(Me.btn_vlred)
+        Me.panel_activity.Controls.Add(Me.btn_vpblack)
+        Me.panel_activity.Controls.Add(Me.btn_vpred)
         Me.panel_activity.Controls.Add(Me.btn_t1_x1)
         Me.panel_activity.Controls.Add(Me.btn_t1_x2)
         Me.panel_activity.Controls.Add(Me.btn_t2_x1)
@@ -1219,49 +1219,49 @@ Partial Class WyeWyeActivities
         Me.btn_cpred.TabIndex = 74
         Me.btn_cpred.UseVisualStyleBackColor = True
         '
-        'btn_vl_black
+        'btn_vlblack
         '
-        Me.btn_vl_black.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btn_vl_black.FlatAppearance.BorderSize = 0
-        Me.btn_vl_black.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_vl_black.Location = New System.Drawing.Point(652, 152)
-        Me.btn_vl_black.Name = "btn_vl_black"
-        Me.btn_vl_black.Size = New System.Drawing.Size(26, 22)
-        Me.btn_vl_black.TabIndex = 73
-        Me.btn_vl_black.UseVisualStyleBackColor = True
+        Me.btn_vlblack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_vlblack.FlatAppearance.BorderSize = 0
+        Me.btn_vlblack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_vlblack.Location = New System.Drawing.Point(652, 152)
+        Me.btn_vlblack.Name = "btn_vlblack"
+        Me.btn_vlblack.Size = New System.Drawing.Size(26, 22)
+        Me.btn_vlblack.TabIndex = 73
+        Me.btn_vlblack.UseVisualStyleBackColor = True
         '
-        'btn_vl_red
+        'btn_vlred
         '
-        Me.btn_vl_red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btn_vl_red.FlatAppearance.BorderSize = 0
-        Me.btn_vl_red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_vl_red.Location = New System.Drawing.Point(616, 152)
-        Me.btn_vl_red.Name = "btn_vl_red"
-        Me.btn_vl_red.Size = New System.Drawing.Size(26, 22)
-        Me.btn_vl_red.TabIndex = 72
-        Me.btn_vl_red.UseVisualStyleBackColor = True
+        Me.btn_vlred.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_vlred.FlatAppearance.BorderSize = 0
+        Me.btn_vlred.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_vlred.Location = New System.Drawing.Point(616, 152)
+        Me.btn_vlred.Name = "btn_vlred"
+        Me.btn_vlred.Size = New System.Drawing.Size(26, 22)
+        Me.btn_vlred.TabIndex = 72
+        Me.btn_vlred.UseVisualStyleBackColor = True
         '
-        'btn_vp_black
+        'btn_vpblack
         '
-        Me.btn_vp_black.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btn_vp_black.FlatAppearance.BorderSize = 0
-        Me.btn_vp_black.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_vp_black.Location = New System.Drawing.Point(651, 34)
-        Me.btn_vp_black.Name = "btn_vp_black"
-        Me.btn_vp_black.Size = New System.Drawing.Size(26, 23)
-        Me.btn_vp_black.TabIndex = 71
-        Me.btn_vp_black.UseVisualStyleBackColor = True
+        Me.btn_vpblack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_vpblack.FlatAppearance.BorderSize = 0
+        Me.btn_vpblack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_vpblack.Location = New System.Drawing.Point(651, 34)
+        Me.btn_vpblack.Name = "btn_vpblack"
+        Me.btn_vpblack.Size = New System.Drawing.Size(26, 23)
+        Me.btn_vpblack.TabIndex = 71
+        Me.btn_vpblack.UseVisualStyleBackColor = True
         '
-        'btn_vp_red
+        'btn_vpred
         '
-        Me.btn_vp_red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btn_vp_red.FlatAppearance.BorderSize = 0
-        Me.btn_vp_red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_vp_red.Location = New System.Drawing.Point(615, 35)
-        Me.btn_vp_red.Name = "btn_vp_red"
-        Me.btn_vp_red.Size = New System.Drawing.Size(26, 22)
-        Me.btn_vp_red.TabIndex = 70
-        Me.btn_vp_red.UseVisualStyleBackColor = True
+        Me.btn_vpred.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_vpred.FlatAppearance.BorderSize = 0
+        Me.btn_vpred.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_vpred.Location = New System.Drawing.Point(615, 35)
+        Me.btn_vpred.Name = "btn_vpred"
+        Me.btn_vpred.Size = New System.Drawing.Size(26, 22)
+        Me.btn_vpred.TabIndex = 70
+        Me.btn_vpred.UseVisualStyleBackColor = True
         '
         'btn_t1_x1
         '
@@ -1940,10 +1940,10 @@ Partial Class WyeWyeActivities
     Friend WithEvents btn_clred As Button
     Friend WithEvents btn_cpblack As Button
     Friend WithEvents btn_cpred As Button
-    Friend WithEvents btn_vl_black As Button
-    Friend WithEvents btn_vl_red As Button
-    Friend WithEvents btn_vp_black As Button
-    Friend WithEvents btn_vp_red As Button
+    Friend WithEvents btn_vlblack As Button
+    Friend WithEvents btn_vlred As Button
+    Friend WithEvents btn_vpblack As Button
+    Friend WithEvents btn_vpred As Button
     Friend WithEvents btn_t1_x1 As Button
     Friend WithEvents btn_t1_x2 As Button
     Friend WithEvents btn_t2_x1 As Button

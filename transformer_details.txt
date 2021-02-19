@@ -1,0 +1,21 @@
+-- Table: public.transformer_details
+
+-- DROP TABLE public.transformer_details;
+
+CREATE TABLE public.transformer_details
+(
+    id smallint NOT NULL DEFAULT nextval('transformer_details_id_seq'::regclass),
+    polarity character varying COLLATE pg_catalog."default",
+    rating character varying COLLATE pg_catalog."default",
+    connection character varying COLLATE pg_catalog."default",
+    primary_voltage character varying COLLATE pg_catalog."default",
+    secondary_voltage character varying COLLATE pg_catalog."default",
+    CONSTRAINT transformer_details_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.transformer_details
+    OWNER to postgres;
