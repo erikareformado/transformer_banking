@@ -25,6 +25,7 @@
         Home.Show()
         Home.panel_all.Controls.Clear()
         Home.panel_all.Controls.Add(Home.uc_delta_delta_intro)
+        Home.lbl_connection_type.Text = "DELTA-DELTA CONNECTION"
     End Sub
 
     Private Sub btn_wye_delta_Click(sender As Object, e As EventArgs) Handles btn_wye_delta.Click

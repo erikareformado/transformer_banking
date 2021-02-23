@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class WyeWyeActivities
     Inherits System.Windows.Forms.UserControl
 
     'UserControl overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class WyeWyeActivities
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(WyeWyeActivities))
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -49,14 +49,11 @@ Partial Class WyeWyeActivities
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lbl_impedance = New System.Windows.Forms.Label()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.lbl_frequency = New System.Windows.Forms.Label()
         Me.lbl_rating = New System.Windows.Forms.Label()
         Me.lbl_polarity = New System.Windows.Forms.Label()
         Me.lbl_dt = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.btn_prim_a_5 = New System.Windows.Forms.Button()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.btn_prim_a_6 = New System.Windows.Forms.Button()
         Me.btn_prim_a_3 = New System.Windows.Forms.Button()
         Me.btn_prim_a_4 = New System.Windows.Forms.Button()
@@ -64,16 +61,16 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l3_6 = New System.Windows.Forms.Button()
         Me.pic_color = New System.Windows.Forms.PictureBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.PictureBox8 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
-        Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.pic_bulb3 = New System.Windows.Forms.PictureBox()
+        Me.pic_bulb2 = New System.Windows.Forms.PictureBox()
+        Me.txt_real = New System.Windows.Forms.TextBox()
+        Me.txt_apparent = New System.Windows.Forms.TextBox()
         Me.txt_cl = New System.Windows.Forms.TextBox()
         Me.txt_vl = New System.Windows.Forms.TextBox()
         Me.txt_cp = New System.Windows.Forms.TextBox()
         Me.txt_vp = New System.Windows.Forms.TextBox()
         Me.pic_switch = New System.Windows.Forms.PictureBox()
-        Me.Button24 = New System.Windows.Forms.Button()
+        Me.btn_l1red = New System.Windows.Forms.Button()
         Me.btn_sec_l3_5 = New System.Windows.Forms.Button()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
@@ -93,12 +90,12 @@ Partial Class WyeWyeActivities
         Me.btn_prim_n_4 = New System.Windows.Forms.Button()
         Me.btn_prim_n_1 = New System.Windows.Forms.Button()
         Me.btn_prim_n_2 = New System.Windows.Forms.Button()
-        Me.Button67 = New System.Windows.Forms.Button()
-        Me.Button68 = New System.Windows.Forms.Button()
-        Me.Button65 = New System.Windows.Forms.Button()
-        Me.Button66 = New System.Windows.Forms.Button()
-        Me.Button63 = New System.Windows.Forms.Button()
-        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
+        Me.btn_l3red = New System.Windows.Forms.Button()
+        Me.btn_l3black = New System.Windows.Forms.Button()
+        Me.btn_l2red = New System.Windows.Forms.Button()
+        Me.btn_l2black = New System.Windows.Forms.Button()
+        Me.btn_l1black = New System.Windows.Forms.Button()
+        Me.pic_bulb1 = New System.Windows.Forms.PictureBox()
         Me.btn_clblack = New System.Windows.Forms.Button()
         Me.btn_clred = New System.Windows.Forms.Button()
         Me.btn_cpblack = New System.Windows.Forms.Button()
@@ -161,10 +158,10 @@ Partial Class WyeWyeActivities
         Me.panel_activity.SuspendLayout()
         CType(Me.pic_clamp_meter, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pic_color, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pic_bulb3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pic_bulb2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pic_switch, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pic_bulb1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -260,14 +257,11 @@ Partial Class WyeWyeActivities
         Me.panel_activity.Controls.Add(Me.Label7)
         Me.panel_activity.Controls.Add(Me.Label1)
         Me.panel_activity.Controls.Add(Me.lbl_impedance)
-        Me.panel_activity.Controls.Add(Me.ListBox1)
         Me.panel_activity.Controls.Add(Me.lbl_frequency)
         Me.panel_activity.Controls.Add(Me.lbl_rating)
         Me.panel_activity.Controls.Add(Me.lbl_polarity)
         Me.panel_activity.Controls.Add(Me.lbl_dt)
-        Me.panel_activity.Controls.Add(Me.TextBox3)
         Me.panel_activity.Controls.Add(Me.btn_prim_a_5)
-        Me.panel_activity.Controls.Add(Me.TextBox2)
         Me.panel_activity.Controls.Add(Me.btn_prim_a_6)
         Me.panel_activity.Controls.Add(Me.btn_prim_a_3)
         Me.panel_activity.Controls.Add(Me.btn_prim_a_4)
@@ -275,16 +269,16 @@ Partial Class WyeWyeActivities
         Me.panel_activity.Controls.Add(Me.btn_sec_l3_6)
         Me.panel_activity.Controls.Add(Me.pic_color)
         Me.panel_activity.Controls.Add(Me.Label6)
-        Me.panel_activity.Controls.Add(Me.PictureBox8)
-        Me.panel_activity.Controls.Add(Me.PictureBox7)
-        Me.panel_activity.Controls.Add(Me.TextBox8)
-        Me.panel_activity.Controls.Add(Me.TextBox9)
+        Me.panel_activity.Controls.Add(Me.pic_bulb3)
+        Me.panel_activity.Controls.Add(Me.pic_bulb2)
+        Me.panel_activity.Controls.Add(Me.txt_real)
+        Me.panel_activity.Controls.Add(Me.txt_apparent)
         Me.panel_activity.Controls.Add(Me.txt_cl)
         Me.panel_activity.Controls.Add(Me.txt_vl)
         Me.panel_activity.Controls.Add(Me.txt_cp)
         Me.panel_activity.Controls.Add(Me.txt_vp)
         Me.panel_activity.Controls.Add(Me.pic_switch)
-        Me.panel_activity.Controls.Add(Me.Button24)
+        Me.panel_activity.Controls.Add(Me.btn_l1red)
         Me.panel_activity.Controls.Add(Me.btn_sec_l3_5)
         Me.panel_activity.Controls.Add(Me.Label25)
         Me.panel_activity.Controls.Add(Me.Label26)
@@ -304,12 +298,12 @@ Partial Class WyeWyeActivities
         Me.panel_activity.Controls.Add(Me.btn_prim_n_4)
         Me.panel_activity.Controls.Add(Me.btn_prim_n_1)
         Me.panel_activity.Controls.Add(Me.btn_prim_n_2)
-        Me.panel_activity.Controls.Add(Me.Button67)
-        Me.panel_activity.Controls.Add(Me.Button68)
-        Me.panel_activity.Controls.Add(Me.Button65)
-        Me.panel_activity.Controls.Add(Me.Button66)
-        Me.panel_activity.Controls.Add(Me.Button63)
-        Me.panel_activity.Controls.Add(Me.PictureBox6)
+        Me.panel_activity.Controls.Add(Me.btn_l3red)
+        Me.panel_activity.Controls.Add(Me.btn_l3black)
+        Me.panel_activity.Controls.Add(Me.btn_l2red)
+        Me.panel_activity.Controls.Add(Me.btn_l2black)
+        Me.panel_activity.Controls.Add(Me.btn_l1black)
+        Me.panel_activity.Controls.Add(Me.pic_bulb1)
         Me.panel_activity.Controls.Add(Me.btn_clblack)
         Me.panel_activity.Controls.Add(Me.btn_clred)
         Me.panel_activity.Controls.Add(Me.btn_cpblack)
@@ -405,6 +399,7 @@ Partial Class WyeWyeActivities
         Me.btn_clamp_red.Size = New System.Drawing.Size(20, 20)
         Me.btn_clamp_red.TabIndex = 140
         Me.btn_clamp_red.UseVisualStyleBackColor = True
+        Me.btn_clamp_red.Visible = False
         '
         'btn_clamp_black
         '
@@ -417,6 +412,7 @@ Partial Class WyeWyeActivities
         Me.btn_clamp_black.Size = New System.Drawing.Size(20, 20)
         Me.btn_clamp_black.TabIndex = 141
         Me.btn_clamp_black.UseVisualStyleBackColor = True
+        Me.btn_clamp_black.Visible = False
         '
         'pic_clamp_meter
         '
@@ -427,6 +423,7 @@ Partial Class WyeWyeActivities
         Me.pic_clamp_meter.Size = New System.Drawing.Size(43, 76)
         Me.pic_clamp_meter.TabIndex = 164
         Me.pic_clamp_meter.TabStop = False
+        Me.pic_clamp_meter.Visible = False
         '
         'btn_connect_wires
         '
@@ -595,15 +592,6 @@ Partial Class WyeWyeActivities
         Me.lbl_impedance.TabIndex = 150
         Me.lbl_impedance.Text = "2 %"
         '
-        'ListBox1
-        '
-        Me.ListBox1.Enabled = False
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(592, 444)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(100, 82)
-        Me.ListBox1.TabIndex = 122
-        '
         'lbl_frequency
         '
         Me.lbl_frequency.AutoSize = True
@@ -648,14 +636,6 @@ Partial Class WyeWyeActivities
         Me.lbl_dt.TabIndex = 146
         Me.lbl_dt.Text = "DT"
         '
-        'TextBox3
-        '
-        Me.TextBox3.Enabled = False
-        Me.TextBox3.Location = New System.Drawing.Point(486, 498)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox3.TabIndex = 9
-        '
         'btn_prim_a_5
         '
         Me.btn_prim_a_5.BackColor = System.Drawing.Color.Transparent
@@ -667,14 +647,6 @@ Partial Class WyeWyeActivities
         Me.btn_prim_a_5.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_a_5.TabIndex = 145
         Me.btn_prim_a_5.UseVisualStyleBackColor = False
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Enabled = False
-        Me.TextBox2.Location = New System.Drawing.Point(486, 472)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox2.TabIndex = 8
         '
         'btn_prim_a_6
         '
@@ -758,51 +730,55 @@ Partial Class WyeWyeActivities
         Me.Label6.TabIndex = 134
         Me.Label6.Text = "Connecting Wire"
         '
-        'PictureBox8
+        'pic_bulb3
         '
-        Me.PictureBox8.BackgroundImage = CType(resources.GetObject("PictureBox8.BackgroundImage"), System.Drawing.Image)
-        Me.PictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox8.Location = New System.Drawing.Point(742, 312)
-        Me.PictureBox8.Name = "PictureBox8"
-        Me.PictureBox8.Size = New System.Drawing.Size(70, 70)
-        Me.PictureBox8.TabIndex = 132
-        Me.PictureBox8.TabStop = False
+        Me.pic_bulb3.BackgroundImage = CType(resources.GetObject("pic_bulb3.BackgroundImage"), System.Drawing.Image)
+        Me.pic_bulb3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.pic_bulb3.Location = New System.Drawing.Point(742, 312)
+        Me.pic_bulb3.Name = "pic_bulb3"
+        Me.pic_bulb3.Size = New System.Drawing.Size(70, 70)
+        Me.pic_bulb3.TabIndex = 132
+        Me.pic_bulb3.TabStop = False
         '
-        'PictureBox7
+        'pic_bulb2
         '
-        Me.PictureBox7.BackgroundImage = CType(resources.GetObject("PictureBox7.BackgroundImage"), System.Drawing.Image)
-        Me.PictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox7.Location = New System.Drawing.Point(667, 312)
-        Me.PictureBox7.Name = "PictureBox7"
-        Me.PictureBox7.Size = New System.Drawing.Size(70, 70)
-        Me.PictureBox7.TabIndex = 131
-        Me.PictureBox7.TabStop = False
+        Me.pic_bulb2.BackgroundImage = CType(resources.GetObject("pic_bulb2.BackgroundImage"), System.Drawing.Image)
+        Me.pic_bulb2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.pic_bulb2.Location = New System.Drawing.Point(667, 312)
+        Me.pic_bulb2.Name = "pic_bulb2"
+        Me.pic_bulb2.Size = New System.Drawing.Size(70, 70)
+        Me.pic_bulb2.TabIndex = 131
+        Me.pic_bulb2.TabStop = False
         '
-        'TextBox8
+        'txt_real
         '
-        Me.TextBox8.BackColor = System.Drawing.SystemColors.InactiveCaptionText
-        Me.TextBox8.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox8.Location = New System.Drawing.Point(700, 208)
-        Me.TextBox8.Multiline = True
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.ReadOnly = True
-        Me.TextBox8.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.TextBox8.Size = New System.Drawing.Size(96, 32)
-        Me.TextBox8.TabIndex = 128
-        Me.TextBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txt_real.BackColor = System.Drawing.SystemColors.InactiveCaptionText
+        Me.txt_real.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_real.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_real.ForeColor = System.Drawing.Color.White
+        Me.txt_real.Location = New System.Drawing.Point(700, 208)
+        Me.txt_real.Multiline = True
+        Me.txt_real.Name = "txt_real"
+        Me.txt_real.ReadOnly = True
+        Me.txt_real.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.txt_real.Size = New System.Drawing.Size(96, 32)
+        Me.txt_real.TabIndex = 128
+        Me.txt_real.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox9
+        'txt_apparent
         '
-        Me.TextBox9.BackColor = System.Drawing.SystemColors.InactiveCaptionText
-        Me.TextBox9.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox9.Location = New System.Drawing.Point(578, 209)
-        Me.TextBox9.Multiline = True
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.ReadOnly = True
-        Me.TextBox9.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.TextBox9.Size = New System.Drawing.Size(96, 32)
-        Me.TextBox9.TabIndex = 127
-        Me.TextBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txt_apparent.BackColor = System.Drawing.SystemColors.InactiveCaptionText
+        Me.txt_apparent.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_apparent.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_apparent.ForeColor = System.Drawing.Color.White
+        Me.txt_apparent.Location = New System.Drawing.Point(578, 209)
+        Me.txt_apparent.Multiline = True
+        Me.txt_apparent.Name = "txt_apparent"
+        Me.txt_apparent.ReadOnly = True
+        Me.txt_apparent.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.txt_apparent.Size = New System.Drawing.Size(96, 32)
+        Me.txt_apparent.TabIndex = 127
+        Me.txt_apparent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'txt_cl
         '
@@ -874,16 +850,17 @@ Partial Class WyeWyeActivities
         Me.pic_switch.TabIndex = 120
         Me.pic_switch.TabStop = False
         '
-        'Button24
+        'btn_l1red
         '
-        Me.Button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button24.FlatAppearance.BorderSize = 0
-        Me.Button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button24.Location = New System.Drawing.Point(592, 384)
-        Me.Button24.Name = "Button24"
-        Me.Button24.Size = New System.Drawing.Size(26, 22)
-        Me.Button24.TabIndex = 30
-        Me.Button24.UseVisualStyleBackColor = True
+        Me.btn_l1red.BackgroundImage = CType(resources.GetObject("btn_l1red.BackgroundImage"), System.Drawing.Image)
+        Me.btn_l1red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btn_l1red.FlatAppearance.BorderSize = 0
+        Me.btn_l1red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_l1red.Location = New System.Drawing.Point(592, 384)
+        Me.btn_l1red.Name = "btn_l1red"
+        Me.btn_l1red.Size = New System.Drawing.Size(31, 24)
+        Me.btn_l1red.TabIndex = 30
+        Me.btn_l1red.UseVisualStyleBackColor = True
         '
         'btn_sec_l3_5
         '
@@ -1109,71 +1086,71 @@ Partial Class WyeWyeActivities
         Me.btn_prim_n_2.TabIndex = 87
         Me.btn_prim_n_2.UseVisualStyleBackColor = False
         '
-        'Button67
+        'btn_l3red
         '
-        Me.Button67.BackgroundImage = CType(resources.GetObject("Button67.BackgroundImage"), System.Drawing.Image)
-        Me.Button67.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button67.FlatAppearance.BorderSize = 0
-        Me.Button67.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button67.Location = New System.Drawing.Point(747, 386)
-        Me.Button67.Name = "Button67"
-        Me.Button67.Size = New System.Drawing.Size(26, 22)
-        Me.Button67.TabIndex = 86
-        Me.Button67.UseVisualStyleBackColor = True
+        Me.btn_l3red.BackgroundImage = CType(resources.GetObject("btn_l3red.BackgroundImage"), System.Drawing.Image)
+        Me.btn_l3red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_l3red.FlatAppearance.BorderSize = 0
+        Me.btn_l3red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_l3red.Location = New System.Drawing.Point(747, 386)
+        Me.btn_l3red.Name = "btn_l3red"
+        Me.btn_l3red.Size = New System.Drawing.Size(26, 22)
+        Me.btn_l3red.TabIndex = 86
+        Me.btn_l3red.UseVisualStyleBackColor = True
         '
-        'Button68
+        'btn_l3black
         '
-        Me.Button68.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button68.FlatAppearance.BorderSize = 0
-        Me.Button68.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button68.Location = New System.Drawing.Point(781, 387)
-        Me.Button68.Name = "Button68"
-        Me.Button68.Size = New System.Drawing.Size(26, 22)
-        Me.Button68.TabIndex = 85
-        Me.Button68.UseVisualStyleBackColor = True
+        Me.btn_l3black.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_l3black.FlatAppearance.BorderSize = 0
+        Me.btn_l3black.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_l3black.Location = New System.Drawing.Point(781, 387)
+        Me.btn_l3black.Name = "btn_l3black"
+        Me.btn_l3black.Size = New System.Drawing.Size(26, 22)
+        Me.btn_l3black.TabIndex = 85
+        Me.btn_l3black.UseVisualStyleBackColor = True
         '
-        'Button65
+        'btn_l2red
         '
-        Me.Button65.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button65.FlatAppearance.BorderSize = 0
-        Me.Button65.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button65.Location = New System.Drawing.Point(672, 384)
-        Me.Button65.Name = "Button65"
-        Me.Button65.Size = New System.Drawing.Size(26, 22)
-        Me.Button65.TabIndex = 83
-        Me.Button65.UseVisualStyleBackColor = True
+        Me.btn_l2red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_l2red.FlatAppearance.BorderSize = 0
+        Me.btn_l2red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_l2red.Location = New System.Drawing.Point(672, 384)
+        Me.btn_l2red.Name = "btn_l2red"
+        Me.btn_l2red.Size = New System.Drawing.Size(26, 22)
+        Me.btn_l2red.TabIndex = 83
+        Me.btn_l2red.UseVisualStyleBackColor = True
         '
-        'Button66
+        'btn_l2black
         '
-        Me.Button66.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button66.FlatAppearance.BorderSize = 0
-        Me.Button66.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button66.Location = New System.Drawing.Point(707, 386)
-        Me.Button66.Name = "Button66"
-        Me.Button66.Size = New System.Drawing.Size(26, 22)
-        Me.Button66.TabIndex = 82
-        Me.Button66.UseVisualStyleBackColor = True
+        Me.btn_l2black.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_l2black.FlatAppearance.BorderSize = 0
+        Me.btn_l2black.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_l2black.Location = New System.Drawing.Point(707, 386)
+        Me.btn_l2black.Name = "btn_l2black"
+        Me.btn_l2black.Size = New System.Drawing.Size(26, 22)
+        Me.btn_l2black.TabIndex = 82
+        Me.btn_l2black.UseVisualStyleBackColor = True
         '
-        'Button63
+        'btn_l1black
         '
-        Me.Button63.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button63.FlatAppearance.BorderSize = 0
-        Me.Button63.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button63.Location = New System.Drawing.Point(629, 385)
-        Me.Button63.Name = "Button63"
-        Me.Button63.Size = New System.Drawing.Size(26, 22)
-        Me.Button63.TabIndex = 79
-        Me.Button63.UseVisualStyleBackColor = True
+        Me.btn_l1black.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_l1black.FlatAppearance.BorderSize = 0
+        Me.btn_l1black.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_l1black.Location = New System.Drawing.Point(629, 385)
+        Me.btn_l1black.Name = "btn_l1black"
+        Me.btn_l1black.Size = New System.Drawing.Size(26, 22)
+        Me.btn_l1black.TabIndex = 79
+        Me.btn_l1black.UseVisualStyleBackColor = True
         '
-        'PictureBox6
+        'pic_bulb1
         '
-        Me.PictureBox6.BackgroundImage = CType(resources.GetObject("PictureBox6.BackgroundImage"), System.Drawing.Image)
-        Me.PictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox6.Location = New System.Drawing.Point(586, 312)
-        Me.PictureBox6.Name = "PictureBox6"
-        Me.PictureBox6.Size = New System.Drawing.Size(70, 70)
-        Me.PictureBox6.TabIndex = 78
-        Me.PictureBox6.TabStop = False
+        Me.pic_bulb1.BackgroundImage = CType(resources.GetObject("pic_bulb1.BackgroundImage"), System.Drawing.Image)
+        Me.pic_bulb1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.pic_bulb1.Location = New System.Drawing.Point(586, 312)
+        Me.pic_bulb1.Name = "pic_bulb1"
+        Me.pic_bulb1.Size = New System.Drawing.Size(70, 70)
+        Me.pic_bulb1.TabIndex = 78
+        Me.pic_bulb1.TabStop = False
         '
         'btn_clblack
         '
@@ -1856,10 +1833,10 @@ Partial Class WyeWyeActivities
         Me.panel_activity.PerformLayout()
         CType(Me.pic_clamp_meter, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pic_color, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pic_bulb3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pic_bulb2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pic_switch, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pic_bulb1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1884,14 +1861,11 @@ Partial Class WyeWyeActivities
     Friend WithEvents Label7 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents lbl_impedance As Label
-    Friend WithEvents ListBox1 As ListBox
     Friend WithEvents lbl_frequency As Label
     Friend WithEvents lbl_rating As Label
     Friend WithEvents lbl_polarity As Label
     Friend WithEvents lbl_dt As Label
-    Friend WithEvents TextBox3 As TextBox
     Friend WithEvents btn_prim_a_5 As Button
-    Friend WithEvents TextBox2 As TextBox
     Friend WithEvents btn_prim_a_6 As Button
     Friend WithEvents btn_prim_a_3 As Button
     Friend WithEvents btn_prim_a_4 As Button
@@ -1901,16 +1875,15 @@ Partial Class WyeWyeActivities
     Friend WithEvents btn_sec_l3_6 As Button
     Friend WithEvents pic_color As PictureBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents PictureBox8 As PictureBox
-    Friend WithEvents PictureBox7 As PictureBox
-    Friend WithEvents TextBox8 As TextBox
-    Friend WithEvents TextBox9 As TextBox
+    Friend WithEvents pic_bulb3 As PictureBox
+    Friend WithEvents pic_bulb2 As PictureBox
+    Friend WithEvents txt_real As TextBox
+    Friend WithEvents txt_apparent As TextBox
     Friend WithEvents txt_cl As TextBox
     Friend WithEvents txt_vl As TextBox
     Friend WithEvents txt_cp As TextBox
     Friend WithEvents txt_vp As TextBox
     Friend WithEvents pic_switch As PictureBox
-    Friend WithEvents Button24 As Button
     Friend WithEvents btn_sec_l3_5 As Button
     Friend WithEvents Label25 As Label
     Friend WithEvents Label26 As Label
@@ -1930,12 +1903,12 @@ Partial Class WyeWyeActivities
     Friend WithEvents btn_prim_n_4 As Button
     Friend WithEvents btn_prim_n_1 As Button
     Friend WithEvents btn_prim_n_2 As Button
-    Friend WithEvents Button67 As Button
-    Friend WithEvents Button68 As Button
-    Friend WithEvents Button65 As Button
-    Friend WithEvents Button66 As Button
-    Friend WithEvents Button63 As Button
-    Friend WithEvents PictureBox6 As PictureBox
+    Friend WithEvents btn_l3red As Button
+    Friend WithEvents btn_l3black As Button
+    Friend WithEvents btn_l2red As Button
+    Friend WithEvents btn_l2black As Button
+    Friend WithEvents btn_l1black As Button
+    Friend WithEvents pic_bulb1 As PictureBox
     Friend WithEvents btn_clblack As Button
     Friend WithEvents btn_clred As Button
     Friend WithEvents btn_cpblack As Button
@@ -1997,4 +1970,5 @@ Partial Class WyeWyeActivities
     Friend WithEvents pic_clamp_meter As PictureBox
     Friend WithEvents lbl_secondary_voltage As Label
     Friend WithEvents lbl_primary_voltage As Label
+    Friend WithEvents btn_l1red As Button
 End Class

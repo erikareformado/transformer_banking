@@ -24,7 +24,7 @@ Public Class WyeWyeActivities
 
     Dim primary, h_transformer As String
     Dim secondary, x_transformer As String
-    Dim clamp, current, voltage As String
+    Dim clamp, current, voltage, bulb As String
 
     Dim btn_remove As New Button()
 
@@ -119,6 +119,10 @@ Public Class WyeWyeActivities
                         pic_clamp_meter.Location = loc
                         btn_clamp_black.Location = b_location
                         btn_clamp_red.Location = r_location
+
+                        pic_clamp_meter.Visible = True
+                        btn_clamp_black.Visible = True
+                        btn_clamp_red.Visible = True
 
 
                     Else
@@ -231,6 +235,8 @@ Public Class WyeWyeActivities
 
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
                         counter_2(myButton.Name, "", "3")
+                    ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
+                        counter_2(myButton.Name, "", "4")
 
                     ElseIf h_transformer = "btn_t1_h1" And primary = "a" Or h_transformer = "btn_t1_h2" And primary = "n" Or h_transformer = "btn_t2_h1" And primary = "b" Or h_transformer = "btn_t2_h2" And primary = "n" Or h_transformer = "btn_t3_h1" And primary = "c" Or h_transformer = "btn_t3_h2" And primary = "n" Then
                         counter_2(myButton.Name, "", clamp_meter)
@@ -322,6 +328,9 @@ Public Class WyeWyeActivities
                 Else
                     If x_transformer = "btn_t1_x1" And secondary = "l1" Or x_transformer = "btn_t1_x2" And secondary = "n" Or x_transformer = "btn_t2_x1" And secondary = "l2" Or x_transformer = "btn_t2_x2" And secondary = "n" Or x_transformer = "btn_t3_x1" And secondary = "l3" Or x_transformer = "btn_t3_x2" And secondary = "n" Then
                         counter_2(myButton.Name, pen_color, clamp_meter)
+                    ElseIf secondary = "l1" And bulb = "l1red" Or secondary = "n" And bulb = "l1black" Or secondary = "l2" And bulb = "l2red" Or secondary = "n" And bulb = "l2black" Or secondary = "l3" And bulb = "l3red" Or secondary = "n" And bulb = "l3black" Then
+                        counter_2(myButton.Name, pen_color, "5")
+
 
                     Else
                         ctr_lines = ctr_lines - 2
@@ -340,6 +349,61 @@ Public Class WyeWyeActivities
         Else
             MsgBox("Please click connecting wire!", MsgBoxStyle.Exclamation, "Transformer Banking")
         End If
+
+    End Sub
+    Private Sub btn_sec_n_6_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_sec_n_1.MouseDown, btn_sec_n_2.MouseDown, btn_sec_n_3.MouseDown, btn_sec_n_4.MouseDown, btn_sec_n_5.MouseDown, btn_sec_n_6.MouseDown,
+                                            btn_sec_l1_1.MouseDown, btn_sec_l1_2.MouseDown, btn_sec_l1_3.MouseDown, btn_sec_l1_4.MouseDown, btn_sec_l1_5.MouseDown, btn_sec_l1_6.MouseDown,
+                                            btn_sec_l2_1.MouseDown, btn_sec_l2_2.MouseDown, btn_sec_l2_3.MouseDown, btn_sec_l2_4.MouseDown, btn_sec_l2_5.MouseDown, btn_sec_l2_6.MouseDown,
+                                            btn_sec_l3_1.MouseDown, btn_sec_l3_2.MouseDown, btn_sec_l3_3.MouseDown, btn_sec_l3_4.MouseDown, btn_sec_l3_5.MouseDown, btn_sec_l3_6.MouseDown
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                Dim myButton As Button = CType(sender, Button)
+
+                Dim btn = myButton.Name
+                Dim query, query_delete As String
+                query = "select * from wye_wye_lines order by id asc"
+                Dim da As New Odbc.OdbcDataAdapter(query, conn)
+                Dim dt As New DataTable
+                da.Fill(dt)
+                For counter As Integer = 0 To dt.Rows.Count - 1
+
+                    If dt.Rows(counter)(1) = btn.ToString Then
+                        If dt.Rows(counter + 1)(3) = "" Then
+                            query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                            Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                            Dim dt_delete As New DataTable
+                            da_delete.Fill(dt_delete)
+
+                            ctr_lines = ctr_lines - 2
+                            get_point()
+                        ElseIf dt.Rows(counter - 1)(3) = "" Then
+                            query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                            Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                            Dim dt_delete As New DataTable
+                            da_delete.Fill(dt_delete)
+
+                            ctr_lines = ctr_lines - 2
+                            get_point()
+
+                        End If
+                        Exit For
+                    End If
+                Next
+                'For i = 0 To 
+                'Dim row As DataRow
+                'For Each row In dt.Rows
+                '    If row("btn") = btn_primary.ToString Then
+                '        MsgBox("yes")
+                '    End If
+                'Next
+
+
+
+            End If
+        End If
+        Me.Refresh()
 
     End Sub
     'transformer secondary
@@ -396,6 +460,11 @@ Public Class WyeWyeActivities
                 category_2 = "primary"
                 If x_transformer = "btn_t1_x1" And secondary = "l1" Or x_transformer = "btn_t1_x2" And secondary = "n" Or x_transformer = "btn_t2_x1" And secondary = "l2" Or x_transformer = "btn_t2_x2" And secondary = "n" Or x_transformer = "btn_t3_x1" And secondary = "l3" Or x_transformer = "btn_t3_x2" And secondary = "n" Then
                     counter_2(myButton.Name, "", clamp_meter)
+                ElseIf h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
+                    counter_2(myButton.Name, "", "3")
+
+                ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
+                    counter_2(myButton.Name, "", "4")
                 Else
                     ctr_lines = ctr_lines - 2
                     points.RemoveAt(ctr_lines)
@@ -588,26 +657,30 @@ Public Class WyeWyeActivities
         End If
 
         If ctr = 1 Then
-            ctr_points = ctr_points + 1
-            counter_1(myButton.Name, pen_color, "3")
-
+            If voltage = "vpred" Or voltage = "vpblack" Then
+                ctr_points = ctr_points + 1
+                counter_1(myButton.Name, pen_color, "3")
+            Else
+                ctr_points = ctr_points + 1
+                counter_1(myButton.Name, pen_color, "4")
+            End If
         Else
 
-            If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
-                counter_2(myButton.Name, pen_color, "3")
-            Else
-                ctr_lines = ctr_lines - 2
-                points.RemoveAt(ctr_lines)
-                delete_unwanted_connection()
-                MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
+                If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
+                    counter_2(myButton.Name, pen_color, "3")
+                ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
+                    counter_2(myButton.Name, pen_color, "4")
+                Else
+                    ctr_lines = ctr_lines - 2
+                    points.RemoveAt(ctr_lines)
+                    delete_unwanted_connection()
+                    MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
+                End If
+                ctr = 0
+                clamp_meter = 0
+                Me.Refresh()
             End If
-            ctr = 0
-            clamp_meter = 0
-            Me.Refresh()
-        End If
-
-
 
     End Sub
     Private Sub btn_connect_wires_Click(sender As Object, e As EventArgs) Handles btn_connect_wires.Click   'wire connection
@@ -624,19 +697,21 @@ Public Class WyeWyeActivities
         ctr_switch = ctr_switch + 1
         Dim category As String
 
-        Dim query = "select * from wye_wye_lines where clamp_meter > '1' and transformer_details_id = '" & transformer_id & "' order by id asc"
+        Dim query = "select * from wye_wye_lines where clamp_meter::integer >= 1 and transformer_details_id = '" & transformer_id & "' order by id asc"
         Dim da As New Odbc.OdbcDataAdapter(query, conn)
         Dim dt As New DataTable
         da.Fill(dt)
         Dim ctr_clamp As Integer = 0
-        Dim ctr_voltage As Integer = 0
+        Dim ctr_voltage_phase As Integer = 0
+        Dim ctr_voltage_line As Integer = 0
+        Dim ctr_bulb As Integer = 0
 
         For counter As Integer = 0 To dt.Rows.Count - 1
 
-            If dt.Rows(counter)(4) = 2 Then
-                ctr_clamp = ctr_clamp + 1
+            If dt.Rows(counter)(4) = 1 Then
+
                 If dt.Rows(counter)(3).ToString = "" Then
-                    MsgBox(dt.Rows(counter)(1).ToString)
+
                     Dim split_value() As String = dt.Rows(counter)(1).Split("_")
                     Dim val As String = split_value(2)
                     If val = "h1" Or val = "h2" Then
@@ -645,8 +720,14 @@ Public Class WyeWyeActivities
                         category = "secondary"
                     End If
                 End If
+            ElseIf dt.Rows(counter)(4) = 2
+                ctr_clamp = ctr_clamp + 1
             ElseIf dt.Rows(counter)(4) = 3
-                ctr_voltage = ctr_voltage + 1
+                ctr_voltage_phase = ctr_voltage_phase + 1
+            ElseIf dt.Rows(counter)(4) = 4
+                ctr_voltage_line = ctr_voltage_line + 1
+            ElseIf dt.Rows(counter)(4) = 5
+                ctr_bulb = ctr_bulb + 1
             End If
         Next
         '    If dt.Rows.Count > 3 Then
@@ -654,7 +735,7 @@ Public Class WyeWyeActivities
         'Else
         '    validation = 0
         'End If
-        If ctr_switch = 1 And ctr_clamp <> 0 Or ctr_switch = 1 And ctr_voltage <> 0 Then
+        If ctr_switch = 1 And ctr_clamp <> 0 Or ctr_switch = 1 And ctr_voltage_phase <> 0 Or ctr_switch = 1 And ctr_voltage_line <> 0 Or ctr_switch = 1 And ctr_bulb <> 0 Then
             pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker_on.png")
             pic_switch.SizeMode = PictureBoxSizeMode.Zoom
 
@@ -678,23 +759,51 @@ Public Class WyeWyeActivities
                 Dim split_value() As String = result_rating.Split(" ")
                 rating = CDbl(split_value(0))
             End If
+            Dim cp As Double
             If ctr_clamp > 3 Then
-                Dim cp As Double
                 If category = "primary" Then
-                    cp = CDbl(rating) / CDbl(primary_voltage)
+                    cp = Math.Round(CDbl(rating) / CDbl(primary_voltage), 2)
+                Else category = "secondary"
+                    cp = Math.Round(CDbl(rating) / CDbl(secondary_voltage), 2)
                 End If
 
                 txt_cp.Text = cp.ToString
                 txt_cl.Text = cp.ToString
             End If
-            If ctr_voltage > 3 Then
+            If ctr_voltage_phase > 3 Then
                 If category = "primary" Then
                     txt_vp.Text = primary_voltage
-                Else
+                ElseIf category = "secondary"
                     txt_vp.Text = secondary_voltage
                 End If
 
             End If
+            If ctr_voltage_line > 3 Then
+                If category = "primary" Then
+                    txt_vl.Text = Math.Round((primary_voltage * 1.73), 2)
+                ElseIf category = "secondary"
+                    txt_vl.Text = Math.Round((secondary_voltage * 1.73), 2)
+                End If
+
+            End If
+            If category = "primary" Then
+                txt_apparent.Text = Math.Round((3 * primary_voltage * cp), 2).ToString
+            ElseIf category = "secondary"
+                txt_real.Text = Math.Round((((secondary_voltage * 1.73) * 1.73) * cp), 2).ToString
+            End If
+
+            If bulb > 11 Then
+
+            End If
+
+            pic_bulb1.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
+            pic_bulb1.SizeMode = PictureBoxSizeMode.Zoom
+
+            pic_bulb2.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
+            pic_bulb2.SizeMode = PictureBoxSizeMode.Zoom
+
+            pic_bulb3.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
+            pic_bulb3.SizeMode = PictureBoxSizeMode.Zoom
 
 
             ctr_switch = 1
@@ -706,16 +815,26 @@ Public Class WyeWyeActivities
             pic_color.SizeMode = PictureBoxSizeMode.Zoom
             ctr_switch = 0
 
+            pic_bulb1.Image = Image.FromFile(appPath & "\pictures\bulb_off.png")
+            pic_bulb1.SizeMode = PictureBoxSizeMode.Zoom
+
+            pic_bulb2.Image = Image.FromFile(appPath & "\pictures\bulb_off.png")
+            pic_bulb2.SizeMode = PictureBoxSizeMode.Zoom
+
+            pic_bulb3.Image = Image.FromFile(appPath & "\pictures\bulb_off.png")
+            pic_bulb3.SizeMode = PictureBoxSizeMode.Zoom
+
             txt_cl.Clear()
             txt_cp.Clear()
             txt_vl.Clear()
             txt_vp.Clear()
+            txt_apparent.Clear()
+            txt_real.Clear()
 
         End If
 
 
     End Sub
-
     Private Sub btn_vpred_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_vpred.MouseDown, btn_vpblack.MouseDown, btn_vlblack.MouseDown, btn_vlred.MouseDown
         If e.Button = MouseButtons.Right Then
 
@@ -770,6 +889,39 @@ Public Class WyeWyeActivities
     Private Sub btn_try_again_Click(sender As Object, e As EventArgs) Handles btn_try_again.Click
         Me.Refresh()
     End Sub
+    Private Sub btn_red_l1_Click(sender As Object, e As EventArgs) Handles btn_l1red.Click, btn_l1black.Click, btn_l2red.Click, btn_l2black.Click, btn_l3red.Click, btn_l3black.Click
+        Dim myButton As Button = CType(sender, Button)
+
+        ctr = ctr + 1
+        ctr_lines = ctr_lines + 1
+
+        Dim split_value() As String = myButton.Name.Split("_")
+        Dim pen_color As String
+        bulb = split_value(1)
+        If split_value(1) = "l1red" Or split_value(1) = "l2red" Or split_value(1) = "l3red" Then
+            pen_color = "Red"
+        Else
+            pen_color = "Black"
+        End If
+        If ctr = 1 Then
+            ctr_points = ctr_points + 1
+            counter_1(myButton.Name, pen_color, "5")
+
+        Else
+            If secondary = "l1" And bulb = "l1red" Or secondary = "n" And bulb = "l1black" Or secondary = "l2" And bulb = "l2red" Or secondary = "n" And bulb = "l2black" Or secondary = "l3" And bulb = "l3red" Or secondary = "n" And bulb = "l3black" Then
+                counter_2(myButton.Name, pen_color, "5")
+            Else
+                ctr_lines = ctr_lines - 2
+                points.RemoveAt(ctr_lines)
+                delete_unwanted_connection()
+                MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
+
+            End If
+            ctr = 0
+            clamp_meter = 0
+            Me.Refresh()
+        End If
+    End Sub
 #Region "subs"
     Private Sub select_clamp()
         Dim query = "select * from wye_wye_lines where clamp_meter = '1' and transformer_details_id = '" & transformer_id & "' order by id asc"
@@ -798,7 +950,7 @@ Public Class WyeWyeActivities
 
             Dim loc As New Point(x_point, y_point)
             'Dim loc As New Point(199, 116)
-            TextBox3.Text = clamp_point_x.ToString
+            'TextBox3.Text = clamp_point_x.ToString
 
             Dim b_x = loc.X + 41
             Dim b_y = loc.Y + 13
@@ -869,7 +1021,7 @@ Public Class WyeWyeActivities
 
                         points.Add(value_point)
                         ctr_lines = ctr_lines + 1
-                        ListBox1.Items.Add(value.ToString)
+                        'ListBox1.Items.Add(value.ToString)
 
                         value = arry_points(i).ToString
                         split_value = value.Split(",")
@@ -879,7 +1031,7 @@ Public Class WyeWyeActivities
 
                         points.Add(value_point)
                         ctr_lines = ctr_lines + 1
-                        ListBox1.Items.Add(value.ToString)
+                        'ListBox1.Items.Add(value.ToString)
                     Else
                         value = arry_points(i).ToString
 
@@ -891,7 +1043,7 @@ Public Class WyeWyeActivities
 
                         points.Add(value_point)
                         ctr_lines = ctr_lines + 1
-                        ListBox1.Items.Add(value.ToString)
+                        'ListBox1.Items.Add(value.ToString)
                     End If
 
 
@@ -905,6 +1057,8 @@ Public Class WyeWyeActivities
         End If
     End Sub
 
+
+
     Private Sub pic_clamp_meter_MouseDown(sender As Object, e As MouseEventArgs) Handles pic_clamp_meter.MouseDown
         If e.Button = MouseButtons.Right Then
 
@@ -915,24 +1069,29 @@ Public Class WyeWyeActivities
                 Dim query_delete As String
                 query_delete = "delete from wye_wye_lines where clamp_meter in ('1','2')"
                 Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                            Dim dt_delete As New DataTable
-                            da_delete.Fill(dt_delete)
+                Dim dt_delete As New DataTable
+                da_delete.Fill(dt_delete)
 
-                            ctr_lines = ctr_lines - 2
-                            get_point()
+                ctr_lines = ctr_lines - 2
+                get_point()
 
-
+                pic_clamp_meter.Visible = False
+                btn_clamp_black.Visible = False
+                btn_clamp_red.Visible = False
+                'pic_clamp_meter.Location = (702, 462)
             End If
         End If
         Me.Refresh()
     End Sub
+
+
 
     Private Sub counter_1(btn_name, pen_color, clamp)
 
         point1_x = panel_activity.Controls.Item(btn_name).Location.X + panel_activity.Controls.Item(btn_name).Width / 2
         point1_y = panel_activity.Controls.Item(btn_name).Location.Y + panel_activity.Controls.Item(btn_name).Height / 2
 
-        TextBox3.Text = "{x=" & point1_x.ToString & ",y=" & point1_y.ToString & "}"
+        'TextBox3.Text = "{x=" & point1_x.ToString & ",y=" & point1_y.ToString & "}"
         point_1 = New Point(point1_x, point1_y)
 
         Dim result = save_points(btn_name, point1_x & "," & point1_y, pen_color, clamp, transformer_id)
@@ -954,7 +1113,7 @@ Public Class WyeWyeActivities
 
         If e.Button = MouseButtons.Left Then
             Dim location As New Point(e.X, e.Y)
-            TextBox2.Text = location.ToString
+            'TextBox2.Text = location.ToString
         End If
 
     End Sub
@@ -964,7 +1123,7 @@ Public Class WyeWyeActivities
         point2_x = panel_activity.Controls.Item(btn_name).Location.X + panel_activity.Controls.Item(btn_name).Width / 2
         point2_y = panel_activity.Controls.Item(btn_name).Location.Y + panel_activity.Controls.Item(btn_name).Height / 2
         point_2 = New Point(point2_x, point2_y)
-        TextBox3.Text = "{x=" & point2_x.ToString & ",y=" & point2_y.ToString & "}"
+        'TextBox3.Text = "{x=" & point2_x.ToString & ",y=" & point2_y.ToString & "}"
 
         Dim result = save_points(btn_name, point2_x & "," & point2_y, pen_color, clamp, transformer_id)
 
@@ -1027,7 +1186,7 @@ Public Class WyeWyeActivities
 
                 count = 0
                 'Me.Refresh()
-                ListBox1.Items.Add(point_x.ToString & " " & point_y.ToString)
+                'ListBox1.Items.Add(point_x.ToString & " " & point_y.ToString)
             End If
 
             'DataGridView1.Rows.Add(points.Item(i))

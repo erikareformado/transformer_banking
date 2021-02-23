@@ -7383,7 +7383,7 @@ Next connect terminal (red) of Load 3 to terminal (yellow) of secondary line L3.
         ApQ77vj/AYcWnfvo7ytzAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="PictureBox8.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pic_bulb3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA0gAAAVQCAYAAABxsnoXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAA/7JJREFUeF7s3QecXVW5//81vffee6akV0JJAoQQSgKB0HtokRKqdFAEFeWqV702
@@ -9066,7 +9066,7 @@ Next connect terminal (red) of Load 3 to terminal (yellow) of secondary line L3.
         XwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="PictureBox7.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pic_bulb2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA0gAAAVQCAYAAABxsnoXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAA/7JJREFUeF7s3QecXVW5//81vffee6akV0JJAoQQSgKB0HtokRKqdFAEFeWqV702
@@ -10951,7 +10951,36 @@ Next connect terminal (red) of Load 3 to terminal (yellow) of secondary line L3.
         aC33W9m2cp9tb1u9Ug/VTXVRnS1mdFjlP89rxT++vnQNkJPT/wPAFxIvyxdKJgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="Button67.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btn_l1red.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        REmesQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btn_l3red.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACkAAAAtCAYAAAAz8ULgAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAX
         EgAAFxIBZ5/SUgAAAwFJREFUWEfNWa9v21AYtNRUiqqBgYKBgYLAgoKAgYKCwoH9CYMFA4UBA5MGBwYK
@@ -10970,7 +10999,7 @@ Next connect terminal (red) of Load 3 to terminal (yellow) of secondary line L3.
         JH8BQX+jIc2qymoAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="PictureBox6.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pic_bulb1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA0gAAAVQCAYAAABxsnoXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAA/7JJREFUeF7s3QecXVW5//81vffee6akV0JJAoQQSgKB0HtokRKqdFAEFeWqV702
