@@ -112,6 +112,9 @@ Public Class WyeWyeActivities
                         Dim r_x = loc.X + 41
                         Dim r_y = loc.Y + 37
 
+                        pic_clamp_meter.Visible = True
+                        btn_clamp_black.Visible = True
+                        btn_clamp_red.Visible = True
 
                         Dim b_location As New Point(b_x, b_y)
                         Dim r_location As New Point(r_x, r_y)
@@ -120,9 +123,7 @@ Public Class WyeWyeActivities
                         btn_clamp_black.Location = b_location
                         btn_clamp_red.Location = r_location
 
-                        pic_clamp_meter.Visible = True
-                        btn_clamp_black.Visible = True
-                        btn_clamp_red.Visible = True
+
 
 
                     Else
@@ -221,6 +222,10 @@ Public Class WyeWyeActivities
                         btn_clamp_black.Location = b_location
                         btn_clamp_red.Location = r_location
 
+                        pic_clamp_meter.Visible = True
+                        btn_clamp_black.Visible = True
+                        btn_clamp_red.Visible = True
+
 
                     Else
                         ctr_lines = ctr_lines - 2
@@ -233,7 +238,7 @@ Public Class WyeWyeActivities
                     Me.Refresh()
                 Else
 
-                    If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
+                    If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
                         counter_2(myButton.Name, "", "3")
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
                         counter_2(myButton.Name, "", "4")
@@ -281,7 +286,7 @@ Public Class WyeWyeActivities
                 pen_color = "Blue"
             Else btn_color = "l3"
                 secondary = "l3"
-                pen_color = "Yellow"
+                pen_color = "Red"
             End If
             ctr = ctr + 1
             ctr_lines = ctr_lines + 1
@@ -314,6 +319,10 @@ Public Class WyeWyeActivities
                         btn_clamp_black.Location = b_location
                         btn_clamp_red.Location = r_location
 
+                        pic_clamp_meter.Visible = True
+                        btn_clamp_black.Visible = True
+                        btn_clamp_red.Visible = True
+
 
                     Else
                         ctr_lines = ctr_lines - 2
@@ -329,7 +338,7 @@ Public Class WyeWyeActivities
                     If x_transformer = "btn_t1_x1" And secondary = "l1" Or x_transformer = "btn_t1_x2" And secondary = "n" Or x_transformer = "btn_t2_x1" And secondary = "l2" Or x_transformer = "btn_t2_x2" And secondary = "n" Or x_transformer = "btn_t3_x1" And secondary = "l3" Or x_transformer = "btn_t3_x2" And secondary = "n" Then
                         counter_2(myButton.Name, pen_color, clamp_meter)
                     ElseIf secondary = "l1" And bulb = "l1red" Or secondary = "n" And bulb = "l1black" Or secondary = "l2" And bulb = "l2red" Or secondary = "n" And bulb = "l2black" Or secondary = "l3" And bulb = "l3red" Or secondary = "n" And bulb = "l3black" Then
-                        counter_2(myButton.Name, pen_color, "5")
+                        counter_2(myButton.Name, "", "5")
 
 
                     Else
@@ -443,6 +452,10 @@ Public Class WyeWyeActivities
                     pic_clamp_meter.Location = loc
                     btn_clamp_black.Location = b_location
                     btn_clamp_red.Location = r_location
+
+                    pic_clamp_meter.Visible = True
+                    btn_clamp_black.Visible = True
+                    btn_clamp_red.Visible = True
 
 
                 Else
@@ -708,7 +721,8 @@ Public Class WyeWyeActivities
 
         For counter As Integer = 0 To dt.Rows.Count - 1
 
-            If dt.Rows(counter)(4) = 1 Then
+
+            If dt.Rows(counter)(4) <> 2 Then
 
                 If dt.Rows(counter)(3).ToString = "" Then
 
@@ -720,7 +734,8 @@ Public Class WyeWyeActivities
                         category = "secondary"
                     End If
                 End If
-            ElseIf dt.Rows(counter)(4) = 2
+            End If
+            If dt.Rows(counter)(4) = 2 Then
                 ctr_clamp = ctr_clamp + 1
             ElseIf dt.Rows(counter)(4) = 3
                 ctr_voltage_phase = ctr_voltage_phase + 1
@@ -792,18 +807,16 @@ Public Class WyeWyeActivities
                 txt_real.Text = Math.Round((((secondary_voltage * 1.73) * 1.73) * cp), 2).ToString
             End If
 
-            If bulb > 11 Then
+            If ctr_bulb > 11 Then
+                pic_bulb1.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
+                pic_bulb1.SizeMode = PictureBoxSizeMode.Zoom
 
+                pic_bulb2.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
+                pic_bulb2.SizeMode = PictureBoxSizeMode.Zoom
+
+                pic_bulb3.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
+                pic_bulb3.SizeMode = PictureBoxSizeMode.Zoom
             End If
-
-            pic_bulb1.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
-            pic_bulb1.SizeMode = PictureBoxSizeMode.Zoom
-
-            pic_bulb2.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
-            pic_bulb2.SizeMode = PictureBoxSizeMode.Zoom
-
-            pic_bulb3.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
-            pic_bulb3.SizeMode = PictureBoxSizeMode.Zoom
 
 
             ctr_switch = 1
@@ -967,9 +980,14 @@ Public Class WyeWyeActivities
             btn_clamp_black.Location = b_location
             btn_clamp_red.Location = r_location
 
+            pic_clamp_meter.Visible = True
+            btn_clamp_black.Visible = True
+            btn_clamp_red.Visible = True
+
             pic_clamp_meter.BringToFront()
             btn_clamp_black.BringToFront()
             btn_clamp_red.BringToFront()
+
         End If
 
     End Sub

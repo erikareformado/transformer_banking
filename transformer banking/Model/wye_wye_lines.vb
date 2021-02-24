@@ -29,37 +29,7 @@
 
     End Function
 
-    Public Function select_points_1(line_no)
-        Try
-            Dim result As New List(Of String)
-            query = "select * from wye_wye_lines where line_no = '" & line_no & "'"
 
-            Dim da As New Odbc.OdbcDataAdapter(query, conn)
-            Dim dt As New DataTable
-            da.Fill(dt)
-
-            For Each row As DataRow In dt.Rows
-                result.Add(row.Item("points"))
-            Next row
-
-            Return result
-        Catch ex As Exception
-            Return return_message = ex.ToString
-        End Try
-    End Function
-
-    Public Function select_duplicate(str_points, line_no)
-        query = "select * from wye_wye_lines where line_no = '" & line_no & "' and points = '" & str_points & "'"
-        Dim da As New Odbc.OdbcDataAdapter(query, conn)
-        Dim dt As New DataTable
-        da.Fill(dt)
-
-        If dt.Rows.Count = 0 Then
-            Return 1
-        Else
-            Return 0
-        End If
-    End Function
     Public Function select_wye_wye_points(transformer)
         Dim result As New List(Of String)
 

@@ -51,8 +51,16 @@
                     Home.uc_delta_wye_activity.Label25.Text = "X1"
                 End If
             ElseIf Home.lbl_connection_type.Text = "DELTA-DELTA CONNECTION" Then
+
+
+                Home.uc_delta_delta_activity.lbl_primary_voltage.Text = txt_primary_voltage.Text
+                Home.uc_delta_delta_activity.lbl_secondary_voltage.Text = txt_secondary_voltage.Text
+                Home.uc_delta_delta_activity.lbl_polarity.Text = cmb_polarity.Text
+                Home.uc_delta_delta_activity.lbl_rating.Text = cmb_rating.Text
+
                 Home.panel_all.Controls.Clear()
                 Home.panel_all.Controls.Add(Home.uc_delta_delta_activity)
+
                 If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
                     Home.uc_delta_delta_activity.Label21.Text = "X2"
                     Home.uc_delta_delta_activity.Label22.Text = "X1"
