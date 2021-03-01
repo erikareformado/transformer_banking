@@ -153,6 +153,9 @@ Partial Class DeltaDeltaActivity
         Me.Label35 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.panel_activity = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.pic_clamp_meter, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pic_color, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pic_bulb3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -192,7 +195,7 @@ Partial Class DeltaDeltaActivity
         Me.btn_clamp_red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_clamp_red.FlatAppearance.BorderSize = 0
         Me.btn_clamp_red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_clamp_red.Location = New System.Drawing.Point(729, 526)
+        Me.btn_clamp_red.Location = New System.Drawing.Point(545, 508)
         Me.btn_clamp_red.Name = "btn_clamp_red"
         Me.btn_clamp_red.Size = New System.Drawing.Size(20, 20)
         Me.btn_clamp_red.TabIndex = 140
@@ -205,7 +208,7 @@ Partial Class DeltaDeltaActivity
         Me.btn_clamp_black.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_clamp_black.FlatAppearance.BorderSize = 0
         Me.btn_clamp_black.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_clamp_black.Location = New System.Drawing.Point(705, 526)
+        Me.btn_clamp_black.Location = New System.Drawing.Point(521, 508)
         Me.btn_clamp_black.Name = "btn_clamp_black"
         Me.btn_clamp_black.Size = New System.Drawing.Size(20, 20)
         Me.btn_clamp_black.TabIndex = 141
@@ -216,7 +219,7 @@ Partial Class DeltaDeltaActivity
         '
         Me.pic_clamp_meter.BackgroundImage = CType(resources.GetObject("pic_clamp_meter.BackgroundImage"), System.Drawing.Image)
         Me.pic_clamp_meter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.pic_clamp_meter.Location = New System.Drawing.Point(702, 462)
+        Me.pic_clamp_meter.Location = New System.Drawing.Point(518, 444)
         Me.pic_clamp_meter.Name = "pic_clamp_meter"
         Me.pic_clamp_meter.Size = New System.Drawing.Size(43, 76)
         Me.pic_clamp_meter.TabIndex = 164
@@ -229,7 +232,7 @@ Partial Class DeltaDeltaActivity
         Me.btn_connect_wires.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_connect_wires.FlatAppearance.BorderSize = 0
         Me.btn_connect_wires.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_connect_wires.Location = New System.Drawing.Point(16, 344)
+        Me.btn_connect_wires.Location = New System.Drawing.Point(15, 409)
         Me.btn_connect_wires.Name = "btn_connect_wires"
         Me.btn_connect_wires.Size = New System.Drawing.Size(78, 58)
         Me.btn_connect_wires.TabIndex = 165
@@ -488,7 +491,7 @@ Partial Class DeltaDeltaActivity
         Me.Label36.BackColor = System.Drawing.Color.Transparent
         Me.Label36.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label36.ForeColor = System.Drawing.Color.White
-        Me.Label36.Location = New System.Drawing.Point(13, 503)
+        Me.Label36.Location = New System.Drawing.Point(636, 506)
         Me.Label36.Name = "Label36"
         Me.Label36.Size = New System.Drawing.Size(81, 14)
         Me.Label36.TabIndex = 138
@@ -522,7 +525,7 @@ Partial Class DeltaDeltaActivity
         Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(2, 405)
+        Me.Label6.Location = New System.Drawing.Point(1, 470)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(102, 14)
         Me.Label6.TabIndex = 134
@@ -1606,7 +1609,7 @@ Partial Class DeltaDeltaActivity
         Me.btn_clamp_meter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_clamp_meter.FlatAppearance.BorderSize = 0
         Me.btn_clamp_meter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_clamp_meter.Location = New System.Drawing.Point(29, 433)
+        Me.btn_clamp_meter.Location = New System.Drawing.Point(652, 436)
         Me.btn_clamp_meter.Name = "btn_clamp_meter"
         Me.btn_clamp_meter.Size = New System.Drawing.Size(48, 67)
         Me.btn_clamp_meter.TabIndex = 163
@@ -1686,6 +1689,9 @@ Partial Class DeltaDeltaActivity
         Me.panel_activity.BackColor = System.Drawing.Color.Transparent
         Me.panel_activity.BackgroundImage = CType(resources.GetObject("panel_activity.BackgroundImage"), System.Drawing.Image)
         Me.panel_activity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.panel_activity.Controls.Add(Me.Label3)
+        Me.panel_activity.Controls.Add(Me.Label2)
+        Me.panel_activity.Controls.Add(Me.Button1)
         Me.panel_activity.Controls.Add(Me.lbl_secondary_voltage)
         Me.panel_activity.Controls.Add(Me.lbl_primary_voltage)
         Me.panel_activity.Controls.Add(Me.btn_clamp_red)
@@ -1813,6 +1819,42 @@ Partial Class DeltaDeltaActivity
         Me.panel_activity.Name = "panel_activity"
         Me.panel_activity.Size = New System.Drawing.Size(824, 553)
         Me.panel_activity.TabIndex = 131
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(735, 525)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(80, 14)
+        Me.Label3.TabIndex = 170
+        Me.Label3.Text = "Transformer"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(735, 506)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(81, 14)
+        Me.Label2.TabIndex = 169
+        Me.Label2.Text = "Clamp Meter"
+        '
+        'Button1
+        '
+        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Location = New System.Drawing.Point(749, 436)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(48, 67)
+        Me.Button1.TabIndex = 168
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'DeltaDeltaActivity
         '
@@ -1971,4 +2013,7 @@ Partial Class DeltaDeltaActivity
     Friend WithEvents Label35 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents panel_activity As Panel
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Button1 As Button
 End Class
