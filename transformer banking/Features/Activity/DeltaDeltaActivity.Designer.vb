@@ -156,6 +156,7 @@ Partial Class DeltaDeltaActivity
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.pic_clamp_meter, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pic_color, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pic_bulb3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1689,6 +1690,7 @@ Partial Class DeltaDeltaActivity
         Me.panel_activity.BackColor = System.Drawing.Color.Transparent
         Me.panel_activity.BackgroundImage = CType(resources.GetObject("panel_activity.BackgroundImage"), System.Drawing.Image)
         Me.panel_activity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.panel_activity.Controls.Add(Me.Label4)
         Me.panel_activity.Controls.Add(Me.Label3)
         Me.panel_activity.Controls.Add(Me.Label2)
         Me.panel_activity.Controls.Add(Me.Button1)
@@ -1856,6 +1858,18 @@ Partial Class DeltaDeltaActivity
         Me.Button1.TabIndex = 168
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.Location = New System.Drawing.Point(636, 522)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(78, 14)
+        Me.Label4.TabIndex = 171
+        Me.Label4.Text = "Line Current"
+        '
         'DeltaDeltaActivity
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2016,4 +2030,5 @@ Partial Class DeltaDeltaActivity
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents Label4 As Label
 End Class
