@@ -2,6 +2,9 @@
 Public Class WyeWyeActivities
     Dim appPath As String = Application.StartupPath()
 
+
+    Dim result_model As New activity_result
+
     Dim ctr As Integer = 0
     Dim ctr_lines As Integer = 0
     Dim ctr_points As Integer = 0
@@ -240,7 +243,7 @@ Public Class WyeWyeActivities
 
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
                         counter_2(myButton.Name, "", "3")
-                    ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
+                    ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
                         counter_2(myButton.Name, "", "4")
 
                     ElseIf h_transformer = "btn_t1_h1" And primary = "a" Or h_transformer = "btn_t1_h2" And primary = "n" Or h_transformer = "btn_t2_h1" And primary = "b" Or h_transformer = "btn_t2_h2" And primary = "n" Or h_transformer = "btn_t3_h1" And primary = "c" Or h_transformer = "btn_t3_h2" And primary = "n" Then
@@ -286,7 +289,7 @@ Public Class WyeWyeActivities
                 pen_color = "Blue"
             Else btn_color = "l3"
                 secondary = "l3"
-                pen_color = "Red"
+                pen_color = "Yellow"
             End If
             ctr = ctr + 1
             ctr_lines = ctr_lines + 1
@@ -335,22 +338,23 @@ Public Class WyeWyeActivities
                     Me.Refresh()
 
                 Else
-                    If x_transformer = "btn_t1_x1" And secondary = "l1" Or x_transformer = "btn_t1_x2" And secondary = "n" Or x_transformer = "btn_t2_x1" And secondary = "l2" Or x_transformer = "btn_t2_x2" And secondary = "n" Or x_transformer = "btn_t3_x1" And secondary = "l3" Or x_transformer = "btn_t3_x2" And secondary = "n" Then
-                        counter_2(myButton.Name, pen_color, clamp_meter)
-                    ElseIf secondary = "l1" And bulb = "l1red" Or secondary = "n" And bulb = "l1black" Or secondary = "l2" And bulb = "l2red" Or secondary = "n" And bulb = "l2black" Or secondary = "l3" And bulb = "l3red" Or secondary = "n" And bulb = "l3black" Then
+                    If secondary = "l1" And bulb = "l1red" Or secondary = "n" And bulb = "l1black" Or secondary = "l2" And bulb = "l2red" Or secondary = "n" And bulb = "l2black" Or secondary = "l3" And bulb = "l3red" Or secondary = "n" And bulb = "l3black" Then
                         counter_2(myButton.Name, "", "5")
+                    ElseIf x_transformer = "btn_t1_x1" And secondary = "l1" Or x_transformer = "btn_t1_x2" And secondary = "n" Or x_transformer = "btn_t2_x1" And secondary = "l2" Or x_transformer = "btn_t2_x2" And secondary = "n" Or x_transformer = "btn_t3_x1" And secondary = "l3" Or x_transformer = "btn_t3_x2" And secondary = "n" Then
+                        counter_2(myButton.Name, pen_color, clamp_meter)
 
 
-                    Else
-                        ctr_lines = ctr_lines - 2
-                        points.RemoveAt(ctr_lines)
-                        delete_unwanted_connection()
-                        MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
+
+                        Else
+                            ctr_lines = ctr_lines - 2
+                            points.RemoveAt(ctr_lines)
+                            delete_unwanted_connection()
+                            MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
+
+                        End If
 
                     End If
-
-                End If
-                ctr = 0
+                    ctr = 0
                 Me.Refresh()
                 wire_conenction = 0
             End If
@@ -368,50 +372,45 @@ Public Class WyeWyeActivities
 
             Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
             If result = DialogResult.Yes Then
-                Dim myButton As Button = CType(sender, Button)
+                If ctr_switch <> 1 Then
+                    Dim myButton As Button = CType(sender, Button)
 
-                Dim btn = myButton.Name
-                Dim query, query_delete As String
-                query = "select * from wye_wye_lines order by id asc"
-                Dim da As New Odbc.OdbcDataAdapter(query, conn)
-                Dim dt As New DataTable
-                da.Fill(dt)
-                For counter As Integer = 0 To dt.Rows.Count - 1
+                    Dim btn = myButton.Name
+                    Dim query, query_delete As String
+                    query = "select * from wye_wye_lines order by id asc"
+                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
+                    Dim dt As New DataTable
+                    da.Fill(dt)
+                    For counter As Integer = 0 To dt.Rows.Count - 1
 
-                    If dt.Rows(counter)(1) = btn.ToString Then
-                        If dt.Rows(counter + 1)(3) = "" Then
-                            query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                            Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                            Dim dt_delete As New DataTable
-                            da_delete.Fill(dt_delete)
+                        If dt.Rows(counter)(1) = btn.ToString Then
+                            If dt.Rows(counter + 1)(3) = "" Then
+                                query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
 
-                            ctr_lines = ctr_lines - 2
-                            get_point()
-                        ElseIf dt.Rows(counter - 1)(3) = "" Then
-                            query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                            Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                            Dim dt_delete As New DataTable
-                            da_delete.Fill(dt_delete)
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+                            ElseIf dt.Rows(counter - 1)(3) = "" Then
+                                query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
 
-                            ctr_lines = ctr_lines - 2
-                            get_point()
+                                ctr_lines = ctr_lines - 2
+                                get_point()
 
+                            End If
+                            Exit For
                         End If
-                        Exit For
-                    End If
-                Next
-                'For i = 0 To 
-                'Dim row As DataRow
-                'For Each row In dt.Rows
-                '    If row("btn") = btn_primary.ToString Then
-                '        MsgBox("yes")
-                '    End If
-                'Next
-
-
+                    Next
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
 
             End If
-        End If
+            End If
         Me.Refresh()
 
     End Sub
@@ -510,47 +509,42 @@ Public Class WyeWyeActivities
 
             Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
             If result = DialogResult.Yes Then
-                Dim myButton As Button = CType(sender, Button)
+                If ctr_switch <> 1 Then
+                    Dim myButton As Button = CType(sender, Button)
 
-                Dim btn = myButton.Name
-                Dim query, query_delete As String
-                query = "select * from wye_wye_lines order by id asc"
-                Dim da As New Odbc.OdbcDataAdapter(query, conn)
-                Dim dt As New DataTable
-                da.Fill(dt)
-                For counter As Integer = 0 To dt.Rows.Count - 1
+                    Dim btn = myButton.Name
+                    Dim query, query_delete As String
+                    query = "select * from wye_wye_lines order by id asc"
+                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
+                    Dim dt As New DataTable
+                    da.Fill(dt)
+                    For counter As Integer = 0 To dt.Rows.Count - 1
 
-                    If dt.Rows(counter)(1) = btn.ToString Then
-                        If dt.Rows(counter + 1)(3) = "" Then
-                            query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                            Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                            Dim dt_delete As New DataTable
-                            da_delete.Fill(dt_delete)
+                        If dt.Rows(counter)(1) = btn.ToString Then
+                            If dt.Rows(counter + 1)(3) = "" Then
+                                query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
 
-                            ctr_lines = ctr_lines - 2
-                            get_point()
-                        ElseIf dt.Rows(counter - 1)(3) = "" Then
-                            query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                            Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                            Dim dt_delete As New DataTable
-                            da_delete.Fill(dt_delete)
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+                            ElseIf dt.Rows(counter - 1)(3) = "" Then
+                                query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
 
-                            ctr_lines = ctr_lines - 2
-                            get_point()
+                                ctr_lines = ctr_lines - 2
+                                get_point()
 
+                            End If
+                            Exit For
                         End If
-                        Exit For
-                    End If
-                Next
-                'For i = 0 To 
-                'Dim row As DataRow
-                'For Each row In dt.Rows
-                '    If row("btn") = btn_primary.ToString Then
-                '        MsgBox("yes")
-                '    End If
-                'Next
-
-
+                    Next
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
 
             End If
         End If
@@ -679,10 +673,10 @@ Public Class WyeWyeActivities
             End If
         Else
 
-                If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
-                    counter_2(myButton.Name, pen_color, "3")
-                ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
-                    counter_2(myButton.Name, pen_color, "4")
+            If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
+                counter_2(myButton.Name, pen_color, "3")
+            ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
+                counter_2(myButton.Name, pen_color, "4")
                 Else
                     ctr_lines = ctr_lines - 2
                     points.RemoveAt(ctr_lines)
@@ -774,37 +768,43 @@ Public Class WyeWyeActivities
                 Dim split_value() As String = result_rating.Split(" ")
                 rating = CDbl(split_value(0))
             End If
-            Dim cp As Double
+            Dim cp, vl, apparent, real As Double
+            If category = "primary" Then
+                cp = Math.Round(CDbl(rating) / CDbl(primary_voltage), 2)
+                vl = Math.Round((primary_voltage * 1.73), 2)
+                apparent = Math.Round((3 * primary_voltage * cp), 2)
+            Else category = "secondary"
+                cp = Math.Round(CDbl(rating) / CDbl(secondary_voltage), 2)
+                vl = Math.Round((secondary_voltage * 1.73), 2)
+                real = Math.Round((((secondary_voltage * 1.73) * 1.73) * cp), 2)
+            End If
             If ctr_clamp > 3 Then
-                If category = "primary" Then
-                    cp = Math.Round(CDbl(rating) / CDbl(primary_voltage), 2)
-                Else category = "secondary"
-                    cp = Math.Round(CDbl(rating) / CDbl(secondary_voltage), 2)
-                End If
-
                 txt_cp.Text = cp.ToString
                 txt_cl.Text = cp.ToString
+                If category = "primary" Then
+                    txt_apparent.Text = apparent.ToString
+                ElseIf category = "secondary"
+                    txt_real.Text = real.ToString
+                End If
+
             End If
             If ctr_voltage_phase > 3 Then
                 If category = "primary" Then
                     txt_vp.Text = primary_voltage
+                    txt_apparent.Text = apparent.ToString
                 ElseIf category = "secondary"
                     txt_vp.Text = secondary_voltage
+                    txt_real.Text = real.ToString
                 End If
 
             End If
             If ctr_voltage_line > 3 Then
+                txt_vl.Text = vl
                 If category = "primary" Then
-                    txt_vl.Text = Math.Round((primary_voltage * 1.73), 2)
+                    txt_apparent.Text = apparent.ToString
                 ElseIf category = "secondary"
-                    txt_vl.Text = Math.Round((secondary_voltage * 1.73), 2)
+                    txt_real.Text = real.ToString
                 End If
-
-            End If
-            If category = "primary" Then
-                txt_apparent.Text = Math.Round((3 * primary_voltage * cp), 2).ToString
-            ElseIf category = "secondary"
-                txt_real.Text = Math.Round((((secondary_voltage * 1.73) * 1.73) * cp), 2).ToString
             End If
 
             If ctr_bulb > 11 Then
@@ -853,47 +853,42 @@ Public Class WyeWyeActivities
 
             Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
             If result = DialogResult.Yes Then
-                Dim myButton As Button = CType(sender, Button)
+                If ctr_switch <> 1 Then
+                    Dim myButton As Button = CType(sender, Button)
 
-                Dim btn = myButton.Name
-                Dim query, query_delete As String
-                query = "select * from wye_wye_lines order by id asc"
-                Dim da As New Odbc.OdbcDataAdapter(query, conn)
-                Dim dt As New DataTable
-                da.Fill(dt)
-                For counter As Integer = 0 To dt.Rows.Count - 1
+                    Dim btn = myButton.Name
+                    Dim query, query_delete As String
+                    query = "select * from wye_wye_lines order by id asc"
+                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
+                    Dim dt As New DataTable
+                    da.Fill(dt)
+                    For counter As Integer = 0 To dt.Rows.Count - 1
 
-                    If dt.Rows(counter)(1) = btn.ToString Then
-                        If dt.Rows(counter + 1)(3) = "" Then
-                            query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                            Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                            Dim dt_delete As New DataTable
-                            da_delete.Fill(dt_delete)
+                        If dt.Rows(counter)(1) = btn.ToString Then
+                            If dt.Rows(counter + 1)(3) = "" Then
+                                query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
 
-                            ctr_lines = ctr_lines - 2
-                            get_point()
-                        ElseIf dt.Rows(counter - 1)(3) = "" Then
-                            query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                            Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                            Dim dt_delete As New DataTable
-                            da_delete.Fill(dt_delete)
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+                            ElseIf dt.Rows(counter - 1)(3) = "" Then
+                                query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
 
-                            ctr_lines = ctr_lines - 2
-                            get_point()
+                                ctr_lines = ctr_lines - 2
+                                get_point()
 
+                            End If
+                            Exit For
                         End If
-                        Exit For
-                    End If
-                Next
-                'For i = 0 To 
-                'Dim row As DataRow
-                'For Each row In dt.Rows
-                '    If row("btn") = btn_primary.ToString Then
-                '        MsgBox("yes")
-                '    End If
-                'Next
-
-
+                    Next
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
 
             End If
         End If
@@ -1075,27 +1070,29 @@ Public Class WyeWyeActivities
         End If
     End Sub
 
-
-
     Private Sub pic_clamp_meter_MouseDown(sender As Object, e As MouseEventArgs) Handles pic_clamp_meter.MouseDown
         If e.Button = MouseButtons.Right Then
 
             Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
             If result = DialogResult.Yes Then
+                If ctr_switch <> 1 Then
+                    Dim query_delete As String
+                    query_delete = "delete from wye_wye_lines where clamp_meter in ('1','2')"
+                    Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                    Dim dt_delete As New DataTable
+                    da_delete.Fill(dt_delete)
+
+                    ctr_lines = ctr_lines - 2
+                    get_point()
+
+                    pic_clamp_meter.Visible = False
+                    btn_clamp_black.Visible = False
+                    btn_clamp_red.Visible = False
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
 
 
-                Dim query_delete As String
-                query_delete = "delete from wye_wye_lines where clamp_meter in ('1','2')"
-                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                Dim dt_delete As New DataTable
-                da_delete.Fill(dt_delete)
-
-                ctr_lines = ctr_lines - 2
-                get_point()
-
-                pic_clamp_meter.Visible = False
-                btn_clamp_black.Visible = False
-                btn_clamp_red.Visible = False
                 'pic_clamp_meter.Location = (702, 462)
             End If
         End If
