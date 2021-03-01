@@ -48,6 +48,8 @@ Public Class DeltaDeltaActivity
 
     Dim pens As New Pen(Color.Red, 2)
 
+    Dim ctr_cl_clamp As Integer = 0
+
     Private Sub panel_activity_Paint(sender As Object, e As PaintEventArgs) Handles panel_activity.Paint
         draw_lines(e)
     End Sub
@@ -160,22 +162,24 @@ Public Class DeltaDeltaActivity
                 category_2 = "primary"
                 If x_transformer = "btn_t1_x1" And secondary = "l1" Or x_transformer = "btn_t2_x1" And secondary = "l2" Or x_transformer = "btn_t3_x1" And secondary = "l3" Then
                     counter_2(myButton.Name, "", clamp_meter)
-                ElseIf transformer_1 = "btn_t1_x2" And transformer_2 = "btn_t2_x1" Or transformer_2 = "btn_t1_x2" And transformer_1 = "btn_t2_x1"
+                ElseIf transformer_1 = "btn_t1_x2" And transformer_2 = "btn_t2_x1" Or transformer_2 = "btn_t1_x2" And transformer_1 = "btn_t2_x1" Then
                     counter_2(myButton.Name, "Blue", clamp_meter)
-                ElseIf transformer_1 = "btn_t2_x2" And transformer_2 = "btn_t3_x1" Or transformer_2 = "btn_t2_x2" And transformer_1 = "btn_t3_x1"
+                ElseIf transformer_1 = "btn_t2_x2" And transformer_2 = "btn_t3_x1" Or transformer_2 = "btn_t2_x2" And transformer_1 = "btn_t3_x1" Then
                     counter_2(myButton.Name, "Yellow", clamp_meter)
-                ElseIf transformer_1 = "btn_t3_x2" And transformer_2 = "btn_t1_x1" Or transformer_2 = "btn_t3_x2" And transformer_1 = "btn_t1_x1"
+                ElseIf transformer_1 = "btn_t3_x2" And transformer_2 = "btn_t1_x1" Or transformer_2 = "btn_t3_x2" And transformer_1 = "btn_t1_x1" Then
                     counter_2(myButton.Name, "Red", clamp_meter)
-                ElseIf h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
-                    counter_2(myButton.Name, "", "3")
-
-                ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
-                    counter_2(myButton.Name, "", "4")
                 Else
-                    ctr_lines = ctr_lines - 2
-                    points.RemoveAt(ctr_lines)
-                    delta_model.delete_unwanted_connection()
-                    MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
+                    If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
+                        counter_2(myButton.Name, "", "3")
+
+                    ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
+                        counter_2(myButton.Name, "", "4")
+                    Else
+                        ctr_lines = ctr_lines - 2
+                        points.RemoveAt(ctr_lines)
+                        delta_model.delete_unwanted_connection()
+                        MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
+                    End If
                 End If
             End If
 
@@ -350,12 +354,13 @@ Public Class DeltaDeltaActivity
         For counter As Integer = 0 To dt.Rows.Count - 1
 
 
-            If dt.Rows(counter)(4) <> 2 Then
+            If dt.Rows(counter)(4) <> 2 And dt.Rows(counter)(4) <> 7 Then
 
                 If dt.Rows(counter)(3).ToString = "" Then
 
                     Dim split_value() As String = dt.Rows(counter)(1).Split("_")
-                    Dim val As String = split_value(2)
+                    Dim val As String = split_value(2).ToString
+
                     If val = "h1" Or val = "h2" Then
                         category = "primary"
                     Else
@@ -671,9 +676,8 @@ Public Class DeltaDeltaActivity
                 counter_1(myButton.Name, pen_color, "2")
 
             Else
-                If clamp = "red" And current = "clred" Or clamp = "black" And current = "clblack" Or clamp = "red" And current = "cpred" Or clamp = "black" And current = "cpblack" Then
+                If clamp = "red" And current = "cpred" Or clamp = "black" And current = "cpblack" Then
                     counter_2(myButton.Name, pen_color, "2")
-
 
                 Else
                     ctr_lines = ctr_lines - 2
@@ -687,6 +691,52 @@ Public Class DeltaDeltaActivity
                 Me.Refresh()
             End If
         End If
+    End Sub
+
+    Private Sub btn_cl_clamp_meter_Click(sender As Object, e As EventArgs) Handles btn_cl_clamp_meter.Click
+        ctr_cl_clamp = 1
+
+
+    End Sub
+
+    Private Sub btn_cpred_Click(sender As Object, e As EventArgs) Handles btn_cpred.Click, btn_cpblack.Click
+        Dim myButton As Button = CType(sender, Button)
+
+        ctr = ctr + 1
+        ctr_lines = ctr_lines + 1
+
+
+        Dim split_value() As String = myButton.Name.Split("_")
+        current = split_value(1).ToString
+        'MsgBox(current.ToString)
+        'Dim pen_color As String
+        'If btn_color = "red" Then
+        '    pen_color = "Red"
+        'Else
+        '    pen_color = "Black"
+        'End If
+
+        If ctr = 1 Then
+            ctr_points = ctr_points + 1
+            counter_1(myButton.Name, "", "2")
+
+        Else
+
+            If clamp = "red" And current = "cpred" Or clamp = "black" And current = "cpblack" Then
+                counter_2(myButton.Name, "", "2")
+
+
+            Else
+                ctr_lines = ctr_lines - 2
+                points.RemoveAt(ctr_lines)
+                delta_model.delete_unwanted_connection()
+                MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
+
+            End If
+            ctr = 0
+            Me.Refresh()
+        End If
+
     End Sub
 
     Public Sub get_point()
@@ -707,6 +757,122 @@ Public Class DeltaDeltaActivity
         Next
     End Sub
 
+    Private Sub btn_t1_Click(sender As Object, e As EventArgs) Handles btn_t1.Click
+        If ctr_cl_clamp = 1 Then
+            Dim myButton As Button = CType(sender, Button)
+            'category = "primary"
+            Dim btn As String = myButton.Name
+            If btn = "btn_t1" Then
+                counter_1("btn_t1_h1", "", 6)
+                counter_2("btn_t1_h2", "", 6)
+
+                Dim x_point = (point_1.X / 2) + (point_2.X / 2) - 18
+                Dim y_point = (point_1.Y / 2) + (point_2.Y / 2) + 53
+
+                Dim loc As New Point(x_point, y_point)
+
+                Dim b_x = (loc.X + 41)
+                Dim b_y = (loc.Y + 13)
+
+                Dim r_x = (loc.X + 41)
+                Dim r_y = (loc.Y + 37)
+
+
+                Dim b_location As New Point(b_x, b_y)
+                Dim r_location As New Point(r_x, r_y)
+                'picbox_clamp_meter.Location = panel_activity.Cursor.Position
+                pic_clamp_meter_lc.Location = loc
+                btn_clamp_clblack.Location = b_location
+                btn_clamp_clred.Location = r_location
+
+                pic_clamp_meter_lc.Visible = True
+                btn_clamp_clblack.Visible = True
+                btn_clamp_clred.Visible = True
+
+                pic_clamp_meter_lc.BringToFront()
+                btn_clamp_clblack.BringToFront()
+                btn_clamp_clred.BringToFront()
+
+            End If
+
+
+        End If
+    End Sub
+
+    Private Sub btn_clamp_lcblack_Click(sender As Object, e As EventArgs) Handles btn_clamp_clblack.Click, btn_clamp_clred.Click
+        Dim myButton As Button = CType(sender, Button)
+        If ctr_cl_clamp = 1 Then
+            ctr = ctr + 1
+            ctr_lines = ctr_lines + 1
+            'clamp = myButton.Name
+
+            Dim split_value() As String = myButton.Name.Split("_")
+            Dim btn_color = split_value(2).ToString
+            clamp = btn_color.ToString
+            'MsgBox(clamp.ToString)
+            Dim pen_color As String
+            If btn_color = "clred" Then
+                pen_color = "Red"
+            Else
+                pen_color = "Black"
+            End If
+
+            If ctr = 1 Then
+                ctr_points = ctr_points + 1
+                counter_1(myButton.Name, pen_color, "7")
+
+            Else
+                If clamp = "clred" And current = "clred" Or clamp = "clblack" And current = "clblack" Then
+                    counter_2(myButton.Name, pen_color, "7")
+
+                Else
+                    ctr_lines = ctr_lines - 2
+                    points.RemoveAt(ctr_lines)
+                    delta_model.delete_unwanted_connection()
+                    MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
+
+                End If
+                ctr_cl_clamp = 0
+                ctr = 0
+                Me.Refresh()
+            End If
+        End If
+
+    End Sub
+
+    Private Sub btn_clblack_Click(sender As Object, e As EventArgs) Handles btn_clblack.Click, btn_clred.Click
+        Dim myButton As Button = CType(sender, Button)
+        If ctr_cl_clamp = 1 Then
+            ctr = ctr + 1
+            ctr_lines = ctr_lines + 1
+            'clamp = myButton.Name
+
+            Dim split_value() As String = myButton.Name.Split("_")
+
+            current = split_value(1).ToString
+
+            If ctr = 1 Then
+                ctr_points = ctr_points + 1
+                counter_1(myButton.Name, "", "7")
+
+            Else
+                If clamp = "clred" And current = "clred" Or clamp = "clblack" And current = "clblack" Then
+                    counter_2(myButton.Name, "", "7")
+
+                Else
+                    ctr_lines = ctr_lines - 2
+                    points.RemoveAt(ctr_lines)
+                    delta_model.delete_unwanted_connection()
+                    MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
+                    ctr_cl_clamp = 0
+                End If
+
+                ctr = 0
+                Me.Refresh()
+            End If
+        End If
+
+    End Sub
 
     Private Sub WyeWyeActivities_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbopen()
@@ -717,7 +883,62 @@ Public Class DeltaDeltaActivity
             transformer_id = result
         End If
 
-        'select_clamp()
+        select_clamp_phase()
+    End Sub
+    Private Sub select_clamp_phase()
+        Dim query = "select * from delta_delta_lines where clamp_meter = '1' and transformer_details_id = '" & transformer_id & "' order by id asc"
+        Dim da As New Odbc.OdbcDataAdapter(query, conn)
+        Dim dt As New DataTable
+        da.Fill(dt)
+
+        If dt.Rows.Count <> 0 Then
+            Dim x_value = dt.Rows(0)(2).ToString
+            Dim y_value = dt.Rows(1)(2).ToString
+
+            Dim x_split_value() As String = x_value.Split(",")
+            Dim x = x_split_value(0)
+            Dim y = x_split_value(1)
+            Dim clamp_point_x As New Point(x, y)
+
+            Dim y_split_value() As String = y_value.Split(",")
+            Dim x_1 = y_split_value(0)
+            Dim y_1 = y_split_value(1)
+            Dim clamp_point_y As New Point(x_1, y_1)
+
+
+
+            Dim x_point = (clamp_point_x.X / 2) + (clamp_point_y.X / 2) - 30
+            Dim y_point = (clamp_point_x.Y / 2) + (clamp_point_y.Y / 2)
+
+            Dim loc As New Point(x_point, y_point)
+            'Dim loc As New Point(199, 116)
+            'TextBox3.Text = clamp_point_x.ToString
+
+            Dim b_x = loc.X + 41
+            Dim b_y = loc.Y + 13
+
+            Dim r_x = loc.X + 41
+            Dim r_y = loc.Y + 37
+
+
+            Dim b_location As New Point(b_x, b_y)
+            Dim r_location As New Point(r_x, r_y)
+
+            'picbox_clamp_meter.Location = panel_activity.Cursor.Position
+            pic_clamp_meter.Location = loc
+            btn_clamp_black.Location = b_location
+            btn_clamp_red.Location = r_location
+
+            pic_clamp_meter.Visible = True
+            btn_clamp_black.Visible = True
+            btn_clamp_red.Visible = True
+
+            pic_clamp_meter.BringToFront()
+            btn_clamp_black.BringToFront()
+            btn_clamp_red.BringToFront()
+
+        End If
+
     End Sub
     Private Sub btn_prim_a1_Click(sender As Object, e As EventArgs) Handles btn_prim_a_1.Click, btn_prim_a_2.Click, btn_prim_a_3.Click, btn_prim_a_4.Click, btn_prim_a_5.Click, btn_prim_a_6.Click,
                                                                             btn_prim_b_1.Click, btn_prim_b_2.Click, btn_prim_b_3.Click, btn_prim_b_4.Click, btn_prim_b_5.Click, btn_prim_b_6.Click,
@@ -881,21 +1102,24 @@ Public Class DeltaDeltaActivity
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
                         counter_2(myButton.Name, "", "4")
 
-                    ElseIf h_transformer = "btn_t1_h1" And primary = "a" Or h_transformer = "btn_t2_h1" And primary = "b" Or h_transformer = "btn_t3_h1" And primary = "c" Then
-                        counter_2(myButton.Name, "", clamp_meter)
-                        ElseIf transformer_1 = "btn_t1_h2" And transformer_2 = "btn_t2_h1" Or transformer_2 = "btn_t1_h2" And transformer_1 = "btn_t2_h1"
+                    Else
+                        If h_transformer = "btn_t1_h1" And primary = "a" Or h_transformer = "btn_t2_h1" And primary = "b" Or h_transformer = "btn_t3_h1" And primary = "c" Then
+                            counter_2(myButton.Name, "", clamp_meter)
+                        ElseIf transformer_1 = "btn_t1_h2" And transformer_2 = "btn_t2_h1" Or transformer_2 = "btn_t1_h2" And transformer_1 = "btn_t2_h1" Then
                             counter_2(myButton.Name, "Blue", clamp_meter)
-                        ElseIf transformer_1 = "btn_t2_h2" And transformer_2 = "btn_t3_h1" Or transformer_2 = "btn_t2_h2" And transformer_1 = "btn_t3_h1"
+                        ElseIf transformer_1 = "btn_t2_h2" And transformer_2 = "btn_t3_h1" Or transformer_2 = "btn_t2_h2" And transformer_1 = "btn_t3_h1" Then
                             counter_2(myButton.Name, "Yellow", clamp_meter)
-                        ElseIf transformer_1 = "btn_t3_h2" And transformer_2 = "btn_t1_h1" Or transformer_2 = "btn_t3_h2" And transformer_1 = "btn_t1_h1"
+                        ElseIf transformer_1 = "btn_t3_h2" And transformer_2 = "btn_t1_h1" Or transformer_2 = "btn_t3_h2" And transformer_1 = "btn_t1_h1" Then
                             counter_2(myButton.Name, "Red", clamp_meter)
 
                         Else
                             ctr_lines = ctr_lines - 2
-                        points.RemoveAt(ctr_lines)
-                        delta_model.delete_unwanted_connection()
-                        MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
+                            points.RemoveAt(ctr_lines)
+                            delta_model.delete_unwanted_connection()
+                            MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
+                        End If
                     End If
+
                 End If
 
                 ctr = 0
@@ -925,6 +1149,7 @@ Public Class DeltaDeltaActivity
 
         point2_x = panel_activity.Controls.Item(btn_name).Location.X + panel_activity.Controls.Item(btn_name).Width / 2
         point2_y = panel_activity.Controls.Item(btn_name).Location.Y + panel_activity.Controls.Item(btn_name).Height / 2
+
         point_2 = New Point(point2_x, point2_y)
 
         Dim result = delta_model.save_points(btn_name, point2_x & "," & point2_y, pen_color, clamp, transformer_id)

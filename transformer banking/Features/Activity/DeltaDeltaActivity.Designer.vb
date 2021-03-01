@@ -74,9 +74,6 @@ Partial Class DeltaDeltaActivity
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
         Me.btn_prim_n_5 = New System.Windows.Forms.Button()
         Me.btn_prim_n_6 = New System.Windows.Forms.Button()
         Me.btn_prim_n_3 = New System.Windows.Forms.Button()
@@ -153,10 +150,16 @@ Partial Class DeltaDeltaActivity
         Me.Label35 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.panel_activity = New System.Windows.Forms.Panel()
+        Me.btn_t3 = New System.Windows.Forms.Button()
+        Me.btn_t2 = New System.Windows.Forms.Button()
+        Me.btn_t1 = New System.Windows.Forms.Button()
+        Me.btn_clamp_clred = New System.Windows.Forms.Button()
+        Me.btn_clamp_clblack = New System.Windows.Forms.Button()
+        Me.pic_clamp_meter_lc = New System.Windows.Forms.PictureBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.btn_cl_clamp_meter = New System.Windows.Forms.Button()
         CType(Me.pic_clamp_meter, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pic_color, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pic_bulb3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -166,6 +169,7 @@ Partial Class DeltaDeltaActivity
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.panel_activity.SuspendLayout()
+        CType(Me.pic_clamp_meter_lc, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lbl_secondary_voltage
@@ -779,42 +783,6 @@ Partial Class DeltaDeltaActivity
         Me.Label18.Size = New System.Drawing.Size(28, 19)
         Me.Label18.TabIndex = 103
         Me.Label18.Text = "L1"
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.BackColor = System.Drawing.Color.Transparent
-        Me.Label14.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.ForeColor = System.Drawing.Color.White
-        Me.Label14.Location = New System.Drawing.Point(428, 331)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(20, 14)
-        Me.Label14.TabIndex = 99
-        Me.Label14.Text = "T3"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.BackColor = System.Drawing.Color.Transparent
-        Me.Label13.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(282, 330)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(20, 14)
-        Me.Label13.TabIndex = 98
-        Me.Label13.Text = "T2"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.BackColor = System.Drawing.Color.Transparent
-        Me.Label12.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.ForeColor = System.Drawing.Color.White
-        Me.Label12.Location = New System.Drawing.Point(138, 330)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(20, 14)
-        Me.Label12.TabIndex = 97
-        Me.Label12.Text = "T1"
         '
         'btn_prim_n_5
         '
@@ -1610,7 +1578,7 @@ Partial Class DeltaDeltaActivity
         Me.btn_clamp_meter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_clamp_meter.FlatAppearance.BorderSize = 0
         Me.btn_clamp_meter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_clamp_meter.Location = New System.Drawing.Point(652, 436)
+        Me.btn_clamp_meter.Location = New System.Drawing.Point(749, 436)
         Me.btn_clamp_meter.Name = "btn_clamp_meter"
         Me.btn_clamp_meter.Size = New System.Drawing.Size(48, 67)
         Me.btn_clamp_meter.TabIndex = 163
@@ -1644,7 +1612,7 @@ Partial Class DeltaDeltaActivity
         '
         Me.btn_done.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btn_done.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btn_done.Font = New System.Drawing.Font("Segoe UI Black", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_done.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_done.ForeColor = System.Drawing.Color.White
         Me.btn_done.Location = New System.Drawing.Point(934, 581)
         Me.btn_done.Name = "btn_done"
@@ -1690,10 +1658,16 @@ Partial Class DeltaDeltaActivity
         Me.panel_activity.BackColor = System.Drawing.Color.Transparent
         Me.panel_activity.BackgroundImage = CType(resources.GetObject("panel_activity.BackgroundImage"), System.Drawing.Image)
         Me.panel_activity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.panel_activity.Controls.Add(Me.btn_t3)
+        Me.panel_activity.Controls.Add(Me.btn_t2)
+        Me.panel_activity.Controls.Add(Me.btn_t1)
+        Me.panel_activity.Controls.Add(Me.btn_clamp_clred)
+        Me.panel_activity.Controls.Add(Me.btn_clamp_clblack)
+        Me.panel_activity.Controls.Add(Me.pic_clamp_meter_lc)
         Me.panel_activity.Controls.Add(Me.Label4)
         Me.panel_activity.Controls.Add(Me.Label3)
         Me.panel_activity.Controls.Add(Me.Label2)
-        Me.panel_activity.Controls.Add(Me.Button1)
+        Me.panel_activity.Controls.Add(Me.btn_cl_clamp_meter)
         Me.panel_activity.Controls.Add(Me.lbl_secondary_voltage)
         Me.panel_activity.Controls.Add(Me.lbl_primary_voltage)
         Me.panel_activity.Controls.Add(Me.btn_clamp_red)
@@ -1745,9 +1719,6 @@ Partial Class DeltaDeltaActivity
         Me.panel_activity.Controls.Add(Me.Label20)
         Me.panel_activity.Controls.Add(Me.Label19)
         Me.panel_activity.Controls.Add(Me.Label18)
-        Me.panel_activity.Controls.Add(Me.Label14)
-        Me.panel_activity.Controls.Add(Me.Label13)
-        Me.panel_activity.Controls.Add(Me.Label12)
         Me.panel_activity.Controls.Add(Me.btn_prim_n_5)
         Me.panel_activity.Controls.Add(Me.btn_prim_n_6)
         Me.panel_activity.Controls.Add(Me.btn_prim_n_3)
@@ -1822,17 +1793,108 @@ Partial Class DeltaDeltaActivity
         Me.panel_activity.Size = New System.Drawing.Size(824, 553)
         Me.panel_activity.TabIndex = 131
         '
+        'btn_t3
+        '
+        Me.btn_t3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btn_t3.FlatAppearance.BorderSize = 0
+        Me.btn_t3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_t3.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_t3.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.btn_t3.Location = New System.Drawing.Point(428, 327)
+        Me.btn_t3.Name = "btn_t3"
+        Me.btn_t3.Size = New System.Drawing.Size(31, 24)
+        Me.btn_t3.TabIndex = 177
+        Me.btn_t3.Text = "T3"
+        Me.btn_t3.UseVisualStyleBackColor = True
+        '
+        'btn_t2
+        '
+        Me.btn_t2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btn_t2.FlatAppearance.BorderSize = 0
+        Me.btn_t2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_t2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_t2.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.btn_t2.Location = New System.Drawing.Point(275, 327)
+        Me.btn_t2.Name = "btn_t2"
+        Me.btn_t2.Size = New System.Drawing.Size(31, 24)
+        Me.btn_t2.TabIndex = 176
+        Me.btn_t2.Text = "T2"
+        Me.btn_t2.UseVisualStyleBackColor = True
+        '
+        'btn_t1
+        '
+        Me.btn_t1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btn_t1.FlatAppearance.BorderSize = 0
+        Me.btn_t1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_t1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_t1.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.btn_t1.Location = New System.Drawing.Point(130, 327)
+        Me.btn_t1.Name = "btn_t1"
+        Me.btn_t1.Size = New System.Drawing.Size(31, 24)
+        Me.btn_t1.TabIndex = 175
+        Me.btn_t1.Text = "T1"
+        Me.btn_t1.UseVisualStyleBackColor = True
+        '
+        'btn_clamp_clred
+        '
+        Me.btn_clamp_clred.BackgroundImage = CType(resources.GetObject("btn_clamp_clred.BackgroundImage"), System.Drawing.Image)
+        Me.btn_clamp_clred.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_clamp_clred.FlatAppearance.BorderSize = 0
+        Me.btn_clamp_clred.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_clamp_clred.Location = New System.Drawing.Point(598, 508)
+        Me.btn_clamp_clred.Name = "btn_clamp_clred"
+        Me.btn_clamp_clred.Size = New System.Drawing.Size(20, 20)
+        Me.btn_clamp_clred.TabIndex = 172
+        Me.btn_clamp_clred.UseVisualStyleBackColor = True
+        Me.btn_clamp_clred.Visible = False
+        '
+        'btn_clamp_clblack
+        '
+        Me.btn_clamp_clblack.BackgroundImage = CType(resources.GetObject("btn_clamp_clblack.BackgroundImage"), System.Drawing.Image)
+        Me.btn_clamp_clblack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_clamp_clblack.FlatAppearance.BorderSize = 0
+        Me.btn_clamp_clblack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_clamp_clblack.Location = New System.Drawing.Point(574, 508)
+        Me.btn_clamp_clblack.Name = "btn_clamp_clblack"
+        Me.btn_clamp_clblack.Size = New System.Drawing.Size(20, 20)
+        Me.btn_clamp_clblack.TabIndex = 173
+        Me.btn_clamp_clblack.UseVisualStyleBackColor = True
+        Me.btn_clamp_clblack.Visible = False
+        '
+        'pic_clamp_meter_lc
+        '
+        Me.pic_clamp_meter_lc.BackgroundImage = CType(resources.GetObject("pic_clamp_meter_lc.BackgroundImage"), System.Drawing.Image)
+        Me.pic_clamp_meter_lc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pic_clamp_meter_lc.Location = New System.Drawing.Point(571, 444)
+        Me.pic_clamp_meter_lc.Name = "pic_clamp_meter_lc"
+        Me.pic_clamp_meter_lc.Size = New System.Drawing.Size(43, 76)
+        Me.pic_clamp_meter_lc.TabIndex = 174
+        Me.pic_clamp_meter_lc.TabStop = False
+        Me.pic_clamp_meter_lc.Visible = False
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.Location = New System.Drawing.Point(636, 522)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(78, 14)
+        Me.Label4.TabIndex = 171
+        Me.Label4.Text = "Line Current"
+        '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(735, 525)
+        Me.Label3.Location = New System.Drawing.Point(727, 523)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(80, 14)
+        Me.Label3.Size = New System.Drawing.Size(90, 14)
         Me.Label3.TabIndex = 170
-        Me.Label3.Text = "Transformer"
+        Me.Label3.Text = "Phase Current"
         '
         'Label2
         '
@@ -1846,29 +1908,17 @@ Partial Class DeltaDeltaActivity
         Me.Label2.TabIndex = 169
         Me.Label2.Text = "Clamp Meter"
         '
-        'Button1
+        'btn_cl_clamp_meter
         '
-        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Location = New System.Drawing.Point(749, 436)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(48, 67)
-        Me.Button1.TabIndex = 168
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(636, 522)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(78, 14)
-        Me.Label4.TabIndex = 171
-        Me.Label4.Text = "Line Current"
+        Me.btn_cl_clamp_meter.BackgroundImage = CType(resources.GetObject("btn_cl_clamp_meter.BackgroundImage"), System.Drawing.Image)
+        Me.btn_cl_clamp_meter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_cl_clamp_meter.FlatAppearance.BorderSize = 0
+        Me.btn_cl_clamp_meter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_cl_clamp_meter.Location = New System.Drawing.Point(651, 436)
+        Me.btn_cl_clamp_meter.Name = "btn_cl_clamp_meter"
+        Me.btn_cl_clamp_meter.Size = New System.Drawing.Size(48, 67)
+        Me.btn_cl_clamp_meter.TabIndex = 168
+        Me.btn_cl_clamp_meter.UseVisualStyleBackColor = True
         '
         'DeltaDeltaActivity
         '
@@ -1893,6 +1943,7 @@ Partial Class DeltaDeltaActivity
         Me.Panel1.PerformLayout()
         Me.panel_activity.ResumeLayout(False)
         Me.panel_activity.PerformLayout()
+        CType(Me.pic_clamp_meter_lc, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1948,9 +1999,6 @@ Partial Class DeltaDeltaActivity
     Friend WithEvents Label20 As Label
     Friend WithEvents Label19 As Label
     Friend WithEvents Label18 As Label
-    Friend WithEvents Label14 As Label
-    Friend WithEvents Label13 As Label
-    Friend WithEvents Label12 As Label
     Friend WithEvents btn_prim_n_5 As Button
     Friend WithEvents btn_prim_n_6 As Button
     Friend WithEvents btn_prim_n_3 As Button
@@ -2029,6 +2077,12 @@ Partial Class DeltaDeltaActivity
     Friend WithEvents panel_activity As Panel
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btn_cl_clamp_meter As Button
     Friend WithEvents Label4 As Label
+    Friend WithEvents btn_clamp_clred As Button
+    Friend WithEvents btn_clamp_clblack As Button
+    Friend WithEvents pic_clamp_meter_lc As PictureBox
+    Friend WithEvents btn_t3 As Button
+    Friend WithEvents btn_t2 As Button
+    Friend WithEvents btn_t1 As Button
 End Class

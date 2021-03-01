@@ -8,11 +8,11 @@ Module db_connection
     Public conn As New Odbc.OdbcConnection(constrpg)
 
     Public Sub dbopen()
-        Try
-            conn.Open()
+        'Try
+        conn.Open()
 
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
+        'Catch ex As Exception
+        '    MsgBox(ex.ToString)
+        'End Try
     End Sub
 End Module
