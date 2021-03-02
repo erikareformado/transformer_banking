@@ -198,7 +198,55 @@ Public Class DeltaDeltaActivity
 
         End If
     End Sub
+    Private Sub btn_sec_n_1_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_sec_n_1.MouseDown, btn_sec_n_2.MouseDown, btn_sec_n_3.MouseDown, btn_sec_n_4.MouseDown, btn_sec_n_5.MouseDown, btn_sec_n_6.MouseDown,
+                                            btn_sec_l1_1.MouseDown, btn_sec_l1_2.MouseDown, btn_sec_l1_3.MouseDown, btn_sec_l1_4.MouseDown, btn_sec_l1_5.MouseDown, btn_sec_l1_6.MouseDown,
+                                            btn_sec_l2_1.MouseDown, btn_sec_l2_2.MouseDown, btn_sec_l2_3.MouseDown, btn_sec_l2_4.MouseDown, btn_sec_l2_5.MouseDown, btn_sec_l2_6.MouseDown,
+                                            btn_sec_l3_1.MouseDown, btn_sec_l3_2.MouseDown, btn_sec_l3_3.MouseDown, btn_sec_l3_4.MouseDown, btn_sec_l3_5.MouseDown, btn_sec_l3_6.MouseDown
+        If e.Button = MouseButtons.Right Then
 
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                If ctr_switch <> 1 Then
+                    Dim myButton As Button = CType(sender, Button)
+
+                    Dim btn = myButton.Name
+                    Dim query, query_delete As String
+                    query = "select * from delta_delta_lines order by id asc"
+                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
+                    Dim dt As New DataTable
+                    da.Fill(dt)
+                    For counter As Integer = 0 To dt.Rows.Count - 1
+
+                        If dt.Rows(counter)(1) = btn.ToString Then
+                            If dt.Rows(counter + 1)(3) = "" Then
+                                query_delete = "delete from delta_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+                            ElseIf dt.Rows(counter - 1)(3) = "" Then
+                                query_delete = "delete from delta_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+
+                            End If
+                            Exit For
+                        End If
+                    Next
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
+
+            End If
+        End If
+        Me.Refresh()
+    End Sub
     Private Sub btn_sec_n_1_Click(sender As Object, e As EventArgs) Handles btn_sec_n_1.Click, btn_sec_n_2.Click, btn_sec_n_3.Click, btn_sec_n_4.Click, btn_sec_n_5.Click, btn_sec_n_6.Click,
                                             btn_sec_l1_1.Click, btn_sec_l1_2.Click, btn_sec_l1_3.Click, btn_sec_l1_4.Click, btn_sec_l1_5.Click, btn_sec_l1_6.Click,
                                             btn_sec_l2_1.Click, btn_sec_l2_2.Click, btn_sec_l2_3.Click, btn_sec_l2_4.Click, btn_sec_l2_5.Click, btn_sec_l2_6.Click,
@@ -349,7 +397,7 @@ Public Class DeltaDeltaActivity
         Dim ctr_voltage_phase As Integer = 0
         Dim ctr_voltage_line As Integer = 0
         Dim ctr_bulb As Integer = 0
-        Dim ctr_line_current As Integer = 0
+        Dim ctr_phase_current As Integer = 0
 
         For counter As Integer = 0 To dt.Rows.Count - 1
 
@@ -376,8 +424,8 @@ Public Class DeltaDeltaActivity
                 ctr_voltage_line = ctr_voltage_line + 1
             ElseIf dt.Rows(counter)(4) = 5
                 ctr_bulb = ctr_bulb + 1
-            ElseIf dt.Rows(counter)(4) = 6
-                ctr_line_current = ctr_line_current + 1
+            ElseIf dt.Rows(counter)(4) = 7
+                ctr_phase_current = ctr_phase_current + 1
             End If
         Next
         '    If dt.Rows.Count > 3 Then
@@ -422,7 +470,7 @@ Public Class DeltaDeltaActivity
                 real = Math.Round((((secondary_voltage * 1.73) * 1.73) * cp), 2)
             End If
             If ctr_clamp > 3 Then
-                txt_cp.Text = cp.ToString
+                txt_cl.Text = cl.ToString
 
                 If category = "primary" Then
                     txt_apparent.Text = apparent.ToString
@@ -452,8 +500,14 @@ Public Class DeltaDeltaActivity
                 End If
             End If
 
-            If ctr_line_current > 3 Then
-                txt_cl.Text = cl.ToString
+            If ctr_phase_current > 3 Then
+                txt_cp.Text = cp.ToString
+
+                If category = "primary" Then
+                    txt_apparent.Text = apparent.ToString
+                ElseIf category = "secondary"
+                    txt_real.Text = real.ToString
+                End If
             End If
 
             If ctr_bulb > 11 Then
@@ -676,7 +730,7 @@ Public Class DeltaDeltaActivity
                 counter_1(myButton.Name, pen_color, "2")
 
             Else
-                If clamp = "red" And current = "cpred" Or clamp = "black" And current = "cpblack" Then
+                If clamp = "red" And current = "clred" Or clamp = "black" And current = "clblack" Then
                     counter_2(myButton.Name, pen_color, "2")
 
                 Else
@@ -700,42 +754,46 @@ Public Class DeltaDeltaActivity
     End Sub
 
     Private Sub btn_cpred_Click(sender As Object, e As EventArgs) Handles btn_cpred.Click, btn_cpblack.Click
-        Dim myButton As Button = CType(sender, Button)
+        If ctr_cl_clamp = 1 Then
+            Dim myButton As Button = CType(sender, Button)
 
-        ctr = ctr + 1
-        ctr_lines = ctr_lines + 1
+            ctr = ctr + 1
+            ctr_lines = ctr_lines + 1
 
 
-        Dim split_value() As String = myButton.Name.Split("_")
-        current = split_value(1).ToString
-        'MsgBox(current.ToString)
-        'Dim pen_color As String
-        'If btn_color = "red" Then
-        '    pen_color = "Red"
-        'Else
-        '    pen_color = "Black"
-        'End If
+            Dim split_value() As String = myButton.Name.Split("_")
+            current = split_value(1).ToString
+            'MsgBox(current.ToString)
+            'Dim pen_color As String
+            'If btn_color = "red" Then
+            '    pen_color = "Red"
+            'Else
+            '    pen_color = "Black"
+            'End If
 
-        If ctr = 1 Then
-            ctr_points = ctr_points + 1
-            counter_1(myButton.Name, "", "2")
-
-        Else
-
-            If clamp = "red" And current = "cpred" Or clamp = "black" And current = "cpblack" Then
-                counter_2(myButton.Name, "", "2")
-
+            If ctr = 1 Then
+                ctr_points = ctr_points + 1
+                counter_1(myButton.Name, "", "7")
 
             Else
-                ctr_lines = ctr_lines - 2
-                points.RemoveAt(ctr_lines)
-                delta_model.delete_unwanted_connection()
-                MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
+                If clamp = "cpred" And current = "cpred" Or clamp = "cpblack" And current = "cpblack" Then
+                    counter_2(myButton.Name, "", "7")
+
+
+                Else
+                    ctr_lines = ctr_lines - 2
+                    points.RemoveAt(ctr_lines)
+                    delta_model.delete_unwanted_connection()
+                    MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
+
+                End If
+                ctr = 0
+                ctr_cl_clamp = 1
+                Me.Refresh()
             End If
-            ctr = 0
-            Me.Refresh()
         End If
+
 
     End Sub
 
@@ -757,7 +815,7 @@ Public Class DeltaDeltaActivity
         Next
     End Sub
 
-    Private Sub btn_t1_Click(sender As Object, e As EventArgs) Handles btn_t1.Click
+    Private Sub btn_t1_Click(sender As Object, e As EventArgs) Handles btn_t1.Click, btn_t2.Click, btn_t3.Click
         If ctr_cl_clamp = 1 Then
             Dim myButton As Button = CType(sender, Button)
             'category = "primary"
@@ -765,41 +823,46 @@ Public Class DeltaDeltaActivity
             If btn = "btn_t1" Then
                 counter_1("btn_t1_h1", "", 6)
                 counter_2("btn_t1_h2", "", 6)
-
-                Dim x_point = (point_1.X / 2) + (point_2.X / 2) - 18
-                Dim y_point = (point_1.Y / 2) + (point_2.Y / 2) + 53
-
-                Dim loc As New Point(x_point, y_point)
-
-                Dim b_x = (loc.X + 41)
-                Dim b_y = (loc.Y + 13)
-
-                Dim r_x = (loc.X + 41)
-                Dim r_y = (loc.Y + 37)
-
-
-                Dim b_location As New Point(b_x, b_y)
-                Dim r_location As New Point(r_x, r_y)
-                'picbox_clamp_meter.Location = panel_activity.Cursor.Position
-                pic_clamp_meter_lc.Location = loc
-                btn_clamp_clblack.Location = b_location
-                btn_clamp_clred.Location = r_location
-
-                pic_clamp_meter_lc.Visible = True
-                btn_clamp_clblack.Visible = True
-                btn_clamp_clred.Visible = True
-
-                pic_clamp_meter_lc.BringToFront()
-                btn_clamp_clblack.BringToFront()
-                btn_clamp_clred.BringToFront()
-
+            ElseIf btn = "btn_t2"
+                counter_1("btn_t2_h1", "", 6)
+                counter_2("btn_t2_h2", "", 6)
+            ElseIf btn = "btn_t2"
+                counter_1("btn_t3_h1", "", 6)
+                counter_2("btn_t3_h2", "", 6)
             End If
 
+
+            Dim x_point = (point_1.X / 2) + (point_2.X / 2) - 18
+            Dim y_point = (point_1.Y / 2) + (point_2.Y / 2) + 53
+
+            Dim loc As New Point(x_point, y_point)
+
+            Dim b_x = (loc.X + 41)
+            Dim b_y = (loc.Y + 13)
+
+            Dim r_x = (loc.X + 41)
+            Dim r_y = (loc.Y + 37)
+
+
+            Dim b_location As New Point(b_x, b_y)
+            Dim r_location As New Point(r_x, r_y)
+            'picbox_clamp_meter.Location = panel_activity.Cursor.Position
+            pic_clamp_meter_cp.Location = loc
+            btn_clamp_cpblack.Location = b_location
+            btn_clamp_cpred.Location = r_location
+
+            pic_clamp_meter_cp.Visible = True
+            btn_clamp_cpblack.Visible = True
+            btn_clamp_cpred.Visible = True
+
+            pic_clamp_meter_cp.BringToFront()
+            btn_clamp_cpblack.BringToFront()
+            btn_clamp_cpred.BringToFront()
 
         End If
     End Sub
 
-    Private Sub btn_clamp_lcblack_Click(sender As Object, e As EventArgs) Handles btn_clamp_clblack.Click, btn_clamp_clred.Click
+    Private Sub btn_clamp_lcblack_Click(sender As Object, e As EventArgs) Handles btn_clamp_cpblack.Click, btn_clamp_cpred.Click
         Dim myButton As Button = CType(sender, Button)
         If ctr_cl_clamp = 1 Then
             ctr = ctr + 1
@@ -811,7 +874,7 @@ Public Class DeltaDeltaActivity
             clamp = btn_color.ToString
             'MsgBox(clamp.ToString)
             Dim pen_color As String
-            If btn_color = "clred" Then
+            If btn_color = "cpred" Then
                 pen_color = "Red"
             Else
                 pen_color = "Black"
@@ -822,7 +885,7 @@ Public Class DeltaDeltaActivity
                 counter_1(myButton.Name, pen_color, "7")
 
             Else
-                If clamp = "clred" And current = "clred" Or clamp = "clblack" And current = "clblack" Then
+                If clamp = "cpred" And current = "cpred" Or clamp = "cpblack" And current = "cpblack" Then
                     counter_2(myButton.Name, pen_color, "7")
 
                 Else
@@ -842,7 +905,7 @@ Public Class DeltaDeltaActivity
 
     Private Sub btn_clblack_Click(sender As Object, e As EventArgs) Handles btn_clblack.Click, btn_clred.Click
         Dim myButton As Button = CType(sender, Button)
-        If ctr_cl_clamp = 1 Then
+        If clamp = 1 Then
             ctr = ctr + 1
             ctr_lines = ctr_lines + 1
             'clamp = myButton.Name
@@ -853,18 +916,18 @@ Public Class DeltaDeltaActivity
 
             If ctr = 1 Then
                 ctr_points = ctr_points + 1
-                counter_1(myButton.Name, "", "7")
+                counter_1(myButton.Name, "", "2")
 
             Else
-                If clamp = "clred" And current = "clred" Or clamp = "clblack" And current = "clblack" Then
-                    counter_2(myButton.Name, "", "7")
+                If clamp = "red" And current = "clred" Or clamp = "black" And current = "clblack" Then
+                    counter_2(myButton.Name, "", "2")
 
                 Else
                     ctr_lines = ctr_lines - 2
                     points.RemoveAt(ctr_lines)
                     delta_model.delete_unwanted_connection()
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
-                    ctr_cl_clamp = 0
+                    clamp = 0
                 End If
 
                 ctr = 0
@@ -872,6 +935,64 @@ Public Class DeltaDeltaActivity
             End If
         End If
 
+    End Sub
+
+    Private Sub pic_clamp_meter_MouseDown(sender As Object, e As MouseEventArgs) Handles pic_clamp_meter.MouseDown
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                If ctr_switch <> 1 Then
+                    Dim query_delete As String
+                    query_delete = "delete from delta_delta_lines where clamp_meter in ('1','2')"
+                    Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                    Dim dt_delete As New DataTable
+                    da_delete.Fill(dt_delete)
+
+                    ctr_lines = ctr_lines - 2
+                    get_point()
+
+                    pic_clamp_meter.Visible = False
+                    btn_clamp_black.Visible = False
+                    btn_clamp_red.Visible = False
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
+
+
+                'pic_clamp_meter.Location = (702, 462)
+            End If
+        End If
+        Me.Refresh()
+    End Sub
+
+    Private Sub pic_clamp_meter_lc_MouseDown(sender As Object, e As MouseEventArgs) Handles pic_clamp_meter_cp.MouseDown
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                If ctr_switch <> 1 Then
+                    Dim query_delete As String
+                    query_delete = "delete from delta_delta_lines where clamp_meter in ('6','7')"
+                    Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                    Dim dt_delete As New DataTable
+                    da_delete.Fill(dt_delete)
+
+                    ctr_lines = ctr_lines - 2
+                    get_point()
+
+                    pic_clamp_meter_cp.Visible = False
+                    btn_clamp_cpblack.Visible = False
+                    btn_clamp_cpred.Visible = False
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
+
+
+                'pic_clamp_meter.Location = (702, 462)
+            End If
+        End If
+        Me.Refresh()
     End Sub
 
     Private Sub WyeWyeActivities_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -884,14 +1005,179 @@ Public Class DeltaDeltaActivity
         End If
 
         select_clamp_phase()
+        select_clamp_line()
     End Sub
-    Private Sub select_clamp_phase()
+
+    Private Sub btn_l1red_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_l1red.MouseDown, btn_l1black.MouseDown, btn_l2red.MouseDown, btn_l2black.MouseDown, btn_l3red.MouseDown, btn_l3black.MouseDown
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                If ctr_switch <> 1 Then
+                    Dim myButton As Button = CType(sender, Button)
+
+                    Dim btn = myButton.Name
+                    Dim query, query_delete As String
+                    query = "select * from delta_delta_lines order by id asc"
+                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
+                    Dim dt As New DataTable
+                    da.Fill(dt)
+                    For counter As Integer = 0 To dt.Rows.Count - 1
+
+                        If dt.Rows(counter)(1) = btn.ToString Then
+                            If dt.Rows(counter + 1)(3) = "" Then
+                                query_delete = "delete from delta_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+                            ElseIf dt.Rows(counter - 1)(3) = "" Then
+                                query_delete = "delete from delta_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+
+                            End If
+                            Exit For
+                        End If
+                    Next
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
+
+            End If
+        End If
+        Me.Refresh()
+    End Sub
+
+    Private Sub btn_t1_x_Click(sender As Object, e As EventArgs) Handles btn_t1_x.Click, btn_t2_x.Click, btn_t3_x.Click
+        If ctr_cl_clamp = 1 Then
+            Dim myButton As Button = CType(sender, Button)
+            'category = "primary"
+            Dim btn As String = myButton.Name
+            If btn = "btn_t1_x" Then
+                counter_1("btn_t1_x1", "", 6)
+                counter_2("btn_t1_x2", "", 6)
+            ElseIf btn = "btn_t2_x"
+                counter_1("btn_t2_x1", "", 6)
+                counter_2("btn_t2_x2", "", 6)
+            ElseIf btn = "btn_t2_x"
+                counter_1("btn_t3_x1", "", 6)
+                counter_2("btn_t3_x2", "", 6)
+            End If
+
+
+            Dim x_point = (point_1.X / 2) + (point_2.X / 2) - 18
+            Dim y_point = (point_1.Y / 2) + (point_2.Y / 2) - 25
+
+            Dim loc As New Point(x_point, y_point)
+
+            Dim b_x = (loc.X + 41)
+            Dim b_y = (loc.Y + 13)
+
+            Dim r_x = (loc.X + 41)
+            Dim r_y = (loc.Y + 37)
+
+
+            Dim b_location As New Point(b_x, b_y)
+            Dim r_location As New Point(r_x, r_y)
+            'picbox_clamp_meter.Location = panel_activity.Cursor.Position
+            pic_clamp_meter_cp.Location = loc
+            btn_clamp_cpblack.Location = b_location
+            btn_clamp_cpred.Location = r_location
+
+            pic_clamp_meter_cp.Visible = True
+            btn_clamp_cpblack.Visible = True
+            btn_clamp_cpred.Visible = True
+
+            pic_clamp_meter_cp.BringToFront()
+            btn_clamp_cpblack.BringToFront()
+            btn_clamp_cpred.BringToFront()
+
+        End If
+    End Sub
+
+
+
+    Private Sub select_clamp_line()
         Dim query = "select * from delta_delta_lines where clamp_meter = '1' and transformer_details_id = '" & transformer_id & "' order by id asc"
         Dim da As New Odbc.OdbcDataAdapter(query, conn)
         Dim dt As New DataTable
         da.Fill(dt)
 
         If dt.Rows.Count <> 0 Then
+
+            Dim x_value = dt.Rows(0)(2).ToString
+                Dim y_value = dt.Rows(1)(2).ToString
+
+                Dim x_split_value() As String = x_value.Split(",")
+                Dim x = x_split_value(0)
+                Dim y = x_split_value(1)
+                Dim clamp_point_x As New Point(x, y)
+
+                Dim y_split_value() As String = y_value.Split(",")
+                Dim x_1 = y_split_value(0)
+                Dim y_1 = y_split_value(1)
+                Dim clamp_point_y As New Point(x_1, y_1)
+
+
+
+                Dim x_point = (clamp_point_x.X / 2) + (clamp_point_y.X / 2) - 30
+                Dim y_point = (clamp_point_x.Y / 2) + (clamp_point_y.Y / 2)
+
+                Dim loc As New Point(x_point, y_point)
+                'Dim loc As New Point(199, 116)
+                'TextBox3.Text = clamp_point_x.ToString
+
+                Dim b_x = loc.X + 41
+                Dim b_y = loc.Y + 13
+
+                Dim r_x = loc.X + 41
+                Dim r_y = loc.Y + 37
+
+
+                Dim b_location As New Point(b_x, b_y)
+                Dim r_location As New Point(r_x, r_y)
+
+                'picbox_clamp_meter.Location = panel_activity.Cursor.Position
+                pic_clamp_meter.Location = loc
+                btn_clamp_black.Location = b_location
+                btn_clamp_red.Location = r_location
+
+                pic_clamp_meter.Visible = True
+                btn_clamp_black.Visible = True
+                btn_clamp_red.Visible = True
+
+                pic_clamp_meter.BringToFront()
+                btn_clamp_black.BringToFront()
+                btn_clamp_red.BringToFront()
+
+            End If
+
+    End Sub
+
+    Private Sub select_clamp_phase()
+        Dim query = "select * from delta_delta_lines where clamp_meter = '6' and transformer_details_id = '" & transformer_id & "' order by id asc"
+        Dim da As New Odbc.OdbcDataAdapter(query, conn)
+        Dim dt As New DataTable
+        da.Fill(dt)
+
+        'If dt.Rows.Count <> 0 Then
+        If dt.Rows(0)(1).ToString = "" Then
+
+            Dim split_value() As String = dt.Rows(0)(1).Split("_")
+            Dim val As String = split_value(2).ToString
+
+
+
+
+
+
             Dim x_value = dt.Rows(0)(2).ToString
             Dim y_value = dt.Rows(1)(2).ToString
 
@@ -905,10 +1191,19 @@ Public Class DeltaDeltaActivity
             Dim y_1 = y_split_value(1)
             Dim clamp_point_y As New Point(x_1, y_1)
 
+            Dim x_point, y_point As Integer
+
+            If val = "h1" Or val = "h2" Then
+                x_point = (clamp_point_x.X / 2) + (clamp_point_y.X / 2) - 18
+                y_point = (clamp_point_x.Y / 2) + (clamp_point_y.Y / 2) + 53
+            Else
+                x_point = (clamp_point_x.X / 2) + (clamp_point_y.X / 2) - 18
+                y_point = (clamp_point_x.Y / 2) + (clamp_point_y.Y / 2) - 25
+            End If
 
 
-            Dim x_point = (clamp_point_x.X / 2) + (clamp_point_y.X / 2) - 30
-            Dim y_point = (clamp_point_x.Y / 2) + (clamp_point_y.Y / 2)
+
+
 
             Dim loc As New Point(x_point, y_point)
             'Dim loc As New Point(199, 116)
@@ -925,21 +1220,23 @@ Public Class DeltaDeltaActivity
             Dim r_location As New Point(r_x, r_y)
 
             'picbox_clamp_meter.Location = panel_activity.Cursor.Position
-            pic_clamp_meter.Location = loc
-            btn_clamp_black.Location = b_location
-            btn_clamp_red.Location = r_location
+            pic_clamp_meter_cp.Location = loc
+            btn_clamp_cpblack.Location = b_location
+            btn_clamp_cpred.Location = r_location
 
-            pic_clamp_meter.Visible = True
-            btn_clamp_black.Visible = True
-            btn_clamp_red.Visible = True
+            pic_clamp_meter_cp.Visible = True
+            btn_clamp_cpblack.Visible = True
+            btn_clamp_cpred.Visible = True
 
-            pic_clamp_meter.BringToFront()
-            btn_clamp_black.BringToFront()
-            btn_clamp_red.BringToFront()
-
+            pic_clamp_meter_cp.BringToFront()
+            btn_clamp_cpblack.BringToFront()
+            btn_clamp_cpred.BringToFront()
+            ctr_cl_clamp = 1
         End If
 
+
     End Sub
+
     Private Sub btn_prim_a1_Click(sender As Object, e As EventArgs) Handles btn_prim_a_1.Click, btn_prim_a_2.Click, btn_prim_a_3.Click, btn_prim_a_4.Click, btn_prim_a_5.Click, btn_prim_a_6.Click,
                                                                             btn_prim_b_1.Click, btn_prim_b_2.Click, btn_prim_b_3.Click, btn_prim_b_4.Click, btn_prim_b_5.Click, btn_prim_b_6.Click,
                                                                             btn_prim_c_1.Click, btn_prim_c_2.Click, btn_prim_c_3.Click, btn_prim_c_4.Click, btn_prim_c_5.Click, btn_prim_c_6.Click,
