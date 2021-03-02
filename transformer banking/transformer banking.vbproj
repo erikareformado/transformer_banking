@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="functions.vb" />
     <Compile Include="Model\delta_delta_lines.vb" />
+    <Compile Include="Model\delta_wye_lines.vb" />
     <Compile Include="Model\results.vb" />
     <Compile Include="Model\transformer_details.vb" />
     <Compile Include="transformer_banking_connections.Designer.vb">
