@@ -1095,7 +1095,7 @@ Partial Class DeltaDeltaActivity
         Me.btn_t1_h1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t1_h1.FlatAppearance.BorderSize = 0
         Me.btn_t1_h1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t1_h1.Location = New System.Drawing.Point(102, 181)
+        Me.btn_t1_h1.Location = New System.Drawing.Point(102, 183)
         Me.btn_t1_h1.Name = "btn_t1_h1"
         Me.btn_t1_h1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t1_h1.TabIndex = 59
@@ -1121,7 +1121,7 @@ Partial Class DeltaDeltaActivity
         Me.btn_t2_h1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t2_h1.FlatAppearance.BorderSize = 0
         Me.btn_t2_h1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t2_h1.Location = New System.Drawing.Point(248, 177)
+        Me.btn_t2_h1.Location = New System.Drawing.Point(248, 180)
         Me.btn_t2_h1.Name = "btn_t2_h1"
         Me.btn_t2_h1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t2_h1.TabIndex = 57
@@ -1134,7 +1134,7 @@ Partial Class DeltaDeltaActivity
         Me.btn_t2_h2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t2_h2.FlatAppearance.BorderSize = 0
         Me.btn_t2_h2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t2_h2.Location = New System.Drawing.Point(305, 178)
+        Me.btn_t2_h2.Location = New System.Drawing.Point(305, 180)
         Me.btn_t2_h2.Name = "btn_t2_h2"
         Me.btn_t2_h2.Size = New System.Drawing.Size(30, 25)
         Me.btn_t2_h2.TabIndex = 56
@@ -1147,7 +1147,7 @@ Partial Class DeltaDeltaActivity
         Me.btn_t3_h1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t3_h1.FlatAppearance.BorderSize = 0
         Me.btn_t3_h1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t3_h1.Location = New System.Drawing.Point(399, 181)
+        Me.btn_t3_h1.Location = New System.Drawing.Point(399, 180)
         Me.btn_t3_h1.Name = "btn_t3_h1"
         Me.btn_t3_h1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t3_h1.TabIndex = 55
@@ -1160,7 +1160,7 @@ Partial Class DeltaDeltaActivity
         Me.btn_t3_h2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t3_h2.FlatAppearance.BorderSize = 0
         Me.btn_t3_h2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t3_h2.Location = New System.Drawing.Point(453, 180)
+        Me.btn_t3_h2.Location = New System.Drawing.Point(455, 183)
         Me.btn_t3_h2.Name = "btn_t3_h2"
         Me.btn_t3_h2.Size = New System.Drawing.Size(30, 25)
         Me.btn_t3_h2.TabIndex = 54
@@ -1664,6 +1664,12 @@ Partial Class DeltaDeltaActivity
         Me.panel_activity.BackColor = System.Drawing.Color.Transparent
         Me.panel_activity.BackgroundImage = CType(resources.GetObject("panel_activity.BackgroundImage"), System.Drawing.Image)
         Me.panel_activity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.panel_activity.Controls.Add(Me.btn_t2_h2)
+        Me.panel_activity.Controls.Add(Me.btn_t3_h1)
+        Me.panel_activity.Controls.Add(Me.btn_t3_h2)
+        Me.panel_activity.Controls.Add(Me.btn_t1_h1)
+        Me.panel_activity.Controls.Add(Me.btn_t1_h2)
+        Me.panel_activity.Controls.Add(Me.btn_t2_h1)
         Me.panel_activity.Controls.Add(Me.btn_t3_x1)
         Me.panel_activity.Controls.Add(Me.btn_t3_x2)
         Me.panel_activity.Controls.Add(Me.btn_t3_x)
@@ -1757,12 +1763,6 @@ Partial Class DeltaDeltaActivity
         Me.panel_activity.Controls.Add(Me.btn_vlred)
         Me.panel_activity.Controls.Add(Me.btn_vpblack)
         Me.panel_activity.Controls.Add(Me.btn_vpred)
-        Me.panel_activity.Controls.Add(Me.btn_t1_h1)
-        Me.panel_activity.Controls.Add(Me.btn_t1_h2)
-        Me.panel_activity.Controls.Add(Me.btn_t2_h1)
-        Me.panel_activity.Controls.Add(Me.btn_t2_h2)
-        Me.panel_activity.Controls.Add(Me.btn_t3_h1)
-        Me.panel_activity.Controls.Add(Me.btn_t3_h2)
         Me.panel_activity.Controls.Add(Me.btn_sec_n_1)
         Me.panel_activity.Controls.Add(Me.btn_sec_n_2)
         Me.panel_activity.Controls.Add(Me.btn_sec_n_3)

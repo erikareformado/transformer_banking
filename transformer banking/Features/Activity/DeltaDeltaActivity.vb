@@ -382,7 +382,37 @@ Public Class DeltaDeltaActivity
     End Sub
 
     Private Sub btn_try_again_Click(sender As Object, e As EventArgs) Handles btn_try_again.Click
-        Me.Refresh()
+        Dim result As DialogResult = MsgBox("Are you sure to try again?", MsgBoxStyle.YesNo, "Disconnect Wire")
+        If result = DialogResult.Yes Then
+
+            Dim myButton As Button = CType(sender, Button)
+
+            Dim btn = myButton.Name
+            Dim query As String
+            query = "delete from delta_delta_lines"
+            Dim da As New Odbc.OdbcDataAdapter(query, conn)
+            Dim dt As New DataTable
+            da.Fill(dt)
+
+            ctr_cl_clamp = 0
+            ctr = 0
+            ctr_lines = 0
+            clamp = 0
+            ctr_switch = 0
+
+            get_point()
+
+            pic_clamp_meter_cp.Visible = False
+            btn_clamp_cpblack.Visible = False
+            btn_clamp_cpred.Visible = False
+
+            pic_clamp_meter.Visible = False
+            btn_clamp_black.Visible = False
+            btn_clamp_red.Visible = False
+
+
+            Me.Refresh()
+        End If
     End Sub
 
     Private Sub pic_switch_Click(sender As Object, e As EventArgs) Handles pic_switch.Click
@@ -433,7 +463,7 @@ Public Class DeltaDeltaActivity
         'Else
         '    validation = 0
         'End If
-        If ctr_switch = 1 And ctr_clamp <> 0 Or ctr_switch = 1 And ctr_voltage_phase <> 0 Or ctr_switch = 1 And ctr_voltage_line <> 0 Or ctr_switch = 1 And ctr_bulb <> 0 Then
+        If ctr_switch = 1 And ctr_clamp <> 0 Or ctr_switch = 1 And ctr_voltage_phase <> 0 Or ctr_switch = 1 And ctr_voltage_line <> 0 Or ctr_switch = 1 And ctr_bulb <> 0 Or ctr_phase_current <> 0 And ctr_switch = 1 Then
             pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker_on.png")
             pic_switch.SizeMode = PictureBoxSizeMode.Zoom
 
@@ -474,7 +504,7 @@ Public Class DeltaDeltaActivity
 
                 If category = "primary" Then
                     txt_apparent.Text = apparent.ToString
-                ElseIf category = "secondary"
+                ElseIf category = "secondary" Then
                     txt_real.Text = real.ToString
                 End If
 
@@ -483,7 +513,7 @@ Public Class DeltaDeltaActivity
                 If category = "primary" Then
                     txt_vp.Text = primary_voltage
                     txt_apparent.Text = apparent.ToString
-                ElseIf category = "secondary"
+                ElseIf category = "secondary" Then
                     txt_vp.Text = secondary_voltage
                     txt_real.Text = real.ToString
                 End If
@@ -494,7 +524,7 @@ Public Class DeltaDeltaActivity
                 If category = "primary" Then
                     txt_vl.Text = primary_voltage
                     txt_apparent.Text = apparent.ToString
-                ElseIf category = "secondary"
+                ElseIf category = "secondary" Then
                     txt_real.Text = real.ToString
                     txt_vl.Text = secondary_voltage
                 End If
@@ -505,7 +535,7 @@ Public Class DeltaDeltaActivity
 
                 If category = "primary" Then
                     txt_apparent.Text = apparent.ToString
-                ElseIf category = "secondary"
+                ElseIf category = "secondary" Then
                     txt_real.Text = real.ToString
                 End If
             End If
@@ -966,7 +996,7 @@ Public Class DeltaDeltaActivity
         Me.Refresh()
     End Sub
 
-    Private Sub pic_clamp_meter_lc_MouseDown(sender As Object, e As MouseEventArgs) Handles pic_clamp_meter_cp.MouseDown
+    Private Sub pic_clamp_meter_cp_MouseDown(sender As Object, e As MouseEventArgs) Handles pic_clamp_meter_cp.MouseDown
         If e.Button = MouseButtons.Right Then
 
             Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
@@ -1167,72 +1197,70 @@ Public Class DeltaDeltaActivity
         Dim dt As New DataTable
         da.Fill(dt)
 
-        'If dt.Rows.Count <> 0 Then
-        If dt.Rows(0)(1).ToString = "" Then
+        If dt.Rows.Count <> 0 Then
+
 
             Dim split_value() As String = dt.Rows(0)(1).Split("_")
-            Dim val As String = split_value(2).ToString
+                Dim val As String = split_value(2).ToString
 
 
 
 
 
 
-            Dim x_value = dt.Rows(0)(2).ToString
-            Dim y_value = dt.Rows(1)(2).ToString
+                Dim x_value = dt.Rows(0)(2).ToString
+                Dim y_value = dt.Rows(1)(2).ToString
 
-            Dim x_split_value() As String = x_value.Split(",")
-            Dim x = x_split_value(0)
-            Dim y = x_split_value(1)
-            Dim clamp_point_x As New Point(x, y)
+                Dim x_split_value() As String = x_value.Split(",")
+                Dim x = x_split_value(0)
+                Dim y = x_split_value(1)
+                Dim clamp_point_x As New Point(x, y)
 
-            Dim y_split_value() As String = y_value.Split(",")
-            Dim x_1 = y_split_value(0)
-            Dim y_1 = y_split_value(1)
-            Dim clamp_point_y As New Point(x_1, y_1)
+                Dim y_split_value() As String = y_value.Split(",")
+                Dim x_1 = y_split_value(0)
+                Dim y_1 = y_split_value(1)
+                Dim clamp_point_y As New Point(x_1, y_1)
 
-            Dim x_point, y_point As Integer
+                Dim x_point, y_point As Integer
 
-            If val = "h1" Or val = "h2" Then
-                x_point = (clamp_point_x.X / 2) + (clamp_point_y.X / 2) - 18
-                y_point = (clamp_point_x.Y / 2) + (clamp_point_y.Y / 2) + 53
-            Else
-                x_point = (clamp_point_x.X / 2) + (clamp_point_y.X / 2) - 18
-                y_point = (clamp_point_x.Y / 2) + (clamp_point_y.Y / 2) - 25
+                If val = "h1" Or val = "h2" Then
+                    x_point = (clamp_point_x.X / 2) + (clamp_point_y.X / 2) - 18
+                    y_point = (clamp_point_x.Y / 2) + (clamp_point_y.Y / 2) + 53
+                Else
+                    x_point = (clamp_point_x.X / 2) + (clamp_point_y.X / 2) - 18
+                    y_point = (clamp_point_x.Y / 2) + (clamp_point_y.Y / 2) - 25
+                End If
+
+
+                Dim loc As New Point(x_point, y_point)
+                'Dim loc As New Point(199, 116)
+                'TextBox3.Text = clamp_point_x.ToString
+
+                Dim b_x = loc.X + 41
+                Dim b_y = loc.Y + 13
+
+                Dim r_x = loc.X + 41
+                Dim r_y = loc.Y + 37
+
+
+                Dim b_location As New Point(b_x, b_y)
+                Dim r_location As New Point(r_x, r_y)
+
+                'picbox_clamp_meter.Location = panel_activity.Cursor.Position
+                pic_clamp_meter_cp.Location = loc
+                btn_clamp_cpblack.Location = b_location
+                btn_clamp_cpred.Location = r_location
+
+                pic_clamp_meter_cp.Visible = True
+                btn_clamp_cpblack.Visible = True
+                btn_clamp_cpred.Visible = True
+
+                pic_clamp_meter_cp.BringToFront()
+                btn_clamp_cpblack.BringToFront()
+                btn_clamp_cpred.BringToFront()
+                ctr_cl_clamp = 1
             End If
 
-
-
-
-
-            Dim loc As New Point(x_point, y_point)
-            'Dim loc As New Point(199, 116)
-            'TextBox3.Text = clamp_point_x.ToString
-
-            Dim b_x = loc.X + 41
-            Dim b_y = loc.Y + 13
-
-            Dim r_x = loc.X + 41
-            Dim r_y = loc.Y + 37
-
-
-            Dim b_location As New Point(b_x, b_y)
-            Dim r_location As New Point(r_x, r_y)
-
-            'picbox_clamp_meter.Location = panel_activity.Cursor.Position
-            pic_clamp_meter_cp.Location = loc
-            btn_clamp_cpblack.Location = b_location
-            btn_clamp_cpred.Location = r_location
-
-            pic_clamp_meter_cp.Visible = True
-            btn_clamp_cpblack.Visible = True
-            btn_clamp_cpred.Visible = True
-
-            pic_clamp_meter_cp.BringToFront()
-            btn_clamp_cpblack.BringToFront()
-            btn_clamp_cpred.BringToFront()
-            ctr_cl_clamp = 1
-        End If
 
 
     End Sub

@@ -31,7 +31,7 @@ Public Class WyeWyeActivity
     Dim pens As New Pen(Color.Red, 2)
 
     Private Sub DeltaWyeActivity_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dbopen()
+        'dbopen()
         get_point()
     End Sub
     'primary
