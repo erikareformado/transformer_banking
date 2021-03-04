@@ -92,17 +92,34 @@
 
                 End If
             ElseIf Home.lbl_connection_type.Text = "WYE-DELTA CONNECTION" Then
+
+                Home.uc_wye_delta_activity.lbl_primary_voltage.Text = txt_primary_voltage.Text
+                Home.uc_wye_delta_activity.lbl_secondary_voltage.Text = txt_secondary_voltage.Text
+                Home.uc_wye_delta_activity.lbl_polarity.Text = cmb_polarity.Text
+                Home.uc_wye_delta_activity.lbl_rating.Text = cmb_rating.Text
+
                 Home.panel_all.Controls.Clear()
                 Home.panel_all.Controls.Add(Home.uc_wye_delta_activity)
                 If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
                     Home.uc_wye_delta_activity.Label21.Text = "X2"
+                    Home.uc_wye_delta_activity.btn_t1_x1.Name = "btn_t1_x2"
                     Home.uc_wye_delta_activity.Label22.Text = "X1"
+                    Home.uc_wye_delta_activity.btn_t1_x2.Name = "btn_t1_x1"
                     Home.uc_wye_delta_activity.Label24.Text = "X2"
+                    Home.uc_wye_delta_activity.btn_t2_x1.Name = "btn_t2_x2"
                     Home.uc_wye_delta_activity.Label23.Text = "X1"
+                    Home.uc_wye_delta_activity.btn_t2_x2.Name = "btn_t2_x1"
                     Home.uc_wye_delta_activity.Label26.Text = "X2"
+                    Home.uc_wye_delta_activity.btn_t3_x1.Name = "btn_t3_x2"
+                    Home.uc_wye_delta_activity.btn_t3_x2.Name = "btn_t3_x1"
                     Home.uc_wye_delta_activity.Label25.Text = "X1"
                 End If
             ElseIf Home.lbl_connection_type.Text = "OPEN DELTA CONNECTION" Then
+                Home.uc_wye_delta_activity.lbl_primary_voltage.Text = txt_primary_voltage.Text
+                Home.uc_wye_delta_activity.lbl_secondary_voltage.Text = txt_secondary_voltage.Text
+                Home.uc_wye_delta_activity.lbl_polarity.Text = cmb_polarity.Text
+                Home.uc_wye_delta_activity.lbl_rating.Text = cmb_rating.Text
+
                 Home.panel_all.Controls.Clear()
                 Home.panel_all.Controls.Add(Home.uc_open_delta_activity)
                 If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
