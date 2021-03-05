@@ -162,6 +162,7 @@
     <Compile Include="Model\delta_wye_lines.vb" />
     <Compile Include="Model\results.vb" />
     <Compile Include="Model\transformer_details.vb" />
+    <Compile Include="Model\wye_delta_lines.vb" />
     <Compile Include="transformer_banking_connections.Designer.vb">
       <DependentUpon>transformer_banking_connections.vb</DependentUpon>
     </Compile>

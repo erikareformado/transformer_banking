@@ -54,14 +54,14 @@
 
             Return result
         End Function
-        Public Function update(transformer_id, column, value)
+        Public Sub update(transformer_id, column, value)
 
             query = "update activity_result set " & column & "= " & value & " transformer_details = '" & value & "'"
             Dim da As New Odbc.OdbcDataAdapter(query, conn)
             Dim dt As New DataTable
             da.Fill(dt)
 
-        End Function
+        End Sub
 
     End Class
 

@@ -33,6 +33,7 @@
         Home.Show()
         Home.panel_all.Controls.Clear()
         Home.panel_all.Controls.Add(Home.uc_wye_delta_intro)
+        Home.lbl_connection_type.Text = "WYE-DELTA CONNECTION"
     End Sub
 
     Private Sub btn_open_delta_Click(sender As Object, e As EventArgs) Handles btn_open_delta.Click
@@ -40,6 +41,7 @@
         Home.Show()
         Home.panel_all.Controls.Clear()
         Home.panel_all.Controls.Add(Home.uc_open_delta_intro)
+        Home.lbl_connection_type.Text = "OPEN-DELTA CONNECTION"
     End Sub
 
     Private Sub btn_open_wye_Click(sender As Object, e As EventArgs) Handles btn_open_wye.Click
@@ -47,6 +49,7 @@
         Home.Show()
         Home.panel_all.Controls.Clear()
         Home.panel_all.Controls.Add(Home.uc_openwye_opendelta_intro)
+        Home.lbl_connection_type.Text = "OPEN-WYE CONNECTION"
     End Sub
 
     Private Sub PictureBox3_Click(sender As Object, e As EventArgs) Handles picturebox_close.Click

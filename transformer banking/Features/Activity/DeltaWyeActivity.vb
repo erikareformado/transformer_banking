@@ -58,9 +58,6 @@ Public Class DeltaWyeActivity
         draw_lines(e)
     End Sub
 
-    Private Sub btn_prim_a_2_Click(sender As Object, e As EventArgs) Handles btn_prim_a_2.Click
-
-    End Sub
 
     Private Sub btn_prim_a_6_Click(sender As Object, e As EventArgs) Handles btn_prim_a_1.Click, btn_prim_a_2.Click, btn_prim_a_3.Click, btn_prim_a_4.Click, btn_prim_a_5.Click, btn_prim_a_6.Click,
                                                                             btn_prim_b_1.Click, btn_prim_b_2.Click, btn_prim_b_3.Click, btn_prim_b_4.Click, btn_prim_b_5.Click, btn_prim_b_6.Click,
@@ -69,13 +66,13 @@ Public Class DeltaWyeActivity
 
         If wire_conenction = 1 Or clamp_meter = 1 Then
             Dim myButton As Button = CType(sender, Button)
-            'category = "primary"
+
             btn_primary = myButton.Name
 
             Dim split_value() As String = btn_primary.Split("_")
             Dim btn_color = split_value(2).ToString
             Dim pen_color As String
-            'MsgBox(color.ToString)
+
             If btn_color = "a" Then
                 pen_color = "Red"
                 primary = "a"
