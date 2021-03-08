@@ -512,7 +512,7 @@ Partial Class DeltaDeltaActivity
         Me.btn_l1red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btn_l1red.FlatAppearance.BorderSize = 0
         Me.btn_l1red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_l1red.Location = New System.Drawing.Point(592, 384)
+        Me.btn_l1red.Location = New System.Drawing.Point(595, 384)
         Me.btn_l1red.Name = "btn_l1red"
         Me.btn_l1red.Size = New System.Drawing.Size(31, 24)
         Me.btn_l1red.TabIndex = 30
@@ -712,7 +712,7 @@ Partial Class DeltaDeltaActivity
         Me.btn_l3red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_l3red.FlatAppearance.BorderSize = 0
         Me.btn_l3red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_l3red.Location = New System.Drawing.Point(747, 386)
+        Me.btn_l3red.Location = New System.Drawing.Point(748, 386)
         Me.btn_l3red.Name = "btn_l3red"
         Me.btn_l3red.Size = New System.Drawing.Size(26, 22)
         Me.btn_l3red.TabIndex = 86

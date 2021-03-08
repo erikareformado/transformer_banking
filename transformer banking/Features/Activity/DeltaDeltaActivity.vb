@@ -411,7 +411,7 @@ Public Class DeltaDeltaActivity
         'Else
         '    validation = 0
         'End If
-        If ctr_switch = 1 And ctr_clamp <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_voltage_phase <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_voltage_line <> 0 And ctr_bulb <> 0 Or ctr_phase_current <> 0 And ctr_switch = 1 And ctr_bulb <> 0 Then
+        If ctr_switch = 1 And ctr_clamp <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_voltage_phase <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_voltage_line <> 0 And ctr_bulb <> 0 Or ctr_phase_current <> 0 And ctr_switch = 1 And ctr_bulb <> 0 Or ctr_bulb <> 0 And ctr_switch = 1 Then
             pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker_on.png")
             pic_switch.SizeMode = PictureBoxSizeMode.Zoom
 

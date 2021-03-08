@@ -532,7 +532,7 @@ Public Class DeltaWyeActivity
         'Else
         '    validation = 0
         'End If
-        If ctr_switch = 1 And ctr_clamp <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_voltage_phase <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_voltage_line <> 0 And ctr_bulb <> 0 Or ctr_phase_current <> 0 And ctr_switch = 1 And bulb <> 0 Then
+        If ctr_switch = 1 And ctr_clamp <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_voltage_phase <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_voltage_line <> 0 And ctr_bulb <> 0 Or ctr_phase_current <> 0 And ctr_switch = 1 And bulb <> 0 Or ctr_bulb <> 0 And ctr_switch = 1 Then
             pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker_on.png")
             pic_switch.SizeMode = PictureBoxSizeMode.Zoom
 
@@ -556,7 +556,7 @@ Public Class DeltaWyeActivity
                 Dim split_value() As String = result_rating.Split(" ")
                 rating = CDbl(split_value(0))
             End If
-            Dim cp, cl, apparent, real As Double
+            Dim cp, cl, vl, apparent, real As Double
             If category = "primary" Then
                 cp = Math.Round(CDbl(rating) / CDbl(primary_voltage), 2)
                 cl = Math.Round(cp * 1.73, 2)
@@ -565,7 +565,7 @@ Public Class DeltaWyeActivity
             Else category = "secondary"
                 cp = Math.Round(CDbl(rating) / CDbl(secondary_voltage), 2)
                 cl = Math.Round(cp * 1.73, 2)
-                'vl = Math.Round((secondary_voltage * 1.73), 2)
+                vl = Math.Round((secondary_voltage * 1.73), 2)
                 real = Math.Round((((secondary_voltage * 1.73) * 1.73) * cp), 2)
             End If
             If ctr_clamp > 3 Then
@@ -597,7 +597,8 @@ Public Class DeltaWyeActivity
                     txt_apparent.Text = apparent.ToString
                 ElseIf category = "secondary" Then
                     txt_real.Text = real.ToString
-                    txt_vl.Text = secondary_voltage
+                    txt_vl.Text = vl.ToString
+
                 End If
             End If
 
@@ -684,7 +685,7 @@ Public Class DeltaWyeActivity
             Else
                 ctr_lines = ctr_lines - 2
                 points.RemoveAt(ctr_lines)
-                delete_unwanted_connection()
+                delta_wye_model.delete_unwanted_connection()
                 MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
             End If
@@ -1209,6 +1210,57 @@ Public Class DeltaWyeActivity
 
             Me.Refresh()
         End If
+    End Sub
+
+    Private Sub pic_clamp_meter_cp_Click(sender As Object, e As EventArgs) Handles pic_clamp_meter_cp.Click
+
+    End Sub
+
+    Private Sub btn_l3red_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_l1red.MouseDown, btn_l1black.MouseDown, btn_l2red.MouseDown, btn_l2black.MouseDown, btn_l3red.MouseDown, btn_l3black.MouseDown
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                If ctr_switch <> 1 Then
+                    Dim myButton As Button = CType(sender, Button)
+
+                    Dim btn = myButton.Name
+                    Dim query, query_delete As String
+                    query = "select * from delta_delta_lines order by id asc"
+                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
+                    Dim dt As New DataTable
+                    da.Fill(dt)
+                    For counter As Integer = 0 To dt.Rows.Count - 1
+
+                        If dt.Rows(counter)(1) = btn.ToString Then
+                            If dt.Rows(counter + 1)(3) = "" Then
+                                query_delete = "delete from delta_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+                            ElseIf dt.Rows(counter - 1)(3) = "" Then
+                                query_delete = "delete from delta_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+
+                            End If
+                            Exit For
+                        End If
+                    Next
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
+
+            End If
+        End If
+        Me.Refresh()
     End Sub
 
     Private Sub DeltaWyeActivity_Load(sender As Object, e As EventArgs) Handles MyBase.Load

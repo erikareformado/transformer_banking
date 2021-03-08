@@ -48,9 +48,6 @@ Partial Class WyeDeltaActivity
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.btn_t3 = New System.Windows.Forms.Button()
-        Me.btn_t2 = New System.Windows.Forms.Button()
-        Me.btn_t1 = New System.Windows.Forms.Button()
         Me.btn_clamp_cpred = New System.Windows.Forms.Button()
         Me.btn_clamp_cpblack = New System.Windows.Forms.Button()
         Me.pic_clamp_meter_cp = New System.Windows.Forms.PictureBox()
@@ -460,45 +457,6 @@ Partial Class WyeDeltaActivity
         Me.Label12.TabIndex = 178
         Me.Label12.Text = "T1"
         '
-        'btn_t3
-        '
-        Me.btn_t3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btn_t3.FlatAppearance.BorderSize = 0
-        Me.btn_t3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t3.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_t3.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.btn_t3.Location = New System.Drawing.Point(405, 244)
-        Me.btn_t3.Name = "btn_t3"
-        Me.btn_t3.Size = New System.Drawing.Size(73, 25)
-        Me.btn_t3.TabIndex = 177
-        Me.btn_t3.UseVisualStyleBackColor = True
-        '
-        'btn_t2
-        '
-        Me.btn_t2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btn_t2.FlatAppearance.BorderSize = 0
-        Me.btn_t2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_t2.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.btn_t2.Location = New System.Drawing.Point(255, 242)
-        Me.btn_t2.Name = "btn_t2"
-        Me.btn_t2.Size = New System.Drawing.Size(73, 25)
-        Me.btn_t2.TabIndex = 176
-        Me.btn_t2.UseVisualStyleBackColor = True
-        '
-        'btn_t1
-        '
-        Me.btn_t1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btn_t1.FlatAppearance.BorderSize = 0
-        Me.btn_t1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_t1.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.btn_t1.Location = New System.Drawing.Point(111, 245)
-        Me.btn_t1.Name = "btn_t1"
-        Me.btn_t1.Size = New System.Drawing.Size(73, 25)
-        Me.btn_t1.TabIndex = 175
-        Me.btn_t1.UseVisualStyleBackColor = True
-        '
         'btn_clamp_cpred
         '
         Me.btn_clamp_cpred.BackgroundImage = CType(resources.GetObject("btn_clamp_cpred.BackgroundImage"), System.Drawing.Image)
@@ -583,9 +541,6 @@ Partial Class WyeDeltaActivity
         Me.panel_activity.Controls.Add(Me.Label14)
         Me.panel_activity.Controls.Add(Me.Label13)
         Me.panel_activity.Controls.Add(Me.Label12)
-        Me.panel_activity.Controls.Add(Me.btn_t3)
-        Me.panel_activity.Controls.Add(Me.btn_t2)
-        Me.panel_activity.Controls.Add(Me.btn_t1)
         Me.panel_activity.Controls.Add(Me.btn_clamp_cpred)
         Me.panel_activity.Controls.Add(Me.btn_clamp_cpblack)
         Me.panel_activity.Controls.Add(Me.pic_clamp_meter_cp)
@@ -1052,7 +1007,7 @@ Partial Class WyeDeltaActivity
         Me.btn_l1red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btn_l1red.FlatAppearance.BorderSize = 0
         Me.btn_l1red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_l1red.Location = New System.Drawing.Point(592, 384)
+        Me.btn_l1red.Location = New System.Drawing.Point(594, 384)
         Me.btn_l1red.Name = "btn_l1red"
         Me.btn_l1red.Size = New System.Drawing.Size(31, 24)
         Me.btn_l1red.TabIndex = 30
@@ -1877,9 +1832,6 @@ Partial Class WyeDeltaActivity
     Friend WithEvents Label14 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents Label12 As Label
-    Friend WithEvents btn_t3 As Button
-    Friend WithEvents btn_t2 As Button
-    Friend WithEvents btn_t1 As Button
     Friend WithEvents btn_clamp_cpred As Button
     Friend WithEvents btn_clamp_cpblack As Button
     Friend WithEvents pic_clamp_meter_cp As PictureBox
