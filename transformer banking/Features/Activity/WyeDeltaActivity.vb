@@ -1238,6 +1238,40 @@ Public Class WyeDeltaActivity
         Me.Refresh()
     End Sub
 
+    Private Sub btn_try_again_Click(sender As Object, e As EventArgs) Handles btn_try_again.Click
+        Dim result As DialogResult = MsgBox("Are you sure to try again?", MsgBoxStyle.YesNo, "Disconnect Wire")
+        If result = DialogResult.Yes Then
+
+            Dim myButton As Button = CType(sender, Button)
+
+            Dim btn = myButton.Name
+            Dim query As String
+            query = "delete from wye_delta_lines"
+            Dim da As New Odbc.OdbcDataAdapter(query, conn)
+            Dim dt As New DataTable
+            da.Fill(dt)
+
+            ctr_cl_clamp = 0
+            ctr = 0
+            ctr_lines = 0
+            clamp = 0
+            ctr_switch = 0
+
+            get_point()
+
+            pic_clamp_meter_cp.Visible = False
+            btn_clamp_cpblack.Visible = False
+            btn_clamp_cpred.Visible = False
+
+            pic_clamp_meter.Visible = False
+            btn_clamp_black.Visible = False
+            btn_clamp_red.Visible = False
+
+
+            Me.Refresh()
+        End If
+    End Sub
+
     Private Sub WyeDeltaActivity_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbopen()
         get_point()

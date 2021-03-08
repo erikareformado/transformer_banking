@@ -54,7 +54,7 @@ Public Class DeltaDeltaActivity
         draw_lines(e)
     End Sub
 
-    Private Sub btn_t2_x1_Click(sender As Object, e As EventArgs) Handles btn_t1_x1.Click, btn_t1_x2.Click, btn_t2_x1.Click, btn_t2_x2.Click, btn_t3_x1.Click, btn_t3_x2.Click, btn_t3_h2.Click
+    Private Sub btn_t2_x1_Click(sender As Object, e As EventArgs) Handles btn_t1_x1.Click, btn_t1_x2.Click, btn_t2_x1.Click, btn_t2_x2.Click, btn_t3_x1.Click, btn_t3_x2.Click
 
         Dim myButton As Button = CType(sender, Button)
         'Dim myName As String =
@@ -1249,6 +1249,55 @@ Public Class DeltaDeltaActivity
                     Dim myButton As Button = CType(sender, Button)
 
                     Dim  btn = myButton.Name
+                    Dim query, query_delete As String
+                    query = "select * from delta_delta_lines order by id asc"
+                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
+                    Dim dt As New DataTable
+                    da.Fill(dt)
+                    For counter As Integer = 0 To dt.Rows.Count - 1
+
+                        If dt.Rows(counter)(1) = btn.ToString Then
+                            If dt.Rows(counter - 1)(3) = "" And dt.Rows(counter)(3) <> "" Then
+                                query_delete = "delete from delta_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter - 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+                            ElseIf dt.Rows(counter)(3) = "" And dt.Rows(counter - 1)(3) <> "" Then
+                                query_delete = "delete from delta_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter - 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+
+                            End If
+                            Exit For
+                        End If
+
+                    Next
+
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
+
+            End If
+        End If
+        Me.Refresh()
+    End Sub
+
+    Private Sub btn_t1_x2_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_t1_x1.MouseDown, btn_t1_x2.MouseDown, btn_t2_x1.MouseDown, btn_t2_x2.MouseDown, btn_t3_x1.MouseDown, btn_t3_x2.MouseDown
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                If ctr_switch <> 1 Then
+                    Dim myButton As Button = CType(sender, Button)
+
+                    Dim btn = myButton.Name
                     Dim query, query_delete As String
                     query = "select * from delta_delta_lines order by id asc"
                     Dim da As New Odbc.OdbcDataAdapter(query, conn)
