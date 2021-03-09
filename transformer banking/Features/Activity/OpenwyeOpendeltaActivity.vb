@@ -773,6 +773,429 @@ Public Class OpenwyeOpendeltaActivity
         select_clamp_line()
     End Sub
 
+    Private Sub btn_sec_n_6_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_sec_n_1.MouseDown, btn_sec_n_2.MouseDown, btn_sec_n_3.MouseDown, btn_sec_n_4.MouseDown, btn_sec_n_5.MouseDown, btn_sec_n_6.MouseDown,
+                                            btn_sec_l1_1.MouseDown, btn_sec_l1_2.MouseDown, btn_sec_l1_3.MouseDown, btn_sec_l1_4.MouseDown, btn_sec_l1_5.MouseDown, btn_sec_l1_6.MouseDown,
+                                            btn_sec_l2_1.MouseDown, btn_sec_l2_2.MouseDown, btn_sec_l2_3.MouseDown, btn_sec_l2_4.MouseDown, btn_sec_l2_5.MouseDown, btn_sec_l2_6.MouseDown,
+                                            btn_sec_l3_1.MouseDown, btn_sec_l3_2.MouseDown, btn_sec_l3_3.MouseDown, btn_sec_l3_4.MouseDown, btn_sec_l3_5.MouseDown, btn_sec_l3_6.MouseDown
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                If ctr_switch <> 1 Then
+                    Dim myButton As Button = CType(sender, Button)
+
+                    Dim btn = myButton.Name
+                    Dim query, query_delete As String
+                    query = "select * from openwye_opendelta_lines order by id asc"
+                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
+                    Dim dt As New DataTable
+                    da.Fill(dt)
+                    For counter As Integer = 0 To dt.Rows.Count - 1
+
+                        If dt.Rows(counter)(1) = btn.ToString Then
+                            If dt.Rows(counter + 1)(3) = "" Then
+                                query_delete = "delete from openwye_opendelta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+                            ElseIf dt.Rows(counter - 1)(3) = "" Then
+                                query_delete = "delete from openwye_opendelta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+
+                            End If
+                            Exit For
+                        End If
+                    Next
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
+
+            End If
+        End If
+        Me.Refresh()
+    End Sub
+
+    Private Sub btn_t1_x2_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_t1_x1.MouseDown, btn_t1_x2.MouseDown, btn_t2_x1.MouseDown, btn_t2_x2.MouseDown
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                If ctr_switch <> 1 Then
+                    Dim myButton As Button = CType(sender, Button)
+
+                    Dim btn = myButton.Name
+                    Dim query, query_delete As String
+                    query = "select * from openwye_opendelta_lines order by id asc"
+                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
+                    Dim dt As New DataTable
+                    da.Fill(dt)
+                    For counter As Integer = 0 To dt.Rows.Count - 1
+
+                        If dt.Rows(counter)(1) = btn.ToString Then
+                            If dt.Rows(counter - 1)(3) = "" And dt.Rows(counter)(3) <> "" Then
+                                query_delete = "delete from openwye_opendelta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter - 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+                            ElseIf dt.Rows(counter)(3) = "" And dt.Rows(counter - 1)(3) <> "" Then
+                                query_delete = "delete from openwye_opendelta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter - 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+
+                            End If
+                            Exit For
+                        End If
+
+                    Next
+
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
+
+            End If
+        End If
+        Me.Refresh()
+    End Sub
+
+    Private Sub pic_switch_Click(sender As Object, e As EventArgs) Handles pic_switch.Click
+        ctr_switch = ctr_switch + 1
+        Dim category As String
+
+        Dim query = "select * from openwye_opendelta_lines where clamp_meter::integer >= 1 and transformer_details_id = '" & transformer_id & "' order by id asc"
+        Dim da As New Odbc.OdbcDataAdapter(query, conn)
+        Dim dt As New DataTable
+        da.Fill(dt)
+        Dim ctr_clamp As Integer = 0
+        Dim ctr_voltage_phase As Integer = 0
+        Dim ctr_voltage_line As Integer = 0
+        Dim ctr_bulb As Integer = 0
+        Dim ctr_phase_current As Integer = 0
+
+        For counter As Integer = 0 To dt.Rows.Count - 1
+
+
+            If dt.Rows(counter)(4) <> 2 And dt.Rows(counter)(4) <> 7 Then
+
+                If dt.Rows(counter)(3).ToString = "" Then
+
+                    Dim split_value() As String = dt.Rows(counter)(1).Split("_")
+                    Dim val As String = split_value(2).ToString
+
+                    If val = "h1" Or val = "h2" Then
+                        category = "primary"
+                    Else
+                        category = "secondary"
+                    End If
+                End If
+            End If
+            If dt.Rows(counter)(4) = 2 Then
+                ctr_clamp = ctr_clamp + 1
+            ElseIf dt.Rows(counter)(4) = 3 Then
+                ctr_voltage_phase = ctr_voltage_phase + 1
+            ElseIf dt.Rows(counter)(4) = 4 Then
+                ctr_voltage_line = ctr_voltage_line + 1
+            ElseIf dt.Rows(counter)(4) = 5 Then
+                ctr_bulb = ctr_bulb + 1
+            ElseIf dt.Rows(counter)(4) = 7 Then
+                ctr_phase_current = ctr_phase_current + 1
+            End If
+        Next
+        '    If dt.Rows.Count > 3 Then
+        '    validation = 1
+        'Else
+        '    validation = 0
+        'End If
+        If ctr_switch = 1 And ctr_clamp <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_voltage_phase <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_voltage_line <> 0 And ctr_bulb <> 0 Or ctr_phase_current <> 0 And ctr_switch = 1 And ctr_bulb <> 0 Or ctr_bulb <> 0 And ctr_switch = 1 Then
+            pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker_on.png")
+            pic_switch.SizeMode = PictureBoxSizeMode.Zoom
+
+            pic_color.Image = Image.FromFile(appPath & "\pictures\LED_LIGHT_INDICATOR_ON.png")
+            pic_color.SizeMode = PictureBoxSizeMode.Zoom
+
+            Dim primary_voltage, secondary_voltage, rating As Double
+
+            Dim result_primary = select_voltage_primary(transformer_id)
+            If result_primary <> "No data" Then
+                primary_voltage = result_primary
+            End If
+
+            Dim result_secondary = select_secondary_primary(transformer_id)
+            If result_secondary <> "No data" Then
+                secondary_voltage = result_secondary
+            End If
+
+            Dim result_rating = select_rating(transformer_id)
+            If result_rating <> "No data" Then
+                Dim split_value() As String = result_rating.Split(" ")
+                rating = CDbl(split_value(0))
+            End If
+            Dim cp, cl, apparent, real As Double
+            If category = "primary" Then
+                cp = Math.Round(CDbl(rating) / CDbl(primary_voltage), 2)
+                'cl = Math.Round(cp * 1.73, 2)
+                'vl = Math.Round((primary_voltage * 1.73), 2)
+                apparent = Math.Round((1.73 * primary_voltage * cp), 2)
+            Else category = "secondary"
+                cp = Math.Round(CDbl(rating) / CDbl(secondary_voltage), 2)
+                'cl = Math.Round(cp * 1.73, 2)
+                'vl = Math.Round((secondary_voltage * 1.73), 2)
+                real = Math.Round(((secondary_voltage * 1.73) * cp), 2)
+            End If
+            If ctr_clamp > 3 Then
+
+
+                If category = "primary" Then
+                    txt_apparent.Text = apparent.ToString
+                    txt_cp.Text = cp.ToString
+                    txt_cl.Text = cp.ToString
+                ElseIf category = "secondary" Then
+                    txt_real.Text = real.ToString
+                    txt_cp.Text = cp.ToString
+                    txt_cl.Text = cp.ToString
+                End If
+
+            End If
+            If ctr_voltage_phase > 3 Then
+                If category = "primary" Then
+                    txt_vp.Text = primary_voltage
+                    txt_apparent.Text = apparent.ToString
+                ElseIf category = "secondary" Then
+                    txt_vp.Text = secondary_voltage
+                    txt_real.Text = real.ToString
+                End If
+
+            End If
+            If ctr_voltage_line > 3 Then
+
+                If category = "primary" Then
+                    txt_vl.Text = primary_voltage
+                    txt_apparent.Text = apparent.ToString
+                ElseIf category = "secondary" Then
+                    txt_real.Text = real.ToString
+                    txt_vl.Text = secondary_voltage
+                End If
+            End If
+
+            If ctr_phase_current > 3 Then
+                If category = "primary" Then
+                    txt_apparent.Text = apparent.ToString
+                    txt_cp.Text = cp.ToString
+                    txt_cl.Text = cp.ToString
+                ElseIf category = "secondary" Then
+                    txt_real.Text = real.ToString
+                    txt_cp.Text = cp.ToString
+                    txt_cl.Text = cp.ToString
+                End If
+            End If
+
+            If ctr_bulb > 11 Then
+                pic_bulb1.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
+                pic_bulb1.SizeMode = PictureBoxSizeMode.Zoom
+
+                pic_bulb2.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
+                pic_bulb2.SizeMode = PictureBoxSizeMode.Zoom
+
+                pic_bulb3.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
+                pic_bulb3.SizeMode = PictureBoxSizeMode.Zoom
+            End If
+
+
+            ctr_switch = 1
+        Else
+            pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker.png")
+            pic_switch.SizeMode = PictureBoxSizeMode.Zoom
+
+            pic_color.Image = Image.FromFile(appPath & "\pictures\LED_LIGHT_INDICATOR_OFF.png")
+            pic_color.SizeMode = PictureBoxSizeMode.Zoom
+            ctr_switch = 0
+
+            pic_bulb1.Image = Image.FromFile(appPath & "\pictures\bulb_off.png")
+            pic_bulb1.SizeMode = PictureBoxSizeMode.Zoom
+
+            pic_bulb2.Image = Image.FromFile(appPath & "\pictures\bulb_off.png")
+            pic_bulb2.SizeMode = PictureBoxSizeMode.Zoom
+
+            pic_bulb3.Image = Image.FromFile(appPath & "\pictures\bulb_off.png")
+            pic_bulb3.SizeMode = PictureBoxSizeMode.Zoom
+
+            txt_cl.Clear()
+            txt_cp.Clear()
+            txt_vl.Clear()
+            txt_vp.Clear()
+            txt_apparent.Clear()
+            txt_real.Clear()
+
+        End If
+    End Sub
+
+    Private Sub btn_vpred_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_vpred.MouseDown, btn_vpblack.MouseDown, btn_vlblack.MouseDown, btn_vlred.MouseDown
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                If ctr_switch <> 1 Then
+                    Dim myButton As Button = CType(sender, Button)
+
+                    Dim btn = myButton.Name
+                    Dim query, query_delete As String
+                    query = "select * from openwye_opendelta_lines order by id asc"
+                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
+                    Dim dt As New DataTable
+                    da.Fill(dt)
+                    For counter As Integer = 0 To dt.Rows.Count - 1
+
+                        If dt.Rows(counter)(1) = btn.ToString Then
+                            If dt.Rows(counter + 1)(3) = "" Then
+                                query_delete = "delete from openwye_opendelta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+                            ElseIf dt.Rows(counter - 1)(3) = "" Then
+                                query_delete = "delete from openwye_opendelta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+
+                            End If
+                            Exit For
+                        End If
+                    Next
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
+
+            End If
+        End If
+        Me.Refresh()
+
+    End Sub
+
+    Private Sub pic_clamp_meter_cp_MouseDown(sender As Object, e As MouseEventArgs) Handles pic_clamp_meter_cp.MouseDown
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                If ctr_switch <> 1 Then
+                    Dim query_delete As String
+                    query_delete = "delete from openwye_opendelta_lines where clamp_meter in ('6','7')"
+                    Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                    Dim dt_delete As New DataTable
+                    da_delete.Fill(dt_delete)
+
+                    ctr_lines = ctr_lines - 2
+                    get_point()
+
+                    pic_clamp_meter_cp.Visible = False
+                    btn_clamp_cpblack.Visible = False
+                    btn_clamp_cpred.Visible = False
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
+
+
+                'pic_clamp_meter.Location = (702, 462)
+            End If
+        End If
+        Me.Refresh()
+    End Sub
+
+    Private Sub pic_clamp_meter_MouseDown(sender As Object, e As MouseEventArgs) Handles pic_clamp_meter.MouseDown
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                If ctr_switch <> 1 Then
+                    Dim query_delete As String
+                    query_delete = "delete from openwye_opendelta_lines where clamp_meter in ('1','2')"
+                    Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                    Dim dt_delete As New DataTable
+                    da_delete.Fill(dt_delete)
+
+                    ctr_lines = ctr_lines - 2
+                    get_point()
+
+                    pic_clamp_meter.Visible = False
+                    btn_clamp_black.Visible = False
+                    btn_clamp_red.Visible = False
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
+
+
+                'pic_clamp_meter.Location = (702, 462)
+            End If
+        End If
+        Me.Refresh()
+    End Sub
+
+    Private Sub btn_l2red_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_l1red.MouseDown, btn_l1black.MouseDown, btn_l2red.MouseDown, btn_l2black.MouseDown, btn_l3red.MouseDown, btn_l3black.MouseDown
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                If ctr_switch <> 1 Then
+                    Dim myButton As Button = CType(sender, Button)
+
+                    Dim btn = myButton.Name
+                    Dim query, query_delete As String
+                    query = "select * from openwye_opendelta_lines order by id asc"
+                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
+                    Dim dt As New DataTable
+                    da.Fill(dt)
+                    For counter As Integer = 0 To dt.Rows.Count - 1
+
+                        If dt.Rows(counter)(1) = btn.ToString Then
+                            If dt.Rows(counter + 1)(3) = "" Then
+                                query_delete = "delete from openwye_opendelta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+                            ElseIf dt.Rows(counter - 1)(3) = "" Then
+                                query_delete = "delete from openwye_opendelta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+
+                            End If
+                            Exit For
+                        End If
+                    Next
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
+
+            End If
+        End If
+        Me.Refresh()
+    End Sub
+
 
 #Region "subs"
     Private Sub counter_1(btn_name, pen_color, clamp)
@@ -992,6 +1415,58 @@ Public Class OpenwyeOpendeltaActivity
 
             End If
         Next
+
+    End Sub
+
+    Private Sub btn_prim_n_6_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_prim_a_1.MouseDown, btn_prim_a_2.MouseDown, btn_prim_a_3.MouseDown, btn_prim_a_4.MouseDown, btn_prim_a_5.MouseDown, btn_prim_a_6.MouseDown,
+                                                                            btn_prim_b_1.MouseDown, btn_prim_b_2.MouseDown, btn_prim_b_3.MouseDown, btn_prim_b_4.MouseDown, btn_prim_b_5.MouseDown, btn_prim_b_6.MouseDown,
+                                                                            btn_prim_c_1.MouseDown, btn_prim_c_2.MouseDown, btn_prim_c_3.MouseDown, btn_prim_c_4.MouseDown, btn_prim_c_5.MouseDown, btn_prim_c_6.MouseDown,
+                                                                            btn_prim_n_1.MouseDown, btn_prim_n_2.MouseDown, btn_prim_n_3.MouseDown, btn_prim_n_4.MouseDown, btn_prim_n_5.MouseDown, btn_prim_n_6.MouseDown
+
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                If ctr_switch <> 1 Then
+                    Dim myButton As Button = CType(sender, Button)
+
+                    Dim btn = myButton.Name
+                    Dim query, query_delete As String
+                    query = "select * from openwye_opendelta_lines order by id asc"
+                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
+                    Dim dt As New DataTable
+                    da.Fill(dt)
+                    For counter As Integer = 0 To dt.Rows.Count - 1
+
+                        If dt.Rows(counter)(1) = btn.ToString Then
+                            If dt.Rows(counter + 1)(3) = "" Then
+                                query_delete = "delete from openwye_opendelta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+                            ElseIf dt.Rows(counter - 1)(3) = "" Then
+                                query_delete = "delete from openwye_opendelta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                                Dim dt_delete As New DataTable
+                                da_delete.Fill(dt_delete)
+
+                                ctr_lines = ctr_lines - 2
+                                get_point()
+
+                            End If
+                            Exit For
+                        End If
+                    Next
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
+
+            End If
+        End If
+        Me.Refresh()
 
     End Sub
 

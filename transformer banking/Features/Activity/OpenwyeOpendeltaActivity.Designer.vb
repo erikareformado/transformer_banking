@@ -347,7 +347,7 @@ Partial Class OpenwyeOpendeltaActivity
         Me.btn_t1_x1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t1_x1.FlatAppearance.BorderSize = 0
         Me.btn_t1_x1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t1_x1.Location = New System.Drawing.Point(106, 290)
+        Me.btn_t1_x1.Location = New System.Drawing.Point(106, 289)
         Me.btn_t1_x1.Name = "btn_t1_x1"
         Me.btn_t1_x1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t1_x1.TabIndex = 65
@@ -358,7 +358,7 @@ Partial Class OpenwyeOpendeltaActivity
         Me.btn_t1_x2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t1_x2.FlatAppearance.BorderSize = 0
         Me.btn_t1_x2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t1_x2.Location = New System.Drawing.Point(156, 290)
+        Me.btn_t1_x2.Location = New System.Drawing.Point(155, 291)
         Me.btn_t1_x2.Name = "btn_t1_x2"
         Me.btn_t1_x2.Size = New System.Drawing.Size(30, 25)
         Me.btn_t1_x2.TabIndex = 64
@@ -369,7 +369,7 @@ Partial Class OpenwyeOpendeltaActivity
         Me.btn_t2_x1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t2_x1.FlatAppearance.BorderSize = 0
         Me.btn_t2_x1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t2_x1.Location = New System.Drawing.Point(252, 290)
+        Me.btn_t2_x1.Location = New System.Drawing.Point(252, 291)
         Me.btn_t2_x1.Name = "btn_t2_x1"
         Me.btn_t2_x1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t2_x1.TabIndex = 63
@@ -380,7 +380,7 @@ Partial Class OpenwyeOpendeltaActivity
         Me.btn_t2_x2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t2_x2.FlatAppearance.BorderSize = 0
         Me.btn_t2_x2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t2_x2.Location = New System.Drawing.Point(301, 290)
+        Me.btn_t2_x2.Location = New System.Drawing.Point(301, 289)
         Me.btn_t2_x2.Name = "btn_t2_x2"
         Me.btn_t2_x2.Size = New System.Drawing.Size(30, 25)
         Me.btn_t2_x2.TabIndex = 62
@@ -914,7 +914,7 @@ Partial Class OpenwyeOpendeltaActivity
         Me.btn_l1red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btn_l1red.FlatAppearance.BorderSize = 0
         Me.btn_l1red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_l1red.Location = New System.Drawing.Point(594, 384)
+        Me.btn_l1red.Location = New System.Drawing.Point(596, 384)
         Me.btn_l1red.Name = "btn_l1red"
         Me.btn_l1red.Size = New System.Drawing.Size(31, 24)
         Me.btn_l1red.TabIndex = 30
