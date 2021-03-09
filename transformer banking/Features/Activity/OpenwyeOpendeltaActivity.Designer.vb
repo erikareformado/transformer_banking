@@ -41,8 +41,6 @@ Partial Class OpenwyeOpendeltaActivity
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.btn_t2 = New System.Windows.Forms.Button()
-        Me.btn_t1 = New System.Windows.Forms.Button()
         Me.btn_clamp_cpred = New System.Windows.Forms.Button()
         Me.btn_clamp_cpblack = New System.Windows.Forms.Button()
         Me.pic_clamp_meter_cp = New System.Windows.Forms.PictureBox()
@@ -236,8 +234,6 @@ Partial Class OpenwyeOpendeltaActivity
         Me.panel_activity.Controls.Add(Me.Label14)
         Me.panel_activity.Controls.Add(Me.Label13)
         Me.panel_activity.Controls.Add(Me.Label12)
-        Me.panel_activity.Controls.Add(Me.btn_t2)
-        Me.panel_activity.Controls.Add(Me.btn_t1)
         Me.panel_activity.Controls.Add(Me.btn_clamp_cpred)
         Me.panel_activity.Controls.Add(Me.btn_clamp_cpblack)
         Me.panel_activity.Controls.Add(Me.pic_clamp_meter_cp)
@@ -486,32 +482,6 @@ Partial Class OpenwyeOpendeltaActivity
         Me.Label12.Size = New System.Drawing.Size(20, 14)
         Me.Label12.TabIndex = 178
         Me.Label12.Text = "T1"
-        '
-        'btn_t2
-        '
-        Me.btn_t2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btn_t2.FlatAppearance.BorderSize = 0
-        Me.btn_t2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_t2.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.btn_t2.Location = New System.Drawing.Point(255, 242)
-        Me.btn_t2.Name = "btn_t2"
-        Me.btn_t2.Size = New System.Drawing.Size(73, 25)
-        Me.btn_t2.TabIndex = 176
-        Me.btn_t2.UseVisualStyleBackColor = True
-        '
-        'btn_t1
-        '
-        Me.btn_t1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btn_t1.FlatAppearance.BorderSize = 0
-        Me.btn_t1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_t1.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.btn_t1.Location = New System.Drawing.Point(111, 245)
-        Me.btn_t1.Name = "btn_t1"
-        Me.btn_t1.Size = New System.Drawing.Size(73, 25)
-        Me.btn_t1.TabIndex = 175
-        Me.btn_t1.UseVisualStyleBackColor = True
         '
         'btn_clamp_cpred
         '
@@ -1786,8 +1756,6 @@ Partial Class OpenwyeOpendeltaActivity
     Friend WithEvents Label14 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents Label12 As Label
-    Friend WithEvents btn_t2 As Button
-    Friend WithEvents btn_t1 As Button
     Friend WithEvents btn_clamp_cpred As Button
     Friend WithEvents btn_clamp_cpblack As Button
     Friend WithEvents pic_clamp_meter_cp As PictureBox

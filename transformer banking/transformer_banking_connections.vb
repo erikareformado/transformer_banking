@@ -49,7 +49,7 @@
         Home.Show()
         Home.panel_all.Controls.Clear()
         Home.panel_all.Controls.Add(Home.uc_openwye_opendelta_intro)
-        Home.lbl_connection_type.Text = "OPEN-WYE CONNECTION"
+        Home.lbl_connection_type.Text = "OPEN WYE-OPEN DELTA CONNECTION"
     End Sub
 
     Private Sub PictureBox3_Click(sender As Object, e As EventArgs) Handles picturebox_close.Click

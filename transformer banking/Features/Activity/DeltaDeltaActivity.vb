@@ -946,13 +946,13 @@ Public Class DeltaDeltaActivity
     End Sub
     Private Sub WyeWyeActivities_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbopen()
-        get_point()
+
         Dim result = search_transformer_id(lbl_polarity.Text, lbl_rating.Text, Home.lbl_connection_type.Text, lbl_primary_voltage.Text, lbl_secondary_voltage.Text)
 
         If result <> 0 Then
             transformer_id = result
         End If
-
+        get_point()
         select_clamp_phase()
         select_clamp_line()
     End Sub

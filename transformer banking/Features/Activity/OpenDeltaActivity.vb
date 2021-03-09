@@ -386,9 +386,7 @@ Public Class OpenDeltaActivity
 
     End Sub
 
-    Private Sub btn_sec_n_1_Click(sender As Object, e As EventArgs) Handles btn_sec_n_1.Click
 
-    End Sub
 
     Private Sub btn_sec_n_6_Click(sender As Object, e As EventArgs) Handles btn_sec_n_1.Click, btn_sec_n_2.Click, btn_sec_n_3.Click, btn_sec_n_4.Click, btn_sec_n_5.Click, btn_sec_n_6.Click,
                                             btn_sec_l1_1.Click, btn_sec_l1_2.Click, btn_sec_l1_3.Click, btn_sec_l1_4.Click, btn_sec_l1_5.Click, btn_sec_l1_6.Click,
