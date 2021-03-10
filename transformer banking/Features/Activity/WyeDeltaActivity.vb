@@ -452,9 +452,7 @@ Public Class WyeDeltaActivity
         End If
     End Sub
 
-    Private Sub btn_vpblack_Click(sender As Object, e As EventArgs) Handles btn_vpblack.Click
 
-    End Sub
 
     Private Sub btn_cl_clamp_meter_Click(sender As Object, e As EventArgs) Handles btn_cl_clamp_meter.Click
         ctr_cl_clamp = 1

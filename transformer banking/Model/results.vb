@@ -1,16 +1,28 @@
 ﻿Module results
-    Public Class activity_result
+    Public Class results_activity
         Dim query As String
         Dim result As String
-        Public Function save(transformer_id, column, value)
+        Public Sub save(transformer_id, column, value)
+            'MsgBox(transformer_id)
+            Dim query_search = "select * from results_activity where transformer_id = '" & transformer_id & "' "
+            Dim dt_search As New DataTable
+            Dim da_search As New Odbc.OdbcDataAdapter(query_search, conn)
+            da_search.Fill(dt_search)
+            'MsgBox(dt_search.Rows.Count)
 
-            query = "Insert into activity_result(transformer_details, connection, " & column & ") values ( '" & transformer_id & "', '" & value & "')"
-            Dim da As New Odbc.OdbcDataAdapter(query, conn)
-            Dim dt As New DataTable
-            da.Fill(dt)
-            Return "1"
+            If dt_search.Rows.Count = 0 Then
+                query = "Insert into results_activity(transformer_id, " & column & ") values ( '" & transformer_id & "', '" & value & "')"
+                Dim da As New Odbc.OdbcDataAdapter(query, conn)
+                Dim dt As New DataTable
+                da.Fill(dt)
+            Else
+                query = "update results_activity set " & column & " = '" & value & "' where transformer_id = '" & transformer_id & "'"
+                Dim da As New Odbc.OdbcDataAdapter(query, conn)
+                Dim dt As New DataTable
+                da.Fill(dt)
+            End If
 
-        End Function
+        End Sub
 
         Public Function select_specific(transformer_id)
             Dim result As New List(Of String)

@@ -120,4 +120,12 @@
         Return result
     End Function
 
+    Public Sub update_clamp_no(no)
+        query = "update wye_wye_lines set clamp_meter = '" & no.ToString & "' WHERE id in (
+                SELECT id FROM wye_wye_lines ORDER BY id desc LIMIT 1)"
+        Dim da As New Odbc.OdbcDataAdapter(query, conn)
+        Dim dt As New DataTable
+        da.Fill(dt)
+    End Sub
+
 End Module
