@@ -15,16 +15,17 @@
         ElseIf txt_secondary_voltage.Text = ""
             MsgBox("Please Input Secondary Voltage!", MsgBoxStyle.Exclamation, "Transformer Banking")
         Else
+            Dim result = save_transformer_details(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
 
             If Home.lbl_connection_type.Text = "WYE-WYE CONNECTION" Then
-
-                Home.uc_wye_wye_activity.lbl_primary_voltage.Text = txt_primary_voltage.Text
-                Home.uc_wye_wye_activity.lbl_secondary_voltage.Text = txt_secondary_voltage.Text
-                Home.uc_wye_wye_activity.lbl_polarity.Text = cmb_polarity.Text
-                Home.uc_wye_wye_activity.lbl_rating.Text = cmb_rating.Text
-
                 Home.panel_all.Controls.Clear()
                 Home.panel_all.Controls.Add(Home.uc_wye_wye_activity)
+
+                'Home.uc_wye_wye_activity.lbl_primary_voltage.Text = txt_primary_voltage.Text
+                'Home.uc_wye_wye_activity.lbl_secondary_voltage.Text = txt_secondary_voltage.Text
+                'Home.uc_wye_wye_activity.lbl_polarity.Text = cmb_polarity.Text
+                'Home.uc_wye_wye_activity.lbl_rating.Text = cmb_rating.Text
+                Home.uc_wye_wye_activity.refresh_form(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
                 If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
                     Home.uc_wye_wye_activity.Label21.Text = "X2"
                     Home.uc_wye_wye_activity.btn_t1_x1.Name = "btn_t1_x2"
@@ -155,7 +156,6 @@
                     Home.uc_open_wye_open_delta_activity.Label25.Text = "X1"
                 End If
             End If
-            Dim result = save_transformer_details(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
 
 
         End If
@@ -170,5 +170,11 @@
     Private Sub tranformer_Details_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txt_primary_voltage.Text = "250"
         txt_secondary_voltage.Text = "30"
+        refresh_form()
+    End Sub
+
+    Public Sub refresh_form()
+        Me.Controls.Clear()
+        InitializeComponent()
     End Sub
 End Class

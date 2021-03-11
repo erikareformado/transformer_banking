@@ -72,9 +72,9 @@
 
         Return result
     End Function
-    Public Sub delete_unwanted_connection()
+    Public Sub delete_unwanted_connection(transformer)
         query = "DELETE FROM wye_wye_lines WHERE id in (
-                SELECT id FROM wye_wye_lines ORDER BY id desc LIMIT 1)"
+                SELECT id FROM wye_wye_lines where transformer_details_id = '" & transformer & "' ORDER BY id desc LIMIT 1)"
         Dim da As New Odbc.OdbcDataAdapter(query, conn)
         Dim dt As New DataTable
         da.Fill(dt)
@@ -107,10 +107,10 @@
 
         Return dt.Rows.Count
     End Function
-    Public Function select_clamp_count()
+    Public Function select_clamp_count(transformer_id)
         Dim result As Integer
 
-        query = "select * from wye_wye_lines where clamp_meter = '1' order by id asc"
+        query = "select * from wye_wye_lines where clamp_meter = '1' where transformer_details_id = '" & transformer_id & "' order by id asc"
         Dim da As New Odbc.OdbcDataAdapter(query, conn)
         Dim dt As New DataTable
         da.Fill(dt)
@@ -120,9 +120,9 @@
         Return result
     End Function
 
-    Public Sub update_clamp_no(no)
+    Public Sub update_clamp_no(no, transformer_id)
         query = "update wye_wye_lines set clamp_meter = '" & no.ToString & "' WHERE id in (
-                SELECT id FROM wye_wye_lines ORDER BY id desc LIMIT 1)"
+                SELECT id FROM wye_wye_lines where transformer_details_id = '" & transformer_id & "' ORDER BY id desc LIMIT 1)"
         Dim da As New Odbc.OdbcDataAdapter(query, conn)
         Dim dt As New DataTable
         da.Fill(dt)

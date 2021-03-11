@@ -46,16 +46,6 @@ Public Class WyeWyeActivities
     Dim pens As New Pen(Color.Red, 2)
     Private Sub WyeWyeActivities_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbopen()
-        get_point()
-        Dim result = search_transformer_id(lbl_polarity.Text, lbl_rating.Text, Home.lbl_connection_type.Text, lbl_primary_voltage.Text, lbl_secondary_voltage.Text)
-
-        If result <> 0 Then
-            transformer_id = result
-        End If
-        'transformer_id = search_transformer_id(lbl_polarity.Text, lbl_rating.Text, Home.lbl_connection_type.Text, lbl_primary_voltage.Text, lbl_secondary_voltage.Text)
-        select_clamp()
-
-
     End Sub
 
     Private Sub btn_prim_a1_Click(sender As Object, e As EventArgs) Handles btn_prim_a_1.Click, btn_prim_a_2.Click, btn_prim_a_3.Click, btn_prim_a_4.Click, btn_prim_a_5.Click, btn_prim_a_6.Click,
@@ -133,7 +123,7 @@ Public Class WyeWyeActivities
                     Else
                         'ctr_lines = ctr_lines - 2
                         'points.RemoveAt(ctr_lines)
-                        delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id)
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
                     clamp_meter = 0
@@ -147,7 +137,7 @@ Public Class WyeWyeActivities
                     Else
                         'ctr_lines = ctr_lines - 2
                         'points.RemoveAt(ctr_lines)
-                        delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id)
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
                     End If
@@ -220,7 +210,7 @@ Public Class WyeWyeActivities
                     Else
                         'ctr_lines = ctr_lines - 2
                         'points.RemoveAt(ctr_lines)
-                        delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id)
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
                     clamp_meter = 0
@@ -238,7 +228,7 @@ Public Class WyeWyeActivities
                     Else
                         'ctr_lines = ctr_lines - 2
                         'points.RemoveAt(ctr_lines)
-                        delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id)
                         get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
@@ -319,7 +309,7 @@ Public Class WyeWyeActivities
                     Else
                         'ctr_lines = ctr_lines - 2
                         'points.RemoveAt(ctr_lines)
-                        delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id)
                         get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
@@ -334,7 +324,7 @@ Public Class WyeWyeActivities
                         counter_2(myButton.Name, pen_color, clamp_meter)
                     Else
 
-                        delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id)
                         get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
@@ -419,7 +409,7 @@ Public Class WyeWyeActivities
                     Else
                         'ctr_lines = ctr_lines - 2
                         'points.RemoveAt(ctr_lines)
-                        delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id)
                         get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
@@ -440,7 +430,7 @@ Public Class WyeWyeActivities
                     Else
                         'ctr_lines = ctr_lines - 2
                         'points.RemoveAt(ctr_lines)
-                        delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id)
                         get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
@@ -493,12 +483,12 @@ Public Class WyeWyeActivities
         draw_lines(e)
     End Sub
     Private Sub btn_clamp_meter_Click(sender As Object, e As EventArgs) Handles btn_clamp_meter.Click
-        Dim clamp_ctr = select_clamp_count()
+        Dim clamp_ctr = select_clamp_count(transformer_id)
         If clamp_ctr = 0 Then
             clamp_meter = 1
         ElseIf clamp_ctr = 1
             ctr_lines = ctr_lines - 1
-            delete_unwanted_connection()
+            delete_unwanted_connection(transformer_id)
             clamp_meter = 1
         Else
             MsgBox("Clamp meter already exist.", MsgBoxStyle.Information, "Transformer Banking")
@@ -537,7 +527,7 @@ Public Class WyeWyeActivities
                 Else
                     'ctr_lines = ctr_lines - 2
                     points.RemoveAt(ctr_lines)
-                    delete_unwanted_connection()
+                    delete_unwanted_connection(transformer_id)
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
                 End If
@@ -576,9 +566,10 @@ Public Class WyeWyeActivities
 
             Else
                 'ctr_lines = ctr_lines - 2
-                points.RemoveAt(ctr_lines)
-                    delete_unwanted_connection()
-                    MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
+                'points.RemoveAt(ctr_lines)
+                delete_unwanted_connection(transformer_id)
+                get_point()
+                MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
                 End If
             ctr = 0
@@ -613,18 +604,18 @@ Public Class WyeWyeActivities
         Else
 
             If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
-                update_clamp_no("3")
+                update_clamp_no("3", transformer_id)
                 counter_2(myButton.Name, pen_color, "3")
 
 
             ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
-                update_clamp_no("4")
+                update_clamp_no("4", transformer_id)
                 counter_2(myButton.Name, pen_color, "4")
 
             Else
 
 
-                delete_unwanted_connection()
+                delete_unwanted_connection(transformer_id)
                 get_point()
                 MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
@@ -643,12 +634,12 @@ Public Class WyeWyeActivities
             Dim result = count_points Mod 2
 
             If result <> 0 Then
-                delete_unwanted_connection()
+                delete_unwanted_connection(transformer_id)
             End If
         ElseIf ctr = 1 Then
             ctr = 0
             ctr_lines = ctr_lines - 1
-            delete_unwanted_connection()
+            delete_unwanted_connection(transformer_id)
         Else
 
         End If
@@ -847,7 +838,7 @@ Public Class WyeWyeActivities
 
                 Dim btn = myButton.Name
                 Dim query As String
-            query = "delete from wye_wye_lines"
+            query = "delete from wye_wye_lines where transformer_details_id = '" & transformer_id & "'"
             Dim da As New Odbc.OdbcDataAdapter(query, conn)
                 Dim dt As New DataTable
             da.Fill(dt)
@@ -888,7 +879,8 @@ Public Class WyeWyeActivities
             Else
                 'ctr_lines = ctr_lines - 2
                 'points.RemoveAt(ctr_lines)
-                delete_unwanted_connection()
+                delete_unwanted_connection(transformer_id)
+                get_point()
                 MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
             End If
@@ -898,18 +890,39 @@ Public Class WyeWyeActivities
         End If
     End Sub
 #Region "subs"
+    Public Sub refresh_form(polarity, rating, connection, voltage_primary, voltage_secondary)
+        Me.Controls.Clear()
+        InitializeComponent()
+
+        lbl_primary_voltage.Text = voltage_primary
+        lbl_secondary_voltage.Text = voltage_secondary
+        lbl_polarity.Text = polarity
+        lbl_rating.Text = rating
+        'Dim connection = Home.lbl_connection_type.Text
+
+        'MsgBox(connection)
+        Dim result = search_transformer_id(lbl_polarity.Text, lbl_rating.Text, connection, lbl_primary_voltage.Text, lbl_secondary_voltage.Text)
+        If result <> 0 Then
+            transformer_id = result
+        End If
+
+        get_point()
+        'MsgBox(transformer_id.ToString)
+        'transformer_id = search_transformer_id(lbl_polarity.Text, lbl_rating.Text, Home.lbl_connection_type.Text, lbl_primary_voltage.Text, lbl_secondary_voltage.Text)
+        select_clamp()
+    End Sub
     Private Sub delete_connections(btn)
         Dim query, query_delete As String
-        query = "select * from wye_wye_lines order by id asc"
+        query = "select * from wye_wye_lines where transformer_details_id = '" & transformer_id & "' order by id asc"
         Dim da As New Odbc.OdbcDataAdapter(query, conn)
         Dim dt As New DataTable
         da.Fill(dt)
         For counter As Integer = 0 To dt.Rows.Count - 1
 
             If dt.Rows(counter)(1) = btn.ToString Then
-                If dt.Rows(counter - 1)(3) = "" Then
-
-                    query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter - 1)(0) & "')"
+                If dt.Rows(counter)(3) = "" Then
+                    'MsgBox(dt.Rows(counter)(0).ToString)
+                    query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
                     Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
                     Dim dt_delete As New DataTable
                     da_delete.Fill(dt_delete)
@@ -1099,7 +1112,7 @@ Public Class WyeWyeActivities
             If result = DialogResult.Yes Then
                 If ctr_switch <> 1 Then
                     Dim query_delete As String
-                    query_delete = "delete from wye_wye_lines where clamp_meter in ('1','2')"
+                    query_delete = "delete from wye_wye_lines where clamp_meter in ('1','2') and  transformer_details_id = '" & transformer_id & "'"
                     Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
                     Dim dt_delete As New DataTable
                     da_delete.Fill(dt_delete)

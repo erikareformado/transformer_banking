@@ -141,7 +141,7 @@ Public Class WyeDeltaActivity
                     Else
                         ctr_lines = ctr_lines - 2
                         points.RemoveAt(ctr_lines)
-                        delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id)
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
                     End If

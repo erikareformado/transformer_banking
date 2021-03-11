@@ -20,7 +20,7 @@
             Dim dt As New DataTable
             da.Fill(dt)
         End If
-
+        conn.Close()
         Return "1"
     End Function
     Public Function search_transformer_id(polarity, rating, connection_type, primary_voltage, secondary_voltage)
