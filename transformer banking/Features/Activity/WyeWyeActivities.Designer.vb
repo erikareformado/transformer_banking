@@ -223,6 +223,7 @@ Partial Class WyeWyeActivities
         'btn_done
         '
         Me.btn_done.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btn_done.Enabled = False
         Me.btn_done.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btn_done.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_done.ForeColor = System.Drawing.Color.White

@@ -25,32 +25,30 @@
         End Sub
 
         Public Function select_specific(transformer_id)
-            Dim result As New List(Of String)
+            Dim result As Integer
 
-            query = "select * from activity_result where transformer_details = '" & transformer_id & "' "
+            query = "select * from results_activity where transformer_id = '" & transformer_id & "' "
             Dim da As New Odbc.OdbcDataAdapter(query, conn)
             Dim dt As New DataTable
             da.Fill(dt)
 
-            Dim phase_current, line_current, line_voltage, phase_voltage, apparent_power, real_power As String
-
             If dt.Rows.Count = 1 Then
-                phase_current = dt.Rows(0)(3).ToString
-                line_current = dt.Rows(0)(4).ToString
-                line_voltage = dt.Rows(0)(5).ToString
-                phase_voltage = dt.Rows(0)(6).ToString
-                apparent_power = dt.Rows(0)(7).ToString
-                real_power = dt.Rows(0)(8).ToString
-                result.Add(phase_current)
-                result.Add(line_current)
-                result.Add(line_voltage)
-                result.Add(phase_voltage)
-                result.Add(apparent_power)
-                result.Add(real_power)
-            Else
-                result.Add("No data")
-            End If
+                If dt.Rows(0)(2).ToString <> "" And
+                    dt.Rows(0)(3).ToString <> "" And
+                dt.Rows(0)(4).ToString <> "" And
+                dt.Rows(0)(5).ToString <> "" And
+                dt.Rows(0)(6).ToString <> "" And
+                dt.Rows(0)(7).ToString <> "" And
+                dt.Rows(0)(8).ToString <> "" And
+                dt.Rows(0)(9).ToString <> "" And
+                dt.Rows(0)(10).ToString <> "" And
+                dt.Rows(0)(11).ToString <> "" Then
 
+                    result = 1
+                Else
+                    result = 0
+                End If
+            End If
             Return result
 
         End Function

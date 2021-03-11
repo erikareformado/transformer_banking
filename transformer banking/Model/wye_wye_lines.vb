@@ -110,7 +110,7 @@
     Public Function select_clamp_count(transformer_id)
         Dim result As Integer
 
-        query = "select * from wye_wye_lines where clamp_meter = '1' where transformer_details_id = '" & transformer_id & "' order by id asc"
+        query = "select * from wye_wye_lines where clamp_meter = '1' and transformer_details_id = '" & transformer_id & "' order by id asc"
         Dim da As New Odbc.OdbcDataAdapter(query, conn)
         Dim dt As New DataTable
         da.Fill(dt)

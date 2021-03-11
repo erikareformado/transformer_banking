@@ -2308,7 +2308,7 @@ Next connect terminal (red) of Load 3 to terminal (yellow) of secondary line L3.
   <data name="pic_clamp_meter.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAPAAAAJHCAYAAACuBdt2AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAA/7JJREFUeF7snQW8VOX2/m/YGEh3n6K7G0SwCxW7u8DubkVsrx3XK45YSHfIEUWl
+        EQAACxEBf2RfkQAA/7JJREFUeF7snQW8VOX2/m/YGEh3n6K7G0SwCxW7u8DubkVsrx3XK45YSHfIEUWl
         +/Sc7uL0Oev/fd6ZDQN6/z/xXryKh89nsWf27Jkzs/d+3rXWs+ovTZs2nYyMr5Xac1B7D/zh7oHJf9FF
         +0vtv9ozUHsG/nBnoFmzZuNrAfyHu2y1X7j2DATOgFO+tRq49naoPQN/zDNQC+A/5nWr/da1Z6BWA/+Z
         7gF8pb+yWv81aHY14Xkfnp8qH0qr+C/YnsZxgziuNdsD/0zn7vf8W2t94N/z1Qn5boCmBRerfyhL7IHO
@@ -5483,7 +5483,7 @@ Next connect terminal (red) of Load 3 to terminal (yellow) of secondary line L3.
   <data name="btn_connect_wires.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAWAAAADZCAYAAAAe0+pFAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAA/7JJREFUeF7svQV4lWe6BcrM1GiRAIGEuLu7Z8fd3d3dnRhxIoSQECzBgru7a7EC
+        wgAADsIBFShKgAAA/7JJREFUeF7svQV4lWe6BcrM1GiRAIGEuLu7Z8fd3d3dnRhxIoSQECzBgru7a7EC
         baEFijstVKCUtuuunc6cc+89Y+e0M9POhOf5nr0jbPny7/W//3rXu9aoUSP/RnZgZAdGdmBkB0Z2YGQH
         RnZgZAdGdmBkB0Z2YGQHRnZgZAdGdmBkB0Z2YGQHRnZgZAdGdmBkB0Z2YGQHRnZgZAdGdmBkB0Z2YGQH
         RnZgZAdGduCfugOPv30p8ujlC7mHL77We/DNV4L7X3/le//rL/97ffPc9/43z/j1T+vBN88FD148Fzx8
@@ -7909,7 +7909,7 @@ Next connect terminal (red) of Load 3 to terminal (yellow) of secondary line L3.
   <data name="pic_bulb3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA0gAAAVQCAYAAABxsnoXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAA/7JJREFUeF7svQWcnOXV/n+vu7u7xpUgESQJgQQCgeASLEWCuxRrS9u3/tZo37fe
+        EQAACxEBf2RfkQAA/7JJREFUeF7svQWcnOXV/n+vu7u7xpUgESQJgQQCgeASLEWCuxRrS9u3/tZo37fe
         ty20vxpQN6RooaXUcCgeX5/d9H/+5zwzz+6shATYbHZmvv185hMKm9mZa77PM/d1n3Nfxzn+hwIogAIo
         gAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIo
         gAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIo
@@ -9944,7 +9944,7 @@ Next connect terminal (red) of Load 3 to terminal (yellow) of secondary line L3.
   <data name="pic_bulb2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA0gAAAVQCAYAAABxsnoXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAA/7JJREFUeF7svQWcnOXV/n+vu7u7xpUgESQJgQQCgeASLEWCuxRrS9u3/tZo37fe
+        EQAACxEBf2RfkQAA/7JJREFUeF7svQWcnOXV/n+vu7u7xpUgESQJgQQCgeASLEWCuxRrS9u3/tZo37fe
         ty20vxpQN6RooaXUcCgeX5/d9H/+5zwzz+6shATYbHZmvv185hMKm9mZa77PM/d1n3Nfxzn+hwIogAIo
         gAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIo
         gAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIo
@@ -11979,7 +11979,7 @@ Next connect terminal (red) of Load 3 to terminal (yellow) of secondary line L3.
   <data name="pic_switch.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADQAAABjCAYAAADU8yOkAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAALvFJREFUeF6NfHd8VFX+NpDee+8ESAVCFeuCXVcsKK5tV1B01bWBgooN6YjSIZAQ
+        wgAADsIBFShKgAAALvFJREFUeF6NfHd8VFX+NpDee+8ESAVCFeuCXVcsKK5tV1B01bWBgooN6YjSIZAQ
         0tukzKQnk957IyR0RVQExV133/Lv8z7fc2eSCeL+3nw+z+fce+femfOcbz3fc26mTOHflStncf5sJ86O
         NuHsyRacOdmMMyNN4zjNY4H52umTPP8DjA03YZTPjw4TQ004Ndg4jlE5HiLknuFGokHhlOCk1o4O1fMe
         EwbZEiN8bri/CcN9RG8jzo/14F/Xr2ySvv/u7//+n1/dL18exNipWowOlmO0vwKn+gSVGOmrMkGOK3Gq
@@ -12231,7 +12231,7 @@ Next connect terminal (red) of Load 3 to terminal (yellow) of secondary line L3.
   <data name="pic_bulb1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA0gAAAVQCAYAAABxsnoXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAA/7JJREFUeF7svQWcnOXV/n+vu7u7xpUgESQJgQQCgeASLEWCuxRrS9u3/tZo37fe
+        EQAACxEBf2RfkQAA/7JJREFUeF7svQWcnOXV/n+vu7u7xpUgESQJgQQCgeASLEWCuxRrS9u3/tZo37fe
         ty20vxpQN6RooaXUcCgeX5/d9H/+5zwzz+6shATYbHZmvv185hMKm9mZa77PM/d1n3Nfxzn+hwIogAIo
         gAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIo
         gAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIo
@@ -15646,7 +15646,7 @@ Next connect terminal (red) of Load 3 to terminal (yellow) of secondary line L3.
   <data name="btn_clamp_meter.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAPAAAAJHCAYAAACuBdt2AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAA/7JJREFUeF7snQW8VOX2/m/YGEh3n6K7G0SwCxW7u8DubkVsrx3XK45YSHfIEUWl
+        EQAACxEBf2RfkQAA/7JJREFUeF7snQW8VOX2/m/YGEh3n6K7G0SwCxW7u8DubkVsrx3XK45YSHfIEUWl
         +/Sc7uL0Oev/fd6ZDQN6/z/xXryKh89nsWf27Jkzs/d+3rXWs+ovTZs2nYyMr5Xac1B7D/zh7oHJf9FF
         +0vtv9ozUHsG/nBnoFmzZuNrAfyHu2y1X7j2DATOgFO+tRq49naoPQN/zDNQC+A/5nWr/da1Z6BWA/+Z
         7gF8pb+yWv81aHY14Xkfnp8qH0qr+C/YnsZxgziuNdsD/0zn7vf8W2t94N/z1Qn5boCmBRerfyhL7IHO

@@ -42,6 +42,7 @@ Public Class WyeWyeActivities
     Dim btn_primary, btn_transformer As String
 
     Dim transformer_id As Integer
+    Dim done As Integer
 
     Dim pens As New Pen(Color.Red, 2)
     Private Sub WyeWyeActivities_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -525,8 +526,7 @@ Public Class WyeWyeActivities
 
 
                 Else
-                    'ctr_lines = ctr_lines - 2
-                    points.RemoveAt(ctr_lines)
+
                     delete_unwanted_connection(transformer_id)
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
@@ -660,7 +660,7 @@ Public Class WyeWyeActivities
         For counter As Integer = 0 To dt.Rows.Count - 1
 
 
-            If dt.Rows(counter)(4) <> 2 Then
+            If dt.Rows(counter)(4) <> 2 And dt.Rows(counter)(4) <> 5 Then
 
                 If dt.Rows(counter)(3).ToString = "" Then
 
@@ -688,7 +688,7 @@ Public Class WyeWyeActivities
         'Else
         '    validation = 0
         'End If
-        If ctr_switch = 1 And ctr_clamp <> 0 Or ctr_switch = 1 And ctr_voltage_phase <> 0 Or ctr_switch = 1 And ctr_voltage_line <> 0 Or ctr_switch = 1 And ctr_bulb <> 0 Then
+        If ctr_switch = 1 And ctr_clamp <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_voltage_phase <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_voltage_line <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_bulb <> 0 Then
             pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker_on.png")
             pic_switch.SizeMode = PictureBoxSizeMode.Zoom
 
@@ -748,7 +748,7 @@ Public Class WyeWyeActivities
 
                     result_model.save(transformer_id, "primary_phase_voltage", primary_voltage)
                     result_model.save(transformer_id, "apparent_power", apparent.ToString)
-                ElseIf category = "secondary"Then
+                ElseIf category = "secondary" Then
                     txt_vp.Text = secondary_voltage
                     result_model.save(transformer_id, "secondary_phase_voltage", secondary_voltage)
                     txt_real.Text = real.ToString
@@ -785,6 +785,10 @@ Public Class WyeWyeActivities
 
 
             ctr_switch = 1
+            done = result_model.select_specific(transformer_id)
+            If done = 1 Then
+                btn_done.Enabled = True
+            End If
         Else
             pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker.png")
             pic_switch.SizeMode = PictureBoxSizeMode.Zoom
@@ -920,26 +924,52 @@ Public Class WyeWyeActivities
         For counter As Integer = 0 To dt.Rows.Count - 1
 
             If dt.Rows(counter)(1) = btn.ToString Then
-                If dt.Rows(counter)(3) = "" Then
-                    'MsgBox(dt.Rows(counter)(0).ToString)
+                If counter = 0 Then
+
                     query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                        Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                        Dim dt_delete As New DataTable
+                        da_delete.Fill(dt_delete)
+
+                        get_point()
+
+                    ElseIf counter = dt.Rows.Count - 1 Then
+
+                    query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter - 1)(0) & "')"
+                        Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                        Dim dt_delete As New DataTable
+                        da_delete.Fill(dt_delete)
+
+                        get_point()
+
+                Else
+                    If dt.Rows(counter - 1)(3) = "" Then
+                        'MsgBox(dt.Rows(counter)(0).ToString)
+                        query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                        Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                        Dim dt_delete As New DataTable
+                        da_delete.Fill(dt_delete)
+
+
+                        get_point()
+
+                    ElseIf dt.Rows(counter + 1)(3) = "" Then
+                        query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter - 1)(0) & "')"
                     Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
                     Dim dt_delete As New DataTable
                     da_delete.Fill(dt_delete)
 
-                    ctr_lines = ctr_lines - 2
-                    get_point()
-                ElseIf dt.Rows(counter + 1)(3) = "" Then
-                    query_delete = "delete from wye_wye_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                    Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                    Dim dt_delete As New DataTable
-                    da_delete.Fill(dt_delete)
 
-                    ctr_lines = ctr_lines - 2
                     get_point()
 
 
                 End If
+
+
+            End If
+
+
+
                 Exit For
             End If
         Next
@@ -1103,6 +1133,11 @@ Public Class WyeWyeActivities
             End If
         End If
         Me.Refresh()
+    End Sub
+
+    Private Sub btn_done_Click(sender As Object, e As EventArgs) Handles btn_done.Click
+        MsgBox("Wye wye connection was performed correctly. You may proceed on the next connection")
+        transformer_banking_connections.Show()
     End Sub
 
     Private Sub pic_clamp_meter_MouseDown(sender As Object, e As MouseEventArgs) Handles pic_clamp_meter.MouseDown

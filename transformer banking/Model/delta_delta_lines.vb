@@ -106,6 +106,14 @@
 
             Return result
         End Function
+
+        Public Sub update_clamp_no(no, transformer_id)
+            query = "update delta_delta_lines set clamp_meter = '" & no.ToString & "' WHERE id in (
+                SELECT id FROM delta_delta_lines where transformer_details_id = '" & transformer_id & "' ORDER BY id desc LIMIT 1)"
+            Dim da As New Odbc.OdbcDataAdapter(query, conn)
+            Dim dt As New DataTable
+            da.Fill(dt)
+        End Sub
     End Class
 
 

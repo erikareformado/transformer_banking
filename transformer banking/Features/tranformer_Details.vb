@@ -21,10 +21,7 @@
                 Home.panel_all.Controls.Clear()
                 Home.panel_all.Controls.Add(Home.uc_wye_wye_activity)
 
-                'Home.uc_wye_wye_activity.lbl_primary_voltage.Text = txt_primary_voltage.Text
-                'Home.uc_wye_wye_activity.lbl_secondary_voltage.Text = txt_secondary_voltage.Text
-                'Home.uc_wye_wye_activity.lbl_polarity.Text = cmb_polarity.Text
-                'Home.uc_wye_wye_activity.lbl_rating.Text = cmb_rating.Text
+
                 Home.uc_wye_wye_activity.refresh_form(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
                 If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
                     Home.uc_wye_wye_activity.Label21.Text = "X2"
@@ -94,13 +91,10 @@
                 End If
             ElseIf Home.lbl_connection_type.Text = "WYE-DELTA CONNECTION" Then
 
-                Home.uc_wye_delta_activity.lbl_primary_voltage.Text = txt_primary_voltage.Text
-                Home.uc_wye_delta_activity.lbl_secondary_voltage.Text = txt_secondary_voltage.Text
-                Home.uc_wye_delta_activity.lbl_polarity.Text = cmb_polarity.Text
-                Home.uc_wye_delta_activity.lbl_rating.Text = cmb_rating.Text
-
                 Home.panel_all.Controls.Clear()
                 Home.panel_all.Controls.Add(Home.uc_wye_delta_activity)
+                Home.uc_wye_delta_activity.refresh_form(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
+
                 If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
                     Home.uc_wye_delta_activity.Label21.Text = "X2"
                     Home.uc_wye_delta_activity.btn_t1_x1.Name = "btn_t1_x2"
