@@ -3,14 +3,9 @@
     Dim query As String
     Dim return_message As String
 
-    Public Function save_points(btn, points, color_pen, clamp_meter, transformer)
-        'Try
+    Public Function save_points(btn, points, color_pen, clamp_meter, transformer, table)
 
-        'Dim duplicate = select_duplicate(str_points, line_no)
-
-        'If duplicate = 1 Then
-        query = "Insert Into wye_wye_lines
-                (btn, points, color,clamp_meter,transformer_details_id) 
+        query = "Insert Into " & table & " (btn, points, color,clamp_meter,transformer_details_id) 
                 Values(
                  '" & btn & "','" & points.ToString & "', '" & color_pen.ToString & "','" & clamp_meter.ToString & "','" & transformer & "')"
 
@@ -18,22 +13,14 @@
         Dim dt As New DataTable
         da.Fill(dt)
         Return "1"
-        'Else
-        '    Return "Cannot connect same line."
-        'End If
 
-
-        'Catch ex As Exception
-        '    Return ex.ToString
-        'End Try
 
     End Function
 
-
-    Public Function select_wye_wye_points(transformer)
+    Public Function select_points(transformer, table)
         Dim result As New List(Of String)
 
-        query = "select * from wye_wye_lines where transformer_details_id = '" & transformer & "' order by id asc"
+        query = "select * from " & table & " where transformer_details_id = '" & transformer & "' order by id asc"
         Dim da As New Odbc.OdbcDataAdapter(query, conn)
         Dim dt As New DataTable
         da.Fill(dt)
@@ -44,10 +31,10 @@
 
         Return result
     End Function
-    Public Function select_count_wye_wye_points(transformer)
+    Public Function select_count_points(transformer, table)
         Dim result As Integer
 
-        query = "select * from wye_wye_lines where transformer_details_id = '" & transformer & "' order by id asc"
+        query = "select * from " & table & " where transformer_details_id = '" & transformer & "' order by id asc"
         Dim da As New Odbc.OdbcDataAdapter(query, conn)
         Dim dt As New DataTable
         da.Fill(dt)
@@ -56,10 +43,10 @@
 
         Return result
     End Function
-    Public Function select_color(transformer)
+    Public Function select_color(transformer, table)
         Dim result As New List(Of String)
 
-        query = "select * from wye_wye_lines where transformer_details_id = '" & transformer & "' order by id asc"
+        query = "select * from " & table & " where transformer_details_id = '" & transformer & "' order by id asc"
         Dim da As New Odbc.OdbcDataAdapter(query, conn)
         Dim dt As New DataTable
         da.Fill(dt)
@@ -72,45 +59,19 @@
 
         Return result
     End Function
-    Public Sub delete_unwanted_connection(transformer)
-        query = "DELETE FROM wye_wye_lines WHERE id in (
-                SELECT id FROM wye_wye_lines where transformer_details_id = '" & transformer & "' ORDER BY id desc LIMIT 1)"
+    Public Sub delete_unwanted_connection(transformer, table)
+        query = "DELETE FROM " & table & " WHERE id in (
+                SELECT id FROM " & table & " where transformer_details_id = '" & transformer & "' ORDER BY id desc LIMIT 1)"
         Dim da As New Odbc.OdbcDataAdapter(query, conn)
         Dim dt As New DataTable
         da.Fill(dt)
     End Sub
-    Public Function select_points(transformer_btn, primary_btn, no)
-        'Try
-        Dim result As New List(Of String)
-        'query = "select * from points where btn_1 = '" & transformer_btn & "' and btn_2 = '" & primary_btn & "' or btn_2 = 'prim_" & no & "' order by id asc"
-        query = "select * from points where  (btn_2 = '" & primary_btn & "' and transformer_details_id = '" & transformer_details_id & "') or (btn_1 = '" & transformer_btn & "' and btn_2 = 'prim_" & no & "' and transformer_details_id = '" & transformer_details_id & ") order by id asc"
-        Dim da As New Odbc.OdbcDataAdapter(query, conn)
-        Dim dt As New DataTable
-        da.Fill(dt)
 
-        For Each row As DataRow In dt.Rows
-            result.Add(row.Item("points"))
-        Next row
 
-        Return result
-        'Catch ex As Exception
-        'Return return_message = ex.ToString
-        'End Try
-    End Function
-    Public Function select_points_count(transformer_btn, primary_btn, no)
-        'Try
-        Dim result As New List(Of String)
-        query = "select * from points where  (btn_2 = '" & primary_btn & "' and transformer_details_id = '" & transformer_details_id & "') or (btn_1 = '" & transformer_btn & "' and btn_2 = 'prim_" & no & "' and transformer_details_id = '" & transformer_details_id & ") order by id asc"
-        Dim da As New Odbc.OdbcDataAdapter(query, conn)
-        Dim dt As New DataTable
-        da.Fill(dt)
-
-        Return dt.Rows.Count
-    End Function
-    Public Function select_clamp_count(transformer_id)
+    Public Function select_clamp_count(transformer_id, table)
         Dim result As Integer
 
-        query = "select * from wye_wye_lines where clamp_meter = '1' and transformer_details_id = '" & transformer_id & "' order by id asc"
+        query = "select * from " & table & " where clamp_meter = '1' and transformer_details_id = '" & transformer_id & "' order by id asc"
         Dim da As New Odbc.OdbcDataAdapter(query, conn)
         Dim dt As New DataTable
         da.Fill(dt)
@@ -120,12 +81,66 @@
         Return result
     End Function
 
-    Public Sub update_clamp_no(no, transformer_id)
-        query = "update wye_wye_lines set clamp_meter = '" & no.ToString & "' WHERE id in (
-                SELECT id FROM wye_wye_lines where transformer_details_id = '" & transformer_id & "' ORDER BY id desc LIMIT 1)"
+    Public Sub update_clamp_no(no, transformer_id, table)
+        query = "update " & table & " set clamp_meter = '" & no.ToString & "' WHERE id in (
+                SELECT id FROM " & table & " where transformer_details_id = '" & transformer_id & "' ORDER BY id desc LIMIT 1)"
         Dim da As New Odbc.OdbcDataAdapter(query, conn)
         Dim dt As New DataTable
         da.Fill(dt)
+    End Sub
+    Public Function select_clamp_count(table)
+        Dim result As Integer
+
+        query = "select * from " & table & " where clamp_meter = '1' order by id asc"
+        Dim da As New Odbc.OdbcDataAdapter(query, conn)
+        Dim dt As New DataTable
+        da.Fill(dt)
+
+        result = dt.Rows.Count
+
+        Return result
+    End Function
+
+    Public Sub delete_connections(btn, transformer_id, table)
+        Dim query, query_delete As String
+        query = "select * from " & table & " where transformer_details_id = '" & transformer_id & "' order by id asc"
+        Dim da As New Odbc.OdbcDataAdapter(query, conn)
+        Dim dt As New DataTable
+        da.Fill(dt)
+        For counter As Integer = 0 To dt.Rows.Count - 1
+
+            If dt.Rows(counter)(1) = btn.ToString Then
+                If counter = 0 Then
+
+                    query_delete = "delete from " & table & " where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                    Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                    Dim dt_delete As New DataTable
+                    da_delete.Fill(dt_delete)
+
+                ElseIf counter = dt.Rows.Count - 1 Then
+
+                    query_delete = "delete from " & table & " where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter - 1)(0) & "')"
+                    Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                    Dim dt_delete As New DataTable
+                    da_delete.Fill(dt_delete)
+                Else
+                    If dt.Rows(counter - 1)(3) = "" Then
+                        'MsgBox(dt.Rows(counter)(0).ToString)
+                        query_delete = "delete from " & table & " where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+                        Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                        Dim dt_delete As New DataTable
+                        da_delete.Fill(dt_delete)
+
+                    ElseIf dt.Rows(counter + 1)(3) = "" Then
+                        query_delete = "delete from " & table & " where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter - 1)(0) & "')"
+                        Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+                        Dim dt_delete As New DataTable
+                        da_delete.Fill(dt_delete)
+                    End If
+                End If
+                Exit For
+            End If
+        Next
     End Sub
 
 End Module

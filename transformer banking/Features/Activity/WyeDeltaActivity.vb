@@ -2,8 +2,9 @@
 Public Class WyeDeltaActivity
     Dim appPath As String = Application.StartupPath()
 
-    Dim wye_delta_model As New wye_delta
+    'Dim wye_delta_model As New wye_delta
     Dim result_model As New results_activity
+    Dim table As String
 
 
     Dim ctr As Integer = 0
@@ -128,7 +129,7 @@ Public Class WyeDeltaActivity
 
                     Else
 
-                        wye_delta_model.delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id, table)
                         get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
@@ -142,7 +143,7 @@ Public Class WyeDeltaActivity
                         counter_2(myButton.Name, pen_color, clamp_meter)
                     Else
 
-                        delete_unwanted_connection(transformer_id)
+                        delete_unwanted_connection(transformer_id, table)
                         get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
@@ -169,16 +170,16 @@ Public Class WyeDeltaActivity
         wire_conenction = 1
 
         If ctr = 0 Then
-            Dim count_points = wye_delta_model.select_count_wye_delta_points(transformer_id)
+            Dim count_points = select_count_points(transformer_id, table)
             Dim result = count_points Mod 2
 
             If result <> 0 Then
-                wye_delta_model.delete_unwanted_connection(transformer_id)
+                delete_unwanted_connection(transformer_id, table)
             End If
         ElseIf ctr = 1 Then
             ctr = 0
             ctr_lines = ctr_lines - 1
-            wye_delta_model.delete_unwanted_connection(transformer_id)
+            delete_unwanted_connection(transformer_id, table)
         Else
 
         End If
@@ -232,7 +233,7 @@ Public Class WyeDeltaActivity
 
                     Else
 
-                        wye_delta_model.delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id, table)
                         get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
@@ -242,17 +243,17 @@ Public Class WyeDeltaActivity
                 Else
 
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
-                        wye_delta_model.update_clamp_no("3", transformer_id)
+                        update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
-                        wye_delta_model.update_clamp_no("4", transformer_id)
+                        update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
 
                     ElseIf h_transformer = "btn_t1_h1" And primary = "a" Or h_transformer = "btn_t1_h2" And primary = "n" Or h_transformer = "btn_t2_h1" And primary = "b" Or h_transformer = "btn_t2_h2" And primary = "n" Or h_transformer = "btn_t3_h1" And primary = "c" Or h_transformer = "btn_t3_h2" And primary = "n" Then
                         counter_2(myButton.Name, "", clamp_meter)
                     Else
 
-                        wye_delta_model.delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id, table)
                         get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
@@ -315,7 +316,7 @@ Public Class WyeDeltaActivity
 
                 Else
 
-                    wye_delta_model.delete_unwanted_connection()
+                    delete_unwanted_connection(transformer_id, table)
                     get_point()
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                 End If
@@ -336,15 +337,15 @@ Public Class WyeDeltaActivity
                     counter_2(myButton.Name, "Red", clamp_meter)
                 Else
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
-                        wye_delta_model.update_clamp_no("3", transformer_id)
+                        update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
 
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
-                        wye_delta_model.update_clamp_no("4", transformer_id)
+                        update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
                     Else
 
-                        wye_delta_model.delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id, table)
                         get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
@@ -421,7 +422,7 @@ Public Class WyeDeltaActivity
 
                     Else
 
-                        wye_delta_model.delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id, table)
                         get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
@@ -439,7 +440,7 @@ Public Class WyeDeltaActivity
 
                     Else
 
-                        wye_delta_model.delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id, table)
                         get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
@@ -464,12 +465,12 @@ Public Class WyeDeltaActivity
     End Sub
 
     Private Sub btn_clamp_meter_Click(sender As Object, e As EventArgs) Handles btn_clamp_meter.Click
-        Dim clamp_ctr = wye_delta_model.select_clamp_count()
+        Dim clamp_ctr = select_clamp_count(table)
         If clamp_ctr = 0 Then
             clamp_meter = 1
         ElseIf clamp_ctr = 1 Then
 
-            wye_delta_model.delete_unwanted_connection()
+            delete_unwanted_connection(transformer_id, table)
             get_point()
             clamp_meter = 1
         Else
@@ -504,16 +505,16 @@ Public Class WyeDeltaActivity
         Else
 
             If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
-                wye_delta_model.update_clamp_no("3", transformer_id)
+                update_clamp_no("3", transformer_id, table)
                 counter_2(myButton.Name, pen_color, "3")
 
             ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t1_x2" And voltage = "vlblack" Then
-                wye_delta_model.update_clamp_no("4", transformer_id)
+                update_clamp_no("4", transformer_id, table)
                 counter_2(myButton.Name, pen_color, "4")
 
             Else
 
-                wye_delta_model.delete_unwanted_connection()
+                delete_unwanted_connection(transformer_id, table)
                 get_point()
                 MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
@@ -550,7 +551,7 @@ Public Class WyeDeltaActivity
 
             Else
 
-                wye_delta_model.delete_unwanted_connection()
+                delete_unwanted_connection(transformer_id, table)
                 get_point()
                 MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
@@ -591,7 +592,7 @@ Public Class WyeDeltaActivity
 
                 Else
 
-                    wye_delta_model.delete_unwanted_connection()
+                    delete_unwanted_connection(transformer_id, table)
                     get_point()
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
@@ -628,13 +629,13 @@ Public Class WyeDeltaActivity
             Else
 
                 If clamp = "cpred" And current = "cpred" Or clamp = "cpblack" And current = "cpblack" Or clamp = "red" And current = "cpred" Or clamp = "cpblack" And current = "cpblack" Then
-                    wye_delta_model.update_clamp_no("7", transformer_id)
+                    update_clamp_no("7", transformer_id, table)
                     counter_2(myButton.Name, "", "7")
 
 
                 Else
 
-                    wye_delta_model.delete_unwanted_connection()
+                    delete_unwanted_connection(transformer_id, table)
                     get_point()
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
@@ -676,7 +677,7 @@ Public Class WyeDeltaActivity
 
                 Else
 
-                    wye_delta_model.delete_unwanted_connection()
+                    delete_unwanted_connection(transformer_id, table)
                     get_point()
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
@@ -711,7 +712,7 @@ Public Class WyeDeltaActivity
 
                 Else
 
-                    wye_delta_model.delete_unwanted_connection()
+                    delete_unwanted_connection(transformer_id, table)
                     get_point()
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     clamp = 0
@@ -866,12 +867,12 @@ Public Class WyeDeltaActivity
                     txt_cp.Text = cp.ToString
                     txt_cl.Text = cp.ToString
                     result_model.save(transformer_id, "primary_phase_current", cp)
-                    result_model.save(transformer_id, "primary_line_current", cl)
+                    result_model.save(transformer_id, "primary_line_current", cp)
                     result_model.save(transformer_id, "apparent_power", apparent)
                 ElseIf category = "secondary" Then
                     txt_real.Text = real.ToString
                     txt_cl.Text = cl.ToString
-                    result_model.save(transformer_id, "primary_line_current", cl)
+                    result_model.save(transformer_id, "secondary_line_current", cl)
                     result_model.save(transformer_id, "real_power", real)
                 End If
 
@@ -977,7 +978,8 @@ Public Class WyeDeltaActivity
                     Dim myButton As Button = CType(sender, Button)
 
                     Dim btn = myButton.Name
-                    delete_connections(btn)
+                    delete_connections(btn, transformer_id, table)
+                    get_point()
                 Else
                     MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
                 End If
@@ -998,7 +1000,8 @@ Public Class WyeDeltaActivity
                     Dim myButton As Button = CType(sender, Button)
 
                     Dim btn = myButton.Name
-                    delete_connections(btn)
+                    delete_connections(btn, transformer_id, table)
+                    get_point()
                 Else
                     MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
                 End If
@@ -1067,7 +1070,8 @@ Public Class WyeDeltaActivity
                     Dim myButton As Button = CType(sender, Button)
 
                     Dim btn = myButton.Name
-                    delete_connections(btn)
+                    delete_connections(btn, transformer_id, table)
+                    get_point()
                 Else
                     MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
                 End If
@@ -1084,7 +1088,7 @@ Public Class WyeDeltaActivity
             If result = DialogResult.Yes Then
                 If ctr_switch <> 1 Then
                     Dim query_delete As String
-                    query_delete = "delete from wye_delta_lines where transformer_details_id = '" & transformer_id & "' clamp_meter in ('6','7')"
+                    query_delete = "delete from wye_delta_lines where transformer_details_id = '" & transformer_id & "' and clamp_meter in ('6','7')"
                     Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
                     Dim dt_delete As New DataTable
                     da_delete.Fill(dt_delete)
@@ -1144,7 +1148,8 @@ Public Class WyeDeltaActivity
                     Dim myButton As Button = CType(sender, Button)
 
                     Dim btn = myButton.Name
-                    delete_connections(btn)
+                    delete_connections(btn, transformer_id, table)
+                    get_point()
                 Else
                     MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
                 End If
@@ -1199,6 +1204,7 @@ Public Class WyeDeltaActivity
     Public Sub refresh_form(polarity, rating, connection, voltage_primary, voltage_secondary)
         Me.Controls.Clear()
         InitializeComponent()
+        table = "wye_delta_lines"
 
         lbl_primary_voltage.Text = voltage_primary
         lbl_secondary_voltage.Text = voltage_secondary
@@ -1219,71 +1225,74 @@ Public Class WyeDeltaActivity
     End Sub
 
     Private Sub btn_done_Click_1(sender As Object, e As EventArgs) Handles btn_done.Click
-
+        MsgBox("Wye delta connection was performed correctly. You may proceed on the next connection")
+        transformer_banking_connections.refresh_form()
+        transformer_banking_connections.Show()
+        Me.Hide()
     End Sub
 
-    Private Sub delete_connections(btn)
-        Dim query, query_delete As String
-        query = "select * from wye_delta_lines where transformer_details_id = '" & transformer_id & "' order by id asc"
-        Dim da As New Odbc.OdbcDataAdapter(query, conn)
-        Dim dt As New DataTable
-        da.Fill(dt)
-        For counter As Integer = 0 To dt.Rows.Count - 1
+    'Private Sub delete_connections(btn)
+    '    Dim query, query_delete As String
+    '    query = "select * from wye_delta_lines where transformer_details_id = '" & transformer_id & "' order by id asc"
+    '    Dim da As New Odbc.OdbcDataAdapter(query, conn)
+    '    Dim dt As New DataTable
+    '    da.Fill(dt)
+    '    For counter As Integer = 0 To dt.Rows.Count - 1
 
-            If dt.Rows(counter)(1) = btn.ToString Then
-                If counter = 0 Then
+    '        If dt.Rows(counter)(1) = btn.ToString Then
+    '            If counter = 0 Then
 
-                    query_delete = "delete from wye_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                    Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                    Dim dt_delete As New DataTable
-                    da_delete.Fill(dt_delete)
+    '                query_delete = "delete from wye_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+    '                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+    '                Dim dt_delete As New DataTable
+    '                da_delete.Fill(dt_delete)
 
-                    get_point()
+    '                get_point()
 
-                ElseIf counter = dt.Rows.Count - 1 Then
+    '            ElseIf counter = dt.Rows.Count - 1 Then
 
-                    query_delete = "delete from wye_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter - 1)(0) & "')"
-                    Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                    Dim dt_delete As New DataTable
-                    da_delete.Fill(dt_delete)
+    '                query_delete = "delete from wye_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter - 1)(0) & "')"
+    '                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+    '                Dim dt_delete As New DataTable
+    '                da_delete.Fill(dt_delete)
 
-                    get_point()
+    '                get_point()
 
-                Else
-                    If dt.Rows(counter - 1)(3) = "" Then
-                        'MsgBox(dt.Rows(counter)(0).ToString)
-                        query_delete = "delete from wye_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                        Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                        Dim dt_delete As New DataTable
-                        da_delete.Fill(dt_delete)
-
-
-                        get_point()
-
-                    ElseIf dt.Rows(counter + 1)(3) = "" Then
-                        query_delete = "delete from wye_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter - 1)(0) & "')"
-                        Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                        Dim dt_delete As New DataTable
-                        da_delete.Fill(dt_delete)
+    '            Else
+    '                If dt.Rows(counter - 1)(3) = "" Then
+    '                    'MsgBox(dt.Rows(counter)(0).ToString)
+    '                    query_delete = "delete from wye_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
+    '                    Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+    '                    Dim dt_delete As New DataTable
+    '                    da_delete.Fill(dt_delete)
 
 
-                        get_point()
+    '                    get_point()
+
+    '                ElseIf dt.Rows(counter + 1)(3) = "" Then
+    '                    query_delete = "delete from wye_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter - 1)(0) & "')"
+    '                    Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
+    '                    Dim dt_delete As New DataTable
+    '                    da_delete.Fill(dt_delete)
 
 
-                    End If
+    '                    get_point()
 
 
-                End If
+    '                End If
 
 
-
-                Exit For
-            End If
-        Next
+    '            End If
 
 
 
-    End Sub
+    '            Exit For
+    '        End If
+    '    Next
+
+
+
+    'End Sub
     Private Sub counter_1(btn_name, pen_color, clamp)
 
         point1_x = panel_activity.Controls.Item(btn_name).Location.X + panel_activity.Controls.Item(btn_name).Width / 2
@@ -1291,7 +1300,7 @@ Public Class WyeDeltaActivity
 
         point_1 = New Point(point1_x, point1_y)
 
-        Dim result = wye_delta_model.save_points(btn_name, point1_x & "," & point1_y, pen_color, clamp, transformer_id)
+        Dim result = save_points(btn_name, point1_x & "," & point1_y, pen_color, clamp, transformer_id, table)
         If result <> "1" Then
             MsgBox(result.ToString)
         End If
@@ -1304,7 +1313,7 @@ Public Class WyeDeltaActivity
 
         point_2 = New Point(point2_x, point2_y)
 
-        Dim result = wye_delta_model.save_points(btn_name, point2_x & "," & point2_y, pen_color, clamp, transformer_id)
+        Dim result = save_points(btn_name, point2_x & "," & point2_y, pen_color, clamp, transformer_id, table)
 
         If result <> "1" Then
             MsgBox(result.ToString)
@@ -1440,8 +1449,8 @@ Public Class WyeDeltaActivity
     End Sub
 
     Public Sub get_point()
-        Dim array_points = wye_delta_model.select_wye_delta_points(transformer_id)
-        Dim count_points = wye_delta_model.select_count_wye_delta_points(transformer_id)
+        Dim array_points = select_points(transformer_id, table)
+        Dim count_points = select_count_points(transformer_id, table)
         ctr_lines = count_points
         points.Clear()
 
@@ -1467,7 +1476,7 @@ Public Class WyeDeltaActivity
 
 
         Dim count As Integer = 0
-        Dim arry_color = wye_delta_model.select_color(transformer_id)
+        Dim arry_color = select_color(transformer_id, table)
         Dim colors_pen As String = ""
         For i As Integer = 0 To ctr_lines - 1
 

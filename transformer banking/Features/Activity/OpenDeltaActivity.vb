@@ -3,6 +3,7 @@ Public Class OpenDeltaActivity
     Dim appPath As String = Application.StartupPath()
 
     Dim open_delta_model As New open_delta
+    Dim table As String
 
 
     Dim ctr As Integer = 0
@@ -1366,7 +1367,7 @@ Public Class OpenDeltaActivity
 
     Private Sub OpenDeltaActivity_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbopen()
-
+        table = "open_delta_lines"
         Dim result = search_transformer_id(lbl_polarity.Text, lbl_rating.Text, Home.lbl_connection_type.Text, lbl_primary_voltage.Text, lbl_secondary_voltage.Text)
 
         If result <> 0 Then
@@ -1390,7 +1391,7 @@ Public Class OpenDeltaActivity
 
         point_1 = New Point(point1_x, point1_y)
 
-        Dim result = open_delta_model.save_points(btn_name, point1_x & "," & point1_y, pen_color, clamp, transformer_id)
+        Dim result = save_points(btn_name, point1_x & "," & point1_y, pen_color, clamp, transformer_id, table)
         If result <> "1" Then
             MsgBox(result.ToString)
         End If
@@ -1403,7 +1404,7 @@ Public Class OpenDeltaActivity
 
         point_2 = New Point(point2_x, point2_y)
 
-        Dim result = open_delta_model.save_points(btn_name, point2_x & "," & point2_y, pen_color, clamp, transformer_id)
+        Dim result = save_points(btn_name, point2_x & "," & point2_y, pen_color, clamp, transformer_id, table)
 
         If result <> "1" Then
             MsgBox(result.ToString)

@@ -3,6 +3,7 @@ Public Class OpenwyeOpendeltaActivity
     Dim appPath As String = Application.StartupPath()
 
     Dim openwye_opendelta_model As New openwye_opendelta
+    Dim table As String
 
 
     Dim ctr As Integer = 0
@@ -762,7 +763,7 @@ Public Class OpenwyeOpendeltaActivity
 
     Private Sub OpenwyeOpendeltaActivity_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbopen()
-
+        table = "openwye_opendelta_lines"
         Dim result = search_transformer_id(lbl_polarity.Text, lbl_rating.Text, Home.lbl_connection_type.Text, lbl_primary_voltage.Text, lbl_secondary_voltage.Text)
 
         If result <> 0 Then
@@ -1205,7 +1206,7 @@ Public Class OpenwyeOpendeltaActivity
 
         point_1 = New Point(point1_x, point1_y)
 
-        Dim result = openwye_opendelta_model.save_points(btn_name, point1_x & "," & point1_y, pen_color, clamp, transformer_id)
+        Dim result = save_points(btn_name, point1_x & "," & point1_y, pen_color, clamp, transformer_id, table)
         If result <> "1" Then
             MsgBox(result.ToString)
         End If
@@ -1218,7 +1219,7 @@ Public Class OpenwyeOpendeltaActivity
 
         point_2 = New Point(point2_x, point2_y)
 
-        Dim result = openwye_opendelta_model.save_points(btn_name, point2_x & "," & point2_y, pen_color, clamp, transformer_id)
+        Dim result = save_points(btn_name, point2_x & "," & point2_y, pen_color, clamp, transformer_id, table)
 
         If result <> "1" Then
             MsgBox(result.ToString)

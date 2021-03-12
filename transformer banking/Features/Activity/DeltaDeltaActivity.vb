@@ -2,7 +2,8 @@
 Public Class DeltaDeltaActivity
     Dim appPath As String = Application.StartupPath()
 
-    Dim delta_model As New delta_delta
+    Dim results_model As New results_activity
+    Dim table As String
 
 
     Dim ctr As Integer = 0
@@ -101,7 +102,7 @@ Public Class DeltaDeltaActivity
                 Else
                     ctr_lines = ctr_lines - 2
                     points.RemoveAt(ctr_lines)
-                    delta_model.delete_unwanted_connection()
+                    delete_unwanted_connection(transformer_id, table)
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                 End If
                 clamp_meter = 0
@@ -121,14 +122,16 @@ Public Class DeltaDeltaActivity
                     counter_2(myButton.Name, "Red", clamp_meter)
                 Else
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
+                        update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
 
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
+                        update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
                     Else
                         ctr_lines = ctr_lines - 2
                         points.RemoveAt(ctr_lines)
-                        delta_model.delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id, table)
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
                 End If
@@ -153,6 +156,7 @@ Public Class DeltaDeltaActivity
                                             btn_sec_l1_1.MouseDown, btn_sec_l1_2.MouseDown, btn_sec_l1_3.MouseDown, btn_sec_l1_4.MouseDown, btn_sec_l1_5.MouseDown, btn_sec_l1_6.MouseDown,
                                             btn_sec_l2_1.MouseDown, btn_sec_l2_2.MouseDown, btn_sec_l2_3.MouseDown, btn_sec_l2_4.MouseDown, btn_sec_l2_5.MouseDown, btn_sec_l2_6.MouseDown,
                                             btn_sec_l3_1.MouseDown, btn_sec_l3_2.MouseDown, btn_sec_l3_3.MouseDown, btn_sec_l3_4.MouseDown, btn_sec_l3_5.MouseDown, btn_sec_l3_6.MouseDown
+
         If e.Button = MouseButtons.Right Then
 
             Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
@@ -161,39 +165,11 @@ Public Class DeltaDeltaActivity
                     Dim myButton As Button = CType(sender, Button)
 
                     Dim btn = myButton.Name
-                    Dim query, query_delete As String
-                    query = "select * from delta_delta_lines order by id asc"
-                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
-                    Dim dt As New DataTable
-                    da.Fill(dt)
-                    For counter As Integer = 0 To dt.Rows.Count - 1
-
-                        If dt.Rows(counter)(1) = btn.ToString Then
-                            If dt.Rows(counter + 1)(3) = "" Then
-                                query_delete = "delete from delta_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                                Dim dt_delete As New DataTable
-                                da_delete.Fill(dt_delete)
-
-                                ctr_lines = ctr_lines - 2
-                                get_point()
-                            ElseIf dt.Rows(counter - 1)(3) = "" Then
-                                query_delete = "delete from delta_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                                Dim dt_delete As New DataTable
-                                da_delete.Fill(dt_delete)
-
-                                ctr_lines = ctr_lines - 2
-                                get_point()
-
-                            End If
-                            Exit For
-                        End If
-                    Next
+                    delete_connections(btn, transformer_id, table)
+                    get_point()
                 Else
                     MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
                 End If
-
             End If
         End If
         Me.Refresh()
@@ -262,7 +238,7 @@ Public Class DeltaDeltaActivity
                     Else
                         ctr_lines = ctr_lines - 2
                         points.RemoveAt(ctr_lines)
-                        delta_model.delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id, table)
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
                     clamp_meter = 0
@@ -280,7 +256,7 @@ Public Class DeltaDeltaActivity
                     Else
                         ctr_lines = ctr_lines - 2
                         points.RemoveAt(ctr_lines)
-                        delta_model.delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id, table)
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
                     End If
@@ -321,7 +297,7 @@ Public Class DeltaDeltaActivity
             Else
                 ctr_lines = ctr_lines - 2
                 points.RemoveAt(ctr_lines)
-                delta_model.delete_unwanted_connection()
+                delete_unwanted_connection(transformer_id, table)
                 MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
             End If
@@ -338,7 +314,7 @@ Public Class DeltaDeltaActivity
 
             Dim btn = myButton.Name
             Dim query As String
-            query = "delete from delta_delta_lines"
+            query = "delete from delta_delta_lines where transformer_details_id = '" & transformer_id & "'"
             Dim da As New Odbc.OdbcDataAdapter(query, conn)
             Dim dt As New DataTable
             da.Fill(dt)
@@ -452,16 +428,24 @@ Public Class DeltaDeltaActivity
 
                 If category = "primary" Then
                     txt_apparent.Text = apparent.ToString
+                    results_model.save(transformer_id, "apparent_power", apparent)
+                    results_model.save(transformer_id, "primary_line_current", cl)
                 ElseIf category = "secondary" Then
                     txt_real.Text = real.ToString
+                    results_model.save(transformer_id, "apparent_power", apparent)
+                    results_model.save(transformer_id, "secondary_line_current", cl)
                 End If
 
             End If
             If ctr_voltage_phase > 3 Then
                 If category = "primary" Then
                     txt_vp.Text = primary_voltage
+                    results_model.save(transformer_id, "primary_phase_voltage", primary_voltage)
                     txt_apparent.Text = apparent.ToString
+                    results_model.save(transformer_id, "apparent_power", apparent)
                 ElseIf category = "secondary" Then
+                    results_model.save(transformer_id, "secondary_phase_voltage", secondary_voltage)
+                    results_model.save(transformer_id, "real_power", real)
                     txt_vp.Text = secondary_voltage
                     txt_real.Text = real.ToString
                 End If
@@ -471,10 +455,13 @@ Public Class DeltaDeltaActivity
 
                 If category = "primary" Then
                     txt_vl.Text = primary_voltage
+                    results_model.save(transformer_id, "primary_line_voltage", primary_voltage)
                     txt_apparent.Text = apparent.ToString
+                    results_model.save(transformer_id, "apparent_power", apparent)
                 ElseIf category = "secondary" Then
                     txt_real.Text = real.ToString
                     txt_vl.Text = secondary_voltage
+                    results_model.save(transformer_id, "real_power", real)
                 End If
             End If
 
@@ -546,6 +533,7 @@ Public Class DeltaDeltaActivity
         If ctr = 1 Then
             If voltage = "vpred" Or voltage = "vpblack" Then
                 ctr_points = ctr_points + 1
+
                 counter_1(myButton.Name, pen_color, "3")
             Else
                 ctr_points = ctr_points + 1
@@ -554,13 +542,15 @@ Public Class DeltaDeltaActivity
         Else
 
             If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
+                update_clamp_no("3", transformer_id, table)
                 counter_2(myButton.Name, pen_color, "3")
             ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
+                update_clamp_no("4", transformer_id, table)
                 counter_2(myButton.Name, pen_color, "4")
             Else
                 ctr_lines = ctr_lines - 2
                 points.RemoveAt(ctr_lines)
-                delta_model.delete_unwanted_connection()
+                delete_unwanted_connection(transformer_id, table)
                 MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
             End If
@@ -584,39 +574,11 @@ Public Class DeltaDeltaActivity
                     Dim myButton As Button = CType(sender, Button)
 
                     Dim btn = myButton.Name
-                    Dim query, query_delete As String
-                    query = "select * from delta_delta_lines order by id asc"
-                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
-                    Dim dt As New DataTable
-                    da.Fill(dt)
-                    For counter As Integer = 0 To dt.Rows.Count - 1
-
-                        If dt.Rows(counter)(1) = btn.ToString Then
-                            If dt.Rows(counter + 1)(3) = "" Then
-                                query_delete = "delete from delta_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                                Dim dt_delete As New DataTable
-                                da_delete.Fill(dt_delete)
-
-                                ctr_lines = ctr_lines - 2
-                                get_point()
-                            ElseIf dt.Rows(counter - 1)(3) = "" Then
-                                query_delete = "delete from delta_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                                Dim dt_delete As New DataTable
-                                da_delete.Fill(dt_delete)
-
-                                ctr_lines = ctr_lines - 2
-                                get_point()
-
-                            End If
-                            Exit For
-                        End If
-                    Next
+                    delete_connections(btn, transformer_id, table)
+                    get_point()
                 Else
                     MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
                 End If
-
             End If
         End If
         Me.Refresh()
@@ -630,50 +592,22 @@ Public Class DeltaDeltaActivity
                     Dim myButton As Button = CType(sender, Button)
 
                     Dim btn = myButton.Name
-                    Dim query, query_delete As String
-                    query = "select * from delta_delta_lines order by id asc"
-                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
-                    Dim dt As New DataTable
-                    da.Fill(dt)
-                    For counter As Integer = 0 To dt.Rows.Count - 1
-
-                        If dt.Rows(counter)(1) = btn.ToString Then
-                            If dt.Rows(counter + 1)(3) = "" Then
-                                query_delete = "delete from delta_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                                Dim dt_delete As New DataTable
-                                da_delete.Fill(dt_delete)
-
-                                ctr_lines = ctr_lines - 2
-                                get_point()
-                            ElseIf dt.Rows(counter - 1)(3) = "" Then
-                                query_delete = "delete from delta_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                                Dim dt_delete As New DataTable
-                                da_delete.Fill(dt_delete)
-
-                                ctr_lines = ctr_lines - 2
-                                get_point()
-
-                            End If
-                            Exit For
-                        End If
-                    Next
+                    delete_connections(btn, transformer_id, table)
+                    get_point()
                 Else
                     MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
                 End If
-
+                Me.Refresh()
             End If
         End If
-        Me.Refresh()
     End Sub
     Private Sub btn_clamp_meter_Click(sender As Object, e As EventArgs) Handles btn_clamp_meter.Click
-        Dim clamp_ctr = delta_model.select_clamp_count()
+        Dim clamp_ctr = select_clamp_count(table)
         If clamp_ctr = 0 Then
             clamp_meter = 1
         ElseIf clamp_ctr = 1 Then
             ctr_lines = ctr_lines - 1
-            delta_model.delete_unwanted_connection()
+            delete_unwanted_connection(transformer_id, table)
             clamp_meter = 1
         Else
             MsgBox("Clamp meter already exist.", MsgBoxStyle.Information, "Transformer Banking")
@@ -709,7 +643,7 @@ Public Class DeltaDeltaActivity
                 Else
                     ctr_lines = ctr_lines - 2
                     points.RemoveAt(ctr_lines)
-                    delta_model.delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id, table)
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
                 End If
@@ -755,7 +689,7 @@ Public Class DeltaDeltaActivity
                 Else
                     ctr_lines = ctr_lines - 2
                     points.RemoveAt(ctr_lines)
-                    delta_model.delete_unwanted_connection()
+                    delete_unwanted_connection(transformer_id, table)
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
                 End If
@@ -844,7 +778,7 @@ Public Class DeltaDeltaActivity
                 Else
                     ctr_lines = ctr_lines - 2
                     points.RemoveAt(ctr_lines)
-                    delta_model.delete_unwanted_connection()
+                    delete_unwanted_connection(transformer_id, table)
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
                 End If
@@ -877,7 +811,7 @@ Public Class DeltaDeltaActivity
                 Else
                     ctr_lines = ctr_lines - 2
                     points.RemoveAt(ctr_lines)
-                    delta_model.delete_unwanted_connection()
+                    delete_unwanted_connection(transformer_id, table)
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     clamp = 0
                 End If
@@ -895,7 +829,7 @@ Public Class DeltaDeltaActivity
             If result = DialogResult.Yes Then
                 If ctr_switch <> 1 Then
                     Dim query_delete As String
-                    query_delete = "delete from delta_delta_lines where clamp_meter in ('1','2')"
+                    query_delete = "delete from delta_delta_lines where clamp_meter in ('1','2') and transformer_details_id = '" & transformer_id & "'"
                     Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
                     Dim dt_delete As New DataTable
                     da_delete.Fill(dt_delete)
@@ -923,7 +857,7 @@ Public Class DeltaDeltaActivity
             If result = DialogResult.Yes Then
                 If ctr_switch <> 1 Then
                     Dim query_delete As String
-                    query_delete = "delete from delta_delta_lines where clamp_meter in ('6','7')"
+                    query_delete = "delete from delta_delta_lines where clamp_meter in ('6','7') and transformer_details_id = '" & transformer_id & "'"
                     Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
                     Dim dt_delete As New DataTable
                     da_delete.Fill(dt_delete)
@@ -947,14 +881,6 @@ Public Class DeltaDeltaActivity
     Private Sub WyeWyeActivities_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbopen()
 
-        Dim result = search_transformer_id(lbl_polarity.Text, lbl_rating.Text, Home.lbl_connection_type.Text, lbl_primary_voltage.Text, lbl_secondary_voltage.Text)
-
-        If result <> 0 Then
-            transformer_id = result
-        End If
-        get_point()
-        select_clamp_phase()
-        select_clamp_line()
     End Sub
     Private Sub btn_l1red_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_l1red.MouseDown, btn_l1black.MouseDown, btn_l2red.MouseDown, btn_l2black.MouseDown, btn_l3red.MouseDown, btn_l3black.MouseDown
         If e.Button = MouseButtons.Right Then
@@ -965,42 +891,14 @@ Public Class DeltaDeltaActivity
                     Dim myButton As Button = CType(sender, Button)
 
                     Dim btn = myButton.Name
-                    Dim query, query_delete As String
-                    query = "select * from delta_delta_lines order by id asc"
-                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
-                    Dim dt As New DataTable
-                    da.Fill(dt)
-                    For counter As Integer = 0 To dt.Rows.Count - 1
-
-                        If dt.Rows(counter)(1) = btn.ToString Then
-                            If dt.Rows(counter + 1)(3) = "" Then
-                                query_delete = "delete from delta_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                                Dim dt_delete As New DataTable
-                                da_delete.Fill(dt_delete)
-
-                                ctr_lines = ctr_lines - 2
-                                get_point()
-                            ElseIf dt.Rows(counter - 1)(3) = "" Then
-                                query_delete = "delete from delta_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter + 1)(0) & "')"
-                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                                Dim dt_delete As New DataTable
-                                da_delete.Fill(dt_delete)
-
-                                ctr_lines = ctr_lines - 2
-                                get_point()
-
-                            End If
-                            Exit For
-                        End If
-                    Next
+                    delete_connections(btn, transformer_id, table)
+                    get_point()
                 Else
                     MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
                 End If
-
+                Me.Refresh()
             End If
         End If
-        Me.Refresh()
     End Sub
     Private Sub btn_t1_x_Click(sender As Object, e As EventArgs) Handles btn_t1_x.Click, btn_t2_x.Click, btn_t3_x.Click
         If ctr_cl_clamp = 1 Then
@@ -1117,7 +1015,7 @@ Public Class DeltaDeltaActivity
                     Else
                         ctr_lines = ctr_lines - 2
                         points.RemoveAt(ctr_lines)
-                        delta_model.delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id, table)
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
                     clamp_meter = 0
@@ -1131,7 +1029,7 @@ Public Class DeltaDeltaActivity
                     Else
                         ctr_lines = ctr_lines - 2
                         points.RemoveAt(ctr_lines)
-                        delta_model.delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id, table)
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
                     End If
@@ -1147,7 +1045,7 @@ Public Class DeltaDeltaActivity
 
     End Sub
 
-    Private Sub btn_t1_h1_Click(sender As Object, e As EventArgs) Handles btn_t1_h1.Click, btn_t1_h2.Click, btn_t2_h1.Click, btn_t2_h2.Click, btn_t3_h1.Click
+    Private Sub btn_t1_h1_Click(sender As Object, e As EventArgs) Handles btn_t1_h1.Click, btn_t1_h2.Click, btn_t2_h1.Click, btn_t2_h2.Click, btn_t3_h1.Click, btn_t3_h2.Click
 
         If wire_conenction = 1 Or clamp_meter = 1 Then
 
@@ -1197,7 +1095,7 @@ Public Class DeltaDeltaActivity
                     Else
                         ctr_lines = ctr_lines - 2
                         points.RemoveAt(ctr_lines)
-                        delta_model.delete_unwanted_connection()
+                        delete_unwanted_connection(transformer_id, table)
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
                     clamp_meter = 0
@@ -1206,8 +1104,10 @@ Public Class DeltaDeltaActivity
                 Else
 
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
+                        update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
+                        update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
 
                     Else
@@ -1223,7 +1123,7 @@ Public Class DeltaDeltaActivity
                         Else
                             ctr_lines = ctr_lines - 2
                             points.RemoveAt(ctr_lines)
-                            delta_model.delete_unwanted_connection()
+                            delete_unwanted_connection(transformer_id, table)
                             MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                         End If
                     End If
@@ -1250,7 +1150,7 @@ Public Class DeltaDeltaActivity
 
                     Dim  btn = myButton.Name
                     Dim query, query_delete As String
-                    query = "select * from delta_delta_lines order by id asc"
+                    query = "select * from delta_delta_lines  where transformer_details_id = '" & transformer_id & "' order by id asc"
                     Dim da As New Odbc.OdbcDataAdapter(query, conn)
                     Dim dt As New DataTable
                     da.Fill(dt)
@@ -1299,7 +1199,7 @@ Public Class DeltaDeltaActivity
 
                     Dim btn = myButton.Name
                     Dim query, query_delete As String
-                    query = "select * from delta_delta_lines order by id asc"
+                    query = "select * from delta_delta_lines where  transformer_details_id = '" & transformer_id & "' order by id asc"
                     Dim da As New Odbc.OdbcDataAdapter(query, conn)
                     Dim dt As New DataTable
                     da.Fill(dt)
@@ -1340,16 +1240,50 @@ Public Class DeltaDeltaActivity
 
     Private Sub btn_connect_wires_Click(sender As Object, e As EventArgs) Handles btn_connect_wires.Click   'wire connection
         wire_conenction = 1
-        If ctr = 1 Then
+
+        If ctr = 0 Then
+            Dim count_points = select_count_points(transformer_id, table)
+            Dim result = count_points Mod 2
+
+            If result <> 0 Then
+                delete_unwanted_connection(transformer_id, table)
+            End If
+        ElseIf ctr = 1 Then
             ctr = 0
             ctr_lines = ctr_lines - 1
-            delta_model.delete_unwanted_connection()
+            delete_unwanted_connection(transformer_id, table)
         Else
 
         End If
     End Sub
 
+    Private Sub btn_done_Click(sender As Object, e As EventArgs) Handles btn_done.Click
+        MsgBox("Delta delta connection was performed correctly. You may proceed on the next connection")
+        transformer_banking_connections.refresh_form()
+        transformer_banking_connections.Show()
+        Me.Hide()
+    End Sub
+
+
 #Region "subs"
+    Public Sub refresh_form(polarity, rating, connection, voltage_primary, voltage_secondary)
+        table = "delta_delta_lines"
+        lbl_primary_voltage.Text = voltage_primary
+        lbl_secondary_voltage.Text = voltage_secondary
+        lbl_polarity.Text = polarity
+        lbl_rating.Text = rating
+        Dim result = search_transformer_id(lbl_polarity.Text, lbl_rating.Text, connection, lbl_primary_voltage.Text, lbl_secondary_voltage.Text)
+
+        If result <> 0 Then
+            transformer_id = result
+        End If
+        get_point()
+        select_clamp_phase()
+        select_clamp_line()
+    End Sub
+
+
+
     Private Sub counter_1(btn_name, pen_color, clamp)
 
         point1_x = panel_activity.Controls.Item(btn_name).Location.X + panel_activity.Controls.Item(btn_name).Width / 2
@@ -1357,7 +1291,7 @@ Public Class DeltaDeltaActivity
 
         point_1 = New Point(point1_x, point1_y)
 
-        Dim result = delta_model.save_points(btn_name, point1_x & "," & point1_y, pen_color, clamp, transformer_id)
+        Dim result = save_points(btn_name, point1_x & "," & point1_y, pen_color, clamp, transformer_id, table)
         If result <> "1" Then
             MsgBox(result.ToString)
         End If
@@ -1370,7 +1304,7 @@ Public Class DeltaDeltaActivity
 
         point_2 = New Point(point2_x, point2_y)
 
-        Dim result = delta_model.save_points(btn_name, point2_x & "," & point2_y, pen_color, clamp, transformer_id)
+        Dim result = save_points(btn_name, point2_x & "," & point2_y, pen_color, clamp, transformer_id, table)
 
         If result <> "1" Then
             MsgBox(result.ToString)
@@ -1509,8 +1443,8 @@ Public Class DeltaDeltaActivity
     End Sub
 
     Public Sub get_point()
-        Dim array_points = delta_model.select_delta_delta_points(transformer_id)
-        Dim count_points = delta_model.select_count_delta_delta_points(transformer_id)
+        Dim array_points = select_points(transformer_id, table)
+        Dim count_points = select_count_points(transformer_id, table)
         ctr_lines = count_points
         points.Clear()
 
@@ -1536,7 +1470,7 @@ Public Class DeltaDeltaActivity
 
 
         Dim count As Integer = 0
-        Dim arry_color = delta_model.select_color(transformer_id)
+        Dim arry_color = select_color(transformer_id, table)
         Dim colors_pen As String = ""
         For i As Integer = 0 To ctr_lines - 1
 

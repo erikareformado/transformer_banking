@@ -1,17 +1,17 @@
 ﻿Module wye_delta_lines
     Public Class wye_delta
         Dim query As String
-        Public Function save_points(btn, points, color_pen, clamp_meter, transformer)
-            query = "Insert  into wye_delta_lines
-                (btn, points, color,clamp_meter,transformer_details_id) 
-                Values(
-                 '" & btn & "','" & points.ToString & "', '" & color_pen.ToString & "','" & clamp_meter.ToString & "','" & transformer & "')"
+        'Public Function save_points(btn, points, color_pen, clamp_meter, transformer)
+        '    query = "Insert  into wye_delta_lines
+        '        (btn, points, color,clamp_meter,transformer_details_id) 
+        '        Values(
+        '         '" & btn & "','" & points.ToString & "', '" & color_pen.ToString & "','" & clamp_meter.ToString & "','" & transformer & "')"
 
-            Dim da As New Odbc.OdbcDataAdapter(query, conn)
-            Dim dt As New DataTable
-            da.Fill(dt)
-            Return "1"
-        End Function
+        '    Dim da As New Odbc.OdbcDataAdapter(query, conn)
+        '    Dim dt As New DataTable
+        '    da.Fill(dt)
+        '    Return "1"
+        'End Function
 
         Public Function select_wye_delta_points(transformer)
             Dim result As New List(Of String)

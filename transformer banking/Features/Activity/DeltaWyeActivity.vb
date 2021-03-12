@@ -3,7 +3,7 @@ Public Class DeltaWyeActivity
     Dim appPath As String = Application.StartupPath()
 
     Dim delta_wye_model As New delta_wye
-
+    Dim table As String
 
     Dim ctr As Integer = 0
     Dim ctr_lines As Integer = 0
@@ -1265,6 +1265,7 @@ Public Class DeltaWyeActivity
 
     Private Sub DeltaWyeActivity_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbopen()
+        table = "delta_wye_lines"
         get_point()
         Dim result = search_transformer_id(lbl_polarity.Text, lbl_rating.Text, Home.lbl_connection_type.Text, lbl_primary_voltage.Text, lbl_secondary_voltage.Text)
 
@@ -1286,7 +1287,7 @@ Public Class DeltaWyeActivity
 
         point_1 = New Point(point1_x, point1_y)
 
-        Dim result = delta_wye_model.save_points(btn_name, point1_x & "," & point1_y, pen_color, clamp, transformer_id)
+        Dim result = save_points(btn_name, point1_x & "," & point1_y, pen_color, clamp, transformer_id, table)
         If result <> "1" Then
             MsgBox(result.ToString)
         End If
@@ -1299,7 +1300,7 @@ Public Class DeltaWyeActivity
 
         point_2 = New Point(point2_x, point2_y)
 
-        Dim result = delta_wye_model.save_points(btn_name, point2_x & "," & point2_y, pen_color, clamp, transformer_id)
+        Dim result = save_points(btn_name, point2_x & "," & point2_y, pen_color, clamp, transformer_id, table)
 
         If result <> "1" Then
             MsgBox(result.ToString)
