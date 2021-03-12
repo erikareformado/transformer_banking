@@ -4,7 +4,7 @@ Public Class DeltaDeltaActivity
 
     Dim results_model As New results_activity
     Dim table As String
-
+    Dim done As Integer
 
     Dim ctr As Integer = 0
     Dim ctr_lines As Integer = 0
@@ -461,6 +461,7 @@ Public Class DeltaDeltaActivity
                 ElseIf category = "secondary" Then
                     txt_real.Text = real.ToString
                     txt_vl.Text = secondary_voltage
+                    results_model.save(transformer_id, "secondary_line_voltage", primary_voltage)
                     results_model.save(transformer_id, "real_power", real)
                 End If
             End If
@@ -470,8 +471,13 @@ Public Class DeltaDeltaActivity
 
                 If category = "primary" Then
                     txt_apparent.Text = apparent.ToString
+                    results_model.save(transformer_id, "primary_phase_current", cp)
+                    results_model.save(transformer_id, "apparent_power", apparent)
+
                 ElseIf category = "secondary" Then
                     txt_real.Text = real.ToString
+                    results_model.save(transformer_id, "secondary_phase_current", cp)
+                    results_model.save(transformer_id, "real_power", real)
                 End If
             End If
 
@@ -488,6 +494,10 @@ Public Class DeltaDeltaActivity
 
 
             ctr_switch = 1
+            done = results_model.select_specific(transformer_id)
+            If done = 1 Then
+                btn_done.Enabled = True
+            End If
         Else
             pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker.png")
             pic_switch.SizeMode = PictureBoxSizeMode.Zoom
@@ -580,8 +590,9 @@ Public Class DeltaDeltaActivity
                     MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
                 End If
             End If
+            Me.Refresh()
         End If
-        Me.Refresh()
+
     End Sub
     Private Sub btn_vpred_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_vpred.MouseDown, btn_vpblack.MouseDown, btn_vlblack.MouseDown, btn_vlred.MouseDown
         If e.Button = MouseButtons.Right Then

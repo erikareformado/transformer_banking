@@ -16,6 +16,7 @@
 
     Private Sub PictureBox4_Transformer_Click(sender As Object, e As EventArgs) Handles PictureBox4_Transformer.Click
         Me.Hide()
+        transformer_banking_connections.refresh_form()
         transformer_banking_connections.Show()
     End Sub
 

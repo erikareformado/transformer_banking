@@ -483,6 +483,7 @@ Partial Class DeltaWyeActivity
         'btn_done
         '
         Me.btn_done.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btn_done.Enabled = False
         Me.btn_done.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btn_done.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_done.ForeColor = System.Drawing.Color.White
@@ -876,7 +877,7 @@ Partial Class DeltaWyeActivity
         Me.btn_l1red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btn_l1red.FlatAppearance.BorderSize = 0
         Me.btn_l1red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_l1red.Location = New System.Drawing.Point(592, 384)
+        Me.btn_l1red.Location = New System.Drawing.Point(595, 384)
         Me.btn_l1red.Name = "btn_l1red"
         Me.btn_l1red.Size = New System.Drawing.Size(31, 24)
         Me.btn_l1red.TabIndex = 30
