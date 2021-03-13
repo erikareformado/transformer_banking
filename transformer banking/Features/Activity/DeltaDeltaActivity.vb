@@ -409,7 +409,7 @@ Public Class DeltaDeltaActivity
             Dim result_rating = select_rating(transformer_id)
             If result_rating <> "No data" Then
                 Dim split_value() As String = result_rating.Split(" ")
-                rating = CDbl(split_value(0))
+                rating = CDbl(split_value(0) * 1000)
             End If
             Dim cp, cl, apparent, real As Double
             If category = "primary" Then
@@ -1272,7 +1272,7 @@ Public Class DeltaDeltaActivity
         MsgBox("Delta delta connection was performed correctly. You may proceed on the next connection")
         transformer_banking_connections.refresh_form()
         transformer_banking_connections.Show()
-        Me.Hide()
+        Home.Close()
     End Sub
 
 

@@ -1228,7 +1228,7 @@ Public Class WyeDeltaActivity
         MsgBox("Wye delta connection was performed correctly. You may proceed on the next connection")
         transformer_banking_connections.refresh_form()
         transformer_banking_connections.Show()
-        Me.Hide()
+        Home.Close()
     End Sub
 
     'Private Sub delete_connections(btn)

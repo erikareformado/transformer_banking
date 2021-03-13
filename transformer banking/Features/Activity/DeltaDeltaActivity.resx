@@ -178,7 +178,7 @@
   <data name="pic_clamp_meter.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAPAAAAJHCAYAAACuBdt2AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAA/7JJREFUeF7snQW8VOX2/m/YGEh3n6K7G0SwCxW7u8DubkVsrx3XK45YSHfIEUWl
+        DAAACwwBP0AiyAAA/7JJREFUeF7snQW8VOX2/m/YGEh3n6K7G0SwCxW7u8DubkVsrx3XK45YSHfIEUWl
         +/Sc7uL0Oev/fd6ZDQN6/z/xXryKh89nsWf27Jkzs/d+3rXWs+ovTZs2nYyMr5Xac1B7D/zh7oHJf9FF
         +0vtv9ozUHsG/nBnoFmzZuNrAfyHu2y1X7j2DATOgFO+tRq49naoPQN/zDNQC+A/5nWr/da1Z6BWA/+Z
         7gF8pb+yWv81aHY14Xkfnp8qH0qr+C/YnsZxgziuNdsD/0zn7vf8W2t94N/z1Qn5boCmBRerfyhL7IHO
@@ -3353,7 +3353,7 @@
   <data name="btn_connect_wires.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAWAAAADZCAYAAAAe0+pFAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAA/7JJREFUeF7svQV4lWe6BcrM1GiRAIGEuLu7Z8fd3d3dnRhxIoSQECzBgru7a7EC
+        vQAADr0BR/uQrQAA/7JJREFUeF7svQV4lWe6BcrM1GiRAIGEuLu7Z8fd3d3dnRhxIoSQECzBgru7a7EC
         baEFijstVKCUtuuunc6cc+89Y+e0M9POhOf5nr0jbPny7/W//3rXu9aoUSP/RnZgZAdGdmBkB0Z2YGQH
         RnZgZAdGdmBkB0Z2YGQHRnZgZAdGdmBkB0Z2YGQHRnZgZAdGdmBkB0Z2YGQHRnZgZAdGdmBkB0Z2YGQH
         RnZgZAdGduCfugOPv30p8ujlC7mHL77We/DNV4L7X3/le//rL/97ffPc9/43z/j1T+vBN88FD148Fzx8
@@ -5779,7 +5779,7 @@
   <data name="pic_bulb3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA0gAAAVQCAYAAABxsnoXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAA/7JJREFUeF7svQWcnOXV/n+vu7u7xpUgESQJgQQCgeASLEWCuxRrS9u3/tZo37fe
+        DAAACwwBP0AiyAAA/7JJREFUeF7svQWcnOXV/n+vu7u7xpUgESQJgQQCgeASLEWCuxRrS9u3/tZo37fe
         ty20vxpQN6RooaXUcCgeX5/d9H/+5zwzz+6shATYbHZmvv185hMKm9mZa77PM/d1n3Nfxzn+hwIogAIo
         gAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIo
         gAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIo
@@ -7814,7 +7814,7 @@
   <data name="pic_bulb2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA0gAAAVQCAYAAABxsnoXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAA/7JJREFUeF7svQWcnOXV/n+vu7u7xpUgESQJgQQCgeASLEWCuxRrS9u3/tZo37fe
+        DAAACwwBP0AiyAAA/7JJREFUeF7svQWcnOXV/n+vu7u7xpUgESQJgQQCgeASLEWCuxRrS9u3/tZo37fe
         ty20vxpQN6RooaXUcCgeX5/d9H/+5zwzz+6shATYbHZmvv185hMKm9mZa77PM/d1n3Nfxzn+hwIogAIo
         gAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIo
         gAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIo
@@ -9849,7 +9849,7 @@
   <data name="pic_switch.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADQAAABjCAYAAADU8yOkAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAALvFJREFUeF6NfHd8VFX+NpDee+8ESAVCFeuCXVcsKK5tV1B01bWBgooN6YjSIZAQ
+        vQAADr0BR/uQrQAALvFJREFUeF6NfHd8VFX+NpDee+8ESAVCFeuCXVcsKK5tV1B01bWBgooN6YjSIZAQ
         0tukzKQnk957IyR0RVQExV133/Lv8z7fc2eSCeL+3nw+z+fce+femfOcbz3fc26mTOHflStncf5sJ86O
         NuHsyRacOdmMMyNN4zjNY4H52umTPP8DjA03YZTPjw4TQ004Ndg4jlE5HiLknuFGokHhlOCk1o4O1fMe
         EwbZEiN8bri/CcN9RG8jzo/14F/Xr2ySvv/u7//+n1/dL18exNipWowOlmO0vwKn+gSVGOmrMkGOK3Gq
@@ -10101,7 +10101,7 @@
   <data name="pic_bulb1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA0gAAAVQCAYAAABxsnoXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAA/7JJREFUeF7svQWcnOXV/n+vu7u7xpUgESQJgQQCgeASLEWCuxRrS9u3/tZo37fe
+        DAAACwwBP0AiyAAA/7JJREFUeF7svQWcnOXV/n+vu7u7xpUgESQJgQQCgeASLEWCuxRrS9u3/tZo37fe
         ty20vxpQN6RooaXUcCgeX5/d9H/+5zwzz+6shATYbHZmvv185hMKm9mZa77PM/d1n3Nfxzn+hwIogAIo
         gAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIo
         gAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIogAIo
@@ -12136,7 +12136,7 @@
   <data name="btn_clamp_meter.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAPAAAAJHCAYAAACuBdt2AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAA/7JJREFUeF7snQW8VOX2/m/YGEh3n6K7G0SwCxW7u8DubkVsrx3XK45YSHfIEUWl
+        DAAACwwBP0AiyAAA/7JJREFUeF7snQW8VOX2/m/YGEh3n6K7G0SwCxW7u8DubkVsrx3XK45YSHfIEUWl
         +/Sc7uL0Oev/fd6ZDQN6/z/xXryKh89nsWf27Jkzs/d+3rXWs+ovTZs2nYyMr5Xac1B7D/zh7oHJf9FF
         +0vtv9ozUHsG/nBnoFmzZuNrAfyHu2y1X7j2DATOgFO+tRq49naoPQN/zDNQC+A/5nWr/da1Z6BWA/+Z
         7gF8pb+yWv81aHY14Xkfnp8qH0qr+C/YnsZxgziuNdsD/0zn7vf8W2t94N/z1Qn5boCmBRerfyhL7IHO
@@ -15309,25 +15309,20 @@
 </value>
   </data>
   <data name="RichTextBox1.Text" xml:space="preserve">
-    <value>1. Connect the circuit in wye-wye configuration as shown in the Figure at the discussion.
-	a. Connect first the terminal H1 of transformer 1 to terminal (red) of primary line A. 
-Then, connect the terminal H2 of transformer 1 to terminal (black) of primary line N. 
-Second, connect the terminal X1 of transformer 1 to terminal (red) of secondary line L1. 
-Then, connect the terminal X2 of transformer 1 to terminal (black) of the secondary line N. 
-For transformer 2, connect first the terminal H1 of transformer 2 to terminal (blue) of primary line B. 
-Then, connect the terminal H2 of transformer 2 to terminal (black) of primary line N. 
-Second, connect the terminal X1 of transformer 2 to terminal (blue) of secondary line L2. 
-Then, connect the terminal X2 of transformer 2 to terminal (black) of the secondary line N. 
-For transformer 3, connect first the terminal H1 of transformer 3 to terminal (yellow) of primary line c. 
-Then, connect the terminal H2 of transformer 3 to terminal (black) of primary line N. 
- Second, connect the terminal X1 of transformer 3 to terminal (yellow) of secondary line L3. 
-Then, connect the terminal X2 of transformer 3 to terminal (black) of the secondary line N.
-
-	b. For the load, connect terminal (red) of Load 1 to terminal (red) of L1 in secondary side. 
-Then connect terminal (black) of Load 1 to terminal (black) of secondary line N. 
-Next connect terminal (red) of Load 2 to terminal (blue) of secondary line L2.
-Then, connect terminal (black) of load 2 to terminal (black) of secondary line N. 
-Next connect terminal (red) of Load 3 to terminal (yellow) of secondary line L3. Then, connect terminal (black) of load 3 to terminal (black) of secondary line N.</value>
+    <value>1. Connect the circuit in delta-delta  configuration as shown  at the discussion.
+a.	Connect first the terminal H1 of transformer 1 to terminal (red) of primary line A. Then, connect the terminal H2 of transformer 1 to terminal H1 of transformer 2. Second, connect the terminal X1 of transformer 1 to terminal (red) of secondary line L1. Then, connect the terminal X2 of transformer 1 to terminal X1 of transformer 2. For transformer 2, connect the terminal H1 of transformer 2 to terminal (blue) of primary line B. Then, connect the terminal H2 of transformer 2 to terminal H1 of transformer 3. Second, connect the terminal X1 of transformer 2 to terminal (blue) of secondary line L2. Then, connect the terminal X2 of transformer 2 to terminal X1 of transformer 3. And for transformer 3, connect first the terminal H1 of transformer 3 to terminal (yellow) of primary line C. Then, connect the terminal H2 of transformer 3 to terminal H1 of transformer 1. Second, connect the terminal X1 of transformer 3 to terminal (yellow) of secondary line L3. Then, connect the terminal X2 of transformer 3 to terminal X1 of transformer 1.
+b.	For the load, connect terminal (red) of Load 1 to terminal (red) of L1 in secondary side. Then connect terminal (black) of Load 1 to terminal (blue) of secondary line L2. Next connect terminal (red) of Load 2 to terminal (blue) of secondary line L2. Then, connect terminal (black) of load 2 to terminal (yellow) of secondary line L3. Next connect terminal (red) of Load 3 to terminal (yellow) of secondary line L3. Then, connect terminal (black) of load 3 to terminal (red) of secondary line L1.
+1.	Measure the voltage and current in primary side or source side of the transformer.
+a.	For phase voltage, connect the terminal (red) of voltmeter to the terminal H1 of transformer 1. Then, terminal (black) of voltmeter to terminal H2 of transformer 1. Turn on the switch, measure and record the line to line voltage reading. Turn off the switch and return to the original connection.
+b.	For line to line voltage, connect the terminal (red) of voltmeter to the terminal H1 of transformer 1. Then, terminal (black) of voltmeter to terminal H1 of the transformer 2. Turn on the switch, measure and record the line to line voltage reading. Turn off the switch and return to the original connection.
+c.	For phase current, connect the terminal (red) of clamp meter to the terminal (red) of digital ammeter. Then, terminal (black) of clamp meter to terminal (black) of digital ammeter. Use the clamp meter to measure the phase current in transformer 1. Clamp it on the primary coil of transformer 1 or transformer 2 or transformer 3. Turn on the switch, measure and record the phase current reading. Turn off the switch and return to the original connection.
+d.	For line to line current, connect the terminal (red) of clamp meter to the terminal (red) of digital ammeter. Then, terminal (black) of clamp meter to terminal (black) of digital ammeter. Use the clamp meter to measure the line to line current in line H1 of transformer 1. Clamp it on line H1 of transformer 1 and line A. Turn on the switch, measure and record the line to line current reading. Turn off the switch and return to the original connection.
+2.	Measure the voltage and current in secondary side or load side of the transformer.
+a.	For phase voltage, connect the terminal (red) of voltmeter to the terminal X1 of transformer 1. Then, terminal (black) of voltmeter to terminal X2 of transformer 1. Turn on the switch, measure and record the phase voltage reading. Turn off the switch and return to the original connection.
+b.	For line to line voltage, connect the terminal (red) of voltmeter to the terminal X1 of transformer 1. Then, terminal (black) of voltmeter to terminal X1 of the transformer 2. Turn on the switch, measure and record the line to line voltage reading. Turn off the switch and return to the original connection.
+c.	For phase current, connect the terminal (red) of clamp meter to the terminal (red) of digital ammeter. Then, terminal (black) of clamp meter to terminal (black) of digital ammeter. Use the clamp meter to measure the phase current in transformer 1. Clamp it on the secondary coil of transformer 1 or transformer 2 or transformer 3. Turn on the switch, measure and record the phase current reading. Turn off the switch and return to the original connection. 
+d.	For line to line current, connect the terminal (red) of clamp meter to the terminal (red) of digital ammeter. Then, terminal (black) of clamp meter to terminal (black) of digital ammeter. Use the clamp meter to measure the line to line current in line X1 of transformer 1. Clamp it on line X1 of transformer 1 and line L1. Turn on the switch, measure and record the line to line current reading. Turn off the switch and return to the original connection.
+</value>
   </data>
   <data name="PictureBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -20840,7 +20835,7 @@ Next connect terminal (red) of Load 3 to terminal (yellow) of secondary line L3.
   <data name="btn_cl_clamp_meter.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAPAAAAJHCAYAAACuBdt2AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAA/7JJREFUeF7snQW8VOX2/m/YGEh3n6K7G0SwCxW7u8DubkVsrx3XK45YSHfIEUWl
+        DAAACwwBP0AiyAAA/7JJREFUeF7snQW8VOX2/m/YGEh3n6K7G0SwCxW7u8DubkVsrx3XK45YSHfIEUWl
         +/Sc7uL0Oev/fd6ZDQN6/z/xXryKh89nsWf27Jkzs/d+3rXWs+ovTZs2nYyMr5Xac1B7D/zh7oHJf9FF
         +0vtv9ozUHsG/nBnoFmzZuNrAfyHu2y1X7j2DATOgFO+tRq49naoPQN/zDNQC+A/5nWr/da1Z6BWA/+Z
         7gF8pb+yWv81aHY14Xkfnp8qH0qr+C/YnsZxgziuNdsD/0zn7vf8W2t94N/z1Qn5boCmBRerfyhL7IHO

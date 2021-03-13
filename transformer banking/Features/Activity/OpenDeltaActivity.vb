@@ -211,8 +211,10 @@ Public Class OpenDeltaActivity
                 Else
 
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
+                        update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
+                        update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
 
                     Else
@@ -356,15 +358,19 @@ Public Class OpenDeltaActivity
 
                 category_2 = "primary"
                 If x_transformer = "btn_t1_x1" And secondary = "l1" Or x_transformer = "btn_t2_x1" And secondary = "l2" Or x_transformer = "btn_t2_x2" And secondary = "l3" Then
+
                     counter_2(myButton.Name, "", clamp_meter)
                 ElseIf transformer_1 = "btn_t1_x2" And transformer_2 = "btn_t2_x1" Or transformer_2 = "btn_t1_x2" And transformer_1 = "btn_t2_x1" Then
+
                     counter_2(myButton.Name, "Blue", clamp_meter)
 
                 Else
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
+                        update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
 
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
+                        update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
                     Else
                         ctr_lines = ctr_lines - 2
@@ -554,8 +560,10 @@ Public Class OpenDeltaActivity
         Else
 
             If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
+                update_clamp_no("3", transformer_id, table)
                 counter_2(myButton.Name, pen_color, "3")
             ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
+                update_clamp_no("4", transformer_id, table)
                 counter_2(myButton.Name, pen_color, "4")
             Else
                 delete_unwanted_connection(transformer_id, table)
@@ -1177,7 +1185,7 @@ Public Class OpenDeltaActivity
             Dim result_rating = select_rating(transformer_id)
             If result_rating <> "No data" Then
                 Dim split_value() As String = result_rating.Split(" ")
-                rating = CDbl(split_value(0))
+                rating = CDbl(split_value(0) * 1000)
             End If
             Dim cp, cl, apparent, real As Double
             If category = "primary" Then
@@ -1333,7 +1341,7 @@ Public Class OpenDeltaActivity
         MsgBox("Delta delta connection was performed correctly. You may proceed on the next connection")
         transformer_banking_connections.refresh_form()
         transformer_banking_connections.Show()
-        Me.Hide()
+        Home.Close()
     End Sub
 
 #Region "subs"

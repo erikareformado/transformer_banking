@@ -1027,7 +1027,7 @@ Public Class WyeWyeActivities
         MsgBox("Wye wye connection was performed correctly. You may proceed on the next connection")
         transformer_banking_connections.refresh_form()
         transformer_banking_connections.Show()
-        Me.Hide()
+        Home.Close()
     End Sub
 
 

@@ -34,7 +34,6 @@ Partial Class transformer_banking_connections
         Me.picturebox_close = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.btn_minimize = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel2.SuspendLayout()
         CType(Me.picturebox_minimize, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -117,7 +116,7 @@ Partial Class transformer_banking_connections
         '
         Me.btn_open_wye.BackColor = System.Drawing.Color.FromArgb(CType(CType(36, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(51, Byte), Integer))
         Me.btn_open_wye.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btn_open_wye.Font = New System.Drawing.Font("Segoe UI", 15.25!, System.Drawing.FontStyle.Bold)
+        Me.btn_open_wye.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_open_wye.ForeColor = System.Drawing.Color.White
         Me.btn_open_wye.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btn_open_wye.Location = New System.Drawing.Point(427, 300)
@@ -181,18 +180,6 @@ Partial Class transformer_banking_connections
         Me.Label1.TabIndex = 16
         Me.Label1.Text = "TRANSFORMER BANKING CONNECTIONS"
         '
-        'btn_minimize
-        '
-        Me.btn_minimize.BackgroundImage = CType(resources.GetObject("btn_minimize.BackgroundImage"), System.Drawing.Image)
-        Me.btn_minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btn_minimize.FlatAppearance.BorderSize = 0
-        Me.btn_minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_minimize.Location = New System.Drawing.Point(795, 131)
-        Me.btn_minimize.Name = "btn_minimize"
-        Me.btn_minimize.Size = New System.Drawing.Size(32, 25)
-        Me.btn_minimize.TabIndex = 0
-        Me.btn_minimize.UseVisualStyleBackColor = True
-        '
         'PictureBox1
         '
         Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
@@ -211,7 +198,6 @@ Partial Class transformer_banking_connections
         Me.ClientSize = New System.Drawing.Size(851, 483)
         Me.Controls.Add(Me.btn_open_wye)
         Me.Controls.Add(Me.btn_open_delta)
-        Me.Controls.Add(Me.btn_minimize)
         Me.Controls.Add(Me.btn_wye_delta)
         Me.Controls.Add(Me.btn_delta_wye)
         Me.Controls.Add(Me.btn_wye_wye)
@@ -238,7 +224,6 @@ Partial Class transformer_banking_connections
     Friend WithEvents btn_delta_delta As Button
     Friend WithEvents btn_open_wye As Button
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents btn_minimize As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox2 As PictureBox

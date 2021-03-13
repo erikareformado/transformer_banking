@@ -248,10 +248,18 @@ Public Class OpenwyeOpendeltaActivity
 
     Private Sub btn_connect_wires_Click(sender As Object, e As EventArgs) Handles btn_connect_wires.Click
         wire_conenction = 1
-        If ctr = 1 Then
+
+        If ctr = 0 Then
+            Dim count_points = select_count_points(transformer_id, table)
+            Dim result = count_points Mod 2
+
+            If result <> 0 Then
+                delete_unwanted_connection(transformer_id, table)
+            End If
+        ElseIf ctr = 1 Then
             ctr = 0
+            ctr_lines = ctr_lines - 1
             delete_unwanted_connection(transformer_id, table)
-            get_point()
         Else
 
         End If
@@ -887,7 +895,7 @@ Public Class OpenwyeOpendeltaActivity
             Dim result_rating = select_rating(transformer_id)
             If result_rating <> "No data" Then
                 Dim split_value() As String = result_rating.Split(" ")
-                rating = CDbl(split_value(0))
+                rating = CDbl(split_value(0) * 1000)
             End If
             Dim cp, cl, apparent, real As Double
             If category = "primary" Then
@@ -949,7 +957,7 @@ Public Class OpenwyeOpendeltaActivity
                     txt_real.Text = real.ToString
                     txt_vl.Text = secondary_voltage
                     results_model.save(transformer_id, "real_power", real)
-                    results_model.save(transformer_id, "secondary_line_current", secondary_voltage)
+                    results_model.save(transformer_id, "secondary_line_voltage", secondary_voltage)
 
                 End If
             End If
@@ -985,6 +993,11 @@ Public Class OpenwyeOpendeltaActivity
 
 
             ctr_switch = 1
+
+            done = results_model.select_specific(transformer_id)
+            If done = 1 Then
+                btn_done.Enabled = True
+            End If
         Else
             pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker.png")
             pic_switch.SizeMode = PictureBoxSizeMode.Zoom
@@ -1158,16 +1171,18 @@ Public Class OpenwyeOpendeltaActivity
             btn_clamp_black.Visible = False
             btn_clamp_red.Visible = False
 
-
+            'pic_switch.Click()
             Me.Refresh()
         End If
     End Sub
 
     Private Sub btn_done_Click_1(sender As Object, e As EventArgs) Handles btn_done.Click
         MsgBox("Delta delta connection was performed correctly. You may proceed on the next connection")
+
         transformer_banking_connections.refresh_form()
         transformer_banking_connections.Show()
-        Me.Hide()
+        Home.Close()
+
     End Sub
 
     Private Sub counter_1(btn_name, pen_color, clamp)
