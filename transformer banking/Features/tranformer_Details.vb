@@ -1,5 +1,6 @@
 ﻿Public Class tranformer_Details
-
+    Dim exercise As New exercise_transformer_details
+    Dim exercises As New exercises
     Private Sub btn_done_Click(sender As Object, e As EventArgs) Handles btn_done.Click
 
         If cmb_polarity.Text = "" Then
@@ -10,13 +11,18 @@
             MsgBox("Please Input Frequency!", MsgBoxStyle.Exclamation, "Transformer Banking")
         ElseIf cmb_rating.Text = "" Then
             MsgBox("Please Input Frequency!", MsgBoxStyle.Exclamation, "Transformer Banking")
-        ElseIf txt_primary_voltage.Text = ""
+        ElseIf txt_primary_voltage.Text = "" Then
             MsgBox("Please Input Primary Voltage!", MsgBoxStyle.Exclamation, "Transformer Banking")
-        ElseIf txt_secondary_voltage.Text = ""
+        ElseIf txt_secondary_voltage.Text = "" Then
             MsgBox("Please Input Secondary Voltage!", MsgBoxStyle.Exclamation, "Transformer Banking")
         Else
-            Dim result = save_transformer_details(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
+            If Home.action = "activity" Then
+                Dim result = save_transformer_details(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
+            Else
+                Dim no = exercises.get_exercise_no()
+                Dim result = exercise.save_transformer_details(cmb_polarity.Text, cmb_rating.Text, no, txt_primary_voltage.Text, txt_secondary_voltage.Text)
 
+            End If
             If Home.lbl_connection_type.Text = "WYE-WYE CONNECTION" Then
                 Home.panel_all.Controls.Clear()
                 Home.panel_all.Controls.Add(Home.uc_wye_wye_activity)
@@ -139,7 +145,26 @@
                     Home.uc_open_wye_open_delta_activity.Label26.Text = "X2"
                     Home.uc_open_wye_open_delta_activity.Label25.Text = "X1"
                 End If
+            Else
+                Home.panel_all.Controls.Clear()
+                Home.panel_all.Controls.Add(Home.uc_exercises)
+                Home.lbl_connection_type.Text = "Exercise"
+
+                If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
+                    Home.uc_exercises.Label21.Text = "X2"
+                    Home.uc_exercises.btn_t1_x1.Name = "btn_t1_x2"
+                    Home.uc_exercises.Label22.Text = "X1"
+                    Home.uc_exercises.btn_t1_x2.Name = "btn_t1_x1"
+                    Home.uc_exercises.Label24.Text = "X2"
+                    Home.uc_exercises.btn_t2_x1.Name = "btn_t2_x2"
+                    Home.uc_exercises.Label23.Text = "X1"
+                    Home.uc_exercises.btn_t2_x2.Name = "btn_t2_x1"
+                    Home.uc_exercises.Label26.Text = "X2"
+                    Home.uc_exercises.Label25.Text = "X1"
+                End If
+
             End If
+
 
 
         End If

@@ -139,16 +139,18 @@
     <Compile Include="Features\Activity\OpenwyeOpendeltaActivity.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Features\Exercise\Exercise.Designer.vb">
+      <DependentUpon>Exercise.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Exercise\Exercise.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Model\exercise_transformer.vb" />
+    <Compile Include="Features\Exercise\transformer_exercise.vb" />
     <Compile Include="Features\tranformer_Details.Designer.vb">
       <DependentUpon>tranformer_Details.vb</DependentUpon>
     </Compile>
     <Compile Include="Features\tranformer_Details.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Features\Exercise\WyeWyeActivity.Designer.vb">
-      <DependentUpon>WyeWyeActivity.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Features\Exercise\WyeWyeActivity.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Features\Descriptions\delta_wye_introduction.Designer.vb">
@@ -271,11 +273,11 @@
     <EmbeddedResource Include="Features\Activity\OpenwyeOpendeltaActivity.resx">
       <DependentUpon>OpenwyeOpendeltaActivity.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Features\Exercise\Exercise.resx">
+      <DependentUpon>Exercise.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\tranformer_Details.resx">
       <DependentUpon>tranformer_Details.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Features\Exercise\WyeWyeActivity.resx">
-      <DependentUpon>WyeWyeActivity.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\Descriptions\delta_wye_introduction.resx">
       <DependentUpon>delta_wye_introduction.vb</DependentUpon>

@@ -1,4 +1,5 @@
 ﻿Public Class overview
+    Dim exercise As New exercises()
     Private Sub PictureBox1_Introduction_Click(sender As Object, e As EventArgs) Handles PictureBox1_Introduction.Click
         Me.Hide()
         introduction_menu.Show()
@@ -16,6 +17,7 @@
 
     Private Sub PictureBox4_Transformer_Click(sender As Object, e As EventArgs) Handles PictureBox4_Transformer.Click
         Me.Hide()
+        Home.action = "activity"
         transformer_banking_connections.refresh_form()
         transformer_banking_connections.Show()
     End Sub
@@ -38,5 +40,16 @@
 
     Private Sub picturebox_close_Click(sender As Object, e As EventArgs) Handles picturebox_close.Click
         Close()
+    End Sub
+
+    Private Sub PictureBox6_Click(sender As Object, e As EventArgs) Handles PictureBox6.Click
+        Me.Hide()
+        Home.Show()
+        Home.action = "exercises"
+        Home.panel_all.Controls.Clear()
+        Home.panel_all.Controls.Add(Home.uc_transformer_details)
+        Dim no = exercise.get_exercise_no()
+        Home.lbl_connection_type.Text = "Exercise " & no
+
     End Sub
 End Class

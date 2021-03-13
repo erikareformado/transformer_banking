@@ -9,6 +9,8 @@ Public Class Home
     Public uc_open_delta_activity As New OpenDeltaActivity
     Public uc_open_wye_open_delta_activity As New OpenwyeOpendeltaActivity
 
+    Public uc_exercises As New Exercise
+
 
     Public uc_wye_wye_intro As New wye_wye_introduction
     Public uc_delta_wye_intro As New delta_wye_introduction
@@ -19,6 +21,10 @@ Public Class Home
 
     Public uc_test As New Test
     Public uc_transformer_details As New tranformer_Details
+
+    Public action As String
+    Public exan_no As Integer
+
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -44,4 +50,6 @@ Public Class Home
     Private Sub panel_all_Paint(sender As Object, e As PaintEventArgs) Handles panel_all.Paint
 
     End Sub
+
+
 End Class
