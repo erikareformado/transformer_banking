@@ -23,7 +23,7 @@ Public Class Home
     Public uc_transformer_details As New tranformer_Details
 
     Public action As String
-    Public exan_no As Integer
+    Public exam_no As Integer
 
 
 

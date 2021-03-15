@@ -145,7 +145,7 @@ Partial Class Exercise
         Me.btn_prim_b_1 = New System.Windows.Forms.Button()
         Me.btn_clamp_meter = New System.Windows.Forms.Button()
         Me.btn_try_again = New System.Windows.Forms.Button()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.txt_exam = New System.Windows.Forms.RichTextBox()
         Me.btn_done = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label35 = New System.Windows.Forms.Label()
@@ -1592,16 +1592,16 @@ Partial Class Exercise
         Me.btn_try_again.Text = "TRY AGAIN"
         Me.btn_try_again.UseVisualStyleBackColor = False
         '
-        'RichTextBox1
+        'txt_exam
         '
-        Me.RichTextBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(36, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(51, Byte), Integer))
-        Me.RichTextBox1.Font = New System.Drawing.Font("Segoe UI Semilight", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox1.ForeColor = System.Drawing.Color.White
-        Me.RichTextBox1.Location = New System.Drawing.Point(840, 75)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(260, 220)
-        Me.RichTextBox1.TabIndex = 143
-        Me.RichTextBox1.Text = resources.GetString("RichTextBox1.Text")
+        Me.txt_exam.BackColor = System.Drawing.Color.FromArgb(CType(CType(36, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.txt_exam.Font = New System.Drawing.Font("Segoe UI Semilight", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_exam.ForeColor = System.Drawing.Color.White
+        Me.txt_exam.Location = New System.Drawing.Point(840, 75)
+        Me.txt_exam.Name = "txt_exam"
+        Me.txt_exam.Size = New System.Drawing.Size(260, 244)
+        Me.txt_exam.TabIndex = 143
+        Me.txt_exam.Text = ""
         '
         'btn_done
         '
@@ -1630,14 +1630,14 @@ Partial Class Exercise
         'Label35
         '
         Me.Label35.AutoSize = True
-        Me.Label35.Font = New System.Drawing.Font("Segoe UI Semilight", 15.25!)
+        Me.Label35.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label35.ForeColor = System.Drawing.Color.White
-        Me.Label35.Location = New System.Drawing.Point(90, 11)
+        Me.Label35.Location = New System.Drawing.Point(67, 13)
         Me.Label35.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(128, 30)
+        Me.Label35.Size = New System.Drawing.Size(100, 28)
         Me.Label35.TabIndex = 124
-        Me.Label35.Text = "PROCEDURE"
+        Me.Label35.Text = "EXERCISE"
         '
         'Panel1
         '
@@ -1786,7 +1786,7 @@ Partial Class Exercise
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(36, Byte), Integer), CType(CType(42, Byte), Integer))
         Me.Controls.Add(Me.btn_try_again)
-        Me.Controls.Add(Me.RichTextBox1)
+        Me.Controls.Add(Me.txt_exam)
         Me.Controls.Add(Me.btn_done)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.panel_activity)
@@ -1930,7 +1930,7 @@ Partial Class Exercise
     Friend WithEvents btn_prim_b_1 As Button
     Friend WithEvents btn_clamp_meter As Button
     Friend WithEvents btn_try_again As Button
-    Friend WithEvents RichTextBox1 As RichTextBox
+    Friend WithEvents txt_exam As RichTextBox
     Friend WithEvents btn_done As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label35 As Label

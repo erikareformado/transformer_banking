@@ -148,7 +148,7 @@
             Else
                 Home.panel_all.Controls.Clear()
                 Home.panel_all.Controls.Add(Home.uc_exercises)
-                Home.lbl_connection_type.Text = "Exercise"
+                Home.lbl_connection_type.Text = "Exercise " & Home.exam_no
 
                 If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
                     Home.uc_exercises.Label21.Text = "X2"

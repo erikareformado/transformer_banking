@@ -46,6 +46,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>TRANSFOMER_LOGO.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -160,13 +163,8 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="functions.vb" />
-    <Compile Include="Model\delta_delta_lines.vb" />
-    <Compile Include="Model\delta_wye_lines.vb" />
-    <Compile Include="Model\openwye_opendelta_lines.vb" />
-    <Compile Include="Model\open_delta_lines.vb" />
     <Compile Include="Model\results.vb" />
     <Compile Include="Model\transformer_details.vb" />
-    <Compile Include="Model\wye_delta_lines.vb" />
     <Compile Include="transformer_banking_connections.Designer.vb">
       <DependentUpon>transformer_banking_connections.vb</DependentUpon>
     </Compile>
@@ -327,6 +325,9 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TRANSFOMER_LOGO.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

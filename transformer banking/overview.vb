@@ -48,8 +48,8 @@
         Home.action = "exercises"
         Home.panel_all.Controls.Clear()
         Home.panel_all.Controls.Add(Home.uc_transformer_details)
-        Dim no = exercise.get_exercise_no()
-        Home.lbl_connection_type.Text = "Exercise " & no
+        Home.exam_no = exercise.get_exercise_no()
+        Home.lbl_connection_type.Text = "Exercise " & Home.exam_no
 
     End Sub
 End Class
