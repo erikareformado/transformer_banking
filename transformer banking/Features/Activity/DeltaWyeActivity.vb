@@ -538,7 +538,7 @@ Public Class DeltaWyeActivity
         'Else
         '    validation = 0
         'End If
-        If ctr_switch = 1 And ctr_clamp <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_voltage_phase <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_voltage_line <> 0 And ctr_bulb <> 0 Or ctr_phase_current <> 0 And ctr_switch = 1 And bulb <> 0 Or ctr_bulb <> 0 And ctr_switch = 1 Then
+        If ctr_switch = 1 And ctr_clamp <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_voltage_phase <> 0 And ctr_bulb <> 0 Or ctr_switch = 1 And ctr_voltage_line <> 0 And ctr_bulb <> 0 Or ctr_phase_current <> 0 And ctr_switch = 1 And ctr_bulb <> 0 Or ctr_bulb <> 0 And ctr_switch = 1 Then
             pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker_on.png")
             pic_switch.SizeMode = PictureBoxSizeMode.Zoom
 
@@ -1127,7 +1127,7 @@ Public Class DeltaWyeActivity
 
             Dim btn = myButton.Name
             Dim query As String
-            query = "delete from delta_wye_lines where transformer_details = '" & transformer_id & "'"
+            query = "delete from delta_wye_lines where transformer_details_id = '" & transformer_id & "'"
             Dim da As New Odbc.OdbcDataAdapter(query, conn)
             Dim dt As New DataTable
             da.Fill(dt)

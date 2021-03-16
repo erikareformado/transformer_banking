@@ -1346,7 +1346,7 @@ Partial Class WyeWyeActivities
         Me.btn_t2_h1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t2_h1.FlatAppearance.BorderSize = 0
         Me.btn_t2_h1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t2_h1.Location = New System.Drawing.Point(248, 177)
+        Me.btn_t2_h1.Location = New System.Drawing.Point(248, 178)
         Me.btn_t2_h1.Name = "btn_t2_h1"
         Me.btn_t2_h1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t2_h1.TabIndex = 57

@@ -706,6 +706,10 @@ Public Class WyeWyeActivities
             pic_color.SizeMode = PictureBoxSizeMode.Zoom
 
             Dim primary_voltage, secondary_voltage, rating As Double
+            Dim pie As Double = 1.732050808
+            Dim ctr_apparent, ctr_real As Integer
+
+
 
             Dim result_primary = select_voltage_primary(transformer_id)
             If result_primary <> "No data" Then
@@ -728,25 +732,25 @@ Public Class WyeWyeActivities
             If category = "primary" Then
                 cp = Math.Round(CDbl(rating) / CDbl(primary_voltage), 2)
 
-                vl = Math.Round((primary_voltage * 1.73), 2)
+                vl = Math.Round((primary_voltage * pie), 2)
                 apparent = Math.Round((3 * primary_voltage * cp), 2)
             Else category = "secondary"
                 cp = Math.Round(CDbl(rating) / CDbl(secondary_voltage), 2)
-                vl = Math.Round((secondary_voltage * 1.73), 2)
-                real = Math.Round((((secondary_voltage * 1.73) * 1.73) * cp), 2)
+                vl = Math.Round((secondary_voltage * pie), 2)
+                real = Math.Round((((secondary_voltage * pie) * pie) * cp), 2)
             End If
+
+
 
             If ctr_clamp > 3 Then
                 txt_cp.Text = cp.ToString
                 txt_cl.Text = cp.ToString
                 If category = "primary" Then
-                    txt_apparent.Text = apparent.ToString
-                    result_model.save(transformer_id, "apparent_power", apparent.ToString)
+
                     result_model.save(transformer_id, "primary_line_current", cp.ToString)
                     result_model.save(transformer_id, "primary_phase_current", cp.ToString)
                 ElseIf category = "secondary" Then
-                    txt_real.Text = real.ToString
-                    result_model.save(transformer_id, "real_power", real.ToString)
+
                     result_model.save(transformer_id, "secondary_line_current", cp.ToString)
                     result_model.save(transformer_id, "secondary_phase_current", cp.ToString)
                 End If
@@ -755,32 +759,43 @@ Public Class WyeWyeActivities
             If ctr_voltage_phase > 3 Then
                 If category = "primary" Then
                     txt_vp.Text = primary_voltage
-                    txt_apparent.Text = apparent.ToString
+
 
                     result_model.save(transformer_id, "primary_phase_voltage", primary_voltage)
-                    result_model.save(transformer_id, "apparent_power", apparent.ToString)
+
                 ElseIf category = "secondary" Then
                     txt_vp.Text = secondary_voltage
                     result_model.save(transformer_id, "secondary_phase_voltage", secondary_voltage)
-                    txt_real.Text = real.ToString
-                    result_model.save(transformer_id, "real_power", real.ToString)
+
                 End If
 
             End If
+
             If ctr_voltage_line > 3 Then
                 txt_vl.Text = vl.ToString
                 If category = "primary" Then
                     result_model.save(transformer_id, "primary_line_voltage", vl)
-                    txt_apparent.Text = apparent.ToString
-                    result_model.save(transformer_id, "apparent_power", apparent.ToString)
+
 
 
                 ElseIf category = "secondary" Then
                     result_model.save(transformer_id, "secondary_line_voltage", vl)
-                    txt_real.Text = real.ToString
-                    result_model.save(transformer_id, "real_power", real.ToString)
+
 
                 End If
+            End If
+
+            ctr_apparent = result_model.apparent_power(transformer_id)
+            ctr_real = result_model.real_power(transformer_id)
+
+            If ctr_apparent = 1 And category = "primary" Then
+                txt_apparent.Text = apparent.ToString
+                result_model.save(transformer_id, "apparent_power", apparent.ToString)
+            End If
+
+            If ctr_real = 1 And category = "secondary" Then
+                txt_real.Text = real.ToString
+                result_model.save(transformer_id, "real_power", real.ToString)
             End If
 
             If ctr_bulb > 11 Then

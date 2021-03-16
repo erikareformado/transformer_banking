@@ -169,7 +169,7 @@ Partial Class DeltaWyeActivity
         Me.btn_t2_h2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t2_h2.FlatAppearance.BorderSize = 0
         Me.btn_t2_h2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t2_h2.Location = New System.Drawing.Point(302, 189)
+        Me.btn_t2_h2.Location = New System.Drawing.Point(302, 192)
         Me.btn_t2_h2.Name = "btn_t2_h2"
         Me.btn_t2_h2.Size = New System.Drawing.Size(30, 25)
         Me.btn_t2_h2.TabIndex = 56
@@ -181,7 +181,7 @@ Partial Class DeltaWyeActivity
         Me.btn_t3_h1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t3_h1.FlatAppearance.BorderSize = 0
         Me.btn_t3_h1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t3_h1.Location = New System.Drawing.Point(400, 191)
+        Me.btn_t3_h1.Location = New System.Drawing.Point(400, 192)
         Me.btn_t3_h1.Name = "btn_t3_h1"
         Me.btn_t3_h1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t3_h1.TabIndex = 55
@@ -193,7 +193,7 @@ Partial Class DeltaWyeActivity
         Me.btn_t3_h2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t3_h2.FlatAppearance.BorderSize = 0
         Me.btn_t3_h2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t3_h2.Location = New System.Drawing.Point(456, 190)
+        Me.btn_t3_h2.Location = New System.Drawing.Point(456, 189)
         Me.btn_t3_h2.Name = "btn_t3_h2"
         Me.btn_t3_h2.Size = New System.Drawing.Size(28, 20)
         Me.btn_t3_h2.TabIndex = 54
@@ -205,7 +205,7 @@ Partial Class DeltaWyeActivity
         Me.btn_t1_h1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t1_h1.FlatAppearance.BorderSize = 0
         Me.btn_t1_h1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t1_h1.Location = New System.Drawing.Point(106, 187)
+        Me.btn_t1_h1.Location = New System.Drawing.Point(106, 189)
         Me.btn_t1_h1.Name = "btn_t1_h1"
         Me.btn_t1_h1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t1_h1.TabIndex = 59
@@ -217,7 +217,7 @@ Partial Class DeltaWyeActivity
         Me.btn_t1_h2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t1_h2.FlatAppearance.BorderSize = 0
         Me.btn_t1_h2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t1_h2.Location = New System.Drawing.Point(160, 187)
+        Me.btn_t1_h2.Location = New System.Drawing.Point(160, 192)
         Me.btn_t1_h2.Name = "btn_t1_h2"
         Me.btn_t1_h2.Size = New System.Drawing.Size(30, 25)
         Me.btn_t1_h2.TabIndex = 58
@@ -229,7 +229,7 @@ Partial Class DeltaWyeActivity
         Me.btn_t2_h1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t2_h1.FlatAppearance.BorderSize = 0
         Me.btn_t2_h1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t2_h1.Location = New System.Drawing.Point(248, 188)
+        Me.btn_t2_h1.Location = New System.Drawing.Point(248, 192)
         Me.btn_t2_h1.Name = "btn_t2_h1"
         Me.btn_t2_h1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t2_h1.TabIndex = 57

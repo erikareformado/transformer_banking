@@ -55,7 +55,7 @@
         Public Function select_count(transformer_id)
             Dim result As String
 
-            query = "select * from activity_result where transformer_details = '" & transformer_id & "' "
+            query = "select * from results_activity where transformer_details = '" & transformer_id & "' "
             Dim da As New Odbc.OdbcDataAdapter(query, conn)
             Dim dt As New DataTable
             da.Fill(dt)
@@ -66,12 +66,54 @@
         End Function
         Public Sub update(transformer_id, column, value)
 
-            query = "update activity_result set " & column & "= " & value & " transformer_details = '" & value & "'"
+            query = "update results_activity set " & column & "= " & value & " transformer_details = '" & value & "'"
             Dim da As New Odbc.OdbcDataAdapter(query, conn)
             Dim dt As New DataTable
             da.Fill(dt)
 
         End Sub
+
+        Public Function apparent_power(transformer_id)
+            Dim result As Integer = 0
+
+            query = "select * from results_activity where 
+            primary_phase_current is not null
+            and primary_line_current  is not null
+            and primary_line_voltage  is not null
+            and primary_phase_voltage  is not null 
+            and transformer_id = '" & transformer_id & "'"
+            Dim da As New Odbc.OdbcDataAdapter(query, conn)
+            Dim dt As New DataTable
+            da.Fill(dt)
+
+            If dt.Rows.Count <> 0 Then
+                result = 1
+            End If
+
+            Return result
+        End Function
+
+        Public Function real_power(transformer_id)
+            Dim result As Integer = 0
+
+            query = "select * from results_activity where 
+            secondary_phase_current is not null
+            and secondary_line_current  is not null
+            and secondary_line_voltage  is not null
+            and secondary_phase_voltage  is not null 
+            and transformer_id = '" & transformer_id & "'"
+            Dim da As New Odbc.OdbcDataAdapter(query, conn)
+            Dim dt As New DataTable
+            da.Fill(dt)
+
+            If dt.Rows.Count <> 0 Then
+                result = 1
+            End If
+
+            Return result
+        End Function
+
+
 
     End Class
 

@@ -1223,7 +1223,7 @@ Public Class DeltaDeltaActivity
                                 Dim dt_delete As New DataTable
                                 da_delete.Fill(dt_delete)
 
-                                ctr_lines = ctr_lines - 2
+
                                 get_point()
                             ElseIf dt.Rows(counter)(3) = "" And dt.Rows(counter - 1)(3) <> "" Then
                                 query_delete = "delete from delta_delta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter - 1)(0) & "')"
@@ -1231,7 +1231,7 @@ Public Class DeltaDeltaActivity
                                 Dim dt_delete As New DataTable
                                 da_delete.Fill(dt_delete)
 
-                                ctr_lines = ctr_lines - 2
+
                                 get_point()
 
                             End If
