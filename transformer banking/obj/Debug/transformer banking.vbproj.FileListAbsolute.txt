@@ -116,7 +116,6 @@ C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transforme
 C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.wye_wye_introduction.resources
 C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.OpenwyeOpendeltaActivity.resources
 C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.tranformer_Details.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.WyeWyeActivity.resources
 C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.delta_wye_introduction.resources
 C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.home_page.resources
 C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.Test.resources
@@ -163,3 +162,4 @@ D:\transformer_banking\transformer banking\obj\Debug\transformer banking.exe
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.xml
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.pdb
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.Exercise.resources
+C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.Exercise.resources

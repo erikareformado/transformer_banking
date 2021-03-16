@@ -225,7 +225,7 @@ Public Class WyeWyeActivities
                         update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
-                        update_clamp_no("3", transformer_id, table)
+                        update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
 
                     ElseIf h_transformer = "btn_t1_h1" And primary = "a" Or h_transformer = "btn_t1_h2" And primary = "n" Or h_transformer = "btn_t2_h1" And primary = "b" Or h_transformer = "btn_t2_h2" And primary = "n" Or h_transformer = "btn_t3_h1" And primary = "c" Or h_transformer = "btn_t3_h2" And primary = "n" Then
@@ -722,7 +722,7 @@ Public Class WyeWyeActivities
             Dim result_rating = select_rating(transformer_id)
             If result_rating <> "No data" Then
                 Dim split_value() As String = result_rating.Split(" ")
-                rating = CDbl(split_value(0))
+                rating = CDbl(split_value(0) * 1000)
             End If
             Dim cp, vl, apparent, real As Double
             If category = "primary" Then
@@ -735,6 +735,7 @@ Public Class WyeWyeActivities
                 vl = Math.Round((secondary_voltage * 1.73), 2)
                 real = Math.Round((((secondary_voltage * 1.73) * 1.73) * cp), 2)
             End If
+
             If ctr_clamp > 3 Then
                 txt_cp.Text = cp.ToString
                 txt_cl.Text = cp.ToString
@@ -767,7 +768,7 @@ Public Class WyeWyeActivities
 
             End If
             If ctr_voltage_line > 3 Then
-                txt_vl.Text = vl
+                txt_vl.Text = vl.ToString
                 If category = "primary" Then
                     result_model.save(transformer_id, "primary_line_voltage", vl)
                     txt_apparent.Text = apparent.ToString
