@@ -1,6 +1,6 @@
 ﻿Public Class tranformer_Details
     Dim exercise As New exercise_transformer_details
-    Dim exercises As New exercises
+    'Dim exercises As New exercises
     Private Sub btn_done_Click(sender As Object, e As EventArgs) Handles btn_done.Click
 
         If cmb_polarity.Text = "" Then
@@ -19,8 +19,8 @@
             If Home.action = "activity" Then
                 Dim result = save_transformer_details(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
             Else
-                Dim no = exercises.get_exercise_no()
-                Dim result = exercise.save_transformer_details(cmb_polarity.Text, cmb_rating.Text, no, txt_primary_voltage.Text, txt_secondary_voltage.Text)
+                'Dim no = exercises.get_exercise_no()
+                'Dim result = exercise.save_transformer_details(cmb_polarity.Text, cmb_rating.Text, no, txt_primary_voltage.Text, txt_secondary_voltage.Text)
 
             End If
             If Home.lbl_connection_type.Text = "WYE-WYE CONNECTION" Then

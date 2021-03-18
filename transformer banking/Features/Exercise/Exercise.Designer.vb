@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Exercise
     Inherits System.Windows.Forms.UserControl
 
     'UserControl overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Exercise
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Exercise))
         Me.btn_t2_h2 = New System.Windows.Forms.Button()
@@ -151,6 +151,7 @@ Partial Class Exercise
         Me.Label35 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.panel_activity = New System.Windows.Forms.Panel()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         CType(Me.pic_clamp_meter_cp, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pic_clamp_meter, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pic_color, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -161,6 +162,7 @@ Partial Class Exercise
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.panel_activity.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btn_t2_h2
@@ -1652,8 +1654,8 @@ Partial Class Exercise
         'panel_activity
         '
         Me.panel_activity.BackColor = System.Drawing.Color.Transparent
-        Me.panel_activity.BackgroundImage = CType(resources.GetObject("panel_activity.BackgroundImage"), System.Drawing.Image)
         Me.panel_activity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.panel_activity.Controls.Add(Me.btn_prim_a_6)
         Me.panel_activity.Controls.Add(Me.btn_t2_h2)
         Me.panel_activity.Controls.Add(Me.btn_t3_h1)
         Me.panel_activity.Controls.Add(Me.btn_t3_h2)
@@ -1691,7 +1693,6 @@ Partial Class Exercise
         Me.panel_activity.Controls.Add(Me.lbl_polarity)
         Me.panel_activity.Controls.Add(Me.lbl_dt)
         Me.panel_activity.Controls.Add(Me.btn_prim_a_5)
-        Me.panel_activity.Controls.Add(Me.btn_prim_a_6)
         Me.panel_activity.Controls.Add(Me.btn_prim_a_3)
         Me.panel_activity.Controls.Add(Me.btn_prim_a_4)
         Me.panel_activity.Controls.Add(Me.Label36)
@@ -1780,16 +1781,29 @@ Partial Class Exercise
         Me.panel_activity.Size = New System.Drawing.Size(824, 553)
         Me.panel_activity.TabIndex = 141
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackgroundImage = CType(resources.GetObject("PictureBox2.BackgroundImage"), System.Drawing.Image)
+        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox2.Location = New System.Drawing.Point(200, 577)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(824, 553)
+        Me.PictureBox2.TabIndex = 184
+        Me.PictureBox2.TabStop = False
+        '
         'Exercise
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(36, Byte), Integer), CType(CType(42, Byte), Integer))
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Controls.Add(Me.panel_activity)
         Me.Controls.Add(Me.btn_try_again)
         Me.Controls.Add(Me.txt_exam)
         Me.Controls.Add(Me.btn_done)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.panel_activity)
+        Me.Controls.Add(Me.PictureBox2)
         Me.Name = "Exercise"
         Me.Size = New System.Drawing.Size(1112, 644)
         CType(Me.pic_clamp_meter_cp, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1804,6 +1818,7 @@ Partial Class Exercise
         Me.Panel1.PerformLayout()
         Me.panel_activity.ResumeLayout(False)
         Me.panel_activity.PerformLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1936,4 +1951,5 @@ Partial Class Exercise
     Friend WithEvents Label35 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents panel_activity As Panel
+    Friend WithEvents PictureBox2 As PictureBox
 End Class

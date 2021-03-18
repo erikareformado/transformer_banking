@@ -1046,7 +1046,14 @@ Public Class WyeWyeActivities
         Home.Close()
     End Sub
 
+    Private Sub panel_activity_Click(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles panel_activity.Click
 
+    End Sub
+
+    Private Sub panel_activity_MouseMove(sender As Object, e As MouseEventArgs) Handles panel_activity.MouseMove
+        Dim MPx As Point = MousePosition()
+        TextBox1.Text = MPx.ToString
+    End Sub
 
     Private Sub pic_clamp_meter_MouseDown(sender As Object, e As MouseEventArgs) Handles pic_clamp_meter.MouseDown
         If e.Button = MouseButtons.Right Then
