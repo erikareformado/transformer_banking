@@ -100,9 +100,9 @@ Public Class DeltaDeltaActivity
 
 
                 Else
-                    ctr_lines = ctr_lines - 2
-                    points.RemoveAt(ctr_lines)
+
                     delete_unwanted_connection(transformer_id, table)
+                    get_point()
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                 End If
                 clamp_meter = 0
@@ -129,24 +129,14 @@ Public Class DeltaDeltaActivity
                         update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
                     Else
-                        ctr_lines = ctr_lines - 2
-                        points.RemoveAt(ctr_lines)
+
                         delete_unwanted_connection(transformer_id, table)
+                        get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
                 End If
             End If
 
-
-            'If category_1 = category_2 Then
-            '    ctr_lines = ctr_lines - 2
-            '    points.RemoveAt(ctr_lines)
-            '    delete_unwanted_connection()
-            '    MsgBox("Cannot Connect! Please select other connection.", MsgBoxStyle.Exclamation)
-            'Else
-            '    Dim color_pen As String = ""
-            'counter_2(myButton.Name, color_pen)
-            'End If
             ctr = 0
             Me.Refresh()
 
@@ -236,9 +226,9 @@ Public Class DeltaDeltaActivity
 
 
                     Else
-                        ctr_lines = ctr_lines - 2
-                        points.RemoveAt(ctr_lines)
+
                         delete_unwanted_connection(transformer_id, table)
+                        get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
                     clamp_meter = 0
@@ -254,9 +244,9 @@ Public Class DeltaDeltaActivity
 
 
                     Else
-                        ctr_lines = ctr_lines - 2
-                        points.RemoveAt(ctr_lines)
+
                         delete_unwanted_connection(transformer_id, table)
+                        get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
                     End If
@@ -395,6 +385,9 @@ Public Class DeltaDeltaActivity
             pic_color.SizeMode = PictureBoxSizeMode.Zoom
 
             Dim primary_voltage, secondary_voltage, rating As Double
+            Dim pie As Double = 1.732050808
+            Dim ctr_apparent, ctr_real As Integer
+
 
             Dim result_primary = select_voltage_primary(transformer_id)
             If result_primary <> "No data" Then
@@ -414,25 +407,21 @@ Public Class DeltaDeltaActivity
             Dim cp, cl, apparent, real As Double
             If category = "primary" Then
                 cp = Math.Round(CDbl(rating) / CDbl(primary_voltage), 2)
-                cl = Math.Round(cp * 1.73, 2)
+                cl = Math.Round(cp * pie, 2)
                 'vl = Math.Round((primary_voltage * 1.73), 2)
                 apparent = Math.Round((3 * primary_voltage * cp), 2)
             Else category = "secondary"
                 cp = Math.Round(CDbl(rating) / CDbl(secondary_voltage), 2)
-                cl = Math.Round(cp * 1.73, 2)
+                cl = Math.Round(cp * pie, 2)
                 'vl = Math.Round((secondary_voltage * 1.73), 2)
-                real = Math.Round((((secondary_voltage * 1.73) * 1.73) * cp), 2)
+                real = Math.Round((((secondary_voltage * pie) * pie) * cp), 2)
             End If
             If ctr_clamp > 3 Then
                 txt_cl.Text = cl.ToString
 
                 If category = "primary" Then
-                    txt_apparent.Text = apparent.ToString
-                    results_model.save(transformer_id, "apparent_power", apparent)
                     results_model.save(transformer_id, "primary_line_current", cl)
                 ElseIf category = "secondary" Then
-                    txt_real.Text = real.ToString
-                    results_model.save(transformer_id, "apparent_power", apparent)
                     results_model.save(transformer_id, "secondary_line_current", cl)
                 End If
 
@@ -441,13 +430,9 @@ Public Class DeltaDeltaActivity
                 If category = "primary" Then
                     txt_vp.Text = primary_voltage
                     results_model.save(transformer_id, "primary_phase_voltage", primary_voltage)
-                    txt_apparent.Text = apparent.ToString
-                    results_model.save(transformer_id, "apparent_power", apparent)
                 ElseIf category = "secondary" Then
                     results_model.save(transformer_id, "secondary_phase_voltage", secondary_voltage)
-                    results_model.save(transformer_id, "real_power", real)
                     txt_vp.Text = secondary_voltage
-                    txt_real.Text = real.ToString
                 End If
 
             End If
@@ -456,13 +441,9 @@ Public Class DeltaDeltaActivity
                 If category = "primary" Then
                     txt_vl.Text = primary_voltage
                     results_model.save(transformer_id, "primary_line_voltage", primary_voltage)
-                    txt_apparent.Text = apparent.ToString
-                    results_model.save(transformer_id, "apparent_power", apparent)
                 ElseIf category = "secondary" Then
-                    txt_real.Text = real.ToString
                     txt_vl.Text = secondary_voltage
                     results_model.save(transformer_id, "secondary_line_voltage", primary_voltage)
-                    results_model.save(transformer_id, "real_power", real)
                 End If
             End If
 
@@ -470,16 +451,14 @@ Public Class DeltaDeltaActivity
                 txt_cp.Text = cp.ToString
 
                 If category = "primary" Then
-                    txt_apparent.Text = apparent.ToString
                     results_model.save(transformer_id, "primary_phase_current", cp)
-                    results_model.save(transformer_id, "apparent_power", apparent)
 
                 ElseIf category = "secondary" Then
-                    txt_real.Text = real.ToString
                     results_model.save(transformer_id, "secondary_phase_current", cp)
-                    results_model.save(transformer_id, "real_power", real)
                 End If
             End If
+
+
 
             If ctr_bulb > 11 Then
                 pic_bulb1.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
@@ -586,11 +565,12 @@ Public Class DeltaDeltaActivity
                     Dim btn = myButton.Name
                     delete_connections(btn, transformer_id, table)
                     get_point()
+                    Me.Refresh()
                 Else
                     MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
                 End If
             End If
-            Me.Refresh()
+
         End If
 
     End Sub
@@ -787,9 +767,9 @@ Public Class DeltaDeltaActivity
                     counter_2(myButton.Name, pen_color, "7")
 
                 Else
-                    ctr_lines = ctr_lines - 2
-                    points.RemoveAt(ctr_lines)
+
                     delete_unwanted_connection(transformer_id, table)
+                    get_point()
                     MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
 
                 End If
@@ -1056,7 +1036,7 @@ Public Class DeltaDeltaActivity
 
     End Sub
 
-    Private Sub btn_t1_h1_Click(sender As Object, e As EventArgs) Handles btn_t1_h1.Click, btn_t1_h2.Click, btn_t2_h1.Click, btn_t2_h2.Click, btn_t3_h1.Click, btn_t3_h2.Click
+    Private Sub btn_t1_h1_Click(sender As Object, e As EventArgs) Handles btn_t1_h1.Click, btn_t1_h2.Click, btn_t2_h1.Click, btn_t2_h2.Click, btn_t3_h2.Click, btn_t3_h1.Click
 
         If wire_conenction = 1 Or clamp_meter = 1 Then
 
@@ -1104,9 +1084,8 @@ Public Class DeltaDeltaActivity
 
 
                     Else
-                        ctr_lines = ctr_lines - 2
-                        points.RemoveAt(ctr_lines)
                         delete_unwanted_connection(transformer_id, table)
+                        get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                     End If
                     clamp_meter = 0
@@ -1117,7 +1096,7 @@ Public Class DeltaDeltaActivity
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
                         update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
-                    ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
+                    ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t1_x2" And voltage = "vlblack" Then
                         update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
 
@@ -1132,9 +1111,8 @@ Public Class DeltaDeltaActivity
                             counter_2(myButton.Name, "Red", clamp_meter)
 
                         Else
-                            ctr_lines = ctr_lines - 2
-                            points.RemoveAt(ctr_lines)
                             delete_unwanted_connection(transformer_id, table)
+                            get_point()
                             MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
                         End If
                     End If

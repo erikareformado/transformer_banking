@@ -228,7 +228,7 @@ Partial Class WyeDeltaActivity
         Me.btn_t3_x1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t3_x1.FlatAppearance.BorderSize = 0
         Me.btn_t3_x1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t3_x1.Location = New System.Drawing.Point(400, 288)
+        Me.btn_t3_x1.Location = New System.Drawing.Point(400, 290)
         Me.btn_t3_x1.Name = "btn_t3_x1"
         Me.btn_t3_x1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t3_x1.TabIndex = 61
@@ -239,7 +239,7 @@ Partial Class WyeDeltaActivity
         Me.btn_t3_x2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t3_x2.FlatAppearance.BorderSize = 0
         Me.btn_t3_x2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t3_x2.Location = New System.Drawing.Point(451, 291)
+        Me.btn_t3_x2.Location = New System.Drawing.Point(451, 293)
         Me.btn_t3_x2.Name = "btn_t3_x2"
         Me.btn_t3_x2.Size = New System.Drawing.Size(30, 25)
         Me.btn_t3_x2.TabIndex = 60
@@ -272,7 +272,7 @@ Partial Class WyeDeltaActivity
         Me.btn_t1_x1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t1_x1.FlatAppearance.BorderSize = 0
         Me.btn_t1_x1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t1_x1.Location = New System.Drawing.Point(106, 291)
+        Me.btn_t1_x1.Location = New System.Drawing.Point(106, 293)
         Me.btn_t1_x1.Name = "btn_t1_x1"
         Me.btn_t1_x1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t1_x1.TabIndex = 65
@@ -524,6 +524,8 @@ Partial Class WyeDeltaActivity
         Me.panel_activity.BackColor = System.Drawing.Color.Transparent
         Me.panel_activity.BackgroundImage = CType(resources.GetObject("panel_activity.BackgroundImage"), System.Drawing.Image)
         Me.panel_activity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.panel_activity.Controls.Add(Me.Label21)
+        Me.panel_activity.Controls.Add(Me.btn_t1_x1)
         Me.panel_activity.Controls.Add(Me.btn_t2_h2)
         Me.panel_activity.Controls.Add(Me.btn_t3_h1)
         Me.panel_activity.Controls.Add(Me.btn_t3_h2)
@@ -536,7 +538,6 @@ Partial Class WyeDeltaActivity
         Me.panel_activity.Controls.Add(Me.btn_t2_x1)
         Me.panel_activity.Controls.Add(Me.btn_t2_x2)
         Me.panel_activity.Controls.Add(Me.btn_t2_x)
-        Me.panel_activity.Controls.Add(Me.btn_t1_x1)
         Me.panel_activity.Controls.Add(Me.btn_t1_x2)
         Me.panel_activity.Controls.Add(Me.btn_t1_x)
         Me.panel_activity.Controls.Add(Me.Label14)
@@ -584,7 +585,6 @@ Partial Class WyeDeltaActivity
         Me.panel_activity.Controls.Add(Me.Label23)
         Me.panel_activity.Controls.Add(Me.Label24)
         Me.panel_activity.Controls.Add(Me.Label22)
-        Me.panel_activity.Controls.Add(Me.Label21)
         Me.panel_activity.Controls.Add(Me.Label20)
         Me.panel_activity.Controls.Add(Me.Label19)
         Me.panel_activity.Controls.Add(Me.Label18)

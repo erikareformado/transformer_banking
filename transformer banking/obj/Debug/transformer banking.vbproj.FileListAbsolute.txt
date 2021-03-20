@@ -128,11 +128,7 @@ C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transforme
 C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.Resources.resources
 C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.transformer_banking_connections.resources
 C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer banking.vbproj.GenerateResource.Cache
-D:\transformer_banking\transformer banking\bin\Debug\transformer banking.exe.config
-D:\transformer_banking\transformer banking\bin\Debug\transformer banking.exe
-D:\transformer_banking\transformer banking\bin\Debug\transformer banking.pdb
-D:\transformer_banking\transformer banking\bin\Debug\transformer banking.xml
-D:\transformer_banking\transformer banking\obj\Debug\transformer banking.vbprojAssemblyReference.cache
+C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.Exercise.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.DeltaDeltaActivity.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.DeltaWyeActivity.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.OpenDeltaActivity.resources
@@ -144,6 +140,7 @@ D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.open_wy
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.wye_delta_introduction.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.wye_wye_introduction.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.OpenwyeOpendeltaActivity.resources
+D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.Exercise.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.tranformer_Details.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.delta_wye_introduction.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.home_page.resources
@@ -158,8 +155,10 @@ D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.Resourc
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.transformer_banking_connections.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.vbproj.GenerateResource.cache
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.vbproj.CoreCompileInputs.cache
+D:\transformer_banking\transformer banking\bin\Debug\transformer banking.exe.config
+D:\transformer_banking\transformer banking\bin\Debug\transformer banking.exe
+D:\transformer_banking\transformer banking\bin\Debug\transformer banking.pdb
+D:\transformer_banking\transformer banking\bin\Debug\transformer banking.xml
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.exe
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.xml
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.pdb
-D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.Exercise.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.Exercise.resources

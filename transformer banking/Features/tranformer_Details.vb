@@ -3,6 +3,8 @@
     'Dim exercises As New exercises
     Private Sub btn_done_Click(sender As Object, e As EventArgs) Handles btn_done.Click
 
+
+
         If cmb_polarity.Text = "" Then
             MsgBox("Please Select Polarity!", MsgBoxStyle.Exclamation, "Transformer Banking")
         ElseIf cmb_rating.Text = "" Then
@@ -72,18 +74,7 @@
                 Home.uc_delta_delta_activity.refresh_form(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
 
                 If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
-                    Home.uc_delta_delta_activity.Label21.Text = "X2"
-                    Home.uc_delta_delta_activity.btn_t1_x1.Name = "btn_t1_x2"
-                    Home.uc_delta_delta_activity.Label22.Text = "X1"
-                    Home.uc_delta_delta_activity.btn_t1_x2.Name = "btn_t1_x1"
-                    Home.uc_delta_delta_activity.Label24.Text = "X2"
-                    Home.uc_delta_delta_activity.btn_t2_x1.Name = "btn_t2_x2"
-                    Home.uc_delta_delta_activity.Label23.Text = "X1"
-                    Home.uc_delta_delta_activity.btn_t2_x2.Name = "btn_t2_x1"
-                    Home.uc_delta_delta_activity.Label26.Text = "X2"
-                    Home.uc_delta_delta_activity.btn_t3_x1.Name = "btn_t3_x2"
-                    Home.uc_delta_delta_activity.btn_t3_x2.Name = "btn_t3_x1"
-                    Home.uc_delta_delta_activity.Label25.Text = "X1"
+                    additive_delta_properties()
 
 
                 End If
@@ -94,18 +85,7 @@
                 Home.uc_wye_delta_activity.refresh_form(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
 
                 If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
-                    Home.uc_wye_delta_activity.Label21.Text = "X2"
-                    Home.uc_wye_delta_activity.btn_t1_x1.Name = "btn_t1_x2"
-                    Home.uc_wye_delta_activity.Label22.Text = "X1"
-                    Home.uc_wye_delta_activity.btn_t1_x2.Name = "btn_t1_x1"
-                    Home.uc_wye_delta_activity.Label24.Text = "X2"
-                    Home.uc_wye_delta_activity.btn_t2_x1.Name = "btn_t2_x2"
-                    Home.uc_wye_delta_activity.Label23.Text = "X1"
-                    Home.uc_wye_delta_activity.btn_t2_x2.Name = "btn_t2_x1"
-                    Home.uc_wye_delta_activity.Label26.Text = "X2"
-                    Home.uc_wye_delta_activity.btn_t3_x1.Name = "btn_t3_x2"
-                    Home.uc_wye_delta_activity.btn_t3_x2.Name = "btn_t3_x1"
-                    Home.uc_wye_delta_activity.Label25.Text = "X1"
+                    additive_delta_properties()
                 End If
             ElseIf Home.lbl_connection_type.Text = "OPEN-DELTA CONNECTION" Then
 
@@ -115,16 +95,7 @@
                 Home.uc_open_delta_activity.refresh_form(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
 
                 If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
-                    Home.uc_open_delta_activity.Label21.Text = "X2"
-                    Home.uc_open_delta_activity.btn_t1_x1.Name = "btn_t1_x2"
-                    Home.uc_open_delta_activity.Label22.Text = "X1"
-                    Home.uc_open_delta_activity.btn_t1_x2.Name = "btn_t1_x1"
-                    Home.uc_open_delta_activity.Label24.Text = "X2"
-                    Home.uc_open_delta_activity.btn_t2_x1.Name = "btn_t2_x2"
-                    Home.uc_open_delta_activity.Label23.Text = "X1"
-                    Home.uc_open_delta_activity.btn_t2_x2.Name = "btn_t2_x1"
-                    Home.uc_open_delta_activity.Label26.Text = "X2"
-                    Home.uc_open_delta_activity.Label25.Text = "X1"
+                    additive_delta_properties()
                 End If
             ElseIf Home.lbl_connection_type.Text = "OPEN WYE-OPEN DELTA CONNECTION" Then
 
@@ -186,4 +157,48 @@
         Me.Controls.Clear()
         InitializeComponent()
     End Sub
+
+    Private Sub additive_delta_properties()
+        Dim blue_1 As New Point(106, 293)
+        Dim blue_2 As New Point(301, 293)
+
+        Dim red_1 As New Point(156, 291)
+        Dim red_2 As New Point(400, 291)
+
+        Dim yellow_1 As New Point(252, 288)
+        Dim yellow_2 As New Point(451, 288)
+
+
+        Home.uc_wye_delta_activity.Label21.Text = "X2"
+        Home.uc_wye_delta_activity.Label21.BringToFront()
+        Home.uc_wye_delta_activity.btn_t1_x1.Name = "btn_t1_x2"
+
+        Home.uc_wye_delta_activity.btn_t1_x1.Location = blue_1
+        Home.uc_wye_delta_activity.Label22.Text = "X1"
+        Home.uc_wye_delta_activity.Label22.BringToFront()
+
+        Home.uc_wye_delta_activity.btn_t1_x2.Name = "btn_t1_x1"
+        Home.uc_wye_delta_activity.btn_t1_x2.Location = red_1
+        Home.uc_wye_delta_activity.Label24.Text = "X2"
+        Home.uc_wye_delta_activity.Label24.BringToFront()
+
+        Home.uc_wye_delta_activity.btn_t2_x1.Name = "btn_t2_x2"
+        Home.uc_wye_delta_activity.btn_t2_x1.Location = yellow_1
+        Home.uc_wye_delta_activity.Label23.Text = "X1"
+        Home.uc_wye_delta_activity.Label23.BringToFront()
+
+        Home.uc_wye_delta_activity.btn_t2_x2.Name = "btn_t2_x1"
+        Home.uc_wye_delta_activity.btn_t2_x2.Location = blue_2
+        Home.uc_wye_delta_activity.Label26.Text = "X2"
+        Home.uc_wye_delta_activity.Label26.BringToFront()
+
+        Home.uc_wye_delta_activity.btn_t3_x1.Name = "btn_t3_x2"
+        Home.uc_wye_delta_activity.btn_t3_x1.Location = red_2
+
+        Home.uc_wye_delta_activity.btn_t3_x2.Name = "btn_t3_x1"
+        Home.uc_wye_delta_activity.btn_t3_x2.Location = yellow_2
+        Home.uc_wye_delta_activity.Label25.Text = "X1"
+        Home.uc_wye_delta_activity.Label25.BringToFront()
+    End Sub
+
 End Class

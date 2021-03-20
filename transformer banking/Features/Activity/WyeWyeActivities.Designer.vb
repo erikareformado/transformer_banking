@@ -153,7 +153,6 @@ Partial Class WyeWyeActivities
         Me.btn_prim_b_6 = New System.Windows.Forms.Button()
         Me.btn_prim_b_1 = New System.Windows.Forms.Button()
         Me.btn_clamp_meter = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel_activity.SuspendLayout()
@@ -240,7 +239,6 @@ Partial Class WyeWyeActivities
         Me.panel_activity.BackColor = System.Drawing.Color.Transparent
         Me.panel_activity.BackgroundImage = CType(resources.GetObject("panel_activity.BackgroundImage"), System.Drawing.Image)
         Me.panel_activity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.panel_activity.Controls.Add(Me.TextBox1)
         Me.panel_activity.Controls.Add(Me.lbl_secondary_voltage)
         Me.panel_activity.Controls.Add(Me.lbl_primary_voltage)
         Me.panel_activity.Controls.Add(Me.btn_clamp_red)
@@ -1817,21 +1815,6 @@ Partial Class WyeWyeActivities
         Me.btn_clamp_meter.TabIndex = 163
         Me.btn_clamp_meter.UseVisualStyleBackColor = True
         '
-        'TextBox1
-        '
-        Me.TextBox1.BackColor = System.Drawing.SystemColors.InactiveCaptionText
-        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.ForeColor = System.Drawing.Color.White
-        Me.TextBox1.Location = New System.Drawing.Point(459, 384)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.TextBox1.Size = New System.Drawing.Size(96, 32)
-        Me.TextBox1.TabIndex = 168
-        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'WyeWyeActivities
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1989,5 +1972,4 @@ Partial Class WyeWyeActivities
     Friend WithEvents lbl_secondary_voltage As Label
     Friend WithEvents lbl_primary_voltage As Label
     Friend WithEvents btn_l1red As Button
-    Friend WithEvents TextBox1 As TextBox
 End Class
