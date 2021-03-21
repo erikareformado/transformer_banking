@@ -2,7 +2,7 @@
 Public Class DeltaWyeActivity
     Dim appPath As String = Application.StartupPath()
 
-    Dim results_model As New results_activity
+    Dim result_model As New results_activity
     Dim done As Integer
     Dim table As String
 
@@ -546,6 +546,8 @@ Public Class DeltaWyeActivity
             pic_color.SizeMode = PictureBoxSizeMode.Zoom
 
             Dim primary_voltage, secondary_voltage, rating As Double
+            Dim pie As Double = 1.732050808
+            Dim ctr_apparent, ctr_real As Integer
 
             Dim result_primary = select_voltage_primary(transformer_id)
             If result_primary <> "No data" Then
@@ -565,44 +567,35 @@ Public Class DeltaWyeActivity
             Dim cp, cl, vl, apparent, real As Double
             If category = "primary" Then
                 cp = Math.Round(CDbl(rating) / CDbl(primary_voltage), 2)
-                cl = Math.Round(cp * 1.73, 2)
+                cl = Math.Round(cp * pie, 2)
                 'vl = Math.Round((primary_voltage * 1.73), 2)
                 apparent = Math.Round((3 * primary_voltage * cp), 2)
             Else category = "secondary"
                 cp = Math.Round(CDbl(rating) / CDbl(secondary_voltage), 2)
-                cl = Math.Round(cp * 1.73, 2)
-                vl = Math.Round((secondary_voltage * 1.73), 2)
-                real = Math.Round((((secondary_voltage * 1.73) * 1.73) * cp), 2)
+                cl = Math.Round(cp * pie, 2)
+                vl = Math.Round((secondary_voltage * pie), 2)
+                real = Math.Round((((secondary_voltage * pie) * pie) * cp), 2)
             End If
             If ctr_clamp > 3 Then
                 txt_cl.Text = cl.ToString
 
                 If category = "primary" Then
-
-                    txt_apparent.Text = apparent.ToString
-                    results_model.save(transformer_id, "apparent_power", apparent)
-                    results_model.save(transformer_id, "primary_line_current", cl)
+                    result_model.save(transformer_id, "primary_line_current", cl)
                 ElseIf category = "secondary" Then
-                    txt_real.Text = real.ToString
                     txt_cp.Text = cl.ToString
                     txt_cl.Text = cl.ToString
-                    results_model.save(transformer_id, "real_power", real)
-                    results_model.save(transformer_id, "secondary_line_current", cl)
-                    results_model.save(transformer_id, "secondary_phase_current", cl)
+                    result_model.save(transformer_id, "secondary_line_current", cl)
+                    result_model.save(transformer_id, "secondary_phase_current", cl)
                 End If
 
             End If
             If ctr_voltage_phase > 3 Then
                 If category = "primary" Then
                     txt_vp.Text = primary_voltage
-                    txt_apparent.Text = apparent.ToString
-                    results_model.save(transformer_id, "apparent_power", apparent.ToString)
-                    results_model.save(transformer_id, "primary_phase_voltage", primary_voltage)
+                    result_model.save(transformer_id, "primary_phase_voltage", primary_voltage)
                 ElseIf category = "secondary" Then
                     txt_vp.Text = secondary_voltage
-                    txt_real.Text = real.ToString
-                    results_model.save(transformer_id, "real_power", real)
-                    results_model.save(transformer_id, "secondary_phase_voltage", secondary_voltage)
+                    result_model.save(transformer_id, "secondary_phase_voltage", secondary_voltage)
                 End If
 
             End If
@@ -610,14 +603,10 @@ Public Class DeltaWyeActivity
 
                 If category = "primary" Then
                     txt_vl.Text = primary_voltage
-                    txt_apparent.Text = apparent.ToString
-                    results_model.save(transformer_id, "apparent_power", apparent)
-                    results_model.save(transformer_id, "primary_line_voltage", vl)
+                    result_model.save(transformer_id, "primary_line_voltage", vl)
                 ElseIf category = "secondary" Then
-                    txt_real.Text = real.ToString
                     txt_vl.Text = vl.ToString
-                    results_model.save(transformer_id, "real_power", real)
-                    results_model.save(transformer_id, "secondary_line_voltage", vl)
+                    result_model.save(transformer_id, "secondary_line_voltage", vl)
 
                 End If
             End If
@@ -626,13 +615,23 @@ Public Class DeltaWyeActivity
 
                 If category = "primary" Then
                     txt_cp.Text = cp.ToString
-                    txt_apparent.Text = apparent.ToString
-                    results_model.save(transformer_id, "primary_phase_current", cp)
-                    results_model.save(transformer_id, "apparent_power", apparent)
+                    result_model.save(transformer_id, "primary_phase_current", cp)
                 ElseIf category = "secondary" Then
-                    txt_real.Text = real.ToString
-                    results_model.save(transformer_id, "real_power", real)
+
                 End If
+            End If
+
+            ctr_apparent = result_model.apparent_power(transformer_id)
+            ctr_real = result_model.real_power(transformer_id)
+
+            If ctr_apparent = 1 And category = "primary" Then
+                txt_apparent.Text = apparent.ToString
+                result_model.save(transformer_id, "apparent_power", apparent.ToString)
+            End If
+
+            If ctr_real = 1 And category = "secondary" Then
+                txt_real.Text = real.ToString
+                result_model.save(transformer_id, "real_power", real.ToString)
             End If
 
             If ctr_bulb > 11 Then
@@ -648,7 +647,7 @@ Public Class DeltaWyeActivity
 
 
             ctr_switch = 1
-            done = results_model.select_specific(transformer_id)
+            done = result_model.select_specific(transformer_id)
             If done = 1 Then
                 btn_done.Enabled = True
             End If

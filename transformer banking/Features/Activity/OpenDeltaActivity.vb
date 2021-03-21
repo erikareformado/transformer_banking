@@ -3,7 +3,7 @@ Public Class OpenDeltaActivity
     Dim appPath As String = Application.StartupPath()
 
 
-    Dim results_model As New results_activity
+    Dim result_model As New results_activity
     Dim done As Integer
     Dim table As String
 
@@ -471,7 +471,7 @@ Public Class OpenDeltaActivity
                     Me.Refresh()
 
                 Else
-                    If secondary = "l1" And bulb = "l1red" Or secondary = "l2" And bulb = "l1black" Or secondary = "l1" And bulb = "l2red" Or secondary = "l2" And bulb = "l2black" Or secondary = "l2" And bulb = "l3red" Or secondary = "l3" And bulb = "l3black" Then
+                    If secondary = "l1" And bulb = "l1red" Or secondary = "l2" And bulb = "l1black" Or secondary = "l2" And bulb = "l2red" Or secondary = "l3" And bulb = "l2black" Or secondary = "l3" And bulb = "l3red" Or secondary = "l1" And bulb = "l3black" Then
                         counter_2(myButton.Name, pen_color, "5")
                     ElseIf x_transformer = "btn_t1_x1" And secondary = "l1" Or x_transformer = "btn_t2_x1" And secondary = "l2" Or x_transformer = "btn_t2_x2" And secondary = "l3" Then
                         counter_2(myButton.Name, pen_color, clamp_meter)
@@ -1171,6 +1171,10 @@ Public Class OpenDeltaActivity
             pic_color.SizeMode = PictureBoxSizeMode.Zoom
 
             Dim primary_voltage, secondary_voltage, rating As Double
+            Dim pie As Double = 1.732050808
+            Dim ctr_apparent, ctr_real As Integer
+
+
 
             Dim result_primary = select_voltage_primary(transformer_id)
             If result_primary <> "No data" Then
@@ -1192,44 +1196,36 @@ Public Class OpenDeltaActivity
                 cp = Math.Round(CDbl(rating) / CDbl(primary_voltage), 2)
                 'cl = Math.Round(cp * 1.73, 2)
                 'vl = Math.Round((primary_voltage * 1.73), 2)
-                apparent = Math.Round((1.73 * primary_voltage * cp), 2)
+                apparent = Math.Round((pie * primary_voltage * cp), 2)
             Else category = "secondary"
                 cp = Math.Round(CDbl(rating) / CDbl(secondary_voltage), 2)
                 'cl = Math.Round(cp * 1.73, 2)
                 'vl = Math.Round((secondary_voltage * 1.73), 2)
-                real = Math.Round(((secondary_voltage * 1.73) * cp), 2)
+                real = Math.Round(((secondary_voltage * pie) * cp), 2)
             End If
             If ctr_clamp > 3 Then
 
 
                 If category = "primary" Then
-                    txt_apparent.Text = apparent.ToString
                     txt_cp.Text = cp.ToString
                     txt_cl.Text = cp.ToString
-                    results_model.save(transformer_id, "apparent_power", apparent)
-                    results_model.save(transformer_id, "primary_line_current", cp)
-                    results_model.save(transformer_id, "primary_phase_current", cp)
+                    result_model.save(transformer_id, "primary_line_current", cp)
+                    result_model.save(transformer_id, "primary_phase_current", cp)
                 ElseIf category = "secondary" Then
-                    txt_real.Text = real.ToString
                     txt_cp.Text = cp.ToString
                     txt_cl.Text = cp.ToString
-                    results_model.save(transformer_id, "real_power", apparent)
-                    results_model.save(transformer_id, "secondary_line_current", cp)
-                    results_model.save(transformer_id, "secondary_phase_current", cp)
+                    result_model.save(transformer_id, "secondary_line_current", cp)
+                    result_model.save(transformer_id, "secondary_phase_current", cp)
                 End If
 
             End If
             If ctr_voltage_phase > 3 Then
                 If category = "primary" Then
                     txt_vp.Text = primary_voltage
-                    txt_apparent.Text = apparent.ToString
-                    results_model.save(transformer_id, "apparent_power", apparent)
-                    results_model.save(transformer_id, "primary_phase_voltage", primary_voltage)
+                    result_model.save(transformer_id, "primary_phase_voltage", primary_voltage)
                 ElseIf category = "secondary" Then
                     txt_vp.Text = secondary_voltage
-                    txt_real.Text = real.ToString
-                    results_model.save(transformer_id, "real_power", real)
-                    results_model.save(transformer_id, "secondary_phase_voltage", secondary_voltage)
+                    result_model.save(transformer_id, "secondary_phase_voltage", secondary_voltage)
                 End If
 
             End If
@@ -1237,34 +1233,39 @@ Public Class OpenDeltaActivity
 
                 If category = "primary" Then
                     txt_vl.Text = primary_voltage
-                    txt_apparent.Text = apparent.ToString
-                    results_model.save(transformer_id, "apparent_power", apparent)
-                    results_model.save(transformer_id, "primary_line_voltage", primary_voltage)
+                    result_model.save(transformer_id, "primary_line_voltage", primary_voltage)
                 ElseIf category = "secondary" Then
-                    txt_real.Text = real.ToString
                     txt_vl.Text = secondary_voltage
-                    results_model.save(transformer_id, "real_power", real)
-                    results_model.save(transformer_id, "secondary_line_voltage", secondary_voltage)
+                    result_model.save(transformer_id, "secondary_line_voltage", secondary_voltage)
 
                 End If
             End If
 
             If ctr_phase_current > 3 Then
                 If category = "primary" Then
-                    txt_apparent.Text = apparent.ToString
                     txt_cp.Text = cp.ToString
                     txt_cl.Text = cp.ToString
-                    results_model.save(transformer_id, "apparent_power", apparent)
-                    results_model.save(transformer_id, "primary_line_current", cp)
-                    results_model.save(transformer_id, "primary_phase_current", cp)
+                    result_model.save(transformer_id, "primary_line_current", cp)
+                    result_model.save(transformer_id, "primary_phase_current", cp)
                 ElseIf category = "secondary" Then
-                    txt_real.Text = real.ToString
                     txt_cp.Text = cp.ToString
                     txt_cl.Text = cp.ToString
-                    results_model.save(transformer_id, "real_power", real)
-                    results_model.save(transformer_id, "primary_line_current", cp)
-                    results_model.save(transformer_id, "primary_phase_current", cp)
+                    result_model.save(transformer_id, "primary_line_current", cp)
+                    result_model.save(transformer_id, "primary_phase_current", cp)
                 End If
+            End If
+
+            ctr_apparent = result_model.apparent_power(transformer_id)
+            ctr_real = result_model.real_power(transformer_id)
+
+            If ctr_apparent = 1 And category = "primary" Then
+                txt_apparent.Text = apparent.ToString
+                result_model.save(transformer_id, "apparent_power", apparent.ToString)
+            End If
+
+            If ctr_real = 1 And category = "secondary" Then
+                txt_real.Text = real.ToString
+                result_model.save(transformer_id, "real_power", real.ToString)
             End If
 
             If ctr_bulb > 11 Then
@@ -1281,7 +1282,7 @@ Public Class OpenDeltaActivity
 
             ctr_switch = 1
 
-            done = results_model.select_specific(transformer_id)
+            done = result_model.select_specific(transformer_id)
             If done = 1 Then
                 btn_done.Enabled = True
             End If
