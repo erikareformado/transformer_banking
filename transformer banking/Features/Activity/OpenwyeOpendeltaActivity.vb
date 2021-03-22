@@ -1037,44 +1037,14 @@ Public Class OpenwyeOpendeltaActivity
                     Dim myButton As Button = CType(sender, Button)
 
                     Dim btn = myButton.Name
-                    Dim query, query_delete As String
-                    query = "select * from openwye_opendelta_lines  where transformer_details_id ='" & transformer_id & "' order by id asc"
-                    Dim da As New Odbc.OdbcDataAdapter(query, conn)
-                    Dim dt As New DataTable
-                    da.Fill(dt)
-                    For counter As Integer = 0 To dt.Rows.Count - 1
-
-                        If dt.Rows(counter)(1) = btn.ToString Then
-                            If dt.Rows(counter - 1)(3) = "" And dt.Rows(counter)(3) <> "" Then
-                                query_delete = "delete from openwye_opendelta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter - 1)(0) & "')"
-                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                                Dim dt_delete As New DataTable
-                                da_delete.Fill(dt_delete)
-
-                                ctr_lines = ctr_lines - 2
-                                get_point()
-                            ElseIf dt.Rows(counter)(3) = "" And dt.Rows(counter - 1)(3) <> "" Then
-                                query_delete = "delete from openwye_opendelta_lines where id in ('" & dt.Rows(counter)(0) & "', '" & dt.Rows(counter - 1)(0) & "')"
-                                Dim da_delete As New Odbc.OdbcDataAdapter(query_delete, conn)
-                                Dim dt_delete As New DataTable
-                                da_delete.Fill(dt_delete)
-
-                                ctr_lines = ctr_lines - 2
-                                get_point()
-
-                            End If
-                            Exit For
-                        End If
-
-                    Next
-
+                    delete_connections(btn, transformer_id, table)
+                    get_point()
                 Else
                     MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
                 End If
-
+                Me.Refresh()
             End If
         End If
-        Me.Refresh()
     End Sub
 
     Private Sub pic_clamp_meter_cp_MouseDown(sender As Object, e As MouseEventArgs) Handles pic_clamp_meter_cp.MouseDown

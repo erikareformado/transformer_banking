@@ -587,7 +587,7 @@ Partial Class WyeWyeActivities
         Me.lbl_impedance.AutoSize = True
         Me.lbl_impedance.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_impedance.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_impedance.Location = New System.Drawing.Point(25, 299)
+        Me.lbl_impedance.Location = New System.Drawing.Point(112, 380)
         Me.lbl_impedance.Name = "lbl_impedance"
         Me.lbl_impedance.Size = New System.Drawing.Size(42, 25)
         Me.lbl_impedance.TabIndex = 150
