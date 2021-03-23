@@ -48,7 +48,6 @@ Partial Class WyeWyeActivities
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.lbl_impedance = New System.Windows.Forms.Label()
         Me.lbl_frequency = New System.Windows.Forms.Label()
         Me.lbl_rating = New System.Windows.Forms.Label()
         Me.lbl_polarity = New System.Windows.Forms.Label()
@@ -237,8 +236,13 @@ Partial Class WyeWyeActivities
         'panel_activity
         '
         Me.panel_activity.BackColor = System.Drawing.Color.Transparent
-        Me.panel_activity.BackgroundImage = CType(resources.GetObject("panel_activity.BackgroundImage"), System.Drawing.Image)
         Me.panel_activity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.panel_activity.Controls.Add(Me.btn_t2_h1)
+        Me.panel_activity.Controls.Add(Me.btn_t2_h2)
+        Me.panel_activity.Controls.Add(Me.btn_t3_h1)
+        Me.panel_activity.Controls.Add(Me.btn_t3_h2)
+        Me.panel_activity.Controls.Add(Me.btn_t1_h2)
+        Me.panel_activity.Controls.Add(Me.btn_t1_h1)
         Me.panel_activity.Controls.Add(Me.lbl_secondary_voltage)
         Me.panel_activity.Controls.Add(Me.lbl_primary_voltage)
         Me.panel_activity.Controls.Add(Me.btn_clamp_red)
@@ -257,7 +261,6 @@ Partial Class WyeWyeActivities
         Me.panel_activity.Controls.Add(Me.Label9)
         Me.panel_activity.Controls.Add(Me.Label7)
         Me.panel_activity.Controls.Add(Me.Label1)
-        Me.panel_activity.Controls.Add(Me.lbl_impedance)
         Me.panel_activity.Controls.Add(Me.lbl_frequency)
         Me.panel_activity.Controls.Add(Me.lbl_rating)
         Me.panel_activity.Controls.Add(Me.lbl_polarity)
@@ -319,12 +322,6 @@ Partial Class WyeWyeActivities
         Me.panel_activity.Controls.Add(Me.btn_t2_x2)
         Me.panel_activity.Controls.Add(Me.btn_t3_x1)
         Me.panel_activity.Controls.Add(Me.btn_t3_x2)
-        Me.panel_activity.Controls.Add(Me.btn_t1_h1)
-        Me.panel_activity.Controls.Add(Me.btn_t1_h2)
-        Me.panel_activity.Controls.Add(Me.btn_t2_h1)
-        Me.panel_activity.Controls.Add(Me.btn_t2_h2)
-        Me.panel_activity.Controls.Add(Me.btn_t3_h1)
-        Me.panel_activity.Controls.Add(Me.btn_t3_h2)
         Me.panel_activity.Controls.Add(Me.btn_sec_n_1)
         Me.panel_activity.Controls.Add(Me.btn_sec_n_2)
         Me.panel_activity.Controls.Add(Me.btn_sec_n_3)
@@ -362,9 +359,9 @@ Partial Class WyeWyeActivities
         Me.panel_activity.Controls.Add(Me.btn_prim_b_6)
         Me.panel_activity.Controls.Add(Me.btn_prim_b_1)
         Me.panel_activity.Controls.Add(Me.btn_clamp_meter)
-        Me.panel_activity.Location = New System.Drawing.Point(18, 29)
+        Me.panel_activity.Location = New System.Drawing.Point(9, 56)
         Me.panel_activity.Name = "panel_activity"
-        Me.panel_activity.Size = New System.Drawing.Size(824, 553)
+        Me.panel_activity.Size = New System.Drawing.Size(824, 530)
         Me.panel_activity.TabIndex = 126
         '
         'lbl_secondary_voltage
@@ -372,7 +369,7 @@ Partial Class WyeWyeActivities
         Me.lbl_secondary_voltage.AutoSize = True
         Me.lbl_secondary_voltage.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_secondary_voltage.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_secondary_voltage.Location = New System.Drawing.Point(25, 207)
+        Me.lbl_secondary_voltage.Location = New System.Drawing.Point(18, 248)
         Me.lbl_secondary_voltage.Name = "lbl_secondary_voltage"
         Me.lbl_secondary_voltage.Size = New System.Drawing.Size(32, 25)
         Me.lbl_secondary_voltage.TabIndex = 167
@@ -383,7 +380,7 @@ Partial Class WyeWyeActivities
         Me.lbl_primary_voltage.AutoSize = True
         Me.lbl_primary_voltage.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_primary_voltage.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_primary_voltage.Location = New System.Drawing.Point(25, 182)
+        Me.lbl_primary_voltage.Location = New System.Drawing.Point(17, 223)
         Me.lbl_primary_voltage.Name = "lbl_primary_voltage"
         Me.lbl_primary_voltage.Size = New System.Drawing.Size(42, 25)
         Me.lbl_primary_voltage.TabIndex = 166
@@ -395,7 +392,7 @@ Partial Class WyeWyeActivities
         Me.btn_clamp_red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_clamp_red.FlatAppearance.BorderSize = 0
         Me.btn_clamp_red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_clamp_red.Location = New System.Drawing.Point(729, 526)
+        Me.btn_clamp_red.Location = New System.Drawing.Point(777, 504)
         Me.btn_clamp_red.Name = "btn_clamp_red"
         Me.btn_clamp_red.Size = New System.Drawing.Size(20, 20)
         Me.btn_clamp_red.TabIndex = 140
@@ -408,7 +405,7 @@ Partial Class WyeWyeActivities
         Me.btn_clamp_black.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_clamp_black.FlatAppearance.BorderSize = 0
         Me.btn_clamp_black.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_clamp_black.Location = New System.Drawing.Point(705, 526)
+        Me.btn_clamp_black.Location = New System.Drawing.Point(753, 504)
         Me.btn_clamp_black.Name = "btn_clamp_black"
         Me.btn_clamp_black.Size = New System.Drawing.Size(20, 20)
         Me.btn_clamp_black.TabIndex = 141
@@ -419,7 +416,7 @@ Partial Class WyeWyeActivities
         '
         Me.pic_clamp_meter.BackgroundImage = CType(resources.GetObject("pic_clamp_meter.BackgroundImage"), System.Drawing.Image)
         Me.pic_clamp_meter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.pic_clamp_meter.Location = New System.Drawing.Point(702, 462)
+        Me.pic_clamp_meter.Location = New System.Drawing.Point(750, 440)
         Me.pic_clamp_meter.Name = "pic_clamp_meter"
         Me.pic_clamp_meter.Size = New System.Drawing.Size(43, 76)
         Me.pic_clamp_meter.TabIndex = 164
@@ -432,7 +429,7 @@ Partial Class WyeWyeActivities
         Me.btn_connect_wires.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_connect_wires.FlatAppearance.BorderSize = 0
         Me.btn_connect_wires.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_connect_wires.Location = New System.Drawing.Point(16, 344)
+        Me.btn_connect_wires.Location = New System.Drawing.Point(13, 354)
         Me.btn_connect_wires.Name = "btn_connect_wires"
         Me.btn_connect_wires.Size = New System.Drawing.Size(78, 58)
         Me.btn_connect_wires.TabIndex = 165
@@ -444,7 +441,7 @@ Partial Class WyeWyeActivities
         Me.Label32.BackColor = System.Drawing.Color.Transparent
         Me.Label32.Font = New System.Drawing.Font("Arial Narrow", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label32.ForeColor = System.Drawing.Color.White
-        Me.Label32.Location = New System.Drawing.Point(458, 202)
+        Me.Label32.Location = New System.Drawing.Point(457, 191)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(15, 24)
         Me.Label32.TabIndex = 162
@@ -456,7 +453,7 @@ Partial Class WyeWyeActivities
         Me.Label33.BackColor = System.Drawing.Color.Transparent
         Me.Label33.Font = New System.Drawing.Font("Arial Narrow", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label33.ForeColor = System.Drawing.Color.White
-        Me.Label33.Location = New System.Drawing.Point(468, 202)
+        Me.Label33.Location = New System.Drawing.Point(467, 191)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(15, 24)
         Me.Label33.TabIndex = 161
@@ -468,7 +465,7 @@ Partial Class WyeWyeActivities
         Me.Label30.BackColor = System.Drawing.Color.Transparent
         Me.Label30.Font = New System.Drawing.Font("Arial Narrow", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label30.ForeColor = System.Drawing.Color.White
-        Me.Label30.Location = New System.Drawing.Point(404, 203)
+        Me.Label30.Location = New System.Drawing.Point(403, 192)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(15, 24)
         Me.Label30.TabIndex = 160
@@ -480,7 +477,7 @@ Partial Class WyeWyeActivities
         Me.Label31.BackColor = System.Drawing.Color.Transparent
         Me.Label31.Font = New System.Drawing.Font("Arial Narrow", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label31.ForeColor = System.Drawing.Color.White
-        Me.Label31.Location = New System.Drawing.Point(414, 203)
+        Me.Label31.Location = New System.Drawing.Point(413, 192)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(15, 24)
         Me.Label31.TabIndex = 159
@@ -492,7 +489,7 @@ Partial Class WyeWyeActivities
         Me.Label28.BackColor = System.Drawing.Color.Transparent
         Me.Label28.Font = New System.Drawing.Font("Arial Narrow", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label28.ForeColor = System.Drawing.Color.White
-        Me.Label28.Location = New System.Drawing.Point(308, 200)
+        Me.Label28.Location = New System.Drawing.Point(304, 191)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(15, 24)
         Me.Label28.TabIndex = 158
@@ -504,7 +501,7 @@ Partial Class WyeWyeActivities
         Me.Label29.BackColor = System.Drawing.Color.Transparent
         Me.Label29.Font = New System.Drawing.Font("Arial Narrow", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label29.ForeColor = System.Drawing.Color.White
-        Me.Label29.Location = New System.Drawing.Point(318, 200)
+        Me.Label29.Location = New System.Drawing.Point(314, 191)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(15, 24)
         Me.Label29.TabIndex = 157
@@ -516,7 +513,7 @@ Partial Class WyeWyeActivities
         Me.Label10.BackColor = System.Drawing.Color.Transparent
         Me.Label10.Font = New System.Drawing.Font("Arial Narrow", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.White
-        Me.Label10.Location = New System.Drawing.Point(253, 200)
+        Me.Label10.Location = New System.Drawing.Point(249, 191)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(15, 24)
         Me.Label10.TabIndex = 156
@@ -528,7 +525,7 @@ Partial Class WyeWyeActivities
         Me.Label27.BackColor = System.Drawing.Color.Transparent
         Me.Label27.Font = New System.Drawing.Font("Arial Narrow", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label27.ForeColor = System.Drawing.Color.White
-        Me.Label27.Location = New System.Drawing.Point(263, 200)
+        Me.Label27.Location = New System.Drawing.Point(259, 191)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(15, 24)
         Me.Label27.TabIndex = 155
@@ -540,7 +537,7 @@ Partial Class WyeWyeActivities
         Me.Label8.BackColor = System.Drawing.Color.Transparent
         Me.Label8.Font = New System.Drawing.Font("Arial Narrow", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(163, 202)
+        Me.Label8.Location = New System.Drawing.Point(169, 194)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(15, 24)
         Me.Label8.TabIndex = 154
@@ -552,7 +549,7 @@ Partial Class WyeWyeActivities
         Me.Label9.BackColor = System.Drawing.Color.Transparent
         Me.Label9.Font = New System.Drawing.Font("Arial Narrow", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(173, 202)
+        Me.Label9.Location = New System.Drawing.Point(107, 195)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(15, 24)
         Me.Label9.TabIndex = 153
@@ -564,7 +561,7 @@ Partial Class WyeWyeActivities
         Me.Label7.BackColor = System.Drawing.Color.Transparent
         Me.Label7.Font = New System.Drawing.Font("Arial Narrow", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(107, 203)
+        Me.Label7.Location = New System.Drawing.Point(160, 194)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(15, 24)
         Me.Label7.TabIndex = 152
@@ -576,29 +573,18 @@ Partial Class WyeWyeActivities
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Arial Narrow", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(117, 203)
+        Me.Label1.Location = New System.Drawing.Point(116, 196)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(15, 24)
         Me.Label1.TabIndex = 151
         Me.Label1.Text = "I"
-        '
-        'lbl_impedance
-        '
-        Me.lbl_impedance.AutoSize = True
-        Me.lbl_impedance.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_impedance.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_impedance.Location = New System.Drawing.Point(112, 380)
-        Me.lbl_impedance.Name = "lbl_impedance"
-        Me.lbl_impedance.Size = New System.Drawing.Size(42, 25)
-        Me.lbl_impedance.TabIndex = 150
-        Me.lbl_impedance.Text = "2 %"
         '
         'lbl_frequency
         '
         Me.lbl_frequency.AutoSize = True
         Me.lbl_frequency.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_frequency.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_frequency.Location = New System.Drawing.Point(18, 276)
+        Me.lbl_frequency.Location = New System.Drawing.Point(12, 317)
         Me.lbl_frequency.Name = "lbl_frequency"
         Me.lbl_frequency.Size = New System.Drawing.Size(59, 25)
         Me.lbl_frequency.TabIndex = 149
@@ -609,7 +595,7 @@ Partial Class WyeWyeActivities
         Me.lbl_rating.AutoSize = True
         Me.lbl_rating.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_rating.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_rating.Location = New System.Drawing.Point(13, 252)
+        Me.lbl_rating.Location = New System.Drawing.Point(7, 293)
         Me.lbl_rating.Name = "lbl_rating"
         Me.lbl_rating.Size = New System.Drawing.Size(69, 25)
         Me.lbl_rating.TabIndex = 148
@@ -620,7 +606,7 @@ Partial Class WyeWyeActivities
         Me.lbl_polarity.AutoSize = True
         Me.lbl_polarity.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_polarity.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_polarity.Location = New System.Drawing.Point(10, 229)
+        Me.lbl_polarity.Location = New System.Drawing.Point(4, 270)
         Me.lbl_polarity.Name = "lbl_polarity"
         Me.lbl_polarity.Size = New System.Drawing.Size(79, 25)
         Me.lbl_polarity.TabIndex = 147
@@ -631,7 +617,7 @@ Partial Class WyeWyeActivities
         Me.lbl_dt.AutoSize = True
         Me.lbl_dt.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_dt.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_dt.Location = New System.Drawing.Point(33, 162)
+        Me.lbl_dt.Location = New System.Drawing.Point(20, 203)
         Me.lbl_dt.Name = "lbl_dt"
         Me.lbl_dt.Size = New System.Drawing.Size(34, 25)
         Me.lbl_dt.TabIndex = 146
@@ -691,7 +677,7 @@ Partial Class WyeWyeActivities
         Me.Label36.BackColor = System.Drawing.Color.Transparent
         Me.Label36.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label36.ForeColor = System.Drawing.Color.White
-        Me.Label36.Location = New System.Drawing.Point(13, 503)
+        Me.Label36.Location = New System.Drawing.Point(3, 502)
         Me.Label36.Name = "Label36"
         Me.Label36.Size = New System.Drawing.Size(81, 14)
         Me.Label36.TabIndex = 138
@@ -702,7 +688,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l3_6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l3_6.FlatAppearance.BorderSize = 0
         Me.btn_sec_l3_6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l3_6.Location = New System.Drawing.Point(433, 516)
+        Me.btn_sec_l3_6.Location = New System.Drawing.Point(433, 502)
         Me.btn_sec_l3_6.Name = "btn_sec_l3_6"
         Me.btn_sec_l3_6.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l3_6.TabIndex = 136
@@ -725,7 +711,7 @@ Partial Class WyeWyeActivities
         Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(2, 405)
+        Me.Label6.Location = New System.Drawing.Point(2, 415)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(102, 14)
         Me.Label6.TabIndex = 134
@@ -735,7 +721,7 @@ Partial Class WyeWyeActivities
         '
         Me.pic_bulb3.BackgroundImage = CType(resources.GetObject("pic_bulb3.BackgroundImage"), System.Drawing.Image)
         Me.pic_bulb3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.pic_bulb3.Location = New System.Drawing.Point(742, 312)
+        Me.pic_bulb3.Location = New System.Drawing.Point(739, 286)
         Me.pic_bulb3.Name = "pic_bulb3"
         Me.pic_bulb3.Size = New System.Drawing.Size(70, 70)
         Me.pic_bulb3.TabIndex = 132
@@ -745,7 +731,7 @@ Partial Class WyeWyeActivities
         '
         Me.pic_bulb2.BackgroundImage = CType(resources.GetObject("pic_bulb2.BackgroundImage"), System.Drawing.Image)
         Me.pic_bulb2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.pic_bulb2.Location = New System.Drawing.Point(667, 312)
+        Me.pic_bulb2.Location = New System.Drawing.Point(663, 286)
         Me.pic_bulb2.Name = "pic_bulb2"
         Me.pic_bulb2.Size = New System.Drawing.Size(70, 70)
         Me.pic_bulb2.TabIndex = 131
@@ -757,7 +743,7 @@ Partial Class WyeWyeActivities
         Me.txt_real.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txt_real.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_real.ForeColor = System.Drawing.Color.White
-        Me.txt_real.Location = New System.Drawing.Point(700, 208)
+        Me.txt_real.Location = New System.Drawing.Point(700, 200)
         Me.txt_real.Multiline = True
         Me.txt_real.Name = "txt_real"
         Me.txt_real.ReadOnly = True
@@ -772,7 +758,7 @@ Partial Class WyeWyeActivities
         Me.txt_apparent.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txt_apparent.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_apparent.ForeColor = System.Drawing.Color.White
-        Me.txt_apparent.Location = New System.Drawing.Point(578, 209)
+        Me.txt_apparent.Location = New System.Drawing.Point(579, 199)
         Me.txt_apparent.Multiline = True
         Me.txt_apparent.Name = "txt_apparent"
         Me.txt_apparent.ReadOnly = True
@@ -787,7 +773,7 @@ Partial Class WyeWyeActivities
         Me.txt_cl.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txt_cl.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_cl.ForeColor = System.Drawing.SystemColors.Info
-        Me.txt_cl.Location = New System.Drawing.Point(726, 113)
+        Me.txt_cl.Location = New System.Drawing.Point(726, 109)
         Me.txt_cl.Multiline = True
         Me.txt_cl.Name = "txt_cl"
         Me.txt_cl.ReadOnly = True
@@ -802,7 +788,7 @@ Partial Class WyeWyeActivities
         Me.txt_vl.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txt_vl.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_vl.ForeColor = System.Drawing.SystemColors.Info
-        Me.txt_vl.Location = New System.Drawing.Point(613, 113)
+        Me.txt_vl.Location = New System.Drawing.Point(613, 109)
         Me.txt_vl.Multiline = True
         Me.txt_vl.Name = "txt_vl"
         Me.txt_vl.ReadOnly = True
@@ -857,7 +843,7 @@ Partial Class WyeWyeActivities
         Me.btn_l1red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btn_l1red.FlatAppearance.BorderSize = 0
         Me.btn_l1red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_l1red.Location = New System.Drawing.Point(592, 384)
+        Me.btn_l1red.Location = New System.Drawing.Point(591, 371)
         Me.btn_l1red.Name = "btn_l1red"
         Me.btn_l1red.Size = New System.Drawing.Size(31, 24)
         Me.btn_l1red.TabIndex = 30
@@ -868,7 +854,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l3_5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l3_5.FlatAppearance.BorderSize = 0
         Me.btn_sec_l3_5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l3_5.Location = New System.Drawing.Point(401, 516)
+        Me.btn_sec_l3_5.Location = New System.Drawing.Point(401, 502)
         Me.btn_sec_l3_5.Name = "btn_sec_l3_5"
         Me.btn_sec_l3_5.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l3_5.TabIndex = 31
@@ -880,7 +866,7 @@ Partial Class WyeWyeActivities
         Me.Label25.BackColor = System.Drawing.Color.Transparent
         Me.Label25.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label25.ForeColor = System.Drawing.Color.White
-        Me.Label25.Location = New System.Drawing.Point(456, 314)
+        Me.Label25.Location = New System.Drawing.Point(455, 304)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(20, 14)
         Me.Label25.TabIndex = 111
@@ -892,7 +878,7 @@ Partial Class WyeWyeActivities
         Me.Label26.BackColor = System.Drawing.Color.Transparent
         Me.Label26.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label26.ForeColor = System.Drawing.Color.White
-        Me.Label26.Location = New System.Drawing.Point(405, 312)
+        Me.Label26.Location = New System.Drawing.Point(404, 305)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(20, 14)
         Me.Label26.TabIndex = 110
@@ -904,7 +890,7 @@ Partial Class WyeWyeActivities
         Me.Label23.BackColor = System.Drawing.Color.Transparent
         Me.Label23.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.ForeColor = System.Drawing.Color.White
-        Me.Label23.Location = New System.Drawing.Point(307, 312)
+        Me.Label23.Location = New System.Drawing.Point(305, 303)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(20, 14)
         Me.Label23.TabIndex = 109
@@ -916,7 +902,7 @@ Partial Class WyeWyeActivities
         Me.Label24.BackColor = System.Drawing.Color.Transparent
         Me.Label24.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label24.ForeColor = System.Drawing.Color.White
-        Me.Label24.Location = New System.Drawing.Point(256, 312)
+        Me.Label24.Location = New System.Drawing.Point(255, 306)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(20, 14)
         Me.Label24.TabIndex = 108
@@ -928,7 +914,7 @@ Partial Class WyeWyeActivities
         Me.Label22.BackColor = System.Drawing.Color.Transparent
         Me.Label22.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label22.ForeColor = System.Drawing.Color.White
-        Me.Label22.Location = New System.Drawing.Point(160, 312)
+        Me.Label22.Location = New System.Drawing.Point(156, 307)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(20, 14)
         Me.Label22.TabIndex = 107
@@ -940,7 +926,7 @@ Partial Class WyeWyeActivities
         Me.Label21.BackColor = System.Drawing.Color.Transparent
         Me.Label21.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label21.ForeColor = System.Drawing.Color.White
-        Me.Label21.Location = New System.Drawing.Point(112, 312)
+        Me.Label21.Location = New System.Drawing.Point(106, 307)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(20, 14)
         Me.Label21.TabIndex = 106
@@ -951,7 +937,7 @@ Partial Class WyeWyeActivities
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label20.ForeColor = System.Drawing.Color.White
-        Me.Label20.Location = New System.Drawing.Point(767, 410)
+        Me.Label20.Location = New System.Drawing.Point(767, 400)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(28, 19)
         Me.Label20.TabIndex = 105
@@ -962,7 +948,7 @@ Partial Class WyeWyeActivities
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label19.ForeColor = System.Drawing.Color.White
-        Me.Label19.Location = New System.Drawing.Point(698, 410)
+        Me.Label19.Location = New System.Drawing.Point(691, 398)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(28, 19)
         Me.Label19.TabIndex = 104
@@ -973,7 +959,7 @@ Partial Class WyeWyeActivities
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label18.ForeColor = System.Drawing.Color.White
-        Me.Label18.Location = New System.Drawing.Point(613, 410)
+        Me.Label18.Location = New System.Drawing.Point(613, 397)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(28, 19)
         Me.Label18.TabIndex = 103
@@ -985,7 +971,7 @@ Partial Class WyeWyeActivities
         Me.Label14.BackColor = System.Drawing.Color.Transparent
         Me.Label14.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.ForeColor = System.Drawing.Color.White
-        Me.Label14.Location = New System.Drawing.Point(428, 331)
+        Me.Label14.Location = New System.Drawing.Point(429, 321)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(20, 14)
         Me.Label14.TabIndex = 99
@@ -997,7 +983,7 @@ Partial Class WyeWyeActivities
         Me.Label13.BackColor = System.Drawing.Color.Transparent
         Me.Label13.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(282, 330)
+        Me.Label13.Location = New System.Drawing.Point(282, 319)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(20, 14)
         Me.Label13.TabIndex = 98
@@ -1009,7 +995,7 @@ Partial Class WyeWyeActivities
         Me.Label12.BackColor = System.Drawing.Color.Transparent
         Me.Label12.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.White
-        Me.Label12.Location = New System.Drawing.Point(138, 330)
+        Me.Label12.Location = New System.Drawing.Point(132, 323)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(20, 14)
         Me.Label12.TabIndex = 97
@@ -1093,7 +1079,7 @@ Partial Class WyeWyeActivities
         Me.btn_l3red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_l3red.FlatAppearance.BorderSize = 0
         Me.btn_l3red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_l3red.Location = New System.Drawing.Point(747, 386)
+        Me.btn_l3red.Location = New System.Drawing.Point(747, 373)
         Me.btn_l3red.Name = "btn_l3red"
         Me.btn_l3red.Size = New System.Drawing.Size(26, 22)
         Me.btn_l3red.TabIndex = 86
@@ -1104,7 +1090,7 @@ Partial Class WyeWyeActivities
         Me.btn_l3black.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_l3black.FlatAppearance.BorderSize = 0
         Me.btn_l3black.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_l3black.Location = New System.Drawing.Point(781, 387)
+        Me.btn_l3black.Location = New System.Drawing.Point(781, 373)
         Me.btn_l3black.Name = "btn_l3black"
         Me.btn_l3black.Size = New System.Drawing.Size(26, 22)
         Me.btn_l3black.TabIndex = 85
@@ -1115,7 +1101,7 @@ Partial Class WyeWyeActivities
         Me.btn_l2red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_l2red.FlatAppearance.BorderSize = 0
         Me.btn_l2red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_l2red.Location = New System.Drawing.Point(672, 384)
+        Me.btn_l2red.Location = New System.Drawing.Point(672, 372)
         Me.btn_l2red.Name = "btn_l2red"
         Me.btn_l2red.Size = New System.Drawing.Size(26, 22)
         Me.btn_l2red.TabIndex = 83
@@ -1126,7 +1112,7 @@ Partial Class WyeWyeActivities
         Me.btn_l2black.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_l2black.FlatAppearance.BorderSize = 0
         Me.btn_l2black.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_l2black.Location = New System.Drawing.Point(707, 386)
+        Me.btn_l2black.Location = New System.Drawing.Point(707, 373)
         Me.btn_l2black.Name = "btn_l2black"
         Me.btn_l2black.Size = New System.Drawing.Size(26, 22)
         Me.btn_l2black.TabIndex = 82
@@ -1137,7 +1123,7 @@ Partial Class WyeWyeActivities
         Me.btn_l1black.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_l1black.FlatAppearance.BorderSize = 0
         Me.btn_l1black.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_l1black.Location = New System.Drawing.Point(629, 385)
+        Me.btn_l1black.Location = New System.Drawing.Point(629, 372)
         Me.btn_l1black.Name = "btn_l1black"
         Me.btn_l1black.Size = New System.Drawing.Size(26, 22)
         Me.btn_l1black.TabIndex = 79
@@ -1147,7 +1133,7 @@ Partial Class WyeWyeActivities
         '
         Me.pic_bulb1.BackgroundImage = CType(resources.GetObject("pic_bulb1.BackgroundImage"), System.Drawing.Image)
         Me.pic_bulb1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.pic_bulb1.Location = New System.Drawing.Point(586, 312)
+        Me.pic_bulb1.Location = New System.Drawing.Point(585, 286)
         Me.pic_bulb1.Name = "pic_bulb1"
         Me.pic_bulb1.Size = New System.Drawing.Size(70, 70)
         Me.pic_bulb1.TabIndex = 78
@@ -1158,7 +1144,7 @@ Partial Class WyeWyeActivities
         Me.btn_clblack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_clblack.FlatAppearance.BorderSize = 0
         Me.btn_clblack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_clblack.Location = New System.Drawing.Point(767, 151)
+        Me.btn_clblack.Location = New System.Drawing.Point(767, 146)
         Me.btn_clblack.Name = "btn_clblack"
         Me.btn_clblack.Size = New System.Drawing.Size(26, 22)
         Me.btn_clblack.TabIndex = 77
@@ -1169,7 +1155,7 @@ Partial Class WyeWyeActivities
         Me.btn_clred.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_clred.FlatAppearance.BorderSize = 0
         Me.btn_clred.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_clred.Location = New System.Drawing.Point(729, 150)
+        Me.btn_clred.Location = New System.Drawing.Point(729, 145)
         Me.btn_clred.Name = "btn_clred"
         Me.btn_clred.Size = New System.Drawing.Size(26, 22)
         Me.btn_clred.TabIndex = 76
@@ -1202,7 +1188,7 @@ Partial Class WyeWyeActivities
         Me.btn_vlblack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_vlblack.FlatAppearance.BorderSize = 0
         Me.btn_vlblack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_vlblack.Location = New System.Drawing.Point(652, 152)
+        Me.btn_vlblack.Location = New System.Drawing.Point(652, 147)
         Me.btn_vlblack.Name = "btn_vlblack"
         Me.btn_vlblack.Size = New System.Drawing.Size(26, 22)
         Me.btn_vlblack.TabIndex = 73
@@ -1213,7 +1199,7 @@ Partial Class WyeWyeActivities
         Me.btn_vlred.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_vlred.FlatAppearance.BorderSize = 0
         Me.btn_vlred.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_vlred.Location = New System.Drawing.Point(616, 152)
+        Me.btn_vlred.Location = New System.Drawing.Point(616, 147)
         Me.btn_vlred.Name = "btn_vlred"
         Me.btn_vlred.Size = New System.Drawing.Size(26, 22)
         Me.btn_vlred.TabIndex = 72
@@ -1247,7 +1233,7 @@ Partial Class WyeWyeActivities
         Me.btn_t1_x1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t1_x1.FlatAppearance.BorderSize = 0
         Me.btn_t1_x1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t1_x1.Location = New System.Drawing.Point(106, 290)
+        Me.btn_t1_x1.Location = New System.Drawing.Point(101, 286)
         Me.btn_t1_x1.Name = "btn_t1_x1"
         Me.btn_t1_x1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t1_x1.TabIndex = 65
@@ -1259,7 +1245,7 @@ Partial Class WyeWyeActivities
         Me.btn_t1_x2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t1_x2.FlatAppearance.BorderSize = 0
         Me.btn_t1_x2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t1_x2.Location = New System.Drawing.Point(156, 290)
+        Me.btn_t1_x2.Location = New System.Drawing.Point(151, 286)
         Me.btn_t1_x2.Name = "btn_t1_x2"
         Me.btn_t1_x2.Size = New System.Drawing.Size(30, 25)
         Me.btn_t1_x2.TabIndex = 64
@@ -1271,7 +1257,7 @@ Partial Class WyeWyeActivities
         Me.btn_t2_x1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t2_x1.FlatAppearance.BorderSize = 0
         Me.btn_t2_x1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t2_x1.Location = New System.Drawing.Point(252, 290)
+        Me.btn_t2_x1.Location = New System.Drawing.Point(250, 284)
         Me.btn_t2_x1.Name = "btn_t2_x1"
         Me.btn_t2_x1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t2_x1.TabIndex = 63
@@ -1283,7 +1269,7 @@ Partial Class WyeWyeActivities
         Me.btn_t2_x2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t2_x2.FlatAppearance.BorderSize = 0
         Me.btn_t2_x2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t2_x2.Location = New System.Drawing.Point(301, 290)
+        Me.btn_t2_x2.Location = New System.Drawing.Point(299, 283)
         Me.btn_t2_x2.Name = "btn_t2_x2"
         Me.btn_t2_x2.Size = New System.Drawing.Size(30, 25)
         Me.btn_t2_x2.TabIndex = 62
@@ -1295,7 +1281,7 @@ Partial Class WyeWyeActivities
         Me.btn_t3_x1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t3_x1.FlatAppearance.BorderSize = 0
         Me.btn_t3_x1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t3_x1.Location = New System.Drawing.Point(400, 290)
+        Me.btn_t3_x1.Location = New System.Drawing.Point(399, 283)
         Me.btn_t3_x1.Name = "btn_t3_x1"
         Me.btn_t3_x1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t3_x1.TabIndex = 61
@@ -1307,7 +1293,7 @@ Partial Class WyeWyeActivities
         Me.btn_t3_x2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t3_x2.FlatAppearance.BorderSize = 0
         Me.btn_t3_x2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t3_x2.Location = New System.Drawing.Point(451, 292)
+        Me.btn_t3_x2.Location = New System.Drawing.Point(450, 283)
         Me.btn_t3_x2.Name = "btn_t3_x2"
         Me.btn_t3_x2.Size = New System.Drawing.Size(30, 25)
         Me.btn_t3_x2.TabIndex = 60
@@ -1320,7 +1306,7 @@ Partial Class WyeWyeActivities
         Me.btn_t1_h1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t1_h1.FlatAppearance.BorderSize = 0
         Me.btn_t1_h1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t1_h1.Location = New System.Drawing.Point(102, 181)
+        Me.btn_t1_h1.Location = New System.Drawing.Point(103, 176)
         Me.btn_t1_h1.Name = "btn_t1_h1"
         Me.btn_t1_h1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t1_h1.TabIndex = 59
@@ -1333,7 +1319,7 @@ Partial Class WyeWyeActivities
         Me.btn_t1_h2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t1_h2.FlatAppearance.BorderSize = 0
         Me.btn_t1_h2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t1_h2.Location = New System.Drawing.Point(160, 180)
+        Me.btn_t1_h2.Location = New System.Drawing.Point(156, 176)
         Me.btn_t1_h2.Name = "btn_t1_h2"
         Me.btn_t1_h2.Size = New System.Drawing.Size(30, 25)
         Me.btn_t1_h2.TabIndex = 58
@@ -1346,7 +1332,7 @@ Partial Class WyeWyeActivities
         Me.btn_t2_h1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t2_h1.FlatAppearance.BorderSize = 0
         Me.btn_t2_h1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t2_h1.Location = New System.Drawing.Point(248, 178)
+        Me.btn_t2_h1.Location = New System.Drawing.Point(245, 174)
         Me.btn_t2_h1.Name = "btn_t2_h1"
         Me.btn_t2_h1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t2_h1.TabIndex = 57
@@ -1359,7 +1345,7 @@ Partial Class WyeWyeActivities
         Me.btn_t2_h2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t2_h2.FlatAppearance.BorderSize = 0
         Me.btn_t2_h2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t2_h2.Location = New System.Drawing.Point(305, 178)
+        Me.btn_t2_h2.Location = New System.Drawing.Point(302, 174)
         Me.btn_t2_h2.Name = "btn_t2_h2"
         Me.btn_t2_h2.Size = New System.Drawing.Size(30, 25)
         Me.btn_t2_h2.TabIndex = 56
@@ -1372,7 +1358,7 @@ Partial Class WyeWyeActivities
         Me.btn_t3_h1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t3_h1.FlatAppearance.BorderSize = 0
         Me.btn_t3_h1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t3_h1.Location = New System.Drawing.Point(399, 181)
+        Me.btn_t3_h1.Location = New System.Drawing.Point(399, 175)
         Me.btn_t3_h1.Name = "btn_t3_h1"
         Me.btn_t3_h1.Size = New System.Drawing.Size(30, 25)
         Me.btn_t3_h1.TabIndex = 55
@@ -1385,7 +1371,7 @@ Partial Class WyeWyeActivities
         Me.btn_t3_h2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_t3_h2.FlatAppearance.BorderSize = 0
         Me.btn_t3_h2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t3_h2.Location = New System.Drawing.Point(453, 180)
+        Me.btn_t3_h2.Location = New System.Drawing.Point(453, 174)
         Me.btn_t3_h2.Name = "btn_t3_h2"
         Me.btn_t3_h2.Size = New System.Drawing.Size(30, 25)
         Me.btn_t3_h2.TabIndex = 54
@@ -1396,7 +1382,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_n_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_n_1.FlatAppearance.BorderSize = 0
         Me.btn_sec_n_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_n_1.Location = New System.Drawing.Point(126, 411)
+        Me.btn_sec_n_1.Location = New System.Drawing.Point(126, 397)
         Me.btn_sec_n_1.Name = "btn_sec_n_1"
         Me.btn_sec_n_1.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_n_1.TabIndex = 53
@@ -1407,7 +1393,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_n_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_n_2.FlatAppearance.BorderSize = 0
         Me.btn_sec_n_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_n_2.Location = New System.Drawing.Point(158, 411)
+        Me.btn_sec_n_2.Location = New System.Drawing.Point(158, 397)
         Me.btn_sec_n_2.Name = "btn_sec_n_2"
         Me.btn_sec_n_2.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_n_2.TabIndex = 52
@@ -1418,7 +1404,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_n_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_n_3.FlatAppearance.BorderSize = 0
         Me.btn_sec_n_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_n_3.Location = New System.Drawing.Point(268, 410)
+        Me.btn_sec_n_3.Location = New System.Drawing.Point(268, 396)
         Me.btn_sec_n_3.Name = "btn_sec_n_3"
         Me.btn_sec_n_3.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_n_3.TabIndex = 51
@@ -1429,7 +1415,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_n_4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_n_4.FlatAppearance.BorderSize = 0
         Me.btn_sec_n_4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_n_4.Location = New System.Drawing.Point(300, 410)
+        Me.btn_sec_n_4.Location = New System.Drawing.Point(300, 396)
         Me.btn_sec_n_4.Name = "btn_sec_n_4"
         Me.btn_sec_n_4.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_n_4.TabIndex = 50
@@ -1440,7 +1426,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_n_5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_n_5.FlatAppearance.BorderSize = 0
         Me.btn_sec_n_5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_n_5.Location = New System.Drawing.Point(402, 411)
+        Me.btn_sec_n_5.Location = New System.Drawing.Point(402, 397)
         Me.btn_sec_n_5.Name = "btn_sec_n_5"
         Me.btn_sec_n_5.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_n_5.TabIndex = 49
@@ -1451,7 +1437,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_n_6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_n_6.FlatAppearance.BorderSize = 0
         Me.btn_sec_n_6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_n_6.Location = New System.Drawing.Point(433, 411)
+        Me.btn_sec_n_6.Location = New System.Drawing.Point(433, 397)
         Me.btn_sec_n_6.Name = "btn_sec_n_6"
         Me.btn_sec_n_6.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_n_6.TabIndex = 48
@@ -1462,7 +1448,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l1_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l1_1.FlatAppearance.BorderSize = 0
         Me.btn_sec_l1_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l1_1.Location = New System.Drawing.Point(126, 445)
+        Me.btn_sec_l1_1.Location = New System.Drawing.Point(126, 431)
         Me.btn_sec_l1_1.Name = "btn_sec_l1_1"
         Me.btn_sec_l1_1.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l1_1.TabIndex = 47
@@ -1473,7 +1459,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l1_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l1_2.FlatAppearance.BorderSize = 0
         Me.btn_sec_l1_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l1_2.Location = New System.Drawing.Point(158, 445)
+        Me.btn_sec_l1_2.Location = New System.Drawing.Point(158, 431)
         Me.btn_sec_l1_2.Name = "btn_sec_l1_2"
         Me.btn_sec_l1_2.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l1_2.TabIndex = 46
@@ -1484,7 +1470,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l1_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l1_3.FlatAppearance.BorderSize = 0
         Me.btn_sec_l1_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l1_3.Location = New System.Drawing.Point(268, 444)
+        Me.btn_sec_l1_3.Location = New System.Drawing.Point(268, 430)
         Me.btn_sec_l1_3.Name = "btn_sec_l1_3"
         Me.btn_sec_l1_3.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l1_3.TabIndex = 45
@@ -1495,7 +1481,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l1_4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l1_4.FlatAppearance.BorderSize = 0
         Me.btn_sec_l1_4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l1_4.Location = New System.Drawing.Point(300, 444)
+        Me.btn_sec_l1_4.Location = New System.Drawing.Point(300, 430)
         Me.btn_sec_l1_4.Name = "btn_sec_l1_4"
         Me.btn_sec_l1_4.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l1_4.TabIndex = 44
@@ -1506,7 +1492,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l1_5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l1_5.FlatAppearance.BorderSize = 0
         Me.btn_sec_l1_5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l1_5.Location = New System.Drawing.Point(400, 445)
+        Me.btn_sec_l1_5.Location = New System.Drawing.Point(400, 431)
         Me.btn_sec_l1_5.Name = "btn_sec_l1_5"
         Me.btn_sec_l1_5.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l1_5.TabIndex = 43
@@ -1517,7 +1503,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l1_6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l1_6.FlatAppearance.BorderSize = 0
         Me.btn_sec_l1_6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l1_6.Location = New System.Drawing.Point(433, 445)
+        Me.btn_sec_l1_6.Location = New System.Drawing.Point(433, 431)
         Me.btn_sec_l1_6.Name = "btn_sec_l1_6"
         Me.btn_sec_l1_6.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l1_6.TabIndex = 42
@@ -1528,7 +1514,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l2_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l2_2.FlatAppearance.BorderSize = 0
         Me.btn_sec_l2_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l2_2.Location = New System.Drawing.Point(159, 481)
+        Me.btn_sec_l2_2.Location = New System.Drawing.Point(159, 467)
         Me.btn_sec_l2_2.Name = "btn_sec_l2_2"
         Me.btn_sec_l2_2.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l2_2.TabIndex = 41
@@ -1540,7 +1526,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l2_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l2_3.FlatAppearance.BorderSize = 0
         Me.btn_sec_l2_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l2_3.Location = New System.Drawing.Point(268, 481)
+        Me.btn_sec_l2_3.Location = New System.Drawing.Point(268, 467)
         Me.btn_sec_l2_3.Name = "btn_sec_l2_3"
         Me.btn_sec_l2_3.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l2_3.TabIndex = 40
@@ -1552,7 +1538,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l2_4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l2_4.FlatAppearance.BorderSize = 0
         Me.btn_sec_l2_4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l2_4.Location = New System.Drawing.Point(300, 481)
+        Me.btn_sec_l2_4.Location = New System.Drawing.Point(300, 467)
         Me.btn_sec_l2_4.Name = "btn_sec_l2_4"
         Me.btn_sec_l2_4.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l2_4.TabIndex = 39
@@ -1563,7 +1549,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l2_5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l2_5.FlatAppearance.BorderSize = 0
         Me.btn_sec_l2_5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l2_5.Location = New System.Drawing.Point(402, 481)
+        Me.btn_sec_l2_5.Location = New System.Drawing.Point(402, 467)
         Me.btn_sec_l2_5.Name = "btn_sec_l2_5"
         Me.btn_sec_l2_5.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l2_5.TabIndex = 38
@@ -1574,7 +1560,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l2_6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l2_6.FlatAppearance.BorderSize = 0
         Me.btn_sec_l2_6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l2_6.Location = New System.Drawing.Point(434, 481)
+        Me.btn_sec_l2_6.Location = New System.Drawing.Point(434, 467)
         Me.btn_sec_l2_6.Name = "btn_sec_l2_6"
         Me.btn_sec_l2_6.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l2_6.TabIndex = 37
@@ -1585,7 +1571,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l2_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l2_1.FlatAppearance.BorderSize = 0
         Me.btn_sec_l2_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l2_1.Location = New System.Drawing.Point(127, 481)
+        Me.btn_sec_l2_1.Location = New System.Drawing.Point(127, 467)
         Me.btn_sec_l2_1.Name = "btn_sec_l2_1"
         Me.btn_sec_l2_1.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l2_1.TabIndex = 36
@@ -1596,7 +1582,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l3_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l3_1.FlatAppearance.BorderSize = 0
         Me.btn_sec_l3_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l3_1.Location = New System.Drawing.Point(128, 517)
+        Me.btn_sec_l3_1.Location = New System.Drawing.Point(128, 503)
         Me.btn_sec_l3_1.Name = "btn_sec_l3_1"
         Me.btn_sec_l3_1.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l3_1.TabIndex = 35
@@ -1607,7 +1593,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l3_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l3_2.FlatAppearance.BorderSize = 0
         Me.btn_sec_l3_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l3_2.Location = New System.Drawing.Point(159, 517)
+        Me.btn_sec_l3_2.Location = New System.Drawing.Point(159, 503)
         Me.btn_sec_l3_2.Name = "btn_sec_l3_2"
         Me.btn_sec_l3_2.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l3_2.TabIndex = 34
@@ -1618,7 +1604,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l3_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l3_3.FlatAppearance.BorderSize = 0
         Me.btn_sec_l3_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l3_3.Location = New System.Drawing.Point(268, 517)
+        Me.btn_sec_l3_3.Location = New System.Drawing.Point(268, 503)
         Me.btn_sec_l3_3.Name = "btn_sec_l3_3"
         Me.btn_sec_l3_3.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l3_3.TabIndex = 33
@@ -1629,7 +1615,7 @@ Partial Class WyeWyeActivities
         Me.btn_sec_l3_4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_sec_l3_4.FlatAppearance.BorderSize = 0
         Me.btn_sec_l3_4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_sec_l3_4.Location = New System.Drawing.Point(300, 517)
+        Me.btn_sec_l3_4.Location = New System.Drawing.Point(300, 503)
         Me.btn_sec_l3_4.Name = "btn_sec_l3_4"
         Me.btn_sec_l3_4.Size = New System.Drawing.Size(26, 22)
         Me.btn_sec_l3_4.TabIndex = 32
@@ -1641,7 +1627,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_a_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_a_1.FlatAppearance.BorderSize = 0
         Me.btn_prim_a_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_a_1.Location = New System.Drawing.Point(235, 29)
+        Me.btn_prim_a_1.Location = New System.Drawing.Point(231, 26)
         Me.btn_prim_a_1.Name = "btn_prim_a_1"
         Me.btn_prim_a_1.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_a_1.TabIndex = 29
@@ -1653,7 +1639,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_a_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_a_2.FlatAppearance.BorderSize = 0
         Me.btn_prim_a_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_a_2.Location = New System.Drawing.Point(272, 28)
+        Me.btn_prim_a_2.Location = New System.Drawing.Point(270, 23)
         Me.btn_prim_a_2.Name = "btn_prim_a_2"
         Me.btn_prim_a_2.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_a_2.TabIndex = 28
@@ -1809,7 +1795,7 @@ Partial Class WyeWyeActivities
         Me.btn_clamp_meter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_clamp_meter.FlatAppearance.BorderSize = 0
         Me.btn_clamp_meter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_clamp_meter.Location = New System.Drawing.Point(29, 433)
+        Me.btn_clamp_meter.Location = New System.Drawing.Point(19, 432)
         Me.btn_clamp_meter.Name = "btn_clamp_meter"
         Me.btn_clamp_meter.Size = New System.Drawing.Size(48, 67)
         Me.btn_clamp_meter.TabIndex = 163
@@ -1820,6 +1806,8 @@ Partial Class WyeWyeActivities
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(36, Byte), Integer), CType(CType(42, Byte), Integer))
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btn_try_again)
         Me.Controls.Add(Me.RichTextBox1)
@@ -1861,7 +1849,6 @@ Partial Class WyeWyeActivities
     Friend WithEvents Label9 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents lbl_impedance As Label
     Friend WithEvents lbl_frequency As Label
     Friend WithEvents lbl_rating As Label
     Friend WithEvents lbl_polarity As Label

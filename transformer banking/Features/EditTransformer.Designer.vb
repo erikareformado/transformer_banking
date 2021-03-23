@@ -112,6 +112,7 @@ Partial Class EditTransformer
         'cmb_rating
         '
         Me.cmb_rating.BackColor = System.Drawing.Color.Snow
+        Me.cmb_rating.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_rating.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cmb_rating.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmb_rating.FormattingEnabled = True
@@ -124,6 +125,7 @@ Partial Class EditTransformer
         'cmb_polarity
         '
         Me.cmb_polarity.BackColor = System.Drawing.Color.Snow
+        Me.cmb_polarity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_polarity.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cmb_polarity.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmb_polarity.FormattingEnabled = True
@@ -233,7 +235,7 @@ Partial Class EditTransformer
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(193, 22)
+        Me.Label2.Location = New System.Drawing.Point(190, 22)
         Me.Label2.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(261, 29)
@@ -281,7 +283,7 @@ Partial Class EditTransformer
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Name = "EditTransformer"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "EditTransformer"
+        Me.Text = "Edit Transformer"
         Me.panel_delta_wye.ResumeLayout(False)
         Me.panel_delta_wye.PerformLayout()
         Me.ResumeLayout(False)
