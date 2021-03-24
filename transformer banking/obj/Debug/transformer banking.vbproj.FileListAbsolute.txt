@@ -164,3 +164,4 @@ D:\transformer_banking\transformer banking\obj\Debug\transformer banking.xml
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.pdb
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.vbprojAssemblyReference.cache
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.EditTransformer.resources
+C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.EditTransformer.resources

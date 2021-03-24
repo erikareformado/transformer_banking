@@ -30,6 +30,12 @@ Partial Class WyeWyeActivities
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.btn_done = New System.Windows.Forms.Button()
         Me.panel_activity = New System.Windows.Forms.Panel()
+        Me.btn_t2_h1 = New System.Windows.Forms.Button()
+        Me.btn_t2_h2 = New System.Windows.Forms.Button()
+        Me.btn_t3_h1 = New System.Windows.Forms.Button()
+        Me.btn_t3_h2 = New System.Windows.Forms.Button()
+        Me.btn_t1_h2 = New System.Windows.Forms.Button()
+        Me.btn_t1_h1 = New System.Windows.Forms.Button()
         Me.lbl_secondary_voltage = New System.Windows.Forms.Label()
         Me.lbl_primary_voltage = New System.Windows.Forms.Label()
         Me.btn_clamp_red = New System.Windows.Forms.Button()
@@ -109,12 +115,6 @@ Partial Class WyeWyeActivities
         Me.btn_t2_x2 = New System.Windows.Forms.Button()
         Me.btn_t3_x1 = New System.Windows.Forms.Button()
         Me.btn_t3_x2 = New System.Windows.Forms.Button()
-        Me.btn_t1_h1 = New System.Windows.Forms.Button()
-        Me.btn_t1_h2 = New System.Windows.Forms.Button()
-        Me.btn_t2_h1 = New System.Windows.Forms.Button()
-        Me.btn_t2_h2 = New System.Windows.Forms.Button()
-        Me.btn_t3_h1 = New System.Windows.Forms.Button()
-        Me.btn_t3_h2 = New System.Windows.Forms.Button()
         Me.btn_sec_n_1 = New System.Windows.Forms.Button()
         Me.btn_sec_n_2 = New System.Windows.Forms.Button()
         Me.btn_sec_n_3 = New System.Windows.Forms.Button()
@@ -168,7 +168,7 @@ Partial Class WyeWyeActivities
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Controls.Add(Me.Label35)
-        Me.Panel1.Location = New System.Drawing.Point(848, 29)
+        Me.Panel1.Location = New System.Drawing.Point(839, 34)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(261, 56)
         Me.Panel1.TabIndex = 130
@@ -213,7 +213,7 @@ Partial Class WyeWyeActivities
         Me.RichTextBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(36, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(51, Byte), Integer))
         Me.RichTextBox1.Font = New System.Drawing.Font("Segoe UI Semilight", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RichTextBox1.ForeColor = System.Drawing.Color.White
-        Me.RichTextBox1.Location = New System.Drawing.Point(847, 86)
+        Me.RichTextBox1.Location = New System.Drawing.Point(838, 91)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.Size = New System.Drawing.Size(260, 494)
         Me.RichTextBox1.TabIndex = 128
@@ -363,6 +363,84 @@ Partial Class WyeWyeActivities
         Me.panel_activity.Name = "panel_activity"
         Me.panel_activity.Size = New System.Drawing.Size(824, 530)
         Me.panel_activity.TabIndex = 126
+        '
+        'btn_t2_h1
+        '
+        Me.btn_t2_h1.BackColor = System.Drawing.Color.Transparent
+        Me.btn_t2_h1.BackgroundImage = CType(resources.GetObject("btn_t2_h1.BackgroundImage"), System.Drawing.Image)
+        Me.btn_t2_h1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_t2_h1.FlatAppearance.BorderSize = 0
+        Me.btn_t2_h1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_t2_h1.Location = New System.Drawing.Point(245, 174)
+        Me.btn_t2_h1.Name = "btn_t2_h1"
+        Me.btn_t2_h1.Size = New System.Drawing.Size(30, 25)
+        Me.btn_t2_h1.TabIndex = 57
+        Me.btn_t2_h1.UseVisualStyleBackColor = False
+        '
+        'btn_t2_h2
+        '
+        Me.btn_t2_h2.BackColor = System.Drawing.Color.Transparent
+        Me.btn_t2_h2.BackgroundImage = CType(resources.GetObject("btn_t2_h2.BackgroundImage"), System.Drawing.Image)
+        Me.btn_t2_h2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_t2_h2.FlatAppearance.BorderSize = 0
+        Me.btn_t2_h2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_t2_h2.Location = New System.Drawing.Point(302, 174)
+        Me.btn_t2_h2.Name = "btn_t2_h2"
+        Me.btn_t2_h2.Size = New System.Drawing.Size(30, 25)
+        Me.btn_t2_h2.TabIndex = 56
+        Me.btn_t2_h2.UseVisualStyleBackColor = False
+        '
+        'btn_t3_h1
+        '
+        Me.btn_t3_h1.BackColor = System.Drawing.Color.Transparent
+        Me.btn_t3_h1.BackgroundImage = CType(resources.GetObject("btn_t3_h1.BackgroundImage"), System.Drawing.Image)
+        Me.btn_t3_h1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_t3_h1.FlatAppearance.BorderSize = 0
+        Me.btn_t3_h1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_t3_h1.Location = New System.Drawing.Point(399, 175)
+        Me.btn_t3_h1.Name = "btn_t3_h1"
+        Me.btn_t3_h1.Size = New System.Drawing.Size(30, 25)
+        Me.btn_t3_h1.TabIndex = 55
+        Me.btn_t3_h1.UseVisualStyleBackColor = False
+        '
+        'btn_t3_h2
+        '
+        Me.btn_t3_h2.BackColor = System.Drawing.Color.Transparent
+        Me.btn_t3_h2.BackgroundImage = CType(resources.GetObject("btn_t3_h2.BackgroundImage"), System.Drawing.Image)
+        Me.btn_t3_h2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_t3_h2.FlatAppearance.BorderSize = 0
+        Me.btn_t3_h2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_t3_h2.Location = New System.Drawing.Point(453, 174)
+        Me.btn_t3_h2.Name = "btn_t3_h2"
+        Me.btn_t3_h2.Size = New System.Drawing.Size(30, 25)
+        Me.btn_t3_h2.TabIndex = 54
+        Me.btn_t3_h2.UseVisualStyleBackColor = False
+        '
+        'btn_t1_h2
+        '
+        Me.btn_t1_h2.BackColor = System.Drawing.Color.Transparent
+        Me.btn_t1_h2.BackgroundImage = CType(resources.GetObject("btn_t1_h2.BackgroundImage"), System.Drawing.Image)
+        Me.btn_t1_h2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_t1_h2.FlatAppearance.BorderSize = 0
+        Me.btn_t1_h2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_t1_h2.Location = New System.Drawing.Point(156, 176)
+        Me.btn_t1_h2.Name = "btn_t1_h2"
+        Me.btn_t1_h2.Size = New System.Drawing.Size(30, 25)
+        Me.btn_t1_h2.TabIndex = 58
+        Me.btn_t1_h2.UseVisualStyleBackColor = False
+        '
+        'btn_t1_h1
+        '
+        Me.btn_t1_h1.BackColor = System.Drawing.Color.Transparent
+        Me.btn_t1_h1.BackgroundImage = CType(resources.GetObject("btn_t1_h1.BackgroundImage"), System.Drawing.Image)
+        Me.btn_t1_h1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btn_t1_h1.FlatAppearance.BorderSize = 0
+        Me.btn_t1_h1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_t1_h1.Location = New System.Drawing.Point(103, 176)
+        Me.btn_t1_h1.Name = "btn_t1_h1"
+        Me.btn_t1_h1.Size = New System.Drawing.Size(30, 25)
+        Me.btn_t1_h1.TabIndex = 59
+        Me.btn_t1_h1.UseVisualStyleBackColor = False
         '
         'lbl_secondary_voltage
         '
@@ -629,7 +707,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_a_5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_a_5.FlatAppearance.BorderSize = 0
         Me.btn_prim_a_5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_a_5.Location = New System.Drawing.Point(468, 29)
+        Me.btn_prim_a_5.Location = New System.Drawing.Point(466, 27)
         Me.btn_prim_a_5.Name = "btn_prim_a_5"
         Me.btn_prim_a_5.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_a_5.TabIndex = 145
@@ -641,7 +719,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_a_6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_a_6.FlatAppearance.BorderSize = 0
         Me.btn_prim_a_6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_a_6.Location = New System.Drawing.Point(507, 29)
+        Me.btn_prim_a_6.Location = New System.Drawing.Point(505, 27)
         Me.btn_prim_a_6.Name = "btn_prim_a_6"
         Me.btn_prim_a_6.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_a_6.TabIndex = 144
@@ -653,7 +731,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_a_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_a_3.FlatAppearance.BorderSize = 0
         Me.btn_prim_a_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_a_3.Location = New System.Drawing.Point(352, 31)
+        Me.btn_prim_a_3.Location = New System.Drawing.Point(350, 29)
         Me.btn_prim_a_3.Name = "btn_prim_a_3"
         Me.btn_prim_a_3.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_a_3.TabIndex = 143
@@ -665,7 +743,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_a_4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_a_4.FlatAppearance.BorderSize = 0
         Me.btn_prim_a_4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_a_4.Location = New System.Drawing.Point(390, 29)
+        Me.btn_prim_a_4.Location = New System.Drawing.Point(388, 27)
         Me.btn_prim_a_4.Name = "btn_prim_a_4"
         Me.btn_prim_a_4.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_a_4.TabIndex = 142
@@ -1007,7 +1085,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_n_5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_n_5.FlatAppearance.BorderSize = 0
         Me.btn_prim_n_5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_n_5.Location = New System.Drawing.Point(469, 131)
+        Me.btn_prim_n_5.Location = New System.Drawing.Point(467, 129)
         Me.btn_prim_n_5.Name = "btn_prim_n_5"
         Me.btn_prim_n_5.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_n_5.TabIndex = 92
@@ -1019,7 +1097,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_n_6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_n_6.FlatAppearance.BorderSize = 0
         Me.btn_prim_n_6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_n_6.Location = New System.Drawing.Point(506, 131)
+        Me.btn_prim_n_6.Location = New System.Drawing.Point(504, 129)
         Me.btn_prim_n_6.Name = "btn_prim_n_6"
         Me.btn_prim_n_6.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_n_6.TabIndex = 91
@@ -1031,7 +1109,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_n_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_n_3.FlatAppearance.BorderSize = 0
         Me.btn_prim_n_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_n_3.Location = New System.Drawing.Point(353, 130)
+        Me.btn_prim_n_3.Location = New System.Drawing.Point(351, 128)
         Me.btn_prim_n_3.Name = "btn_prim_n_3"
         Me.btn_prim_n_3.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_n_3.TabIndex = 90
@@ -1043,7 +1121,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_n_4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_n_4.FlatAppearance.BorderSize = 0
         Me.btn_prim_n_4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_n_4.Location = New System.Drawing.Point(390, 130)
+        Me.btn_prim_n_4.Location = New System.Drawing.Point(388, 128)
         Me.btn_prim_n_4.Name = "btn_prim_n_4"
         Me.btn_prim_n_4.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_n_4.TabIndex = 89
@@ -1055,7 +1133,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_n_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_n_1.FlatAppearance.BorderSize = 0
         Me.btn_prim_n_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_n_1.Location = New System.Drawing.Point(234, 131)
+        Me.btn_prim_n_1.Location = New System.Drawing.Point(232, 129)
         Me.btn_prim_n_1.Name = "btn_prim_n_1"
         Me.btn_prim_n_1.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_n_1.TabIndex = 88
@@ -1067,7 +1145,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_n_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_n_2.FlatAppearance.BorderSize = 0
         Me.btn_prim_n_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_n_2.Location = New System.Drawing.Point(272, 131)
+        Me.btn_prim_n_2.Location = New System.Drawing.Point(270, 129)
         Me.btn_prim_n_2.Name = "btn_prim_n_2"
         Me.btn_prim_n_2.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_n_2.TabIndex = 87
@@ -1298,84 +1376,6 @@ Partial Class WyeWyeActivities
         Me.btn_t3_x2.Size = New System.Drawing.Size(30, 25)
         Me.btn_t3_x2.TabIndex = 60
         Me.btn_t3_x2.UseVisualStyleBackColor = True
-        '
-        'btn_t1_h1
-        '
-        Me.btn_t1_h1.BackColor = System.Drawing.Color.Transparent
-        Me.btn_t1_h1.BackgroundImage = CType(resources.GetObject("btn_t1_h1.BackgroundImage"), System.Drawing.Image)
-        Me.btn_t1_h1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btn_t1_h1.FlatAppearance.BorderSize = 0
-        Me.btn_t1_h1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t1_h1.Location = New System.Drawing.Point(103, 176)
-        Me.btn_t1_h1.Name = "btn_t1_h1"
-        Me.btn_t1_h1.Size = New System.Drawing.Size(30, 25)
-        Me.btn_t1_h1.TabIndex = 59
-        Me.btn_t1_h1.UseVisualStyleBackColor = False
-        '
-        'btn_t1_h2
-        '
-        Me.btn_t1_h2.BackColor = System.Drawing.Color.Transparent
-        Me.btn_t1_h2.BackgroundImage = CType(resources.GetObject("btn_t1_h2.BackgroundImage"), System.Drawing.Image)
-        Me.btn_t1_h2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btn_t1_h2.FlatAppearance.BorderSize = 0
-        Me.btn_t1_h2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t1_h2.Location = New System.Drawing.Point(156, 176)
-        Me.btn_t1_h2.Name = "btn_t1_h2"
-        Me.btn_t1_h2.Size = New System.Drawing.Size(30, 25)
-        Me.btn_t1_h2.TabIndex = 58
-        Me.btn_t1_h2.UseVisualStyleBackColor = False
-        '
-        'btn_t2_h1
-        '
-        Me.btn_t2_h1.BackColor = System.Drawing.Color.Transparent
-        Me.btn_t2_h1.BackgroundImage = CType(resources.GetObject("btn_t2_h1.BackgroundImage"), System.Drawing.Image)
-        Me.btn_t2_h1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btn_t2_h1.FlatAppearance.BorderSize = 0
-        Me.btn_t2_h1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t2_h1.Location = New System.Drawing.Point(245, 174)
-        Me.btn_t2_h1.Name = "btn_t2_h1"
-        Me.btn_t2_h1.Size = New System.Drawing.Size(30, 25)
-        Me.btn_t2_h1.TabIndex = 57
-        Me.btn_t2_h1.UseVisualStyleBackColor = False
-        '
-        'btn_t2_h2
-        '
-        Me.btn_t2_h2.BackColor = System.Drawing.Color.Transparent
-        Me.btn_t2_h2.BackgroundImage = CType(resources.GetObject("btn_t2_h2.BackgroundImage"), System.Drawing.Image)
-        Me.btn_t2_h2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btn_t2_h2.FlatAppearance.BorderSize = 0
-        Me.btn_t2_h2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t2_h2.Location = New System.Drawing.Point(302, 174)
-        Me.btn_t2_h2.Name = "btn_t2_h2"
-        Me.btn_t2_h2.Size = New System.Drawing.Size(30, 25)
-        Me.btn_t2_h2.TabIndex = 56
-        Me.btn_t2_h2.UseVisualStyleBackColor = False
-        '
-        'btn_t3_h1
-        '
-        Me.btn_t3_h1.BackColor = System.Drawing.Color.Transparent
-        Me.btn_t3_h1.BackgroundImage = CType(resources.GetObject("btn_t3_h1.BackgroundImage"), System.Drawing.Image)
-        Me.btn_t3_h1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btn_t3_h1.FlatAppearance.BorderSize = 0
-        Me.btn_t3_h1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t3_h1.Location = New System.Drawing.Point(399, 175)
-        Me.btn_t3_h1.Name = "btn_t3_h1"
-        Me.btn_t3_h1.Size = New System.Drawing.Size(30, 25)
-        Me.btn_t3_h1.TabIndex = 55
-        Me.btn_t3_h1.UseVisualStyleBackColor = False
-        '
-        'btn_t3_h2
-        '
-        Me.btn_t3_h2.BackColor = System.Drawing.Color.Transparent
-        Me.btn_t3_h2.BackgroundImage = CType(resources.GetObject("btn_t3_h2.BackgroundImage"), System.Drawing.Image)
-        Me.btn_t3_h2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btn_t3_h2.FlatAppearance.BorderSize = 0
-        Me.btn_t3_h2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_t3_h2.Location = New System.Drawing.Point(453, 174)
-        Me.btn_t3_h2.Name = "btn_t3_h2"
-        Me.btn_t3_h2.Size = New System.Drawing.Size(30, 25)
-        Me.btn_t3_h2.TabIndex = 54
-        Me.btn_t3_h2.UseVisualStyleBackColor = False
         '
         'btn_sec_n_1
         '
@@ -1627,7 +1627,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_a_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_a_1.FlatAppearance.BorderSize = 0
         Me.btn_prim_a_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_a_1.Location = New System.Drawing.Point(231, 26)
+        Me.btn_prim_a_1.Location = New System.Drawing.Point(229, 24)
         Me.btn_prim_a_1.Name = "btn_prim_a_1"
         Me.btn_prim_a_1.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_a_1.TabIndex = 29
@@ -1639,7 +1639,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_a_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_a_2.FlatAppearance.BorderSize = 0
         Me.btn_prim_a_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_a_2.Location = New System.Drawing.Point(270, 23)
+        Me.btn_prim_a_2.Location = New System.Drawing.Point(268, 21)
         Me.btn_prim_a_2.Name = "btn_prim_a_2"
         Me.btn_prim_a_2.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_a_2.TabIndex = 28
@@ -1651,7 +1651,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_c_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_c_1.FlatAppearance.BorderSize = 0
         Me.btn_prim_c_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_c_1.Location = New System.Drawing.Point(235, 94)
+        Me.btn_prim_c_1.Location = New System.Drawing.Point(233, 92)
         Me.btn_prim_c_1.Name = "btn_prim_c_1"
         Me.btn_prim_c_1.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_c_1.TabIndex = 23
@@ -1663,7 +1663,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_c_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_c_2.FlatAppearance.BorderSize = 0
         Me.btn_prim_c_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_c_2.Location = New System.Drawing.Point(273, 95)
+        Me.btn_prim_c_2.Location = New System.Drawing.Point(271, 93)
         Me.btn_prim_c_2.Name = "btn_prim_c_2"
         Me.btn_prim_c_2.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_c_2.TabIndex = 22
@@ -1675,7 +1675,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_c_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_c_3.FlatAppearance.BorderSize = 0
         Me.btn_prim_c_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_c_3.Location = New System.Drawing.Point(355, 94)
+        Me.btn_prim_c_3.Location = New System.Drawing.Point(353, 92)
         Me.btn_prim_c_3.Name = "btn_prim_c_3"
         Me.btn_prim_c_3.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_c_3.TabIndex = 21
@@ -1687,7 +1687,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_c_4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_c_4.FlatAppearance.BorderSize = 0
         Me.btn_prim_c_4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_c_4.Location = New System.Drawing.Point(389, 94)
+        Me.btn_prim_c_4.Location = New System.Drawing.Point(387, 92)
         Me.btn_prim_c_4.Name = "btn_prim_c_4"
         Me.btn_prim_c_4.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_c_4.TabIndex = 20
@@ -1699,7 +1699,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_c_5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_c_5.FlatAppearance.BorderSize = 0
         Me.btn_prim_c_5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_c_5.Location = New System.Drawing.Point(469, 93)
+        Me.btn_prim_c_5.Location = New System.Drawing.Point(467, 91)
         Me.btn_prim_c_5.Name = "btn_prim_c_5"
         Me.btn_prim_c_5.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_c_5.TabIndex = 19
@@ -1711,7 +1711,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_c_6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_c_6.FlatAppearance.BorderSize = 0
         Me.btn_prim_c_6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_c_6.Location = New System.Drawing.Point(508, 93)
+        Me.btn_prim_c_6.Location = New System.Drawing.Point(506, 91)
         Me.btn_prim_c_6.Name = "btn_prim_c_6"
         Me.btn_prim_c_6.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_c_6.TabIndex = 18
@@ -1723,7 +1723,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_b_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_b_2.FlatAppearance.BorderSize = 0
         Me.btn_prim_b_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_b_2.Location = New System.Drawing.Point(275, 61)
+        Me.btn_prim_b_2.Location = New System.Drawing.Point(273, 59)
         Me.btn_prim_b_2.Name = "btn_prim_b_2"
         Me.btn_prim_b_2.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_b_2.TabIndex = 17
@@ -1735,7 +1735,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_b_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_b_3.FlatAppearance.BorderSize = 0
         Me.btn_prim_b_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_b_3.Location = New System.Drawing.Point(353, 61)
+        Me.btn_prim_b_3.Location = New System.Drawing.Point(351, 59)
         Me.btn_prim_b_3.Name = "btn_prim_b_3"
         Me.btn_prim_b_3.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_b_3.TabIndex = 16
@@ -1747,7 +1747,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_b_4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_b_4.FlatAppearance.BorderSize = 0
         Me.btn_prim_b_4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_b_4.Location = New System.Drawing.Point(391, 61)
+        Me.btn_prim_b_4.Location = New System.Drawing.Point(389, 59)
         Me.btn_prim_b_4.Name = "btn_prim_b_4"
         Me.btn_prim_b_4.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_b_4.TabIndex = 15
@@ -1759,7 +1759,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_b_5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_b_5.FlatAppearance.BorderSize = 0
         Me.btn_prim_b_5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_b_5.Location = New System.Drawing.Point(468, 62)
+        Me.btn_prim_b_5.Location = New System.Drawing.Point(466, 60)
         Me.btn_prim_b_5.Name = "btn_prim_b_5"
         Me.btn_prim_b_5.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_b_5.TabIndex = 14
@@ -1771,7 +1771,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_b_6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_b_6.FlatAppearance.BorderSize = 0
         Me.btn_prim_b_6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_b_6.Location = New System.Drawing.Point(508, 60)
+        Me.btn_prim_b_6.Location = New System.Drawing.Point(506, 58)
         Me.btn_prim_b_6.Name = "btn_prim_b_6"
         Me.btn_prim_b_6.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_b_6.TabIndex = 13
@@ -1783,7 +1783,7 @@ Partial Class WyeWyeActivities
         Me.btn_prim_b_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_prim_b_1.FlatAppearance.BorderSize = 0
         Me.btn_prim_b_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_prim_b_1.Location = New System.Drawing.Point(236, 62)
+        Me.btn_prim_b_1.Location = New System.Drawing.Point(234, 60)
         Me.btn_prim_b_1.Name = "btn_prim_b_1"
         Me.btn_prim_b_1.Size = New System.Drawing.Size(26, 22)
         Me.btn_prim_b_1.TabIndex = 12
