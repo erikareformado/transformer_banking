@@ -29,78 +29,77 @@
                 Home.panel_all.Controls.Clear()
                 Home.panel_all.Controls.Add(Home.uc_wye_wye_activity)
                 Home.uc_wye_wye_activity.refresh_form(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
-
+                Home.uc_wye_wye_activity.additive(cmb_polarity.Text)
             ElseIf Home.lbl_connection_type.Text = "DELTA-WYE CONNECTION" Then
 
                 Home.panel_all.Controls.Clear()
                 Home.panel_all.Controls.Add(Home.uc_delta_wye_activity)
                 Home.uc_delta_wye_activity.refresh_form(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
+                Home.uc_delta_wye_activity.additive(cmb_polarity.Text)
+                'If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
 
-                If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
-
-                    Home.uc_delta_wye_activity.Label21.Text = "X2"
-                    Home.uc_delta_wye_activity.btn_t1_x1.Name = "btn_t1_x2"
-                    Home.uc_delta_wye_activity.Label22.Text = "X1"
-                    Home.uc_delta_wye_activity.btn_t1_x2.Name = "btn_t1_x1"
-                    Home.uc_delta_wye_activity.Label24.Text = "X2"
-                    Home.uc_delta_wye_activity.btn_t2_x1.Name = "btn_t2_x2"
-                    Home.uc_delta_wye_activity.Label23.Text = "X1"
-                    Home.uc_delta_wye_activity.btn_t2_x2.Name = "btn_t2_x1"
-                    Home.uc_delta_wye_activity.Label26.Text = "X2"
-                    Home.uc_delta_wye_activity.btn_t3_x1.Name = "btn_t3_x2"
-                    Home.uc_delta_wye_activity.btn_t3_x2.Name = "btn_t3_x1"
-                    Home.uc_delta_wye_activity.Label25.Text = "X1"
-                End If
+                '    Home.uc_delta_wye_activity.Label21.Text = "X2"
+                '    Home.uc_delta_wye_activity.btn_t1_x1.Name = "btn_t1_x2"
+                '    Home.uc_delta_wye_activity.Label22.Text = "X1"
+                '    Home.uc_delta_wye_activity.btn_t1_x2.Name = "btn_t1_x1"
+                '    Home.uc_delta_wye_activity.Label24.Text = "X2"
+                '    Home.uc_delta_wye_activity.btn_t2_x1.Name = "btn_t2_x2"
+                '    Home.uc_delta_wye_activity.Label23.Text = "X1"
+                '    Home.uc_delta_wye_activity.btn_t2_x2.Name = "btn_t2_x1"
+                '    Home.uc_delta_wye_activity.Label26.Text = "X2"
+                '    Home.uc_delta_wye_activity.btn_t3_x1.Name = "btn_t3_x2"
+                '    Home.uc_delta_wye_activity.btn_t3_x2.Name = "btn_t3_x1"
+                '    Home.uc_delta_wye_activity.Label25.Text = "X1"
+                'End If
             ElseIf Home.lbl_connection_type.Text = "DELTA-DELTA CONNECTION" Then
 
                 Home.panel_all.Controls.Clear()
                 Home.panel_all.Controls.Add(Home.uc_delta_delta_activity)
-
                 Home.uc_delta_delta_activity.refresh_form(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
+                Home.uc_delta_delta_activity.additive(cmb_polarity.Text)
+                'If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
+                '    additive_delta_properties()
 
-                If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
-                    additive_delta_properties()
 
-
-                End If
+                'End If
             ElseIf Home.lbl_connection_type.Text = "WYE-DELTA CONNECTION" Then
 
                 Home.panel_all.Controls.Clear()
                 Home.panel_all.Controls.Add(Home.uc_wye_delta_activity)
                 Home.uc_wye_delta_activity.refresh_form(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
-
-                If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
-                    additive_delta_properties()
-                End If
+                Home.uc_wye_delta_activity.additive(cmb_polarity.Text)
+                'If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
+                '    additive_delta_properties()
+                'End If
             ElseIf Home.lbl_connection_type.Text = "OPEN-DELTA CONNECTION" Then
 
 
                 Home.panel_all.Controls.Clear()
                 Home.panel_all.Controls.Add(Home.uc_open_delta_activity)
                 Home.uc_open_delta_activity.refresh_form(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
-
-                If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
-                    additive_delta_properties()
-                End If
+                Home.uc_open_delta_activity.additive(cmb_polarity.Text)
+                'If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
+                '    additive_delta_properties()
+                'End If
             ElseIf Home.lbl_connection_type.Text = "OPEN WYE-OPEN DELTA CONNECTION" Then
 
 
                 Home.panel_all.Controls.Clear()
                 Home.panel_all.Controls.Add(Home.uc_open_wye_open_delta_activity)
                 Home.uc_open_wye_open_delta_activity.refresh_form(cmb_polarity.Text, cmb_rating.Text, Home.lbl_connection_type.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
-
-                If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
-                    Home.uc_open_wye_open_delta_activity.Label21.Text = "X2"
-                    Home.uc_open_wye_open_delta_activity.btn_t1_x1.Name = "btn_t1_x2"
-                    Home.uc_open_wye_open_delta_activity.Label22.Text = "X1"
-                    Home.uc_open_wye_open_delta_activity.btn_t1_x2.Name = "btn_t1_x1"
-                    Home.uc_open_wye_open_delta_activity.Label24.Text = "X2"
-                    Home.uc_open_wye_open_delta_activity.btn_t2_x1.Name = "btn_t2_x2"
-                    Home.uc_open_wye_open_delta_activity.Label23.Text = "X1"
-                    Home.uc_open_wye_open_delta_activity.btn_t2_x2.Name = "btn_t2_x1"
-                    Home.uc_open_wye_open_delta_activity.Label26.Text = "X2"
-                    Home.uc_open_wye_open_delta_activity.Label25.Text = "X1"
-                End If
+                Home.uc_open_wye_open_delta_activity.additive(cmb_polarity.Text)
+                'If Home.uc_transformer_details.cmb_polarity.Text = "Additive" Then
+                '    Home.uc_open_wye_open_delta_activity.Label21.Text = "X2"
+                '    Home.uc_open_wye_open_delta_activity.btn_t1_x1.Name = "btn_t1_x2"
+                '    Home.uc_open_wye_open_delta_activity.Label22.Text = "X1"
+                '    Home.uc_open_wye_open_delta_activity.btn_t1_x2.Name = "btn_t1_x1"
+                '    Home.uc_open_wye_open_delta_activity.Label24.Text = "X2"
+                '    Home.uc_open_wye_open_delta_activity.btn_t2_x1.Name = "btn_t2_x2"
+                '    Home.uc_open_wye_open_delta_activity.Label23.Text = "X1"
+                '    Home.uc_open_wye_open_delta_activity.btn_t2_x2.Name = "btn_t2_x1"
+                '    Home.uc_open_wye_open_delta_activity.Label26.Text = "X2"
+                '    Home.uc_open_wye_open_delta_activity.Label25.Text = "X1"
+                'End If
             Else
                 Home.panel_all.Controls.Clear()
                 Home.panel_all.Controls.Add(Home.uc_exercises)

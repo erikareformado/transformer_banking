@@ -122,12 +122,14 @@ Public Class DeltaDeltaActivity
                     counter_2(myButton.Name, "Red", clamp_meter)
                 Else
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
-                        update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
+                        update_clamp_no("3", transformer_id, table)
+
 
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
-                        update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
+                        update_clamp_no("4", transformer_id, table)
+
                     Else
 
                         delete_unwanted_connection(transformer_id, table)
@@ -458,7 +460,18 @@ Public Class DeltaDeltaActivity
                 End If
             End If
 
+            ctr_apparent = results_model.apparent_power(transformer_id)
+            ctr_real = results_model.real_power(transformer_id)
 
+            If ctr_apparent = 1 And category = "primary" Then
+                txt_apparent.Text = apparent.ToString
+                results_model.save(transformer_id, "apparent_power", apparent.ToString)
+            End If
+
+            If ctr_real = 1 And category = "secondary" Then
+                txt_real.Text = real.ToString
+                results_model.save(transformer_id, "real_power", real.ToString)
+            End If
 
             If ctr_bulb > 11 Then
                 pic_bulb1.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
@@ -902,7 +915,7 @@ Public Class DeltaDeltaActivity
             ElseIf btn = "btn_t2_x" Then
                 counter_1("btn_t2_x1", "", 6)
                 counter_2("btn_t2_x2", "", 6)
-            ElseIf btn = "btn_t2_x" Then
+            ElseIf btn = "btn_t3_x" Then
                 counter_1("btn_t3_x1", "", 6)
                 counter_2("btn_t3_x2", "", 6)
             End If
@@ -1094,11 +1107,13 @@ Public Class DeltaDeltaActivity
                 Else
 
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
-                        update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
+                        update_clamp_no("3", transformer_id, table)
+
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t1_x2" And voltage = "vlblack" Then
-                        update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
+                        update_clamp_no("4", transformer_id, table)
+
 
                     Else
                         If h_transformer = "btn_t1_h1" And primary = "a" Or h_transformer = "btn_t2_h1" And primary = "b" Or h_transformer = "btn_t3_h1" And primary = "c" Then
@@ -1248,13 +1263,76 @@ Public Class DeltaDeltaActivity
 
     Private Sub btn_done_Click(sender As Object, e As EventArgs) Handles btn_done.Click
         MsgBox("Delta delta connection was performed correctly. You may proceed on the next connection")
-        transformer_banking_connections.refresh_form()
         transformer_banking_connections.Show()
         Home.Close()
     End Sub
 
+    Private Sub lbl_polarity_Click(sender As Object, e As EventArgs) Handles lbl_dt.Click, lbl_primary_voltage.Click, lbl_secondary_voltage.Click, lbl_polarity.Click, lbl_rating.Click, lbl_frequency.Click
+        If ctr_switch = 0 Then
+            EditTransformer.get_details(lbl_primary_voltage.Text, lbl_secondary_voltage.Text, lbl_polarity.Text, lbl_rating.Text, transformer_id, Home.lbl_connection_type.Text)
+            Dim count_points = select_count_points(transformer_id, table)
+            If count_points <> 0 Then
+                EditTransformer.cmb_polarity.Enabled = False
+            End If
+            EditTransformer.Show()
+        Else
+            MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation, "Transformer Banking")
+        End If
+
+    End Sub
+
 
 #Region "subs"
+    Public Sub additive(polarity)
+        If polarity = "Additive" Then
+            Dim blue_1 As New Point(106, 293)
+            Dim blue_2 As New Point(301, 293)
+
+            Dim red_1 As New Point(156, 291)
+            Dim red_2 As New Point(400, 291)
+
+            Dim yellow_1 As New Point(252, 288)
+            Dim yellow_2 As New Point(451, 288)
+
+
+            Label21.Text = "X2"
+            Label21.BringToFront()
+            btn_t1_x1.Name = "btn_t1_x2"
+
+            btn_t1_x1.Location = blue_1
+            Label22.Text = "X1"
+            Label22.BringToFront()
+
+            btn_t1_x2.Name = "btn_t1_x1"
+            btn_t1_x2.Location = red_1
+            Label24.Text = "X2"
+            Label24.BringToFront()
+
+            btn_t2_x1.Name = "btn_t2_x2"
+            btn_t2_x1.Location = yellow_1
+            Label23.Text = "X1"
+            Label23.BringToFront()
+
+            btn_t2_x2.Name = "btn_t2_x1"
+            btn_t2_x2.Location = blue_2
+            Label26.Text = "X2"
+            Label26.BringToFront()
+
+            btn_t3_x1.Name = "btn_t3_x2"
+            btn_t3_x1.Location = red_2
+
+            btn_t3_x2.Name = "btn_t3_x1"
+            btn_t3_x2.Location = yellow_2
+            Label25.Text = "X1"
+            Label25.BringToFront()
+        End If
+    End Sub
+    Public Sub update_transformer(polarity, rating, voltage_primary, voltage_secondary)
+        lbl_primary_voltage.Text = voltage_primary
+        lbl_secondary_voltage.Text = voltage_secondary
+        lbl_polarity.Text = polarity
+        lbl_rating.Text = rating
+    End Sub
     Public Sub refresh_form(polarity, rating, connection, voltage_primary, voltage_secondary)
         table = "delta_delta_lines"
         lbl_primary_voltage.Text = voltage_primary

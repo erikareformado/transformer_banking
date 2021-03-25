@@ -51,7 +51,7 @@ Partial Class manual_menu
         Me.RichTextBox_Manual.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.RichTextBox_Manual.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RichTextBox_Manual.ForeColor = System.Drawing.Color.White
-        Me.RichTextBox_Manual.Location = New System.Drawing.Point(30, 33)
+        Me.RichTextBox_Manual.Location = New System.Drawing.Point(40, 33)
         Me.RichTextBox_Manual.Name = "RichTextBox_Manual"
         Me.RichTextBox_Manual.ReadOnly = True
         Me.RichTextBox_Manual.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical
@@ -61,11 +61,10 @@ Partial Class manual_menu
         '
         'Panel
         '
-        Me.Panel.Controls.Add(Me.PictureBox_Legend)
         Me.Panel.Controls.Add(Me.RichTextBox_Manual)
-        Me.Panel.Location = New System.Drawing.Point(-8, 52)
+        Me.Panel.Location = New System.Drawing.Point(4, 52)
         Me.Panel.Name = "Panel"
-        Me.Panel.Size = New System.Drawing.Size(1091, 454)
+        Me.Panel.Size = New System.Drawing.Size(1079, 454)
         Me.Panel.TabIndex = 22
         '
         'PictureBox_Legend
@@ -73,9 +72,9 @@ Partial Class manual_menu
         Me.PictureBox_Legend.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox_Legend.BackgroundImage = CType(resources.GetObject("PictureBox_Legend.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox_Legend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox_Legend.Location = New System.Drawing.Point(153, 48)
+        Me.PictureBox_Legend.Location = New System.Drawing.Point(275, 72)
         Me.PictureBox_Legend.Name = "PictureBox_Legend"
-        Me.PictureBox_Legend.Size = New System.Drawing.Size(830, 402)
+        Me.PictureBox_Legend.Size = New System.Drawing.Size(562, 463)
         Me.PictureBox_Legend.TabIndex = 18
         Me.PictureBox_Legend.TabStop = False
         '
@@ -171,6 +170,7 @@ Partial Class manual_menu
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(36, Byte), Integer), CType(CType(42, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1085, 561)
+        Me.Controls.Add(Me.PictureBox_Legend)
         Me.Controls.Add(Me.PictureBox3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.PictureBox2)
@@ -195,7 +195,6 @@ Partial Class manual_menu
     End Sub
     Friend WithEvents RichTextBox_Manual As RichTextBox
     Friend WithEvents Panel As Panel
-    Friend WithEvents PictureBox_Legend As PictureBox
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Panel2 As Panel
@@ -204,4 +203,5 @@ Partial Class manual_menu
     Friend WithEvents PictureBox6 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBox_Legend As PictureBox
 End Class

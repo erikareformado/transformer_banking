@@ -11,11 +11,13 @@
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
         PictureBox_Legend.Hide()
         RichTextBox_Manual.Show()
+        Label1.Text = "MANUAL"
     End Sub
 
     Private Sub PictureBox3_Click(sender As Object, e As EventArgs) Handles PictureBox3.Click
         RichTextBox_Manual.Hide()
         PictureBox_Legend.Show()
+        Label1.Text = "LEGEND AND SYMBOLS"
     End Sub
 
     Private Sub PictureBox6_Click(sender As Object, e As EventArgs) Handles PictureBox6.Click

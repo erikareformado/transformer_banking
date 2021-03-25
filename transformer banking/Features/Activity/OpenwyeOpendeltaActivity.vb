@@ -1126,6 +1126,29 @@ Public Class OpenwyeOpendeltaActivity
 
 
 #Region "subs"
+    Public Sub additive(polarity)
+        If polarity = "Additive" Then
+            Label21.Text = "X2"
+            btn_t1_x1.Name = "btn_t1_x2"
+            Label22.Text = "X1"
+            btn_t1_x2.Name = "btn_t1_x1"
+            Label24.Text = "X2"
+            btn_t2_x1.Name = "btn_t2_x2"
+            Label23.Text = "X1"
+            btn_t2_x2.Name = "btn_t2_x1"
+            Label26.Text = "X2"
+            'btn_t3_x1.Name = "btn_t3_x2"
+            'btn_t3_x2.Name = "btn_t3_x1"
+            Label25.Text = "X1"
+        End If
+    End Sub
+
+    Public Sub update_transformer(polarity, rating, voltage_primary, voltage_secondary)
+        lbl_primary_voltage.Text = voltage_primary
+        lbl_secondary_voltage.Text = voltage_secondary
+        lbl_polarity.Text = polarity
+        lbl_rating.Text = rating
+    End Sub
     Public Sub refresh_form(polarity, rating, connection, voltage_primary, voltage_secondary)
         table = "openwye_opendelta_lines"
         lbl_primary_voltage.Text = voltage_primary
@@ -1178,11 +1201,22 @@ Public Class OpenwyeOpendeltaActivity
 
     Private Sub btn_done_Click_1(sender As Object, e As EventArgs) Handles btn_done.Click
         MsgBox("Delta delta connection was performed correctly. You may proceed on the next connection")
-
-        transformer_banking_connections.refresh_form()
         transformer_banking_connections.Show()
         Home.Close()
 
+    End Sub
+
+    Private Sub lbl_dt_Click(sender As Object, e As EventArgs) Handles lbl_dt.Click, lbl_primary_voltage.Click, lbl_secondary_voltage.Click, lbl_polarity.Click, lbl_rating.Click, lbl_frequency.Click
+        If ctr_switch = 0 Then
+            EditTransformer.get_details(lbl_primary_voltage.Text, lbl_secondary_voltage.Text, lbl_polarity.Text, lbl_rating.Text, transformer_id, Home.lbl_connection_type.Text)
+            Dim count_points = select_count_points(transformer_id, table)
+            If count_points <> 0 Then
+                EditTransformer.cmb_polarity.Enabled = False
+            End If
+            EditTransformer.Show()
+        Else
+            MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation, "Transformer Banking")
+        End If
     End Sub
 
     Private Sub counter_1(btn_name, pen_color, clamp)

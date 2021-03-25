@@ -168,18 +168,18 @@ Partial Class WyeWyeActivities
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Controls.Add(Me.Label35)
-        Me.Panel1.Location = New System.Drawing.Point(839, 34)
+        Me.Panel1.Location = New System.Drawing.Point(839, 56)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(261, 56)
+        Me.Panel1.Size = New System.Drawing.Size(261, 49)
         Me.Panel1.TabIndex = 130
         '
         'PictureBox1
         '
         Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox1.Location = New System.Drawing.Point(3, 10)
+        Me.PictureBox1.Location = New System.Drawing.Point(3, 4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(56, 37)
+        Me.PictureBox1.Size = New System.Drawing.Size(56, 39)
         Me.PictureBox1.TabIndex = 125
         Me.PictureBox1.TabStop = False
         '
@@ -188,7 +188,7 @@ Partial Class WyeWyeActivities
         Me.Label35.AutoSize = True
         Me.Label35.Font = New System.Drawing.Font("Segoe UI Semilight", 15.25!)
         Me.Label35.ForeColor = System.Drawing.Color.White
-        Me.Label35.Location = New System.Drawing.Point(90, 11)
+        Me.Label35.Location = New System.Drawing.Point(90, 9)
         Me.Label35.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(128, 30)
@@ -201,7 +201,7 @@ Partial Class WyeWyeActivities
         Me.btn_try_again.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btn_try_again.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_try_again.ForeColor = System.Drawing.Color.Red
-        Me.btn_try_again.Location = New System.Drawing.Point(765, 592)
+        Me.btn_try_again.Location = New System.Drawing.Point(763, 593)
         Me.btn_try_again.Name = "btn_try_again"
         Me.btn_try_again.Size = New System.Drawing.Size(163, 45)
         Me.btn_try_again.TabIndex = 129
@@ -213,9 +213,9 @@ Partial Class WyeWyeActivities
         Me.RichTextBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(36, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(51, Byte), Integer))
         Me.RichTextBox1.Font = New System.Drawing.Font("Segoe UI Semilight", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RichTextBox1.ForeColor = System.Drawing.Color.White
-        Me.RichTextBox1.Location = New System.Drawing.Point(838, 91)
+        Me.RichTextBox1.Location = New System.Drawing.Point(838, 114)
         Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(260, 494)
+        Me.RichTextBox1.Size = New System.Drawing.Size(260, 471)
         Me.RichTextBox1.TabIndex = 128
         Me.RichTextBox1.Text = resources.GetString("RichTextBox1.Text")
         '
@@ -226,7 +226,7 @@ Partial Class WyeWyeActivities
         Me.btn_done.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btn_done.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_done.ForeColor = System.Drawing.Color.White
-        Me.btn_done.Location = New System.Drawing.Point(941, 592)
+        Me.btn_done.Location = New System.Drawing.Point(939, 593)
         Me.btn_done.Name = "btn_done"
         Me.btn_done.Size = New System.Drawing.Size(163, 45)
         Me.btn_done.TabIndex = 127
@@ -447,7 +447,7 @@ Partial Class WyeWyeActivities
         Me.lbl_secondary_voltage.AutoSize = True
         Me.lbl_secondary_voltage.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_secondary_voltage.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_secondary_voltage.Location = New System.Drawing.Point(18, 248)
+        Me.lbl_secondary_voltage.Location = New System.Drawing.Point(18, 243)
         Me.lbl_secondary_voltage.Name = "lbl_secondary_voltage"
         Me.lbl_secondary_voltage.Size = New System.Drawing.Size(32, 25)
         Me.lbl_secondary_voltage.TabIndex = 167
@@ -458,7 +458,7 @@ Partial Class WyeWyeActivities
         Me.lbl_primary_voltage.AutoSize = True
         Me.lbl_primary_voltage.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_primary_voltage.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_primary_voltage.Location = New System.Drawing.Point(17, 223)
+        Me.lbl_primary_voltage.Location = New System.Drawing.Point(17, 218)
         Me.lbl_primary_voltage.Name = "lbl_primary_voltage"
         Me.lbl_primary_voltage.Size = New System.Drawing.Size(42, 25)
         Me.lbl_primary_voltage.TabIndex = 166
@@ -662,7 +662,7 @@ Partial Class WyeWyeActivities
         Me.lbl_frequency.AutoSize = True
         Me.lbl_frequency.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_frequency.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_frequency.Location = New System.Drawing.Point(12, 317)
+        Me.lbl_frequency.Location = New System.Drawing.Point(12, 312)
         Me.lbl_frequency.Name = "lbl_frequency"
         Me.lbl_frequency.Size = New System.Drawing.Size(59, 25)
         Me.lbl_frequency.TabIndex = 149
@@ -673,7 +673,7 @@ Partial Class WyeWyeActivities
         Me.lbl_rating.AutoSize = True
         Me.lbl_rating.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_rating.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_rating.Location = New System.Drawing.Point(7, 293)
+        Me.lbl_rating.Location = New System.Drawing.Point(7, 288)
         Me.lbl_rating.Name = "lbl_rating"
         Me.lbl_rating.Size = New System.Drawing.Size(69, 25)
         Me.lbl_rating.TabIndex = 148
@@ -684,7 +684,7 @@ Partial Class WyeWyeActivities
         Me.lbl_polarity.AutoSize = True
         Me.lbl_polarity.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_polarity.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_polarity.Location = New System.Drawing.Point(4, 270)
+        Me.lbl_polarity.Location = New System.Drawing.Point(4, 265)
         Me.lbl_polarity.Name = "lbl_polarity"
         Me.lbl_polarity.Size = New System.Drawing.Size(79, 25)
         Me.lbl_polarity.TabIndex = 147
@@ -695,7 +695,7 @@ Partial Class WyeWyeActivities
         Me.lbl_dt.AutoSize = True
         Me.lbl_dt.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_dt.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_dt.Location = New System.Drawing.Point(20, 203)
+        Me.lbl_dt.Location = New System.Drawing.Point(20, 198)
         Me.lbl_dt.Name = "lbl_dt"
         Me.lbl_dt.Size = New System.Drawing.Size(34, 25)
         Me.lbl_dt.TabIndex = 146

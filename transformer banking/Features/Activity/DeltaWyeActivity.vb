@@ -216,12 +216,11 @@ Public Class DeltaWyeActivity
                 Else
 
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
-                        update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
+                        update_clamp_no("3", transformer_id, table)
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t1_x2" And voltage = "vlblack" Then
-                        update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
-
+                        update_clamp_no("4", transformer_id, table)
                     Else
                         If h_transformer = "btn_t1_h1" And primary = "a" Or h_transformer = "btn_t2_h1" And primary = "b" Or h_transformer = "btn_t3_h1" And primary = "c" Then
                             counter_2(myButton.Name, "", clamp_meter)
@@ -426,12 +425,13 @@ Public Class DeltaWyeActivity
                 If x_transformer = "btn_t1_x1" And secondary = "l1" Or x_transformer = "btn_t1_x2" And secondary = "n" Or x_transformer = "btn_t2_x1" And secondary = "l2" Or x_transformer = "btn_t2_x2" And secondary = "n" Or x_transformer = "btn_t3_x1" And secondary = "l3" Or x_transformer = "btn_t3_x2" And secondary = "n" Then
                     counter_2(myButton.Name, "", clamp_meter)
                 ElseIf h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
-                    update_clamp_no("3", transformer_id, table)
-                    counter_2(myButton.Name, "", "3")
 
+                    counter_2(myButton.Name, "", "3")
+                    update_clamp_no("3", transformer_id, table)
                 ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t1_x2" And voltage = "vlblack" Then
-                    update_clamp_no("4", transformer_id, table)
                     counter_2(myButton.Name, "", "4")
+                    update_clamp_no("4", transformer_id, table)
+
                 Else
                     delete_unwanted_connection(transformer_id, table)
                     get_point()
@@ -470,6 +470,7 @@ Public Class DeltaWyeActivity
         Else
             pen_color = "Black"
         End If
+        x_transformer = ""
         If ctr = 1 Then
             ctr_points = ctr_points + 1
             counter_1(myButton.Name, pen_color, "5")
@@ -1183,7 +1184,7 @@ Public Class DeltaWyeActivity
 
     Private Sub btn_done_Click_1(sender As Object, e As EventArgs) Handles btn_done.Click
         MsgBox("Delta delta connection was performed correctly. You may proceed on the next connection")
-        transformer_banking_connections.refresh_form()
+
         transformer_banking_connections.Show()
         Home.Close()
     End Sub
@@ -1191,6 +1192,44 @@ Public Class DeltaWyeActivity
 
 
 #Region "subs"
+    Public Sub additive(polarity)
+        If polarity = "Additive" Then
+            Label21.Text = "X2"
+            btn_t1_x1.Name = "btn_t1_x2"
+            Label22.Text = "X1"
+            btn_t1_x2.Name = "btn_t1_x1"
+            Label24.Text = "X2"
+            btn_t2_x1.Name = "btn_t2_x2"
+            Label23.Text = "X1"
+            btn_t2_x2.Name = "btn_t2_x1"
+            Label26.Text = "X2"
+            btn_t3_x1.Name = "btn_t3_x2"
+            btn_t3_x2.Name = "btn_t3_x1"
+            Label25.Text = "X1"
+        End If
+    End Sub
+    Public Sub update_transformer(polarity, rating, voltage_primary, voltage_secondary)
+        lbl_primary_voltage.Text = voltage_primary
+        lbl_secondary_voltage.Text = voltage_secondary
+        lbl_polarity.Text = polarity
+        lbl_rating.Text = rating
+    End Sub
+
+    Private Sub lbl_dt_Click(sender As Object, e As EventArgs) Handles lbl_dt.Click, lbl_primary_voltage.Click, lbl_secondary_voltage.Click, lbl_polarity.Click, lbl_rating.Click, lbl_frequency.Click
+        If ctr_switch = 0 Then
+            EditTransformer.get_details(lbl_primary_voltage.Text, lbl_secondary_voltage.Text, lbl_polarity.Text, lbl_rating.Text, transformer_id, Home.lbl_connection_type.Text)
+            Dim count_points = select_count_points(transformer_id, table)
+            If count_points <> 0 Then
+                EditTransformer.cmb_polarity.Enabled = False
+            End If
+            EditTransformer.Show()
+        Else
+            MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation, "Transformer Banking")
+        End If
+
+
+    End Sub
+
     Public Sub refresh_form(polarity, rating, connection, voltage_primary, voltage_secondary)
         table = "delta_wye_lines"
         lbl_primary_voltage.Text = voltage_primary

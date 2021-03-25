@@ -1,6 +1,6 @@
 ﻿Public Class transformer_banking_connections
     Private Sub transformer_banking_connections_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        refresh_form()
+        'refresh_form()
     End Sub
 
     Private Sub btn_wye_wye_Click(sender As Object, e As EventArgs) Handles btn_wye_wye.Click
@@ -65,55 +65,5 @@
         overview.Show()
     End Sub
 
-    Public Sub refresh_form()
-        Dim query As String
-        query = "select a.id, a.connection, b.transformer_id 
-	             from 
-	             public.transformer_details as a
-	             left join results_activity as b
-	             on a.id =  b.transformer_id::integer
-                where b.primary_phase_current is not null
-	            and b.primary_line_current is not null
-	            and b.primary_line_voltage is not null
-	            and b.primary_phase_voltage is not null
-	            and b.apparent_power is not null
-	            and b.real_power is not null
-	            and b.secondary_phase_current is not null
-	            and b.secondary_line_current is not null
-	            and b.secondary_line_voltage is not null
-	            and b.secondary_phase_voltage is not null"
-        Dim da As New Odbc.OdbcDataAdapter(query, conn)
-        Dim dt As New DataTable
-        da.Fill(dt)
 
-
-
-
-
-        For counter As Integer = 0 To dt.Rows.Count - 1
-            If dt.Rows(counter)(1) = "WYE-WYE CONNECTION" Then
-                btn_wye_wye.BackColor = Color.Maroon
-                btn_wye_wye.Enabled = False
-
-            ElseIf dt.Rows(counter)(1) = "DELTA-WYE CONNECTION" Then
-                btn_delta_wye.BackColor = Color.Maroon
-                btn_delta_wye.Enabled = False
-            ElseIf dt.Rows(counter)(1) = "DELTA-DELTA CONNECTION" Then
-                btn_delta_delta.BackColor = Color.Maroon
-                btn_delta_delta.Enabled = False
-            ElseIf dt.Rows(counter)(1) = "WYE-DELTA CONNECTION" Then
-                btn_wye_delta.BackColor = Color.Maroon
-                btn_wye_delta.Enabled = False
-            ElseIf dt.Rows(counter)(1) = "OPEN-DELTA CONNECTION" Then
-                btn_open_delta.BackColor = Color.Maroon
-                btn_open_delta.Enabled = False
-            ElseIf dt.Rows(counter)(1) = "OPEN WYE-OPEN DELTA CONNECTION" Then
-                btn_open_wye.BackColor = Color.Maroon
-                btn_open_wye.Enabled = False
-            End If
-        Next
-
-
-
-    End Sub
 End Class

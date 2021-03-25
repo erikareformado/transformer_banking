@@ -404,7 +404,7 @@ Partial Class OpenDeltaActivity
         Me.lbl_secondary_voltage.AutoSize = True
         Me.lbl_secondary_voltage.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_secondary_voltage.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_secondary_voltage.Location = New System.Drawing.Point(25, 207)
+        Me.lbl_secondary_voltage.Location = New System.Drawing.Point(28, 238)
         Me.lbl_secondary_voltage.Name = "lbl_secondary_voltage"
         Me.lbl_secondary_voltage.Size = New System.Drawing.Size(32, 25)
         Me.lbl_secondary_voltage.TabIndex = 167
@@ -415,7 +415,7 @@ Partial Class OpenDeltaActivity
         Me.lbl_primary_voltage.AutoSize = True
         Me.lbl_primary_voltage.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_primary_voltage.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_primary_voltage.Location = New System.Drawing.Point(25, 182)
+        Me.lbl_primary_voltage.Location = New System.Drawing.Point(28, 213)
         Me.lbl_primary_voltage.Name = "lbl_primary_voltage"
         Me.lbl_primary_voltage.Size = New System.Drawing.Size(42, 25)
         Me.lbl_primary_voltage.TabIndex = 166
@@ -475,7 +475,7 @@ Partial Class OpenDeltaActivity
         Me.lbl_impedance.AutoSize = True
         Me.lbl_impedance.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_impedance.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_impedance.Location = New System.Drawing.Point(25, 299)
+        Me.lbl_impedance.Location = New System.Drawing.Point(28, 330)
         Me.lbl_impedance.Name = "lbl_impedance"
         Me.lbl_impedance.Size = New System.Drawing.Size(42, 25)
         Me.lbl_impedance.TabIndex = 150
@@ -486,7 +486,7 @@ Partial Class OpenDeltaActivity
         Me.lbl_frequency.AutoSize = True
         Me.lbl_frequency.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_frequency.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_frequency.Location = New System.Drawing.Point(18, 276)
+        Me.lbl_frequency.Location = New System.Drawing.Point(21, 307)
         Me.lbl_frequency.Name = "lbl_frequency"
         Me.lbl_frequency.Size = New System.Drawing.Size(59, 25)
         Me.lbl_frequency.TabIndex = 149
@@ -497,7 +497,7 @@ Partial Class OpenDeltaActivity
         Me.lbl_rating.AutoSize = True
         Me.lbl_rating.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_rating.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_rating.Location = New System.Drawing.Point(13, 252)
+        Me.lbl_rating.Location = New System.Drawing.Point(16, 283)
         Me.lbl_rating.Name = "lbl_rating"
         Me.lbl_rating.Size = New System.Drawing.Size(69, 25)
         Me.lbl_rating.TabIndex = 148
@@ -508,7 +508,7 @@ Partial Class OpenDeltaActivity
         Me.lbl_polarity.AutoSize = True
         Me.lbl_polarity.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_polarity.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_polarity.Location = New System.Drawing.Point(10, 229)
+        Me.lbl_polarity.Location = New System.Drawing.Point(13, 260)
         Me.lbl_polarity.Name = "lbl_polarity"
         Me.lbl_polarity.Size = New System.Drawing.Size(79, 25)
         Me.lbl_polarity.TabIndex = 147
@@ -519,7 +519,7 @@ Partial Class OpenDeltaActivity
         Me.lbl_dt.AutoSize = True
         Me.lbl_dt.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_dt.ForeColor = System.Drawing.Color.Transparent
-        Me.lbl_dt.Location = New System.Drawing.Point(33, 162)
+        Me.lbl_dt.Location = New System.Drawing.Point(36, 193)
         Me.lbl_dt.Name = "lbl_dt"
         Me.lbl_dt.Size = New System.Drawing.Size(34, 25)
         Me.lbl_dt.TabIndex = 146

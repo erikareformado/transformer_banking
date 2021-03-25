@@ -19,22 +19,33 @@
         If results = DialogResult.Yes Then
             Dim result = save_transformer_details(cmb_polarity.Text, cmb_rating.Text, connection, txt_primary_voltage.Text, txt_secondary_voltage.Text)
             If result = "1" Then
-                MsgBox("Transformer details was successfully updated.", MsgBoxStyle.Information, "EDIT TRANSFORMER")
+
                 If connection = "WYE-WYE CONNECTION" Then
                     Home.uc_wye_wye_activity.update_transformer(cmb_polarity.Text, cmb_rating.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
                     Home.uc_wye_wye_activity.additive(cmb_polarity.Text)
                 ElseIf connection = "DELTA-WYE CONNECTION" Then
                     'uc_delta_wye_activity
+                    Home.uc_delta_wye_activity.update_transformer(cmb_polarity.Text, cmb_rating.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
+                    Home.uc_delta_wye_activity.additive(cmb_polarity.Text)
                 ElseIf connection = "DELTA-DELTA CONNECTION" Then
                     'uc_delta_delta_activity
+                    Home.uc_delta_delta_activity.update_transformer(cmb_polarity.Text, cmb_rating.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
+                    Home.uc_delta_delta_activity.additive(cmb_polarity.Text)
                 ElseIf connection = "WYE-DELTA CONNECTION" Then
                     'uc_wye_delta_activity
+                    Home.uc_wye_delta_activity.update_transformer(cmb_polarity.Text, cmb_rating.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
+                    Home.uc_wye_delta_activity.additive(cmb_polarity.Text)
                 ElseIf connection = "OPEN-DELTA CONNECTION" Then
                     'uc_open_delta_activity
+                    Home.uc_open_delta_activity.update_transformer(cmb_polarity.Text, cmb_rating.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
+                    Home.uc_open_delta_activity.additive(cmb_polarity.Text)
                 ElseIf connection = "OPEN WYE-OPEN DELTA CONNECTION" Then
                     'uc_open_wye_open_delta_activity
+                    Home.uc_open_wye_open_delta_activity.update_transformer(cmb_polarity.Text, cmb_rating.Text, txt_primary_voltage.Text, txt_secondary_voltage.Text)
+                    Home.uc_open_wye_open_delta_activity.additive(cmb_polarity.Text)
 
                 End If
+                MsgBox("Transformer details was successfully updated.", MsgBoxStyle.Information, "EDIT TRANSFORMER")
                 'update_transformer()
 
             End If

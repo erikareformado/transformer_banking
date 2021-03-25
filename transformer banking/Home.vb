@@ -36,6 +36,7 @@ Public Class Home
 
     Private Sub PictureBox6_Click(sender As Object, e As EventArgs) Handles PictureBox6.Click
         Me.Hide()
+        overview.refresh_form()
         overview.Show()
     End Sub
 

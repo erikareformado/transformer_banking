@@ -96,39 +96,6 @@ C:\Users\sarmiento.m17\Desktop\transformer banking - 021021\transformer banking\
 C:\Users\sarmiento.m17\Desktop\transformer banking - 021021\transformer banking\obj\Debug\transformer_banking.Resources.resources
 C:\Users\sarmiento.m17\Desktop\transformer banking - 021021\transformer banking\obj\Debug\transformer_banking.transformer_banking_connections.resources
 C:\Users\sarmiento.m17\Desktop\transformer banking - 021021\transformer banking\obj\Debug\transformer banking.vbproj.GenerateResource.Cache
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\bin\Debug\transformer banking.exe.config
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer banking.exe
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer banking.xml
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer banking.pdb
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\bin\Debug\transformer banking.exe
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\bin\Debug\transformer banking.pdb
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\bin\Debug\transformer banking.xml
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer banking.vbprojResolveAssemblyReference.cache
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.DeltaDeltaActivity.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.DeltaWyeActivity.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.OpenDeltaActivity.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.WyeDeltaActivity.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.WyeWyeActivities.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.delta_delta_introduction.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.open_delta_introduction.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.open_wye_open_delta_introduction.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.wye_delta_introduction.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.wye_wye_introduction.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.OpenwyeOpendeltaActivity.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.tranformer_Details.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.delta_wye_introduction.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.home_page.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.Test.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.wyewye.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.Home.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.introduction_menu.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.manual_menu.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.objective_menu.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.overview.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.Resources.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.transformer_banking_connections.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer banking.vbproj.GenerateResource.Cache
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.Exercise.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.DeltaDeltaActivity.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.DeltaWyeActivity.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.OpenDeltaActivity.resources
@@ -164,4 +131,4 @@ D:\transformer_banking\transformer banking\obj\Debug\transformer banking.xml
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.pdb
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.vbprojAssemblyReference.cache
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.EditTransformer.resources
-C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer_banking.EditTransformer.resources
+C:\Users\reformado.e16\Desktop\Personal\transformer banking - 02102o1\transformer banking\obj\Debug\transformer banking.exe

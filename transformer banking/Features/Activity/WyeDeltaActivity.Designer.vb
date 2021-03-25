@@ -54,6 +54,7 @@ Partial Class WyeDeltaActivity
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.panel_activity = New System.Windows.Forms.Panel()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.btn_cl_clamp_meter = New System.Windows.Forms.Button()
         Me.lbl_secondary_voltage = New System.Windows.Forms.Label()
         Me.lbl_primary_voltage = New System.Windows.Forms.Label()
@@ -90,7 +91,6 @@ Partial Class WyeDeltaActivity
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
@@ -650,6 +650,18 @@ Partial Class WyeDeltaActivity
         Me.panel_activity.Size = New System.Drawing.Size(824, 553)
         Me.panel_activity.TabIndex = 136
         '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.BackColor = System.Drawing.Color.Transparent
+        Me.Label21.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.ForeColor = System.Drawing.Color.White
+        Me.Label21.Location = New System.Drawing.Point(112, 312)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(20, 14)
+        Me.Label21.TabIndex = 106
+        Me.Label21.Text = "X1"
+        '
         'btn_cl_clamp_meter
         '
         Me.btn_cl_clamp_meter.BackgroundImage = CType(resources.GetObject("btn_cl_clamp_meter.BackgroundImage"), System.Drawing.Image)
@@ -1084,18 +1096,6 @@ Partial Class WyeDeltaActivity
         Me.Label22.Size = New System.Drawing.Size(20, 14)
         Me.Label22.TabIndex = 107
         Me.Label22.Text = "X2"
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.BackColor = System.Drawing.Color.Transparent
-        Me.Label21.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.ForeColor = System.Drawing.Color.White
-        Me.Label21.Location = New System.Drawing.Point(112, 312)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(20, 14)
-        Me.Label21.TabIndex = 106
-        Me.Label21.Text = "X1"
         '
         'Label20
         '
