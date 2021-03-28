@@ -130,7 +130,7 @@ Public Class WyeWyeActivities
                     End If
                     clamp_meter = 0
                     ctr = 0
-                    Me.Refresh()
+                    panel_activity.Refresh()
                 Else
 
 
@@ -152,7 +152,7 @@ Public Class WyeWyeActivities
                 '    counter_2(myButton.Name, pen_color)
                 'End If
                 ctr = 0
-                Me.Refresh()
+                panel_activity.Refresh()
                 wire_conenction = 0
             End If
         Else
@@ -218,7 +218,7 @@ Public Class WyeWyeActivities
                     End If
                     clamp_meter = 0
                     ctr = 0
-                    Me.Refresh()
+                    panel_activity.Refresh()
                 Else
 
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
@@ -240,7 +240,7 @@ Public Class WyeWyeActivities
                 End If
 
                 ctr = 0
-                Me.Refresh()
+                panel_activity.Refresh()
                 wire_conenction = 0
 
             End If
@@ -320,7 +320,7 @@ Public Class WyeWyeActivities
                     End If
                     clamp_meter = 0
                     ctr = 0
-                    Me.Refresh()
+                    panel_activity.Refresh()
 
                 Else
                     If secondary = "l1" And bulb = "l1red" Or secondary = "n" And bulb = "l1black" Or secondary = "l2" And bulb = "l2red" Or secondary = "n" And bulb = "l2black" Or secondary = "l3" And bulb = "l3red" Or secondary = "n" And bulb = "l3black" Then
@@ -337,7 +337,7 @@ Public Class WyeWyeActivities
 
                     End If
                     ctr = 0
-                Me.Refresh()
+                panel_activity.Refresh()
                 wire_conenction = 0
             End If
 
@@ -365,7 +365,7 @@ Public Class WyeWyeActivities
                 End If
             End If
         End If
-        Me.Refresh()
+        panel_activity.Refresh()
 
     End Sub
     'transformer secondary
@@ -421,7 +421,7 @@ Public Class WyeWyeActivities
                     End If
                     clamp_meter = 0
                     ctr = 0
-                    Me.Refresh()
+                    panel_activity.Refresh()
 
                 Else
 
@@ -457,7 +457,7 @@ Public Class WyeWyeActivities
                 'End If
                 ctr = 0
                 wire_conenction = 0
-                Me.Refresh()
+                panel_activity.Refresh()
             End If
 
         Else
@@ -487,7 +487,7 @@ Public Class WyeWyeActivities
                 End If
             End If
         End If
-        Me.Refresh()
+        panel_activity.Refresh()
     End Sub
     Private Sub panel_activity_Paint(sender As Object, e As PaintEventArgs) Handles panel_activity.Paint
         draw_lines(e)
@@ -542,7 +542,7 @@ Public Class WyeWyeActivities
                 End If
                 clamp_meter = 0
                 ctr = 0
-                Me.Refresh()
+                panel_activity.Refresh()
             End If
         End If
     End Sub
@@ -582,7 +582,7 @@ Public Class WyeWyeActivities
 
                 End If
             ctr = 0
-            Me.Refresh()
+            panel_activity.Refresh()
         End If
 
     End Sub
@@ -632,8 +632,8 @@ Public Class WyeWyeActivities
                 End If
                 ctr = 0
                 clamp_meter = 0
-                Me.Refresh()
-            End If
+            panel_activity.Refresh()
+        End If
 
     End Sub
     Private Sub btn_connect_wires_Click(sender As Object, e As EventArgs) Handles btn_connect_wires.Click   'wire connection
@@ -859,7 +859,7 @@ Public Class WyeWyeActivities
                 End If
             End If
         End If
-        Me.Refresh()
+        panel_activity.Refresh()
     End Sub
     Private Sub btn_try_again_Click(sender As Object, e As EventArgs) Handles btn_try_again.Click
         Dim result As DialogResult = MsgBox("Are you sure to try again?", MsgBoxStyle.YesNo, "Disconnect Wire")
@@ -882,7 +882,7 @@ Public Class WyeWyeActivities
 
             get_point()
 
-            Me.Refresh()
+            panel_activity.Refresh()
         End If
 
     End Sub
@@ -918,7 +918,7 @@ Public Class WyeWyeActivities
             End If
             ctr = 0
             clamp_meter = 0
-            Me.Refresh()
+            panel_activity.Refresh()
         End If
     End Sub
 #Region "subs"
@@ -1058,7 +1058,7 @@ Public Class WyeWyeActivities
                 End If
             End If
         End If
-        Me.Refresh()
+        panel_activity.Refresh()
     End Sub
 
     Private Sub btn_done_Click(sender As Object, e As EventArgs) Handles btn_done.Click
@@ -1072,7 +1072,10 @@ Public Class WyeWyeActivities
     End Sub
 
     Private Sub panel_activity_MouseMove(sender As Object, e As MouseEventArgs) Handles panel_activity.MouseMove
+        MyBase.OnMouseMove(e)
 
+        Me.end_point = e.Location
+        panel_activity.Invalidate()
     End Sub
 
     Private Sub lbl_dt_Click(sender As Object, e As EventArgs) Handles lbl_dt.Click, lbl_primary_voltage.Click, lbl_secondary_voltage.Click, lbl_polarity.Click, lbl_rating.Click, lbl_frequency.Click
@@ -1115,7 +1118,7 @@ Public Class WyeWyeActivities
                 'pic_clamp_meter.Location = (702, 462)
             End If
         End If
-        Me.Refresh()
+        panel_activity.Refresh()
     End Sub
 
 
@@ -1127,7 +1130,7 @@ Public Class WyeWyeActivities
 
         'TextBox3.Text = "{x=" & point1_x.ToString & ",y=" & point1_y.ToString & "}"
         point_1 = New Point(point1_x, point1_y)
-
+        start_point = New Point(point1_x, point1_y)
         Dim result = save_points(btn_name, point1_x & "," & point1_y, pen_color, clamp, transformer_id, table)
         If result <> "1" Then
             MsgBox(result.ToString)
@@ -1219,7 +1222,7 @@ Public Class WyeWyeActivities
 
 
                 count = 0
-                'Me.Refresh()
+                '  panel_activity.Refresh()
                 'ListBox1.Items.Add(point_x.ToString & " " & point_y.ToString)
             End If
 
@@ -1258,7 +1261,7 @@ Public Class WyeWyeActivities
 
         '        e.Graphics.DrawLine(pens, point_x, point_y)
         '        count = 0
-        '        'Me.Refresh()
+        '        '  panel_activity.Refresh()
         '    End If
 
         '    'DataGridView1.Rows.Add(points.Item(i))
@@ -1268,8 +1271,33 @@ Public Class WyeWyeActivities
         'e.Graphics.DrawLine(pens, point_1, point_2) totoo
     End Sub
 
+    Protected Overrides ReadOnly Property CreateParams() As CreateParams
+        Get
+            Dim cp As CreateParams = MyBase.CreateParams
+            cp.ExStyle = cp.ExStyle Or &H2000000
+            Return cp
+        End Get
+    End Property 'CreateParams
+    Private end_point As System.Nullable(Of Point)
+    Private start_point As System.Nullable(Of Point)
+    Protected Overrides Sub OnPaint(e As PaintEventArgs)
+
+        MyBase.OnPaint(e)
+        If start_point.HasValue Then
+            Dim g As Graphics = e.Graphics
+            g.SmoothingMode = SmoothingMode.AntiAlias
+            'g.InterpolationMode = InterpolationMode.Low
+            'g.CompositingQuality = CompositingQuality.HighSpeed
+            'g.SmoothingMode = SmoothingMode.HighSpeed
+            'g.PixelOffsetMode = PixelOffsetMode.HighSpeed
+            'g.CompositingMode = CompositingMode.SourceCopy
+            Using p As New Pen(Color.Black, 2.0F)
 
 
+                g.DrawLine(p, end_point.Value, start_point.Value)
+            End Using
+        End If
+    End Sub
 
 #End Region
 End Class
