@@ -1,5 +1,5 @@
 ﻿Module transformer_exercise
-    Public Class exercises
+    Public Class exercise_details
         Dim query As String
         Public Function exercise_questions(no)
             Dim question As String = ""
@@ -60,28 +60,41 @@
             Return connection
         End Function
 
-        'Public Function get_exercise_no()
-        '    query = "select b.* from exercise_transformer_details as a
-        '          left join results_exercises as b
-        '          on a.id = b.transformer_id::integer
-        '            where transformer_id is not null and 
-        '         primary_phase_current is not null and 
-        '         primary_line_current is not null and 
-        '         primary_line_voltage is not null and 
-        '         primary_phase_voltage is not null and 
-        '         apparent_power is not null and 
-        '         real_power is not null and 
-        '         secondary_phase_current is not null and 
-        '         secondary_line_current is not null and 
-        '         secondary_line_voltage is not null and
-        '         secondary_phase_voltage is not null "
-        '    Dim da As New Odbc.OdbcDataAdapter(query, conn)
-        '    Dim dt As New DataTable
-        '    da.Fill(dt)
+        Public Function get_exercise_no()
+            query = "select b.* from exercise_transformer_details as a
+                  left join results_exercises as b
+                  on a.id = b.transformer_id::integer
+                    where transformer_id is not null and 
+                 primary_phase_current is not null and 
+                 primary_line_current is not null and 
+                 primary_line_voltage is not null and 
+                 primary_phase_voltage is not null and 
+                 apparent_power is not null and 
+                 real_power is not null and 
+                 secondary_phase_current is not null and 
+                 secondary_line_current is not null and 
+                 secondary_line_voltage is not null and
+                 secondary_phase_voltage is not null "
+            Dim da As New Odbc.OdbcDataAdapter(query, conn)
+            Dim dt As New DataTable
+            da.Fill(dt)
 
-        '    Return dt.Rows.Count + 1
+            Return dt.Rows.Count + 1
 
 
-        'End Function
+        End Function
+
+        Public Function save_points(btn, points, color_pen, clamp_meter, transformer, table)
+
+            query = "Insert Into " & table & " (btn, points, color,clamp_meter,exercise_transformer_details_id) 
+                Values(
+                 '" & btn & "','" & points.ToString & "', '" & color_pen.ToString & "','" & clamp_meter.ToString & "','" & transformer & "')"
+
+            Dim da As New Odbc.OdbcDataAdapter(query, conn)
+            Dim dt As New DataTable
+            da.Fill(dt)
+            Return "1"
+
+        End Function
     End Class
 End Module

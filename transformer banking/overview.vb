@@ -1,5 +1,5 @@
 ﻿Public Class overview
-    Dim exercise As New exercises()
+    Dim exercise As New exercise_details()
     Private Sub PictureBox1_Introduction_Click(sender As Object, e As EventArgs) Handles PictureBox1_Introduction.Click
         Me.Hide()
         introduction_menu.Show()
@@ -47,7 +47,7 @@
         Home.action = "exercises"
         Home.panel_all.Controls.Clear()
         Home.panel_all.Controls.Add(Home.uc_transformer_details)
-        'Home.exam_no = exercise.get_exercise_no()
+        Home.exam_no = exercise.get_exercise_no()
         Home.lbl_connection_type.Text = "Exercise " & Home.exam_no
 
     End Sub

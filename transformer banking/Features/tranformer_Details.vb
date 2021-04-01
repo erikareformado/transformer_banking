@@ -117,11 +117,7 @@
                     Home.uc_exercises.Label26.Text = "X2"
                     Home.uc_exercises.Label25.Text = "X1"
                 End If
-
             End If
-
-
-
         End If
     End Sub
 

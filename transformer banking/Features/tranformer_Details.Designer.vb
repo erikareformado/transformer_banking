@@ -152,6 +152,7 @@ Partial Class tranformer_Details
         'cmb_rating
         '
         Me.cmb_rating.BackColor = System.Drawing.Color.Snow
+        Me.cmb_rating.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_rating.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cmb_rating.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmb_rating.FormattingEnabled = True
@@ -164,6 +165,7 @@ Partial Class tranformer_Details
         'cmb_polarity
         '
         Me.cmb_polarity.BackColor = System.Drawing.Color.Snow
+        Me.cmb_polarity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_polarity.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cmb_polarity.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmb_polarity.FormattingEnabled = True
@@ -239,7 +241,7 @@ Partial Class tranformer_Details
         Me.Label3.ForeColor = System.Drawing.Color.White
         Me.Label3.Location = New System.Drawing.Point(137, 164)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(68, 21)
+        Me.Label3.Size = New System.Drawing.Size(69, 21)
         Me.Label3.TabIndex = 18
         Me.Label3.Text = "Polarity:"
         '
@@ -263,7 +265,7 @@ Partial Class tranformer_Details
         Me.Label9.ForeColor = System.Drawing.Color.White
         Me.Label9.Location = New System.Drawing.Point(42, 53)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(163, 21)
+        Me.Label9.Size = New System.Drawing.Size(164, 21)
         Me.Label9.TabIndex = 16
         Me.Label9.Text = "Type of Transformer:"
         '

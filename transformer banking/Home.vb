@@ -9,7 +9,7 @@ Public Class Home
     Public uc_open_delta_activity As New OpenDeltaActivity
     Public uc_open_wye_open_delta_activity As New OpenwyeOpendeltaActivity
 
-    Public uc_exercises As New Exercise
+    Public uc_exercises As New Exercises
 
 
     Public uc_wye_wye_intro As New wye_wye_introduction

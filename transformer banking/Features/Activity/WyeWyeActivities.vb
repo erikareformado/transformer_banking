@@ -1072,10 +1072,10 @@ Public Class WyeWyeActivities
     End Sub
 
     Private Sub panel_activity_MouseMove(sender As Object, e As MouseEventArgs) Handles panel_activity.MouseMove
-        MyBase.OnMouseMove(e)
+        'MyBase.OnMouseMove(e)
 
-        Me.end_point = e.Location
-        panel_activity.Invalidate()
+        'Me.end_point = Me.Location
+        'panel_activity.Invalidate()
     End Sub
 
     Private Sub lbl_dt_Click(sender As Object, e As EventArgs) Handles lbl_dt.Click, lbl_primary_voltage.Click, lbl_secondary_voltage.Click, lbl_polarity.Click, lbl_rating.Click, lbl_frequency.Click
@@ -1130,7 +1130,7 @@ Public Class WyeWyeActivities
 
         'TextBox3.Text = "{x=" & point1_x.ToString & ",y=" & point1_y.ToString & "}"
         point_1 = New Point(point1_x, point1_y)
-        start_point = New Point(point1_x, point1_y)
+        'start_point = New Point(point1_x, point1_y)
         Dim result = save_points(btn_name, point1_x & "," & point1_y, pen_color, clamp, transformer_id, table)
         If result <> "1" Then
             MsgBox(result.ToString)
@@ -1278,26 +1278,26 @@ Public Class WyeWyeActivities
             Return cp
         End Get
     End Property 'CreateParams
-    Private end_point As System.Nullable(Of Point)
-    Private start_point As System.Nullable(Of Point)
-    Protected Overrides Sub OnPaint(e As PaintEventArgs)
+    'Private end_point As System.Nullable(Of Point)
+    'Private start_point As System.Nullable(Of Point)
+    'Protected Overrides Sub OnPaint(e As PaintEventArgs)
 
-        MyBase.OnPaint(e)
-        If start_point.HasValue Then
-            Dim g As Graphics = e.Graphics
-            g.SmoothingMode = SmoothingMode.AntiAlias
-            'g.InterpolationMode = InterpolationMode.Low
-            'g.CompositingQuality = CompositingQuality.HighSpeed
-            'g.SmoothingMode = SmoothingMode.HighSpeed
-            'g.PixelOffsetMode = PixelOffsetMode.HighSpeed
-            'g.CompositingMode = CompositingMode.SourceCopy
-            Using p As New Pen(Color.Black, 2.0F)
+    '    MyBase.OnPaint(e)
+    '    If start_point.HasValue Then
+    '        Dim g As Graphics = e.Graphics
+    '        g.SmoothingMode = SmoothingMode.AntiAlias
+    '        'g.InterpolationMode = InterpolationMode.Low
+    '        'g.CompositingQuality = CompositingQuality.HighSpeed
+    '        'g.SmoothingMode = SmoothingMode.HighSpeed
+    '        'g.PixelOffsetMode = PixelOffsetMode.HighSpeed
+    '        'g.CompositingMode = CompositingMode.SourceCopy
+    '        Using p As New Pen(Color.Black, 2.0F)
 
 
-                g.DrawLine(p, end_point.Value, start_point.Value)
-            End Using
-        End If
-    End Sub
+    '            g.DrawLine(p, end_point.Value, New Point(100, 100))
+    '        End Using
+    '    End If
+    'End Sub
 
 #End Region
 End Class

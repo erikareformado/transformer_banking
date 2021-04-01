@@ -145,13 +145,13 @@ Partial Class Exercise
         Me.btn_prim_b_1 = New System.Windows.Forms.Button()
         Me.btn_clamp_meter = New System.Windows.Forms.Button()
         Me.btn_try_again = New System.Windows.Forms.Button()
-        Me.txt_exam = New System.Windows.Forms.RichTextBox()
         Me.btn_done = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Label35 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.panel_activity = New System.Windows.Forms.Panel()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.txt_exam = New System.Windows.Forms.RichTextBox()
         CType(Me.pic_clamp_meter_cp, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pic_clamp_meter, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pic_color, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -159,10 +159,10 @@ Partial Class Exercise
         CType(Me.pic_bulb2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pic_switch, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pic_bulb1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel1.SuspendLayout()
         Me.panel_activity.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btn_t2_h2
@@ -1594,17 +1594,6 @@ Partial Class Exercise
         Me.btn_try_again.Text = "TRY AGAIN"
         Me.btn_try_again.UseVisualStyleBackColor = False
         '
-        'txt_exam
-        '
-        Me.txt_exam.BackColor = System.Drawing.Color.FromArgb(CType(CType(36, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(51, Byte), Integer))
-        Me.txt_exam.Font = New System.Drawing.Font("Segoe UI Semilight", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_exam.ForeColor = System.Drawing.Color.White
-        Me.txt_exam.Location = New System.Drawing.Point(840, 75)
-        Me.txt_exam.Name = "txt_exam"
-        Me.txt_exam.Size = New System.Drawing.Size(260, 244)
-        Me.txt_exam.TabIndex = 143
-        Me.txt_exam.Text = ""
-        '
         'btn_done
         '
         Me.btn_done.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
@@ -1618,38 +1607,6 @@ Partial Class Exercise
         Me.btn_done.TabIndex = 142
         Me.btn_done.Text = "DONE"
         Me.btn_done.UseVisualStyleBackColor = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox1.Location = New System.Drawing.Point(3, 10)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(56, 37)
-        Me.PictureBox1.TabIndex = 125
-        Me.PictureBox1.TabStop = False
-        '
-        'Label35
-        '
-        Me.Label35.AutoSize = True
-        Me.Label35.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label35.ForeColor = System.Drawing.Color.White
-        Me.Label35.Location = New System.Drawing.Point(67, 13)
-        Me.Label35.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(100, 28)
-        Me.Label35.TabIndex = 124
-        Me.Label35.Text = "EXERCISE"
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.PictureBox1)
-        Me.Panel1.Controls.Add(Me.Label35)
-        Me.Panel1.Location = New System.Drawing.Point(841, 18)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(261, 56)
-        Me.Panel1.TabIndex = 145
         '
         'panel_activity
         '
@@ -1791,6 +1748,49 @@ Partial Class Exercise
         Me.PictureBox2.TabIndex = 184
         Me.PictureBox2.TabStop = False
         '
+        'Label35
+        '
+        Me.Label35.AutoSize = True
+        Me.Label35.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label35.ForeColor = System.Drawing.Color.White
+        Me.Label35.Location = New System.Drawing.Point(67, 13)
+        Me.Label35.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(100, 28)
+        Me.Label35.TabIndex = 124
+        Me.Label35.Text = "EXERCISE"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox1.Location = New System.Drawing.Point(3, 10)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(56, 37)
+        Me.PictureBox1.TabIndex = 125
+        Me.PictureBox1.TabStop = False
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.PictureBox1)
+        Me.Panel1.Controls.Add(Me.Label35)
+        Me.Panel1.Location = New System.Drawing.Point(841, 18)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(261, 56)
+        Me.Panel1.TabIndex = 145
+        '
+        'txt_exam
+        '
+        Me.txt_exam.BackColor = System.Drawing.Color.FromArgb(CType(CType(36, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.txt_exam.Font = New System.Drawing.Font("Segoe UI Semilight", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_exam.ForeColor = System.Drawing.Color.White
+        Me.txt_exam.Location = New System.Drawing.Point(840, 75)
+        Me.txt_exam.Name = "txt_exam"
+        Me.txt_exam.Size = New System.Drawing.Size(260, 244)
+        Me.txt_exam.TabIndex = 143
+        Me.txt_exam.Text = ""
+        '
         'Exercise
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1813,12 +1813,12 @@ Partial Class Exercise
         CType(Me.pic_bulb2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pic_switch, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pic_bulb1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         Me.panel_activity.ResumeLayout(False)
         Me.panel_activity.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1945,11 +1945,11 @@ Partial Class Exercise
     Friend WithEvents btn_prim_b_1 As Button
     Friend WithEvents btn_clamp_meter As Button
     Friend WithEvents btn_try_again As Button
-    Friend WithEvents txt_exam As RichTextBox
     Friend WithEvents btn_done As Button
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Label35 As Label
-    Friend WithEvents Panel1 As Panel
     Friend WithEvents panel_activity As Panel
     Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents Label35 As Label
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents txt_exam As RichTextBox
 End Class

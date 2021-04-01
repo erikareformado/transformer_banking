@@ -2,7 +2,7 @@
 
 Public Class Exercise
 
-    Dim exercises As New exercises
+    Dim exercise As New Exercises
     Dim no As Integer
 
     Dim point_x, point_y As Point
@@ -22,8 +22,8 @@ Public Class Exercise
 #Region "sub"
     Public Sub refresh_form()
         no = Home.exam_no
-        Dim test = exercises.exercise_questions(no)
-        txt_exam.Text = test
+        'Dim test = exercise.exercise_questions(no)
+        'txt_exam.Text = test
     End Sub
 
     'Private Sub panel_activity_Paint(sender As Object, e As PaintEventArgs) Handles panel_activity.Paint

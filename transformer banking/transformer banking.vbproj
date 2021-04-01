@@ -154,6 +154,12 @@
     <Compile Include="Features\Exercise\Exercise.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Features\Exercise\Exercises.Designer.vb">
+      <DependentUpon>Exercises.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Exercise\Exercises.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Model\exercise_transformer.vb" />
     <Compile Include="Features\Exercise\transformer_exercise.vb" />
     <Compile Include="Features\tranformer_Details.Designer.vb">
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Features\Exercise\Exercise.resx">
       <DependentUpon>Exercise.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Exercise\Exercises.resx">
+      <DependentUpon>Exercises.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\tranformer_Details.resx">
       <DependentUpon>tranformer_Details.vb</DependentUpon>
