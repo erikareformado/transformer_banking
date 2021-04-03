@@ -24,6 +24,9 @@ Partial Class Exercises
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Exercises))
         Me.panel_activity = New System.Windows.Forms.Panel()
+        Me.btn_t3 = New System.Windows.Forms.Button()
+        Me.btn_t2 = New System.Windows.Forms.Button()
+        Me.btn_t1 = New System.Windows.Forms.Button()
         Me.btn_prim_a_6 = New System.Windows.Forms.Button()
         Me.btn_t2_h2 = New System.Windows.Forms.Button()
         Me.btn_t3_h1 = New System.Windows.Forms.Button()
@@ -149,6 +152,8 @@ Partial Class Exercises
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.txt_exam = New System.Windows.Forms.RichTextBox()
+        Me.btn_try_again = New System.Windows.Forms.Button()
+        Me.btn_done = New System.Windows.Forms.Button()
         Me.panel_activity.SuspendLayout()
         CType(Me.pic_clamp_meter_cp, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pic_clamp_meter, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -165,6 +170,9 @@ Partial Class Exercises
         '
         Me.panel_activity.BackColor = System.Drawing.Color.Transparent
         Me.panel_activity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.panel_activity.Controls.Add(Me.btn_t3)
+        Me.panel_activity.Controls.Add(Me.btn_t2)
+        Me.panel_activity.Controls.Add(Me.btn_t1)
         Me.panel_activity.Controls.Add(Me.btn_prim_a_6)
         Me.panel_activity.Controls.Add(Me.btn_t2_h2)
         Me.panel_activity.Controls.Add(Me.btn_t3_h1)
@@ -288,8 +296,47 @@ Partial Class Exercises
         Me.panel_activity.Controls.Add(Me.btn_clamp_meter)
         Me.panel_activity.Location = New System.Drawing.Point(8, 64)
         Me.panel_activity.Name = "panel_activity"
-        Me.panel_activity.Size = New System.Drawing.Size(848, 556)
+        Me.panel_activity.Size = New System.Drawing.Size(830, 522)
         Me.panel_activity.TabIndex = 142
+        '
+        'btn_t3
+        '
+        Me.btn_t3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btn_t3.FlatAppearance.BorderSize = 0
+        Me.btn_t3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_t3.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_t3.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.btn_t3.Location = New System.Drawing.Point(402, 229)
+        Me.btn_t3.Name = "btn_t3"
+        Me.btn_t3.Size = New System.Drawing.Size(73, 25)
+        Me.btn_t3.TabIndex = 186
+        Me.btn_t3.UseVisualStyleBackColor = True
+        '
+        'btn_t2
+        '
+        Me.btn_t2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btn_t2.FlatAppearance.BorderSize = 0
+        Me.btn_t2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_t2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_t2.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.btn_t2.Location = New System.Drawing.Point(252, 227)
+        Me.btn_t2.Name = "btn_t2"
+        Me.btn_t2.Size = New System.Drawing.Size(73, 25)
+        Me.btn_t2.TabIndex = 185
+        Me.btn_t2.UseVisualStyleBackColor = True
+        '
+        'btn_t1
+        '
+        Me.btn_t1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btn_t1.FlatAppearance.BorderSize = 0
+        Me.btn_t1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_t1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_t1.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.btn_t1.Location = New System.Drawing.Point(108, 230)
+        Me.btn_t1.Name = "btn_t1"
+        Me.btn_t1.Size = New System.Drawing.Size(73, 25)
+        Me.btn_t1.TabIndex = 184
+        Me.btn_t1.UseVisualStyleBackColor = True
         '
         'btn_prim_a_6
         '
@@ -935,7 +982,7 @@ Partial Class Exercises
         Me.btn_l1red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btn_l1red.FlatAppearance.BorderSize = 0
         Me.btn_l1red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_l1red.Location = New System.Drawing.Point(590, 362)
+        Me.btn_l1red.Location = New System.Drawing.Point(590, 361)
         Me.btn_l1red.Name = "btn_l1red"
         Me.btn_l1red.Size = New System.Drawing.Size(31, 24)
         Me.btn_l1red.TabIndex = 30
@@ -1135,7 +1182,7 @@ Partial Class Exercises
         Me.btn_l3red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btn_l3red.FlatAppearance.BorderSize = 0
         Me.btn_l3red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_l3red.Location = New System.Drawing.Point(748, 362)
+        Me.btn_l3red.Location = New System.Drawing.Point(748, 365)
         Me.btn_l3red.Name = "btn_l3red"
         Me.btn_l3red.Size = New System.Drawing.Size(26, 22)
         Me.btn_l3red.TabIndex = 86
@@ -1735,20 +1782,47 @@ Partial Class Exercises
         Me.Label35.Location = New System.Drawing.Point(60, 13)
         Me.Label35.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(100, 28)
+        Me.Label35.Size = New System.Drawing.Size(112, 28)
         Me.Label35.TabIndex = 124
-        Me.Label35.Text = "EXERCISE"
+        Me.Label35.Text = "QUESTION"
         '
         'txt_exam
         '
         Me.txt_exam.BackColor = System.Drawing.Color.FromArgb(CType(CType(36, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(51, Byte), Integer))
         Me.txt_exam.Font = New System.Drawing.Font("Segoe UI Semilight", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_exam.ForeColor = System.Drawing.Color.White
-        Me.txt_exam.Location = New System.Drawing.Point(847, 121)
+        Me.txt_exam.Location = New System.Drawing.Point(848, 121)
         Me.txt_exam.Name = "txt_exam"
-        Me.txt_exam.Size = New System.Drawing.Size(260, 244)
+        Me.txt_exam.Size = New System.Drawing.Size(261, 244)
         Me.txt_exam.TabIndex = 146
         Me.txt_exam.Text = ""
+        '
+        'btn_try_again
+        '
+        Me.btn_try_again.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btn_try_again.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btn_try_again.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_try_again.ForeColor = System.Drawing.Color.Red
+        Me.btn_try_again.Location = New System.Drawing.Point(761, 591)
+        Me.btn_try_again.Name = "btn_try_again"
+        Me.btn_try_again.Size = New System.Drawing.Size(163, 45)
+        Me.btn_try_again.TabIndex = 149
+        Me.btn_try_again.Text = "TRY AGAIN"
+        Me.btn_try_again.UseVisualStyleBackColor = False
+        '
+        'btn_done
+        '
+        Me.btn_done.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btn_done.Enabled = False
+        Me.btn_done.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btn_done.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_done.ForeColor = System.Drawing.Color.White
+        Me.btn_done.Location = New System.Drawing.Point(937, 591)
+        Me.btn_done.Name = "btn_done"
+        Me.btn_done.Size = New System.Drawing.Size(163, 45)
+        Me.btn_done.TabIndex = 148
+        Me.btn_done.Text = "DONE"
+        Me.btn_done.UseVisualStyleBackColor = False
         '
         'Exercises
         '
@@ -1757,6 +1831,8 @@ Partial Class Exercises
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(36, Byte), Integer), CType(CType(42, Byte), Integer))
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Controls.Add(Me.btn_try_again)
+        Me.Controls.Add(Me.btn_done)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.txt_exam)
         Me.Controls.Add(Me.panel_activity)
@@ -1904,4 +1980,9 @@ Partial Class Exercises
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label35 As Label
     Friend WithEvents txt_exam As RichTextBox
+    Friend WithEvents btn_t3 As Button
+    Friend WithEvents btn_t2 As Button
+    Friend WithEvents btn_t1 As Button
+    Friend WithEvents btn_try_again As Button
+    Friend WithEvents btn_done As Button
 End Class

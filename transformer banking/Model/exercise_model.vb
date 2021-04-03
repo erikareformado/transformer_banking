@@ -1,4 +1,4 @@
-﻿Module transformer_exercise
+﻿Module exercise_model
     Public Class exercise_details
         Dim query As String
         Public Function exercise_questions(no)
@@ -84,17 +84,7 @@
 
         End Function
 
-        Public Function save_points(btn, points, color_pen, clamp_meter, transformer, table)
 
-            query = "Insert Into " & table & " (btn, points, color,clamp_meter,exercise_transformer_details_id) 
-                Values(
-                 '" & btn & "','" & points.ToString & "', '" & color_pen.ToString & "','" & clamp_meter.ToString & "','" & transformer & "')"
 
-            Dim da As New Odbc.OdbcDataAdapter(query, conn)
-            Dim dt As New DataTable
-            da.Fill(dt)
-            Return "1"
-
-        End Function
     End Class
 End Module

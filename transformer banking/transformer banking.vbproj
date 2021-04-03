@@ -161,7 +161,7 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Model\exercise_transformer.vb" />
-    <Compile Include="Features\Exercise\transformer_exercise.vb" />
+    <Compile Include="Model\exercise_model.vb" />
     <Compile Include="Features\tranformer_Details.Designer.vb">
       <DependentUpon>tranformer_Details.vb</DependentUpon>
     </Compile>

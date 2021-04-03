@@ -23,8 +23,8 @@
             conn.Close()
             Return "1"
         End Function
-        Public Function search_transformer_id(polarity, rating, connection_type, primary_voltage, secondary_voltage)
-            Dim query_search = "select * from exercise_transformer_details where polarity = '" & polarity & "' and rating = '" & rating & "' and connection = '" & connection_type & "' and primary_voltage = '" & primary_voltage & "' and secondary_voltage = '" & secondary_voltage & "'"
+        Public Function search_transformer_id(polarity, rating, no, primary_voltage, secondary_voltage)
+            Dim query_search = "select * from exercise_transformer_details where polarity = '" & polarity & "' and rating = '" & rating & "' and exercise_no = '" & no & "' and primary_voltage = '" & primary_voltage & "' and secondary_voltage = '" & secondary_voltage & "'"
             Dim da_search As New Odbc.OdbcDataAdapter(query_search, conn)
             Dim dt_search As New DataTable
             da_search.Fill(dt_search)

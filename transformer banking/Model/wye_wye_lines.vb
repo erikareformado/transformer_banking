@@ -31,6 +31,21 @@
 
         Return result
     End Function
+
+    Public Function select_btn(transformer, table)
+        Dim result As New List(Of String)
+
+        query = "select * from " & table & " where transformer_details_id = '" & transformer & "' and clamp_meter::integer =0 order by id asc"
+        Dim da As New Odbc.OdbcDataAdapter(query, conn)
+        Dim dt As New DataTable
+        da.Fill(dt)
+
+        For Each row As DataRow In dt.Rows
+            result.Add(row.Item("btn"))
+        Next row
+
+        Return result
+    End Function
     Public Function select_count_points(transformer, table)
         Dim result As Integer
 
@@ -66,7 +81,18 @@
         Dim dt As New DataTable
         da.Fill(dt)
     End Sub
+    Public Function select_count_btn(transformer, table)
+        Dim result As Integer
 
+        query = "select * from " & table & " where transformer_details_id = '" & transformer & "' and clamp_meter::integer = 0 order by id asc"
+        Dim da As New Odbc.OdbcDataAdapter(query, conn)
+        Dim dt As New DataTable
+        da.Fill(dt)
+
+        result = dt.Rows.Count
+
+        Return result
+    End Function
 
     Public Function select_clamp_count(transformer_id, table)
         Dim result As Integer
