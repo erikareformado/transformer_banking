@@ -133,3 +133,5 @@ D:\transformer_banking\transformer banking\obj\Debug\transformer banking.xml
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.pdb
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.vbprojAssemblyReference.cache
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.Exercises.resources
+D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.Output.resources
+D:\transformer_banking\transformer banking\obj\Debug\transformer banking.vbproj.ResolveComReference.cache

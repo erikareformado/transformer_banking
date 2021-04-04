@@ -428,9 +428,6 @@ Public Class OpenwyeOpendeltaActivity
                         counter_2(myButton.Name, pen_color, "5")
                     ElseIf x_transformer = "btn_t1_x1" And secondary = "l3" Or x_transformer = "btn_t2_x1" And secondary = "l2" Or x_transformer = "btn_t2_x2" And secondary = "l1" Then
                         counter_2(myButton.Name, pen_color, clamp_meter)
-
-
-
                     Else
                         delete_unwanted_connection(transformer_id, table)
                         get_point()

@@ -160,6 +160,12 @@
     <Compile Include="Features\Exercise\Exercises.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Features\Exercise\Output.Designer.vb">
+      <DependentUpon>Output.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Exercise\Output.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Model\exercise_transformer.vb" />
     <Compile Include="Model\exercise_model.vb" />
     <Compile Include="Features\tranformer_Details.Designer.vb">
@@ -248,6 +254,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Model\wye_wye_lines.vb" />
+    <Compile Include="Word\Application.vb" />
+    <Compile Include="Word\Document.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Features\Activity\DeltaDeltaActivity.resx">
@@ -291,6 +299,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Features\Exercise\Exercises.resx">
       <DependentUpon>Exercises.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Exercise\Output.resx">
+      <DependentUpon>Output.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\tranformer_Details.resx">
       <DependentUpon>tranformer_Details.vb</DependentUpon>
@@ -346,6 +357,44 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="TRANSFOMER_LOGO.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

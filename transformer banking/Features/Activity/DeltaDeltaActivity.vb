@@ -243,14 +243,10 @@ Public Class DeltaDeltaActivity
                     ElseIf x_transformer = "btn_t1_x1" And secondary = "l1" Or x_transformer = "btn_t2_x1" And secondary = "l2" Or x_transformer = "btn_t3_x1" And secondary = "l3" Then
                         counter_2(myButton.Name, pen_color, clamp_meter)
 
-
-
                     Else
-
                         delete_unwanted_connection(transformer_id, table)
                         get_point()
                         MsgBox("Please connect correct wires!", MsgBoxStyle.Exclamation, "Follow the procedure.")
-
                     End If
 
                 End If
@@ -606,7 +602,7 @@ Public Class DeltaDeltaActivity
         End If
     End Sub
     Private Sub btn_clamp_meter_Click(sender As Object, e As EventArgs) Handles btn_clamp_meter.Click
-        Dim clamp_ctr = select_clamp_count(table)
+        Dim clamp_ctr = select_clamp_count(transformer_id, table)
         If clamp_ctr = 0 Then
             clamp_meter = 1
         ElseIf clamp_ctr = 1 Then

@@ -465,7 +465,7 @@ Public Class WyeDeltaActivity
     End Sub
 
     Private Sub btn_clamp_meter_Click(sender As Object, e As EventArgs) Handles btn_clamp_meter.Click
-        Dim clamp_ctr = select_clamp_count(table)
+        Dim clamp_ctr = select_clamp_count(transformer_id, table)
         If clamp_ctr = 0 Then
             clamp_meter = 1
         ElseIf clamp_ctr = 1 Then

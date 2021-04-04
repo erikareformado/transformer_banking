@@ -51,6 +51,8 @@ Public Class Exercises
 
     Dim ctr_cl_clamp As Integer = 0
 
+    Dim counter, counter_bulb As Integer
+
     Private Sub btn_t1_h1_Click(sender As Object, e As EventArgs) Handles btn_t1_h1.Click, btn_t1_h2.Click, btn_t2_h1.Click, btn_t2_h2.Click, btn_t3_h2.Click, btn_t3_h1.Click
 
         If wire_conenction = 1 Or clamp_meter = 1 Then
@@ -109,12 +111,14 @@ Public Class Exercises
                 Else
 
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
-                        counter_2(myButton.Name, "", "3")
                         update_clamp_no("3", transformer_id, table)
+                        counter_2(myButton.Name, "", "3")
+
 
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t1_x2" And voltage = "vlblack" Then
-                        counter_2(myButton.Name, "", "4")
                         update_clamp_no("4", transformer_id, table)
+                        counter_2(myButton.Name, "", "4")
+
 
 
                     Else
@@ -230,13 +234,12 @@ Public Class Exercises
             Else
 
                 If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
-                    counter_2(myButton.Name, "", "3")
                     update_clamp_no("3", transformer_id, table)
-
+                    counter_2(myButton.Name, "", "3")
 
                 ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
-                    counter_2(myButton.Name, "", "4")
                     update_clamp_no("4", transformer_id, table)
+                    counter_2(myButton.Name, "", "4")
 
                 Else
                     If x_transformer = "btn_t1_x1" And secondary = "l1" Or x_transformer = "btn_t2_x1" And secondary = "l2" Or x_transformer = "btn_t3_x1" And secondary = "l3" Then
@@ -334,13 +337,13 @@ Public Class Exercises
                     panel_activity.Refresh()
 
                 Else
-                    If secondary = "l1" And bulb = "l1red" Or secondary = "n" And bulb = "l1black" Or secondary = "l2" And bulb = "l2red" Or secondary = "n" And bulb = "l2black" Or secondary = "l3" And bulb = "l3red" Or secondary = "n" And bulb = "l3black" Then
+                    If bulb <> "" Then
                         counter_2(myButton.Name, "", "5")
                     Else
                         counter_2(myButton.Name, pen_color, clamp_meter)
 
                     End If
-
+                    bulb = ""
                 End If
                 ctr = 0
                 panel_activity.Refresh()
@@ -354,7 +357,7 @@ Public Class Exercises
     End Sub
 
     Private Sub btn_clamp_meter_Click(sender As Object, e As EventArgs) Handles btn_clamp_meter.Click
-        Dim clamp_ctr = select_clamp_count(table)
+        Dim clamp_ctr = select_clamp_count(transformer_id, table)
         If clamp_ctr = 0 Then
             clamp_meter = 1
         ElseIf clamp_ctr = 1 Then
@@ -974,8 +977,6 @@ Public Class Exercises
             Me.Refresh()
             wire_conenction = 0
         End If
-
-
     End Sub
 
     Public Sub additive(polarity)
@@ -1092,16 +1093,67 @@ Public Class Exercises
             result = wye_delta_connection()
             If result = "False" Then
                 result = delta_delta_connection()
+
                 If result = "False" Then
                     result = delta_wye_connection()
                     If result = "False" Then
                         result = open_delta_connection()
                         If result = "False" Then
                             result = open_wye_open_delta_connection()
-                            MsgBox(result)
                         End If
-
                     End If
+                End If
+            End If
+        End If
+        If result <> "False" Then
+            Dim bulb_result As String
+            If result = "Wye Wye Connection" Or result = "Delta Wye Connection" Then
+                bulb_result = wye_bulb_connection()
+            Else
+                bulb_result = delta_bulb_connection()
+            End If
+            If bulb_result <> "False" Then
+                ctr_switch = ctr_switch + 1
+                If ctr_switch = 1 Then
+                    pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker_on.png")
+                    pic_switch.SizeMode = PictureBoxSizeMode.Zoom
+
+                    pic_color.Image = Image.FromFile(appPath & "\pictures\LED_LIGHT_INDICATOR_ON.png")
+                    pic_color.SizeMode = PictureBoxSizeMode.Zoom
+
+
+                    pic_bulb1.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
+                    pic_bulb1.SizeMode = PictureBoxSizeMode.Zoom
+
+                    pic_bulb2.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
+                    pic_bulb2.SizeMode = PictureBoxSizeMode.Zoom
+
+                    pic_bulb3.Image = Image.FromFile(appPath & "\pictures\bulb_on.png")
+                    pic_bulb3.SizeMode = PictureBoxSizeMode.Zoom
+                    computations(result)
+                Else
+                    pic_switch.Image = Image.FromFile(appPath & "\pictures\circuit_breaker.png")
+                    pic_switch.SizeMode = PictureBoxSizeMode.Zoom
+
+                    pic_color.Image = Image.FromFile(appPath & "\pictures\LED_LIGHT_INDICATOR_OFF.png")
+                    pic_color.SizeMode = PictureBoxSizeMode.Zoom
+                    ctr_switch = 0
+
+                    pic_bulb1.Image = Image.FromFile(appPath & "\pictures\bulb_off.png")
+                    pic_bulb1.SizeMode = PictureBoxSizeMode.Zoom
+
+                    pic_bulb2.Image = Image.FromFile(appPath & "\pictures\bulb_off.png")
+                    pic_bulb2.SizeMode = PictureBoxSizeMode.Zoom
+
+                    pic_bulb3.Image = Image.FromFile(appPath & "\pictures\bulb_off.png")
+                    pic_bulb3.SizeMode = PictureBoxSizeMode.Zoom
+
+                    txt_cl.Clear()
+                    txt_cp.Clear()
+                    txt_vl.Clear()
+                    txt_vp.Clear()
+                    txt_apparent.Clear()
+                    txt_real.Clear()
                 End If
             End If
         End If
@@ -1314,7 +1366,6 @@ Public Class Exercises
             MsgBox(result.ToString)
         End If
     End Sub
-
     Public Sub get_point()
         Dim array_points = select_points(transformer_id, table)
         Dim count_points = select_count_points(transformer_id, table)
@@ -1362,6 +1413,7 @@ Public Class Exercises
 
                 If result = False Then
                     Return False
+                    counter = 0
                     Exit For
                 Else
 
@@ -1369,35 +1421,42 @@ Public Class Exercises
                 count = 0
             End If
         Next
-        Return "Wye Wye Connection"
+        If counter < 12 Then
+            Return "False"
+            counter = 0
+        Else
+            Return "Wye Wye Connection"
+        End If
+
     End Function
     Private Function wye_wye(btn1, btn2)
-
-        If btn2 = "btn_t1_h1" And btn1 = "a" Then
+        counter = counter + 1
+        If btn2 = "btn_t1_h1" And btn1 = "a" Or btn1 = "btn_t1_h1" And btn2 = "a" Then
             Return True
-        ElseIf btn2 = "btn_t1_h2" And btn1 = "n" Then
+        ElseIf btn2 = "btn_t1_h2" And btn1 = "n" Or btn1 = "btn_t1_h2" And btn2 = "n" Then
             Return True
-        ElseIf btn2 = "btn_t2_h1" And btn1 = "b" Then
+        ElseIf btn2 = "btn_t2_h1" And btn1 = "b" Or btn1 = "btn_t2_h1" And btn2 = "b" Then
             Return True
-        ElseIf btn2 = "btn_t2_h2" And btn1 = "n" Then
+        ElseIf btn2 = "btn_t2_h2" And btn1 = "n" Or btn1 = "btn_t2_h2" And btn2 = "n" Then
             Return True
-        ElseIf btn2 = "btn_t3_h1" And btn1 = "c" Then
+        ElseIf btn2 = "btn_t3_h1" And btn1 = "c" Or btn1 = "btn_t3_h1" And btn2 = "c" Then
             Return True
-        ElseIf btn2 = "btn_t3_h2" And btn1 = "n" Then
+        ElseIf btn2 = "btn_t3_h2" And btn1 = "n" Or btn1 = "btn_t3_h2" And btn2 = "n" Then
             Return True
-        ElseIf btn2 = "btn_t1_x1" And btn1 = "l1" Then
+        ElseIf btn2 = "btn_t1_x1" And btn1 = "l1" Or btn1 = "btn_t1_x1" And btn2 = "l1" Then
             Return True
-        ElseIf btn2 = "btn_t1_x2" And btn1 = "n" Then
+        ElseIf btn2 = "btn_t1_x2" And btn1 = "n" Or btn1 = "btn_t1_x2" And btn2 = "n" Then
             Return True
-        ElseIf btn2 = "btn_t2_x1" And btn1 = "l2" Then
+        ElseIf btn2 = "btn_t2_x1" And btn1 = "l2" Or btn1 = "btn_t2_x1" And btn2 = "l2" Then
             Return True
-        ElseIf btn2 = "btn_t2_x2" And btn1 = "n" Then
+        ElseIf btn2 = "btn_t2_x2" And btn1 = "n" Or btn1 = "btn_t2_x2" And btn2 = "n" Then
             Return True
-        ElseIf btn2 = "btn_t3_x1" And btn1 = "l3" Then
+        ElseIf btn2 = "btn_t3_x1" And btn1 = "l3" Or btn1 = "btn_t3_x1" And btn2 = "l3" Then
             Return True
-        ElseIf btn2 = "btn_t3_x2" And btn1 = "n" Then
+        ElseIf btn2 = "btn_t3_x2" And btn1 = "n" Or btn1 = "btn_t3_x2" And btn2 = "n" Then
             Return True
         Else
+            counter = 0
             Return False
         End If
     End Function
@@ -1432,6 +1491,7 @@ Public Class Exercises
                 'MsgBox(result)
                 If result = False Then
                     Return "False"
+                    counter = 0
                     Exit For
                 Else
 
@@ -1439,9 +1499,16 @@ Public Class Exercises
                 count = 0
             End If
         Next
-        Return "Wye Delta Connection"
+        If counter < 12 Then
+            Return "False"
+            counter = 0
+        Else
+            Return "Wye Delta Connection"
+        End If
+
     End Function
     Private Function wye_delta(btn1, btn2)
+        counter = counter + 1
         If btn2 = "btn_t1_h1" And btn1 = "a" Or btn1 = "btn_t1_h1" And btn2 = "a" Then
             Return True
         ElseIf btn2 = "btn_t1_h2" And btn1 = "n" Or btn1 = "btn_t1_h2" And btn2 = "n" Then
@@ -1469,6 +1536,7 @@ Public Class Exercises
         ElseIf btn2 = "btn_t3_x2" And btn1 = "btn_t1_x1" Or btn1 = "btn_t3_x2" And btn2 = "btn_t1_x1" Then
             Return True
         Else
+            counter = 0
             Return False
         End If
 
@@ -1500,9 +1568,11 @@ Public Class Exercises
                     btn2 = array_points(i)
                 End If
                 Dim result = delta_delta(btn1, btn2)
-                'MsgBox(result)
+                btn1 = ""
+                btn2 = ""
                 If result = False Then
                     Return "False"
+                    counter = 0
                     Exit For
                 Else
 
@@ -1510,14 +1580,21 @@ Public Class Exercises
                 count = 0
             End If
         Next
-        Return "Delta Delta Connection"
+        MsgBox(counter)
+        If counter < 12 Then
+            Return "False"
+            counter = 0
+        Else
+            Return "Delta Delta Connection"
+        End If
     End Function
     Private Function delta_delta(btn1, btn2)
+        counter = counter + 1
         If btn1 = "btn_t1_h1" And btn2 = "a" Or btn2 = "btn_t1_h1" And btn1 = "a" Then
             Return True
         ElseIf btn1 = "btn_t2_h1" And btn2 = "b" Or btn2 = "btn_t2_h1" And btn1 = "b" Then
             Return True
-        ElseIf btn1 = "btn_t3_h1" And btn2 = "c" Or btn2 = "btn_t2_h1" And btn1 = "b" Then
+        ElseIf btn1 = "btn_t3_h1" And btn2 = "c" Or btn2 = "btn_t3_h1" And btn1 = "c" Then
             Return True
         ElseIf btn1 = "btn_t1_h2" And btn2 = "btn_t2_h1" Or btn2 = "btn_t1_h2" And btn1 = "btn_t2_h1" Then
             Return True
@@ -1531,8 +1608,6 @@ Public Class Exercises
             Return True
         ElseIf btn1 = "btn_t3_x1" And btn2 = "l3" Or btn2 = "btn_t3_x1" And btn1 = "l3" Then
             Return True
-        ElseIf btn1 = "btn_t1_x1" And btn2 = "l1" Or btn2 = "btn_t2_x1" And btn1 = "l2" Or x_transformer = "btn_t3_x1" And secondary = "l3" Then
-            Return True
         ElseIf btn1 = "btn_t1_x2" And btn2 = "btn_t2_x1" Or btn2 = "btn_t1_x2" And btn1 = "btn_t2_x1" Then
             Return True
         ElseIf btn1 = "btn_t2_x2" And btn2 = "btn_t3_x1" Or btn2 = "btn_t2_x2" And btn1 = "btn_t3_x1" Then
@@ -1540,6 +1615,7 @@ Public Class Exercises
         ElseIf btn1 = "btn_t3_x2" And btn2 = "btn_t1_x1" Or btn2 = "btn_t3_x2" And btn1 = "btn_t1_x1" Then
             Return True
         Else
+            counter = 0
             Return False
         End If
     End Function
@@ -1574,16 +1650,45 @@ Public Class Exercises
 
                 If result = False Then
                     Return False
+                    counter = 0
                     Exit For
+
                 Else
 
                 End If
                 count = 0
             End If
         Next
-        Return "Delta Wye Connection"
+        If counter < 12 Then
+            Return "False"
+            counter = 0
+        Else
+            Return "Delta Wye Connection"
+        End If
+
     End Function
+
+    Private Sub btn_l1red_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_l1red.MouseDown, btn_l1black.MouseDown, btn_l2red.MouseDown, btn_l2black.MouseDown, btn_l3red.MouseDown, btn_l3black.MouseDown
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                If ctr_switch <> 1 Then
+                    Dim myButton As Button = CType(sender, Button)
+
+                    Dim btn = myButton.Name
+                    delete_connections(btn, transformer_id, table)
+                    get_point()
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
+            End If
+            Me.Refresh()
+        End If
+    End Sub
+
     Private Function delta_wye(btn1, btn2)
+        counter = counter + 1
         If btn1 = "btn_t1_h1" And btn2 = "a" Or btn2 = "btn_t1_h1" And btn1 = "a" Then
             Return True
         ElseIf btn1 = "btn_t2_h1" And btn2 = "b" Or btn2 = "btn_t2_h1" And btn1 = "b" Then
@@ -1609,6 +1714,7 @@ Public Class Exercises
         ElseIf btn1 = "btn_t3_x2" And btn2 = "n" Or btn2 = "btn_t1_x2" And btn1 = "n" Then
             Return True
         Else
+            counter = 0
             Return False
         End If
     End Function
@@ -1643,6 +1749,7 @@ Public Class Exercises
 
                 If result = False Then
                     Return False
+                    counter = 0
                     Exit For
                 Else
 
@@ -1650,9 +1757,17 @@ Public Class Exercises
                 count = 0
             End If
         Next
-        Return "Open Delta Connection"
+
+        If counter < 9 Then
+            Return "False"
+        Else
+            counter = 0
+            Return "Open Delta Connection"
+        End If
+
     End Function
     Private Function open_wye_open_delta(btn1, btn2)
+        counter = counter + 1
         If btn1 = "btn_t1_h1" And btn2 = "a" Or btn2 = "btn_t1_h1" And btn1 = "a" Then
             Return True
         ElseIf btn1 = "btn_t1_h2" And btn2 = "n" Or btn2 = "btn_t1_h2" And btn1 = "n" Then
@@ -1672,10 +1787,30 @@ Public Class Exercises
         ElseIf btn1 = "btn_t2_x2" And btn2 = "btn_t1_x1" Or btn2 = "btn_t2_x2" And btn1 = "btn_t1_x1" Then
             Return True
         Else
+            counter = 0
             Return False
         End If
 
     End Function
+
+    Private Sub btn_vpblack_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_vpred.MouseDown, btn_vpblack.MouseDown, btn_vlblack.MouseDown, btn_vlred.MouseDown
+        If e.Button = MouseButtons.Right Then
+
+            Dim result As DialogResult = MsgBox("Are you sure to disconnect the wire?", MsgBoxStyle.YesNo, "Disconnect Wire")
+            If result = DialogResult.Yes Then
+                If ctr_switch <> 1 Then
+                    Dim myButton As Button = CType(sender, Button)
+
+                    Dim btn = myButton.Name
+                    delete_connections(btn, transformer_id, table)
+                    get_point()
+                Else
+                    MsgBox("Please turn off the switch.", MsgBoxStyle.Exclamation)
+                End If
+                Me.Refresh()
+            End If
+        End If
+    End Sub
 
     Public Function open_wye_open_delta_connection()
         Dim array_points = select_btn(transformer_id, table)
@@ -1701,12 +1836,14 @@ Public Class Exercises
                     Dim split_value() As String = array_points(i).Split("_")
                     btn2 = split_value(2).ToString
                 Else
-                    btn2 = Array                              v                                 _points(i)
+                    btn2 = array_points(i)
+
                 End If
                 Dim result = open_wye_open_delta(btn1, btn2)
 
                 If result = False Then
-                    Return False
+                    counter = 0
+                    Return "False"
                     Exit For
                 Else
 
@@ -1714,9 +1851,23 @@ Public Class Exercises
                 count = 0
             End If
         Next
-        Return "Open Wye Open Delta Connection"
+
+        If counter < 9 Then
+            Return "False"
+        Else
+            counter = 0
+            Return "Open Wye Open Delta Connection"
+        End If
     End Function
+
+    Private Sub btn_done_Click(sender As Object, e As EventArgs) Handles btn_done.Click
+        Output.Show()
+        Output.refresh_form(no, transformer_id)
+
+    End Sub
+
     Private Function open_delta(btn1, btn2)
+        counter = counter + 1
         If btn1 = "btn_t1_h1" And btn2 = "a" Or btn2 = "btn_t1_h1" And btn1 = "a" Then
             Return True
         ElseIf btn1 = "btn_t2_h1" And btn2 = "b" Or btn2 = "btn_t2_h1" And btn1 = "b" Then
@@ -1736,11 +1887,677 @@ Public Class Exercises
         ElseIf btn1 = "btn_t1_x2" And btn2 = "btn_t2_x1" Or btn2 = "btn_t1_x2" And btn2 = "btn_t2_x1" Then
             Return True
         Else
+            counter = 0
             Return False
         End If
     End Function
 
+    Private Function wye_bulb_connection()
+        Dim query As String
+        query = "select btn from " & table & " where clamp_meter::integer = 5 and transformer_details_id = '" & transformer_id & "' order by id asc"
+        Dim da As New Odbc.OdbcDataAdapter(query, conn)
+        Dim dt As New DataTable
+        da.Fill(dt)
+        Dim count As Integer = 0
+        For counter As Integer = 0 To dt.Rows.Count - 1
+            Dim btn As String = dt.Rows(counter)(0)
 
+            Dim btn1, btn2 As String
+
+            count = count + 1
+
+            If count = 1 Then
+                Dim search = btn.IndexOf("black")
+                If search = -1 Then
+                    search = btn.IndexOf("red")
+                    If search = -1 Then
+                        Dim split_value() As String = btn.Split("_")
+                        btn1 = split_value(2).ToString
+                    Else
+                        btn1 = btn
+                    End If
+                Else
+                    btn1 = btn
+                End If
+
+            Else
+                Dim search = btn.IndexOf("black")
+                If search = -1 Then
+                    search = btn.IndexOf("red")
+                    If search = -1 Then
+                        Dim split_value() As String = btn.Split("_")
+                        btn2 = split_value(2).ToString
+                    Else
+                        btn2 = btn
+                    End If
+                Else
+                    btn2 = btn
+                End If
+
+                Dim result = wye_bulb(btn1, btn2)
+                btn1 = ""
+                btn2 = ""
+                If result = False Then
+                    counter_bulb = 0
+                    Return "False"
+                    Exit For
+                End If
+                count = 0
+            End If
+        Next
+
+        If counter_bulb < 6 Then
+            counter_bulb = 0
+            Return "False"
+        Else
+            Return "Wye Bulb"
+        End If
+
+    End Function
+
+    Private Function wye_bulb(btn1, btn2)
+        counter_bulb = counter_bulb + 1
+        If btn1 = "l1" And btn2 = "btn_l1red" Or btn2 = "l1" And btn1 = "btn_l1red" Then
+            Return True
+        ElseIf btn1 = "n" And btn2 = "btn_l1black" Or btn2 = "n" And btn1 = "btn_l1black" Then
+            Return True
+        ElseIf btn1 = "l2" And btn2 = "btn_l2red" Or btn2 = "l2" And btn1 = "btn_l2red" Then
+            Return True
+        ElseIf btn1 = "n" And btn2 = "btn_l2black" Or btn2 = "n" And btn1 = "btn_l2black" Then
+            Return True
+        ElseIf btn1 = "l3" And btn2 = "btn_l3red" Or btn2 = "l3" And btn1 = "btn_l3red" Then
+            Return True
+        ElseIf btn1 = "n" And btn2 = "btn_l3black" Or btn2 = "n" And btn1 = "btn_l3black" Then
+            Return True
+        Else
+            counter_bulb = 0
+            Return False
+        End If
+    End Function
+
+    Private Function delta_bulb_connection()
+        Dim query As String
+        query = "select btn from " & table & " where clamp_meter::integer = 5 and transformer_details_id = '" & transformer_id & "' order by id asc"
+        Dim da As New Odbc.OdbcDataAdapter(query, conn)
+        Dim dt As New DataTable
+        da.Fill(dt)
+        Dim count As Integer = 0
+        For counter As Integer = 0 To dt.Rows.Count - 1
+            Dim btn As String = dt.Rows(counter)(0)
+
+            Dim btn1, btn2 As String
+
+            count = count + 1
+
+            If count = 1 Then
+                Dim search = btn.IndexOf("black")
+                If search = -1 Then
+                    search = btn.IndexOf("red")
+                    If search = -1 Then
+                        Dim split_value() As String = btn.Split("_")
+                        btn1 = split_value(2).ToString
+                    Else
+                        btn1 = btn
+                    End If
+                Else
+                    btn1 = btn
+                End If
+
+            Else
+                Dim search = btn.IndexOf("black")
+                If search = -1 Then
+                    search = btn.IndexOf("red")
+                    If search = -1 Then
+                        Dim split_value() As String = btn.Split("_")
+                        btn2 = split_value(2).ToString
+                    Else
+                        btn2 = btn
+                    End If
+                Else
+                    btn2 = btn
+                End If
+
+                Dim result = delta_bulb(btn1, btn2)
+                btn1 = ""
+                btn2 = ""
+                If result = False Then
+                    counter_bulb = 0
+                    Return "False"
+                    Exit For
+                End If
+                count = 0
+            End If
+        Next
+
+        If counter_bulb < 6 Then
+            counter_bulb = 0
+            Return "False"
+        Else
+            Return "Delta Bulb"
+        End If
+
+    End Function
+
+    Private Function delta_bulb(btn1, btn2)
+        counter_bulb = counter_bulb + 1
+        If btn1 = "l1" And btn2 = "btn_l1red" Or btn2 = "l1" And btn1 = "btn_l1red" Then
+            Return True
+        ElseIf btn1 = "l2" And btn2 = "btn_l1black" Or btn2 = "l2" And btn1 = "btn_l1black" Then
+            Return True
+        ElseIf btn1 = "l2" And btn2 = "btn_l2red" Or btn2 = "l2" And btn1 = "btn_l2red" Then
+            Return True
+        ElseIf btn1 = "l3" And btn2 = "btn_l2black" Or btn2 = "l3" And btn1 = "btn_l2black" Then
+            Return True
+        ElseIf btn1 = "l3" And btn2 = "btn_l3red" Or btn2 = "l3" And btn1 = "btn_l3red" Then
+            Return True
+        ElseIf btn1 = "l1" And btn2 = "btn_l3black" Or btn2 = "l1" And btn1 = "btn_l3black" Then
+            Return True
+        Else
+            counter_bulb = 0
+            Return False
+        End If
+
+    End Function
+
+    Private Sub computations(connection)
+        Dim category As String
+        Dim query = "select * from " & table & " where clamp_meter::integer >= 1 and transformer_details_id = '" & transformer_id & "' order by id asc"
+        Dim da As New Odbc.OdbcDataAdapter(query, conn)
+        Dim dt As New DataTable
+        da.Fill(dt)
+        Dim ctr_clamp As Integer = 0
+        Dim ctr_phase_current As Integer = 0
+        Dim ctr_voltage_phase As Integer = 0
+        Dim ctr_voltage_line As Integer = 0
+
+        For counter As Integer = 0 To dt.Rows.Count - 1
+            If dt.Rows(counter)(5) <> 2 And dt.Rows(counter)(5) <> 7 Then
+                If dt.Rows(counter)(3).ToString = "" Then
+                    'If dt.Rows(counter)(5) = 1 Or dt.Rows(counter)(5) = 1 Then
+                    Dim split_value() As String = dt.Rows(counter)(1).Split("_")
+
+                    Dim val As String = split_value(2).ToString
+
+                    If val = "h1" Or val = "h2" Then
+                        category = "primary"
+                    Else
+                        category = "secondary"
+                    End If
+                    'End If
+
+                End If
+            End If
+            If dt.Rows(counter)(5) = 2 Then
+                ctr_clamp = ctr_clamp + 1
+            ElseIf dt.Rows(counter)(5) = 3 Then
+                ctr_voltage_phase = ctr_voltage_phase + 1
+            ElseIf dt.Rows(counter)(5) = 4 Then
+                ctr_voltage_line = ctr_voltage_line + 1
+            ElseIf dt.Rows(counter)(5) = 7 Then
+                ctr_phase_current = ctr_phase_current + 1
+            End If
+        Next
+        Dim primary_voltage, secondary_voltage, rating As Double
+        Dim pie As Double = 1.732050808
+        Dim ctr_apparent, ctr_real As Integer
+        Dim result_rating = transformer_details.select_rating(transformer_id)
+        If result_rating <> "No data" Then
+            Dim split_value() As String = result_rating.Split(" ")
+            rating = CDbl(split_value(0) * 1000)
+        End If
+
+        Dim result_primary = transformer_details.select_voltage_primary(transformer_id)
+        If result_primary <> "No data" Then
+            primary_voltage = result_primary
+        End If
+
+        Dim result_secondary = transformer_details.select_secondary_primary(transformer_id)
+        If result_secondary <> "No data" Then
+            secondary_voltage = result_secondary
+        End If
+        Dim cp, vl, cl, apparent, real As Double
+        If connection = "Wye Wye Connection" Then
+
+            If category = "primary" Then
+                cp = Math.Round(CDbl(rating) / CDbl(primary_voltage), 2)
+                vl = Math.Round((primary_voltage * pie), 2)
+                apparent = Math.Round((3 * primary_voltage * cp), 2)
+            ElseIf category = "secondary" Then
+                cp = Math.Round(CDbl(rating) / CDbl(secondary_voltage), 2)
+                vl = Math.Round((secondary_voltage * pie), 2)
+                real = Math.Round((((secondary_voltage * pie) * pie) * cp), 2)
+            End If
+
+            If ctr_clamp > 3 Then
+                txt_cp.Text = cp.ToString
+                txt_cl.Text = cp.ToString
+                If category = "primary" Then
+
+                    transformer_details.save(transformer_id, "primary_line_current", cp.ToString)
+                    transformer_details.save(transformer_id, "primary_phase_current", cp.ToString)
+                ElseIf category = "secondary" Then
+
+                    transformer_details.save(transformer_id, "secondary_line_current", cp.ToString)
+                    transformer_details.save(transformer_id, "secondary_phase_current", cp.ToString)
+                End If
+
+            End If
+            If ctr_voltage_phase > 3 Then
+                If category = "primary" Then
+                    txt_vp.Text = primary_voltage
+                    transformer_details.save(transformer_id, "primary_phase_voltage", primary_voltage)
+
+                ElseIf category = "secondary" Then
+                    txt_vp.Text = secondary_voltage
+                    transformer_details.save(transformer_id, "secondary_phase_voltage", secondary_voltage)
+
+                End If
+            End If
+
+            If ctr_voltage_line > 3 Then
+                txt_vl.Text = vl.ToString
+                If category = "primary" Then
+                    transformer_details.save(transformer_id, "primary_line_voltage", vl)
+                ElseIf category = "secondary" Then
+                    transformer_details.save(transformer_id, "secondary_line_voltage", vl)
+                End If
+            End If
+
+            ctr_apparent = transformer_details.apparent_power(transformer_id)
+            ctr_real = transformer_details.real_power(transformer_id)
+
+            If ctr_apparent = 1 And category = "primary" Then
+                txt_apparent.Text = apparent.ToString
+                transformer_details.save(transformer_id, "apparent_power", apparent.ToString)
+                convert_photo(category)
+            End If
+
+            If ctr_real = 1 And category = "secondary" Then
+                txt_real.Text = real.ToString
+                transformer_details.save(transformer_id, "real_power", real.ToString)
+                convert_photo(category)
+            End If
+        ElseIf connection = "Delta Delta Connection" Then
+            If category = "primary" Then
+                cp = Math.Round(CDbl(rating) / CDbl(primary_voltage), 2)
+                cl = Math.Round(cp * pie, 2)
+                apparent = Math.Round((3 * primary_voltage * cp), 2)
+            ElseIf category = "secondary" Then
+                cp = Math.Round(CDbl(rating) / CDbl(secondary_voltage), 2)
+                cl = Math.Round(cp * pie, 2)
+                real = Math.Round((((secondary_voltage * pie) * pie) * cp), 2)
+            End If
+            If ctr_clamp > 3 Then
+                txt_cl.Text = cl.ToString
+                If category = "primary" Then
+                    transformer_details.save(transformer_id, "primary_line_current", cl)
+                ElseIf category = "secondary" Then
+                    transformer_details.save(transformer_id, "secondary_line_current", cl)
+                End If
+            End If
+            If ctr_phase_current > 3 Then
+                txt_cp.Text = cp.ToString
+                If category = "primary" Then
+                    transformer_details.save(transformer_id, "primary_phase_current", cp)
+
+                ElseIf category = "secondary" Then
+                    transformer_details.save(transformer_id, "secondary_phase_current", cp)
+                End If
+            End If
+
+            If ctr_voltage_line > 3 Then
+                If category = "primary" Then
+                    txt_vl.Text = primary_voltage
+                    transformer_details.save(transformer_id, "primary_line_voltage", primary_voltage)
+                ElseIf category = "secondary" Then
+                    txt_vl.Text = secondary_voltage
+                    transformer_details.save(transformer_id, "secondary_line_voltage", primary_voltage)
+                End If
+            End If
+            If ctr_voltage_phase > 3 Then
+                If category = "primary" Then
+                    txt_vp.Text = primary_voltage
+                    transformer_details.save(transformer_id, "primary_phase_voltage", primary_voltage)
+                ElseIf category = "secondary" Then
+                    transformer_details.save(transformer_id, "secondary_phase_voltage", secondary_voltage)
+                    txt_vp.Text = secondary_voltage
+                End If
+
+            End If
+
+            ctr_apparent = transformer_details.apparent_power(transformer_id)
+            ctr_real = transformer_details.real_power(transformer_id)
+
+            If ctr_apparent = 1 And category = "primary" Then
+                txt_apparent.Text = apparent.ToString
+                transformer_details.save(transformer_id, "apparent_power", apparent.ToString)
+                convert_photo(category)
+            End If
+
+            If ctr_real = 1 And category = "secondary" Then
+                txt_real.Text = real.ToString
+                transformer_details.save(transformer_id, "real_power", real.ToString)
+                convert_photo(category)
+            End If
+
+        ElseIf connection = "Delta Wye Connection" Then
+            If category = "primary" Then
+                cp = Math.Round(CDbl(rating) / CDbl(primary_voltage), 2)
+                cl = Math.Round(cp * pie, 2)
+                'vl = Math.Round((primary_voltage * 1.73), 2)
+                apparent = Math.Round((3 * primary_voltage * cp), 2)
+            Else category = "secondary"
+                cp = Math.Round(CDbl(rating) / CDbl(secondary_voltage), 2)
+                cl = Math.Round(cp * pie, 2)
+                vl = Math.Round((secondary_voltage * pie), 2)
+                real = Math.Round((((secondary_voltage * pie) * pie) * cp), 2)
+            End If
+            If ctr_clamp > 3 Then
+                txt_cl.Text = cl.ToString
+
+                If category = "primary" Then
+                    transformer_details.save(transformer_id, "primary_line_current", cl)
+                ElseIf category = "secondary" Then
+                    txt_cp.Text = cl.ToString
+                    txt_cl.Text = cl.ToString
+                    transformer_details.save(transformer_id, "secondary_line_current", cl)
+                    transformer_details.save(transformer_id, "secondary_phase_current", cl)
+                End If
+
+            End If
+            If ctr_voltage_phase > 3 Then
+                If category = "primary" Then
+                    txt_vp.Text = primary_voltage
+                    transformer_details.save(transformer_id, "primary_phase_voltage", primary_voltage)
+                ElseIf category = "secondary" Then
+                    txt_vp.Text = secondary_voltage
+                    transformer_details.save(transformer_id, "secondary_phase_voltage", secondary_voltage)
+                End If
+
+            End If
+            If ctr_voltage_line > 3 Then
+
+                If category = "primary" Then
+                    txt_vl.Text = primary_voltage
+                    transformer_details.save(transformer_id, "primary_line_voltage", vl)
+                ElseIf category = "secondary" Then
+                    txt_vl.Text = vl.ToString
+                    transformer_details.save(transformer_id, "secondary_line_voltage", vl)
+
+                End If
+            End If
+
+            If ctr_phase_current > 3 Then
+
+                If category = "primary" Then
+                    txt_cp.Text = cp.ToString
+                    transformer_details.save(transformer_id, "primary_phase_current", cp)
+                ElseIf category = "secondary" Then
+
+                End If
+            End If
+
+            ctr_apparent = transformer_details.apparent_power(transformer_id)
+            ctr_real = transformer_details.real_power(transformer_id)
+
+            If ctr_apparent = 1 And category = "primary" Then
+                txt_apparent.Text = apparent.ToString
+                transformer_details.save(transformer_id, "apparent_power", apparent.ToString)
+                convert_photo(category)
+            End If
+
+            If ctr_real = 1 And category = "secondary" Then
+                txt_real.Text = real.ToString
+                transformer_details.save(transformer_id, "real_power", real.ToString)
+                convert_photo(category)
+            End If
+
+        ElseIf connection = "Wye Delta Connection" Then
+            If category = "primary" Then
+                cp = Math.Round(CDbl(rating) / CDbl(primary_voltage), 2)
+                cl = Math.Round(cp * pie, 2)
+                vl = Math.Round((primary_voltage * 1.73), 2)
+                apparent = Math.Round((3 * primary_voltage * cp), 2)
+            Else category = "secondary"
+                cp = Math.Round(CDbl(rating) / CDbl(secondary_voltage), 2)
+                cl = Math.Round(cp * pie, 2)
+                'vl = Math.Round((secondary_voltage * 1.73), 2)
+                real = Math.Round((((secondary_voltage * pie) * pie) * cp), 2)
+            End If
+            If ctr_clamp > 3 Then
+                If category = "primary" Then
+                    txt_cp.Text = cp.ToString
+                    txt_cl.Text = cp.ToString
+                    transformer_details.save(transformer_id, "primary_phase_current", cp)
+                    transformer_details.save(transformer_id, "primary_line_current", cp)
+                ElseIf category = "secondary" Then
+                    txt_cl.Text = cl.ToString
+                    transformer_details.save(transformer_id, "secondary_line_current", cl)
+                End If
+
+            End If
+            If ctr_voltage_phase > 3 Then
+                If category = "primary" Then
+                    txt_vp.Text = primary_voltage
+                    transformer_details.save(transformer_id, "primary_phase_voltage", primary_voltage)
+                ElseIf category = "secondary" Then
+                    txt_vp.Text = secondary_voltage
+                    transformer_details.save(transformer_id, "secondary_phase_voltage", secondary_voltage)
+                End If
+
+            End If
+            If ctr_voltage_line > 3 Then
+
+                If category = "primary" Then
+                    txt_vl.Text = vl.ToString
+                    transformer_details.save(transformer_id, "primary_line_voltage", vl)
+                ElseIf category = "secondary" Then
+                    txt_vl.Text = secondary_voltage
+                    transformer_details.save(transformer_id, "secondary_line_voltage", secondary_voltage)
+                End If
+            End If
+
+            If ctr_phase_current > 3 Then
+
+                If category = "primary" Then
+                    txt_cp.Text = cp.ToString
+                    transformer_details.save(transformer_id, "primary_phase_current", cp)
+                ElseIf category = "secondary" Then
+                    txt_cp.Text = cp.ToString
+                    transformer_details.save(transformer_id, "secondary_phase_current", cp)
+                End If
+            End If
+            ctr_apparent = transformer_details.apparent_power(transformer_id)
+            ctr_real = transformer_details.real_power(transformer_id)
+
+            If ctr_apparent = 1 And category = "primary" Then
+                txt_apparent.Text = apparent.ToString
+                transformer_details.save(transformer_id, "apparent_power", apparent.ToString)
+                convert_photo(category)
+            End If
+
+            If ctr_real = 1 And category = "secondary" Then
+                txt_real.Text = real.ToString
+                result_model.save(transformer_id, "real_power", real.ToString)
+                convert_photo(category)
+            End If
+        ElseIf connection = "Open Delta Connection" Then
+            If category = "primary" Then
+                cp = Math.Round(CDbl(rating) / CDbl(primary_voltage), 2)
+                'cl = Math.Round(cp * 1.73, 2)
+                'vl = Math.Round((primary_voltage * 1.73), 2)
+                apparent = Math.Round((pie * primary_voltage * cp), 2)
+            Else category = "secondary"
+                cp = Math.Round(CDbl(rating) / CDbl(secondary_voltage), 2)
+                'cl = Math.Round(cp * 1.73, 2)
+                'vl = Math.Round((secondary_voltage * 1.73), 2)
+                real = Math.Round(((secondary_voltage * pie) * cp), 2)
+            End If
+            If ctr_clamp > 3 Then
+
+
+                If category = "primary" Then
+                    txt_cp.Text = cp.ToString
+                    txt_cl.Text = cp.ToString
+                    transformer_details.save(transformer_id, "primary_line_current", cp)
+                    transformer_details.save(transformer_id, "primary_phase_current", cp)
+                ElseIf category = "secondary" Then
+                    txt_cp.Text = cp.ToString
+                    txt_cl.Text = cp.ToString
+                    transformer_details.save(transformer_id, "secondary_line_current", cp)
+                    transformer_details.save(transformer_id, "secondary_phase_current", cp)
+                End If
+
+            End If
+            If ctr_voltage_phase > 3 Then
+                If category = "primary" Then
+                    txt_vp.Text = primary_voltage
+                    transformer_details.save(transformer_id, "primary_phase_voltage", primary_voltage)
+                ElseIf category = "secondary" Then
+                    txt_vp.Text = secondary_voltage
+                    transformer_details.save(transformer_id, "secondary_phase_voltage", secondary_voltage)
+                End If
+
+            End If
+            If ctr_voltage_line > 3 Then
+
+                If category = "primary" Then
+                    txt_vl.Text = primary_voltage
+                    transformer_details.save(transformer_id, "primary_line_voltage", primary_voltage)
+                ElseIf category = "secondary" Then
+                    txt_vl.Text = secondary_voltage
+                    transformer_details.save(transformer_id, "secondary_line_voltage", secondary_voltage)
+
+                End If
+            End If
+
+            If ctr_phase_current > 3 Then
+                If category = "primary" Then
+                    txt_cp.Text = cp.ToString
+                    txt_cl.Text = cp.ToString
+                    transformer_details.save(transformer_id, "primary_line_current", cp)
+                    transformer_details.save(transformer_id, "primary_phase_current", cp)
+                ElseIf category = "secondary" Then
+                    txt_cp.Text = cp.ToString
+                    txt_cl.Text = cp.ToString
+                    transformer_details.save(transformer_id, "primary_line_current", cp)
+                    transformer_details.save(transformer_id, "primary_phase_current", cp)
+                End If
+            End If
+
+            ctr_apparent = transformer_details.apparent_power(transformer_id)
+            ctr_real = transformer_details.real_power(transformer_id)
+
+            If ctr_apparent = 1 And category = "primary" Then
+                txt_apparent.Text = apparent.ToString
+                transformer_details.save(transformer_id, "apparent_power", apparent.ToString)
+                convert_photo(category)
+            End If
+
+            If ctr_real = 1 And category = "secondary" Then
+                txt_real.Text = real.ToString
+                transformer_details.save(transformer_id, "real_power", real.ToString)
+                convert_photo(category)
+            End If
+
+        ElseIf connection = "Open Wye Open Delta Connection" Then
+            If category = "primary" Then
+                cp = Math.Round(CDbl(rating) / CDbl(primary_voltage), 2)
+                'cl = Math.Round(cp * 1.73, 2)
+                'vl = Math.Round((primary_voltage * 1.73), 2)
+                apparent = Math.Round((pie * primary_voltage * cp), 2)
+            Else category = "secondary"
+                cp = Math.Round(CDbl(rating) / CDbl(secondary_voltage), 2)
+                'cl = Math.Round(cp * 1.73, 2)
+                'vl = Math.Round((secondary_voltage * 1.73), 2)
+                real = Math.Round(((secondary_voltage * 1.73) * cp), 2)
+            End If
+            If ctr_clamp > 3 Then
+
+
+                If category = "primary" Then
+                    txt_cp.Text = cp.ToString
+                    txt_cl.Text = cp.ToString
+                    transformer_details.save(transformer_id, "primary_line_current", cp)
+                    transformer_details.save(transformer_id, "primary_phase_current", cp)
+                ElseIf category = "secondary" Then
+                    txt_cp.Text = cp.ToString
+                    txt_cl.Text = cp.ToString
+                    transformer_details.save(transformer_id, "secondary_line_current", cp)
+                    transformer_details.save(transformer_id, "secondary_phase_current", cp)
+                End If
+
+            End If
+            If ctr_voltage_phase > 3 Then
+                If category = "primary" Then
+                    txt_vp.Text = primary_voltage
+                    transformer_details.save(transformer_id, "primary_phase_voltage", primary_voltage)
+
+                ElseIf category = "secondary" Then
+                    txt_vp.Text = secondary_voltage
+                    transformer_details.save(transformer_id, "secondary_phase_voltage", secondary_voltage)
+
+                End If
+
+            End If
+            If ctr_voltage_line > 3 Then
+
+                If category = "primary" Then
+                    txt_vl.Text = primary_voltage
+                    transformer_details.save(transformer_id, "primary_line_voltage", primary_voltage)
+
+                ElseIf category = "secondary" Then
+                    txt_vl.Text = secondary_voltage
+                    transformer_details.save(transformer_id, "secondary_line_voltage", secondary_voltage)
+
+                End If
+            End If
+
+            If ctr_phase_current > 3 Then
+                If category = "primary" Then
+                    txt_cp.Text = cp.ToString
+                    txt_cl.Text = cp.ToString
+                    transformer_details.save(transformer_id, "primary_line_current", cp)
+                    transformer_details.save(transformer_id, "primary_phase_current", cp)
+                ElseIf category = "secondary" Then
+                    txt_cp.Text = cp.ToString
+                    txt_cl.Text = cp.ToString
+                    result_model.save(transformer_id, "secondary_line_current", cp)
+                    transformer_details.save(transformer_id, "secondary_phase_current", cp)
+                End If
+            End If
+
+            ctr_apparent = result_model.apparent_power(transformer_id)
+            ctr_real = result_model.real_power(transformer_id)
+
+            If ctr_apparent = 1 And category = "primary" Then
+                txt_apparent.Text = apparent.ToString
+                transformer_details.save(transformer_id, "apparent_power", apparent.ToString)
+                convert_photo(category)
+
+            End If
+
+            If ctr_real = 1 And category = "secondary" Then
+                txt_real.Text = real.ToString
+                transformer_details.save(transformer_id, "real_power", real.ToString)
+                convert_photo(category)
+
+            End If
+        End If
+        done = transformer_details.select_specific(transformer_id)
+        If done = 1 Then
+            btn_done.Enabled = True
+        End If
+
+
+    End Sub
+
+    Private Sub convert_photo(category)
+        Using bm As New Bitmap(panel_activity.Width, panel_activity.Height, Imaging.PixelFormat.Format24bppRgb)
+            panel_activity.DrawToBitmap(bm, New Rectangle(0, 0, bm.Width, bm.Height))
+            bm.Save(appPath & "/exercise/" & "exercise_" & no & "_" & category & ".png", Imaging.ImageFormat.Jpeg)
+        End Using
+    End Sub
     Protected Overrides ReadOnly Property CreateParams() As CreateParams
         Get
             Dim cp As CreateParams = MyBase.CreateParams
@@ -1748,6 +2565,8 @@ Public Class Exercises
             Return cp
         End Get
     End Property 'CreateParams
+
+
 #End Region
 
 End Class

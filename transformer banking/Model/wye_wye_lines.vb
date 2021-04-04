@@ -35,7 +35,7 @@
     Public Function select_btn(transformer, table)
         Dim result As New List(Of String)
 
-        query = "select * from " & table & " where transformer_details_id = '" & transformer & "' and clamp_meter::integer =0 order by id asc"
+        query = "select * from " & table & " where transformer_details_id = '" & transformer & "' and clamp_meter::integer = 0 order by id asc"
         Dim da As New Odbc.OdbcDataAdapter(query, conn)
         Dim dt As New DataTable
         da.Fill(dt)
@@ -114,18 +114,18 @@
         Dim dt As New DataTable
         da.Fill(dt)
     End Sub
-    Public Function select_clamp_count(table)
-        Dim result As Integer
+    'Public Function select_clamp_count(table, transformer_id)
+    '    Dim result As Integer
 
-        query = "select * from " & table & " where clamp_meter = '1' order by id asc"
-        Dim da As New Odbc.OdbcDataAdapter(query, conn)
-        Dim dt As New DataTable
-        da.Fill(dt)
+    '    query = "select * from " & table & " where clamp_meter = '1' and transformer_details_id = '" & transformer_id & "'  order by id asc"
+    '    Dim da As New Odbc.OdbcDataAdapter(query, conn)
+    '    Dim dt As New DataTable
+    '    da.Fill(dt)
 
-        result = dt.Rows.Count
+    '    result = dt.Rows.Count
 
-        Return result
-    End Function
+    '    Return result
+    'End Function
 
     Public Sub delete_connections(btn, transformer_id, table)
         Dim query, query_delete As String

@@ -982,7 +982,7 @@ Partial Class Exercises
         Me.btn_l1red.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btn_l1red.FlatAppearance.BorderSize = 0
         Me.btn_l1red.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_l1red.Location = New System.Drawing.Point(590, 361)
+        Me.btn_l1red.Location = New System.Drawing.Point(590, 362)
         Me.btn_l1red.Name = "btn_l1red"
         Me.btn_l1red.Size = New System.Drawing.Size(31, 24)
         Me.btn_l1red.TabIndex = 30
@@ -1813,7 +1813,6 @@ Partial Class Exercises
         'btn_done
         '
         Me.btn_done.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btn_done.Enabled = False
         Me.btn_done.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btn_done.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_done.ForeColor = System.Drawing.Color.White
@@ -1821,7 +1820,7 @@ Partial Class Exercises
         Me.btn_done.Name = "btn_done"
         Me.btn_done.Size = New System.Drawing.Size(163, 45)
         Me.btn_done.TabIndex = 148
-        Me.btn_done.Text = "DONE"
+        Me.btn_done.Text = "OUTPUT"
         Me.btn_done.UseVisualStyleBackColor = False
         '
         'Exercises

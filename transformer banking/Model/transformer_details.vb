@@ -1,4 +1,5 @@
-﻿Module transformer_details
+﻿Imports Microsoft.Office.Interop
+Module transformer_details
     Dim query As String
     Dim return_message As String
     Public transformer_details_id As Integer
@@ -76,4 +77,6 @@
             Return "No data"
         End If
     End Function
+
+
 End Module
