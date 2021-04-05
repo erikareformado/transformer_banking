@@ -1580,7 +1580,7 @@ Public Class Exercises
                 count = 0
             End If
         Next
-        MsgBox(counter)
+
         If counter < 12 Then
             Return "False"
             counter = 0

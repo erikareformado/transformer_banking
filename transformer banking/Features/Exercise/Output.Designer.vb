@@ -880,7 +880,7 @@ Partial Class Output
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(36, Byte), Integer), CType(CType(42, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(800, 513)
+        Me.ClientSize = New System.Drawing.Size(783, 513)
         Me.Controls.Add(Me.btn_try_again)
         Me.Controls.Add(Me.btn_done)
         Me.Controls.Add(Me.dt_date)
@@ -898,9 +898,10 @@ Partial Class Output
         Me.Controls.Add(Me.pic_secondary)
         Me.Controls.Add(Me.pic_primary)
         Me.Controls.Add(Me.txt_exam)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "Output"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Output"
+        Me.Text = "DATA AND RESULTS"
         CType(Me.pic_primary, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pic_secondary, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)

@@ -103,73 +103,91 @@ Public Class Output
     End Sub
 
     Private Sub btn_done_Click(sender As Object, e As EventArgs) Handles btn_done.Click
-        Dim xlApp As Excel.Application
-        Dim xlWorkBook As Excel.Workbook
-        Dim xlWorkSheet As Excel.Worksheet
+        Dim result = validation()
+        If result = True Then
+            Dim xlApp As Excel.Application
+            Dim xlWorkBook As Excel.Workbook
+            Dim xlWorkSheet As Excel.Worksheet
 
-        xlApp = New Excel.Application
+            xlApp = New Excel.Application
 
-        xlWorkBook = xlApp.Workbooks.Open(appPath & "/exercise/output.xlsx")
-        xlWorkSheet = xlWorkBook.Worksheets("sheet1")
+            xlWorkBook = xlApp.Workbooks.Open(appPath & "/exercise/output.xlsx")
+            xlWorkSheet = xlWorkBook.Worksheets("sheet1")
 
-        xlWorkSheet.Range("C1").Value = txt_name.Text
-        xlWorkSheet.Range("C2").Value = txt_srcode.Text
-        xlWorkSheet.Range("I1").Value = txt_section.Text
-        xlWorkSheet.Range("I2").Value = dt_date.Text
+            xlWorkSheet.Range("C1").Value = txt_name.Text
+            xlWorkSheet.Range("C2").Value = txt_srcode.Text
+            xlWorkSheet.Range("I1").Value = txt_section.Text
+            xlWorkSheet.Range("I2").Value = dt_date.Text
 
-        xlWorkSheet.Range("D3").Value = "Exercise" & no
-        xlWorkSheet.Range("C4").Value = txt_exam.Text
-
-
-        xlWorkSheet.Shapes.AddPicture(appPath & "\exercise\exercise_" & no & "_primary.png", False, True, 15, 200, 228, 150)
-        xlWorkSheet.Shapes.AddPicture(appPath & "\exercise\exercise_" & no & "_secondary.png", False, True, 250, 200, 228, 150)
-
-        xlWorkSheet.Range("C28").Value = txt_measure_vl.Text
-        xlWorkSheet.Range("D28").Value = txt_measure_vp.Text
-        xlWorkSheet.Range("E28").Value = txt_measure_cl.Text
-        xlWorkSheet.Range("F28").Value = txt_measure_cp.Text
-        xlWorkSheet.Range("H28").Value = txt_measure_apparent.Text
-
-        xlWorkSheet.Range("C29").Value = txt_computed_vl.Text
-        xlWorkSheet.Range("D29").Value = txt_computed_vp.Text
-        xlWorkSheet.Range("E29").Value = txt_computed_cl.Text
-        xlWorkSheet.Range("F29").Value = txt_computed_cp.Text
-        xlWorkSheet.Range("H29").Value = txt_computed_apparent.Text
-
-        xlWorkSheet.Range("C30").Value = txt_difference_vl.Text
-        xlWorkSheet.Range("D30").Value = txt_difference_vp.Text
-        xlWorkSheet.Range("E30").Value = txt_difference_cl.Text
-        xlWorkSheet.Range("F30").Value = txt_difference_cp.Text
-        xlWorkSheet.Range("H30").Value = txt_difference_apparent.Text
-
-        xlWorkSheet.Range("C34").Value = txt_measure_sec_vl.Text
-        xlWorkSheet.Range("D34").Value = txt_measure_sec_vp.Text
-        xlWorkSheet.Range("E34").Value = txt_measure_sec_cl.Text
-        xlWorkSheet.Range("F34").Value = txt_measure_sec_cp.Text
-        xlWorkSheet.Range("H34").Value = txt_measure_sec_real.Text
-
-        xlWorkSheet.Range("C35").Value = txt_computed_sec_vl.Text
-        xlWorkSheet.Range("D35").Value = txt_computed_sec_vp.Text
-        xlWorkSheet.Range("E35").Value = txt_computed_sec_cl.Text
-        xlWorkSheet.Range("F35").Value = txt_computed_sec_cp.Text
-        xlWorkSheet.Range("H35").Value = txt_computed_sec_real.Text
-
-        xlWorkSheet.Range("C36").Value = txt_difference_sec_vl.Text
-        xlWorkSheet.Range("D36").Value = txt_difference_sec_vp.Text
-        xlWorkSheet.Range("E36").Value = txt_difference_sec_cl.Text
-        xlWorkSheet.Range("F36").Value = txt_difference_sec_cp.Text
-        xlWorkSheet.Range("H36").Value = txt_difference_real.Text
+            xlWorkSheet.Range("D3").Value = "Exercise" & no
+            xlWorkSheet.Range("C4").Value = txt_exam.Text
 
 
+            xlWorkSheet.Shapes.AddPicture(appPath & "\exercise\exercise_" & no & "_primary.png", False, True, 15, 200, 228, 150)
+            xlWorkSheet.Shapes.AddPicture(appPath & "\exercise\exercise_" & no & "_secondary.png", False, True, 250, 200, 228, 150)
 
-        xlWorkSheet.SaveToPdf(appPath & "/exercise/exercise " & no & ".pdf")
-        xlWorkBook.Close()
-        xlApp.Quit()
+            xlWorkSheet.Range("C28").Value = txt_measure_vl.Text
+            xlWorkSheet.Range("D28").Value = txt_measure_vp.Text
+            xlWorkSheet.Range("E28").Value = txt_measure_cl.Text
+            xlWorkSheet.Range("F28").Value = txt_measure_cp.Text
+            xlWorkSheet.Range("H28").Value = txt_measure_apparent.Text
 
-        releaseObject(xlApp)
-        releaseObject(xlWorkBook)
-        releaseObject(xlWorkSheet)
+            xlWorkSheet.Range("C29").Value = txt_computed_vl.Text
+            xlWorkSheet.Range("D29").Value = txt_computed_vp.Text
+            xlWorkSheet.Range("E29").Value = txt_computed_cl.Text
+            xlWorkSheet.Range("F29").Value = txt_computed_cp.Text
+            xlWorkSheet.Range("H29").Value = txt_computed_apparent.Text
 
+            xlWorkSheet.Range("C30").Value = txt_difference_vl.Text
+            xlWorkSheet.Range("D30").Value = txt_difference_vp.Text
+            xlWorkSheet.Range("E30").Value = txt_difference_cl.Text
+            xlWorkSheet.Range("F30").Value = txt_difference_cp.Text
+            xlWorkSheet.Range("H30").Value = txt_difference_apparent.Text
+
+            xlWorkSheet.Range("C34").Value = txt_measure_sec_vl.Text
+            xlWorkSheet.Range("D34").Value = txt_measure_sec_vp.Text
+            xlWorkSheet.Range("E34").Value = txt_measure_sec_cl.Text
+            xlWorkSheet.Range("F34").Value = txt_measure_sec_cp.Text
+            xlWorkSheet.Range("H34").Value = txt_measure_sec_real.Text
+
+            xlWorkSheet.Range("C35").Value = txt_computed_sec_vl.Text
+            xlWorkSheet.Range("D35").Value = txt_computed_sec_vp.Text
+            xlWorkSheet.Range("E35").Value = txt_computed_sec_cl.Text
+            xlWorkSheet.Range("F35").Value = txt_computed_sec_cp.Text
+            xlWorkSheet.Range("H35").Value = txt_computed_sec_real.Text
+
+            xlWorkSheet.Range("C36").Value = txt_difference_sec_vl.Text
+            xlWorkSheet.Range("D36").Value = txt_difference_sec_vp.Text
+            xlWorkSheet.Range("E36").Value = txt_difference_sec_cl.Text
+            xlWorkSheet.Range("F36").Value = txt_difference_sec_cp.Text
+            xlWorkSheet.Range("H36").Value = txt_difference_real.Text
+
+
+
+            xlWorkSheet.SaveAs(appPath & "/exercise/exercise " & no & ".xlsx")
+
+
+
+            xlWorkBook.Close()
+            xlApp.Quit()
+
+            ExcelPDF()
+
+            releaseObject(xlApp)
+            releaseObject(xlWorkBook)
+            releaseObject(xlWorkSheet)
+            releaseObject(xlApp)
+        End If
+    End Sub
+
+    Sub ExcelPDF()
+        Dim xl As Object
+        xl = CreateObject("Excel.Application")
+        Dim xwb As Object = xl.Workbooks.Open(appPath & "/exercise/exercise " & no & ".xlsx")
+        xwb.ActiveSheet.ExportAsFixedFormat(0, appPath & "/exercise/exercise " & no & ".pdf")
+        xl.Quit()
+
+        Process.Start(appPath & "/exercise/exercise " & no & ".pdf")
     End Sub
 
     Private Sub releaseObject(ByVal obj As Object)
@@ -183,7 +201,83 @@ Public Class Output
         End Try
     End Sub
 
+    Private Function validation()
+        If txt_computed_apparent.Text = "" Then
+            Return False
+        ElseIf txt_computed_cl.Text = "" Then
+            Return False
+        ElseIf txt_computed_cp.Text = "" Then
+            Return False
+        ElseIf txt_computed_sec_cl.Text = "" Then
+            Return False
+        ElseIf txt_computed_sec_cp.Text = "" Then
+            Return False
+        ElseIf txt_computed_sec_real.Text = "" Then
+            Return False
+        ElseIf txt_computed_sec_vl.Text = "" Then
+            Return False
+        ElseIf txt_computed_sec_vp.Text = "" Then
+            Return False
+        ElseIf txt_computed_vl.Text = "" Then
+            Return False
+        ElseIf txt_computed_vp.Text = "" Then
+            Return False
+        ElseIf txt_difference_apparent.Text = "" Then
+            Return False
+        ElseIf txt_difference_cl.Text = "" Then
+            Return False
+        ElseIf txt_difference_cp.Text = "" Then
+            Return False
+        ElseIf txt_difference_real.Text = "" Then
+            Return False
+        ElseIf txt_difference_sec_cl.Text = "" Then
+            Return False
+        ElseIf txt_difference_sec_cp.Text = "" Then
+            Return False
+        ElseIf txt_difference_sec_vl.Text = "" Then
+            Return False
+        ElseIf txt_difference_sec_vp.Text = "" Then
+            Return False
+        ElseIf txt_difference_vl.Text = "" Then
+            Return False
+        ElseIf txt_difference_vp.Text = "" Then
+            Return False
+        ElseIf txt_exam.Text = "" Then
+            Return False
+        ElseIf txt_measure_apparent.Text = "" Then
+            Return False
+        ElseIf txt_measure_cl.Text = "" Then
+            Return False
+        ElseIf txt_measure_cp.Text = "" Then
+            Return False
+        ElseIf txt_measure_sec_cl.Text = "" Then
+            Return False
+        ElseIf txt_measure_sec_cp.Text = "" Then
+            Return False
+        ElseIf txt_measure_sec_real.Text = "" Then
+            Return False
+        ElseIf txt_measure_sec_vl.Text = "" Then
+            Return False
+        ElseIf txt_measure_sec_vp.Text = "" Then
+            Return False
+        ElseIf txt_measure_vl.Text = "" Then
+            Return False
+        ElseIf txt_measure_vp.Text = "" Then
+            Return False
+        ElseIf txt_name.Text = "" Then
+            Return False
+        ElseIf txt_section.Text = "" Then
+            Return False
+        ElseIf txt_srcode.Text = "" Then
+            Return False
+        Else
+            Return True
+        End If
 
 
+    End Function
 
+    Private Sub btn_try_again_Click(sender As Object, e As EventArgs) Handles btn_try_again.Click
+        Me.Close()
+    End Sub
 End Class
