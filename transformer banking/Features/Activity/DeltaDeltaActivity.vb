@@ -122,13 +122,13 @@ Public Class DeltaDeltaActivity
                     counter_2(myButton.Name, "Red", clamp_meter)
                 Else
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
-                        counter_2(myButton.Name, "", "3")
                         update_clamp_no("3", transformer_id, table)
-
+                        counter_2(myButton.Name, "", "3")
 
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
-                        counter_2(myButton.Name, "", "4")
                         update_clamp_no("4", transformer_id, table)
+                        counter_2(myButton.Name, "", "4")
+
 
                     Else
 
@@ -527,7 +527,8 @@ Public Class DeltaDeltaActivity
         Else
             pen_color = "Black"
         End If
-
+        primary = ""
+        secondary = ""
         If ctr = 1 Then
             If voltage = "vpred" Or voltage = "vpblack" Then
                 ctr_points = ctr_points + 1
@@ -540,11 +541,13 @@ Public Class DeltaDeltaActivity
         Else
 
             If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
-                update_clamp_no("3", transformer_id, table)
                 counter_2(myButton.Name, pen_color, "3")
+                update_clamp_no("3", transformer_id, table)
+
             ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
-                update_clamp_no("4", transformer_id, table)
                 counter_2(myButton.Name, pen_color, "4")
+                update_clamp_no("4", transformer_id, table)
+
             Else
                 ctr_lines = ctr_lines - 2
                 points.RemoveAt(ctr_lines)
@@ -1103,12 +1106,14 @@ Public Class DeltaDeltaActivity
                 Else
 
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
-                        counter_2(myButton.Name, "", "3")
                         update_clamp_no("3", transformer_id, table)
+                        counter_2(myButton.Name, "", "3")
+
 
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t1_x2" And voltage = "vlblack" Then
-                        counter_2(myButton.Name, "", "4")
                         update_clamp_no("4", transformer_id, table)
+                        counter_2(myButton.Name, "", "4")
+
 
 
                     Else
@@ -1148,7 +1153,7 @@ Public Class DeltaDeltaActivity
                 If ctr_switch <> 1 Then
                     Dim myButton As Button = CType(sender, Button)
 
-                    Dim  btn = myButton.Name
+                    Dim btn = myButton.Name
                     Dim query, query_delete As String
                     query = "select * from delta_delta_lines  where transformer_details_id = '" & transformer_id & "' order by id asc"
                     Dim da As New Odbc.OdbcDataAdapter(query, conn)
@@ -1185,8 +1190,9 @@ Public Class DeltaDeltaActivity
                 End If
 
             End If
+            Me.Refresh()
         End If
-        Me.Refresh()
+
     End Sub
 
     Private Sub btn_t1_x2_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_t1_x1.MouseDown, btn_t1_x2.MouseDown, btn_t2_x1.MouseDown, btn_t2_x2.MouseDown, btn_t3_x1.MouseDown, btn_t3_x2.MouseDown
@@ -1571,6 +1577,13 @@ Public Class DeltaDeltaActivity
         Next
 
     End Sub
+    Protected Overrides ReadOnly Property CreateParams() As CreateParams
+        Get
+            Dim cp As CreateParams = MyBase.CreateParams
+            cp.ExStyle = cp.ExStyle Or &H2000000
+            Return cp
+        End Get
+    End Property 'CreateParams
 
 #End Region
 

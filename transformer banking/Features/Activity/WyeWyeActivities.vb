@@ -601,7 +601,8 @@ Public Class WyeWyeActivities
         Else
             pen_color = "Black"
         End If
-
+        primary = ""
+        secondary = ""
         If ctr = 1 Then
             If voltage = "vpred" Or voltage = "vpblack" Then
                 ctr_points = ctr_points + 1

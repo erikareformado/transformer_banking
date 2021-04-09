@@ -211,12 +211,11 @@ Public Class OpenDeltaActivity
                 Else
 
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
-                        update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
+                        update_clamp_no("3", transformer_id, table)
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
-                        update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
-
+                        update_clamp_no("4", transformer_id, table)
                     Else
                         If h_transformer = "btn_t1_h1" And primary = "a" Or h_transformer = "btn_t2_h1" And primary = "b" Or h_transformer = "btn_t2_h2" And primary = "c" Then
                             counter_2(myButton.Name, "", clamp_meter)
@@ -366,12 +365,13 @@ Public Class OpenDeltaActivity
 
                 Else
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
-                        update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
+                        update_clamp_no("3", transformer_id, table)
 
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
-                        update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
+                        update_clamp_no("4", transformer_id, table)
+
                     Else
                         ctr_lines = ctr_lines - 2
                         delete_unwanted_connection(transformer_id, table)
@@ -548,7 +548,8 @@ Public Class OpenDeltaActivity
         Else
             pen_color = "Black"
         End If
-
+        primary = ""
+        secondary = ""
         If ctr = 1 Then
             If voltage = "vpred" Or voltage = "vpblack" Then
                 ctr_points = ctr_points + 1
@@ -974,7 +975,7 @@ Public Class OpenDeltaActivity
 
                     Dim btn = myButton.Name
                     Dim query, query_delete As String
-                    query = "select * from open_delta_lines where transformer_details_id = '" & transformer_id & "' order by id asc"
+                    query = "select * from open_delta_lines  where transformer_details_id = '" & transformer_id & "' order by id asc"
                     Dim da As New Odbc.OdbcDataAdapter(query, conn)
                     Dim dt As New DataTable
                     da.Fill(dt)
@@ -1009,8 +1010,9 @@ Public Class OpenDeltaActivity
                 End If
 
             End If
+            Me.Refresh()
         End If
-        Me.Refresh()
+
 
     End Sub
 
@@ -1063,8 +1065,9 @@ Public Class OpenDeltaActivity
 
                 'pic_clamp_meter.Location = (702, 462)
             End If
+            Me.Refresh()
         End If
-        Me.Refresh()
+
     End Sub
 
     Private Sub pic_clamp_meter_MouseDown(sender As Object, e As MouseEventArgs) Handles pic_clamp_meter.MouseDown
@@ -1643,6 +1646,13 @@ Public Class OpenDeltaActivity
         Next
 
     End Sub
+    Protected Overrides ReadOnly Property CreateParams() As CreateParams
+        Get
+            Dim cp As CreateParams = MyBase.CreateParams
+            cp.ExStyle = cp.ExStyle Or &H2000000
+            Return cp
+        End Get
+    End Property 'CreateParams
 
 #End Region
 

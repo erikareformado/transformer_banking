@@ -211,11 +211,13 @@ Public Class OpenwyeOpendeltaActivity
                 Else
 
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
-                        update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
+                        update_clamp_no("3", transformer_id, table)
+
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
-                        update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
+                        update_clamp_no("4", transformer_id, table)
+
 
                     Else
                         If h_transformer = "btn_t1_h1" And primary = "a" Or h_transformer = "btn_t1_h2" And primary = "n" Or h_transformer = "btn_t2_h1" And primary = "b" Or h_transformer = "btn_t2_h2" And primary = "n" Then
@@ -426,7 +428,7 @@ Public Class OpenwyeOpendeltaActivity
                 Else
                     If secondary = "l1" And bulb = "l1red" Or secondary = "l2" And bulb = "l1black" Or secondary = "l2" And bulb = "l2red" Or secondary = "l3" And bulb = "l2black" Or secondary = "l3" And bulb = "l3red" Or secondary = "l1" And bulb = "l3black" Then
                         counter_2(myButton.Name, pen_color, "5")
-                    ElseIf x_transformer = "btn_t1_x1" And secondary = "l3" Or x_transformer = "btn_t2_x1" And secondary = "l2" Or x_transformer = "btn_t2_x2" And secondary = "l1" Then
+                    ElseIf x_transformer = "btn_t1_x1" And secondary = "l1" Or x_transformer = "btn_t2_x1" And secondary = "l2" Or x_transformer = "btn_t2_x2" And secondary = "l3" Then
                         counter_2(myButton.Name, pen_color, clamp_meter)
                     Else
                         delete_unwanted_connection(transformer_id, table)
@@ -515,7 +517,10 @@ Public Class OpenwyeOpendeltaActivity
         Else
             pen_color = "Black"
         End If
-
+        primary = ""
+        secondary = ""
+        transformer_2 = ""
+        transformer_1 = ""
         If ctr = 1 Then
             If voltage = "vpred" Or voltage = "vpblack" Then
                 ctr_points = ctr_points + 1
@@ -1216,6 +1221,7 @@ Public Class OpenwyeOpendeltaActivity
         End If
     End Sub
 
+
     Private Sub counter_1(btn_name, pen_color, clamp)
 
         point1_x = panel_activity.Controls.Item(btn_name).Location.X + panel_activity.Controls.Item(btn_name).Width / 2
@@ -1459,6 +1465,14 @@ Public Class OpenwyeOpendeltaActivity
         End If
 
     End Sub
+
+    Protected Overrides ReadOnly Property CreateParams() As CreateParams
+        Get
+            Dim cp As CreateParams = MyBase.CreateParams
+            cp.ExStyle = cp.ExStyle Or &H2000000
+            Return cp
+        End Get
+    End Property 'CreateParams
 
 #End Region
 

@@ -187,4 +187,9 @@
 
     End Sub
 
+    Private Sub txt_secondary_voltage_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_secondary_voltage.KeyPress, txt_primary_voltage.KeyPress
+        If (Not e.KeyChar = ChrW(Keys.Back) And ("0123456789.").IndexOf(e.KeyChar) = -1) Then
+            e.Handled = True
+        End If
+    End Sub
 End Class

@@ -425,13 +425,11 @@ Public Class DeltaWyeActivity
                 If x_transformer = "btn_t1_x1" And secondary = "l1" Or x_transformer = "btn_t1_x2" And secondary = "n" Or x_transformer = "btn_t2_x1" And secondary = "l2" Or x_transformer = "btn_t2_x2" And secondary = "n" Or x_transformer = "btn_t3_x1" And secondary = "l3" Or x_transformer = "btn_t3_x2" And secondary = "n" Then
                     counter_2(myButton.Name, "", clamp_meter)
                 ElseIf h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
-
-                    counter_2(myButton.Name, "", "3")
                     update_clamp_no("3", transformer_id, table)
-                ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t1_x2" And voltage = "vlblack" Then
-                    counter_2(myButton.Name, "", "4")
+                    counter_2(myButton.Name, "", "3")
+                ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
                     update_clamp_no("4", transformer_id, table)
-
+                    counter_2(myButton.Name, "", "4")
                 Else
                     delete_unwanted_connection(transformer_id, table)
                     get_point()
@@ -694,7 +692,8 @@ Public Class DeltaWyeActivity
         Else
             pen_color = "Black"
         End If
-
+        primary = ""
+        secondary = ""
         If ctr = 1 Then
             If voltage = "vpred" Or voltage = "vpblack" Then
                 ctr_points = ctr_points + 1
@@ -850,10 +849,10 @@ Public Class DeltaWyeActivity
             If btn = "btn_t1" Then
                 counter_1("btn_t1_h1", "", 6)
                 counter_2("btn_t1_h2", "", 6)
-            ElseIf btn = "btn_t2"
+            ElseIf btn = "btn_t2" Then
                 counter_1("btn_t2_h1", "", 6)
                 counter_2("btn_t2_h2", "", 6)
-            ElseIf btn = "btn_t2"
+            ElseIf btn = "btn_t3" Then
                 counter_1("btn_t3_h1", "", 6)
                 counter_2("btn_t3_h2", "", 6)
             End If
@@ -1466,6 +1465,13 @@ Public Class DeltaWyeActivity
         Next
 
     End Sub
+    Protected Overrides ReadOnly Property CreateParams() As CreateParams
+        Get
+            Dim cp As CreateParams = MyBase.CreateParams
+            cp.ExStyle = cp.ExStyle Or &H2000000
+            Return cp
+        End Get
+    End Property 'CreateParams
 
 #End Region
 

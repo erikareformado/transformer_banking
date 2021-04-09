@@ -280,4 +280,12 @@ Public Class Output
     Private Sub btn_try_again_Click(sender As Object, e As EventArgs) Handles btn_try_again.Click
         Me.Close()
     End Sub
+
+    Private Sub txt_computed_vl_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_computed_vl.KeyPress, txt_computed_cl.KeyPress, txt_computed_cp.KeyPress, txt_computed_sec_cl.KeyPress,
+               txt_computed_sec_cp.KeyPress, txt_computed_sec_real.KeyPress, txt_computed_sec_vl.KeyPress, txt_computed_sec_vp.KeyPress, txt_computed_vl.KeyPress, txt_computed_vp.KeyPress
+
+        If (Not e.KeyChar = ChrW(Keys.Back) And ("0123456789.").IndexOf(e.KeyChar) = -1) Then
+            e.Handled = True
+        End If
+    End Sub
 End Class

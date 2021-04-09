@@ -947,7 +947,10 @@ Public Class Exercises
         Else
             pen_color = "Black"
         End If
-
+        secondary = ""
+        primary = ""
+        transformer_1 = ""
+        transformer_2 = ""
         If ctr = 1 Then
             If voltage = "vpred" Or voltage = "vpblack" Then
                 ctr_points = ctr_points + 1
@@ -1776,11 +1779,11 @@ Public Class Exercises
             Return True
         ElseIf btn1 = "btn_t2_h2" And btn2 = "n" Or btn2 = "btn_t2_h2" And btn1 = "n" Then
             Return True
-        ElseIf btn1 = "btn_t1_x1" And btn2 = "l3" Or btn2 = "btn_t1_x1" And btn1 = "l3" Then
+        ElseIf btn1 = "btn_t1_x1" And btn2 = "l1" Or btn2 = "btn_t1_x1" And btn1 = "l1" Then
             Return True
         ElseIf btn1 = "btn_t2_x1" And btn2 = "l2" Or btn2 = "btn_t2_x1" And btn1 = "l2" Then
             Return True
-        ElseIf btn1 = "btn_t2_x2" And btn2 = "l1" Or btn2 = "btn_t2_x2" And btn1 = "l1" Then
+        ElseIf btn1 = "btn_t2_x2" And btn2 = "l3" Or btn2 = "btn_t2_x2" And btn1 = "l3" Then
             Return True
         ElseIf btn1 = "btn_t1_x2" And btn2 = "btn_t2_x1" Or btn2 = "btn_t1_x2" And btn1 = "btn_t2_x1" Then
             Return True

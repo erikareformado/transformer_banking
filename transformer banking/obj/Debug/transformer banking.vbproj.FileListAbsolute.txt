@@ -101,6 +101,8 @@ D:\transformer_banking\transformer banking\bin\Debug\transformer banking.exe.con
 D:\transformer_banking\transformer banking\bin\Debug\transformer banking.exe
 D:\transformer_banking\transformer banking\bin\Debug\transformer banking.pdb
 D:\transformer_banking\transformer banking\bin\Debug\transformer banking.xml
+D:\transformer_banking\transformer banking\obj\Debug\transformer banking.vbprojAssemblyReference.cache
+D:\transformer_banking\transformer banking\obj\Debug\transformer banking.vbproj.ResolveComReference.cache
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.DeltaDeltaActivity.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.DeltaWyeActivity.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.OpenDeltaActivity.resources
@@ -114,6 +116,8 @@ D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.wye_wye
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.OpenwyeOpendeltaActivity.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.EditTransformer.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.Exercise.resources
+D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.Exercises.resources
+D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.Output.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.tranformer_Details.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.delta_wye_introduction.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.home_page.resources
@@ -131,7 +135,3 @@ D:\transformer_banking\transformer banking\obj\Debug\transformer banking.vbproj.
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.exe
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.xml
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.pdb
-D:\transformer_banking\transformer banking\obj\Debug\transformer banking.vbprojAssemblyReference.cache
-D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.Exercises.resources
-D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.Output.resources
-D:\transformer_banking\transformer banking\obj\Debug\transformer banking.vbproj.ResolveComReference.cache
