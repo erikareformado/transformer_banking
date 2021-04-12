@@ -72,7 +72,7 @@ Partial Class manual_menu
         Me.PictureBox_Legend.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox_Legend.BackgroundImage = CType(resources.GetObject("PictureBox_Legend.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox_Legend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox_Legend.Location = New System.Drawing.Point(275, 72)
+        Me.PictureBox_Legend.Location = New System.Drawing.Point(309, 101)
         Me.PictureBox_Legend.Name = "PictureBox_Legend"
         Me.PictureBox_Legend.Size = New System.Drawing.Size(562, 463)
         Me.PictureBox_Legend.TabIndex = 18
@@ -150,7 +150,7 @@ Partial Class manual_menu
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(79, 6)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(163, 46)
+        Me.Label1.Size = New System.Drawing.Size(164, 46)
         Me.Label1.TabIndex = 16
         Me.Label1.Text = "MANUAL"
         '

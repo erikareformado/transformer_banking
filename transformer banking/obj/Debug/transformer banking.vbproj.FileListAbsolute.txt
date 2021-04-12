@@ -101,7 +101,6 @@ D:\transformer_banking\transformer banking\bin\Debug\transformer banking.exe.con
 D:\transformer_banking\transformer banking\bin\Debug\transformer banking.exe
 D:\transformer_banking\transformer banking\bin\Debug\transformer banking.pdb
 D:\transformer_banking\transformer banking\bin\Debug\transformer banking.xml
-D:\transformer_banking\transformer banking\obj\Debug\transformer banking.vbprojAssemblyReference.cache
 D:\transformer_banking\transformer banking\obj\Debug\transformer banking.vbproj.ResolveComReference.cache
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.DeltaDeltaActivity.resources
 D:\transformer_banking\transformer banking\obj\Debug\transformer_banking.DeltaWyeActivity.resources

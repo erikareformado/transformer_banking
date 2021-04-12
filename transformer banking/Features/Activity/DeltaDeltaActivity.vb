@@ -122,13 +122,12 @@ Public Class DeltaDeltaActivity
                     counter_2(myButton.Name, "Red", clamp_meter)
                 Else
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
-                        update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
+                        update_clamp_no("3", transformer_id, table)
 
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
-                        update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
-
+                        update_clamp_no("4", transformer_id, table)
 
                     Else
 
@@ -1106,15 +1105,12 @@ Public Class DeltaDeltaActivity
                 Else
 
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t2_h2" And voltage = "vpblack" Then
-                        update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
-
+                        update_clamp_no("3", transformer_id, table)
 
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t1_x2" And voltage = "vlblack" Then
-                        update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
-
-
+                        update_clamp_no("4", transformer_id, table)
 
                     Else
                         If h_transformer = "btn_t1_h1" And primary = "a" Or h_transformer = "btn_t2_h1" And primary = "b" Or h_transformer = "btn_t3_h1" And primary = "c" Then

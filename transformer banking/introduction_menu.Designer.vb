@@ -32,21 +32,25 @@ Partial Class introduction_menu
         Me.picturebox_minimize = New System.Windows.Forms.PictureBox()
         Me.picturebox_close = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picturebox_minimize, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picturebox_close, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
         '
+        Me.Panel1.AutoScroll = True
+        Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.RichTextBox1)
-        Me.Panel1.Location = New System.Drawing.Point(7, 49)
+        Me.Panel1.Location = New System.Drawing.Point(7, 65)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1010, 509)
+        Me.Panel1.Size = New System.Drawing.Size(1010, 493)
         Me.Panel1.TabIndex = 1
         '
         'Button1
@@ -55,7 +59,7 @@ Partial Class introduction_menu
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Button1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(870, 455)
+        Me.Button1.Location = New System.Drawing.Point(853, 494)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(126, 49)
         Me.Button1.TabIndex = 14
@@ -67,10 +71,10 @@ Partial Class introduction_menu
         Me.RichTextBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(36, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(51, Byte), Integer))
         Me.RichTextBox1.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RichTextBox1.ForeColor = System.Drawing.Color.White
-        Me.RichTextBox1.Location = New System.Drawing.Point(14, 38)
+        Me.RichTextBox1.Location = New System.Drawing.Point(13, 20)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.ReadOnly = True
-        Me.RichTextBox1.Size = New System.Drawing.Size(982, 395)
+        Me.RichTextBox1.Size = New System.Drawing.Size(966, 339)
         Me.RichTextBox1.TabIndex = 0
         Me.RichTextBox1.Text = resources.GetString("RichTextBox1.Text")
         '
@@ -138,6 +142,15 @@ Partial Class introduction_menu
         Me.PictureBox2.TabIndex = 20
         Me.PictureBox2.TabStop = False
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(220, 362)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(507, 190)
+        Me.PictureBox1.TabIndex = 15
+        Me.PictureBox1.TabStop = False
+        '
         'introduction_menu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -157,6 +170,7 @@ Partial Class introduction_menu
         CType(Me.picturebox_minimize, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picturebox_close, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -170,4 +184,5 @@ Partial Class introduction_menu
     Friend WithEvents picturebox_close As PictureBox
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

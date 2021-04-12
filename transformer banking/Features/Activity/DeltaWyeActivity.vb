@@ -581,8 +581,8 @@ Public Class DeltaWyeActivity
                 If category = "primary" Then
                     result_model.save(transformer_id, "primary_line_current", cl)
                 ElseIf category = "secondary" Then
-                    txt_cp.Text = cl.ToString
-                    txt_cl.Text = cl.ToString
+                    txt_cp.Text = cp.ToString
+                    txt_cl.Text = cp.ToString
                     result_model.save(transformer_id, "secondary_line_current", cl)
                     result_model.save(transformer_id, "secondary_phase_current", cl)
                 End If

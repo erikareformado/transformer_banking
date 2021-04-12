@@ -333,12 +333,14 @@ Public Class OpenwyeOpendeltaActivity
                     counter_2(myButton.Name, "Red", clamp_meter)
                 Else
                     If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
-                        update_clamp_no("3", transformer_id, table)
                         counter_2(myButton.Name, "", "3")
+                        update_clamp_no("3", transformer_id, table)
+
 
                     ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t1_h2" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
-                        update_clamp_no("4", transformer_id, table)
                         counter_2(myButton.Name, "", "4")
+                        update_clamp_no("4", transformer_id, table)
+
                     Else
                         delete_unwanted_connection(transformer_id, table)
                         get_point()
@@ -533,8 +535,10 @@ Public Class OpenwyeOpendeltaActivity
 
             If h_transformer = "btn_t1_h1" And voltage = "vpred" Or h_transformer = "btn_t1_h2" And voltage = "vpblack" Or x_transformer = "btn_t1_x1" And voltage = "vpred" Or x_transformer = "btn_t1_x2" And voltage = "vpblack" Then
                 counter_2(myButton.Name, pen_color, "3")
+                update_clamp_no("3", transformer_id, table)
             ElseIf h_transformer = "btn_t1_h1" And voltage = "vlred" Or h_transformer = "btn_t2_h1" And voltage = "vlblack" Or x_transformer = "btn_t1_x1" And voltage = "vlred" Or x_transformer = "btn_t2_x1" And voltage = "vlblack" Then
                 counter_2(myButton.Name, pen_color, "4")
+                update_clamp_no("4", transformer_id, table)
             Else
                 delete_unwanted_connection(transformer_id, table)
                 get_point()

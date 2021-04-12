@@ -856,7 +856,7 @@ Public Class WyeDeltaActivity
             If category = "primary" Then
                 cp = Math.Round(CDbl(rating) / CDbl(primary_voltage), 2)
                 cl = Math.Round(cp * pie, 2)
-                vl = Math.Round((primary_voltage * 1.73), 2)
+                vl = Math.Round((primary_voltage * pie), 2)
                 apparent = Math.Round((3 * primary_voltage * cp), 2)
             Else category = "secondary"
                 cp = Math.Round(CDbl(rating) / CDbl(secondary_voltage), 2)
