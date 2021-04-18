@@ -21,7 +21,7 @@
     Private Sub btn_done_Click(sender As Object, e As EventArgs) Handles btn_done.Click
         Dim results As DialogResult = MsgBox("Are you sure to update?", MsgBoxStyle.YesNo, "Disconnect Wire")
         If results = DialogResult.Yes Then
-            Dim result = save_transformer_details(cmb_polarity.Text, cmb_rating.Text, connection, txt_primary_voltage.Text, txt_secondary_voltage.Text)
+            Dim result = update_transformer(id, cmb_polarity.Text, cmb_rating.Text, connection, txt_primary_voltage.Text, txt_secondary_voltage.Text)
             If result = "1" Then
 
                 If connection = "WYE-WYE CONNECTION" Then

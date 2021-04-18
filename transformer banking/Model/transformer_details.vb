@@ -24,6 +24,27 @@ Module transformer_details
         conn.Close()
         Return "1"
     End Function
+
+    Public Function update_transformer(transformer_id, polarity, rating, connection_type, primary_voltage, secondary_voltage)
+        Dim query_search = "select * from transformer_details where id = '" & transformer_id & "'"
+        Dim da_search As New Odbc.OdbcDataAdapter(query_search, conn)
+        Dim dt_search As New DataTable
+        da_search.Fill(dt_search)
+
+        If dt_search.Rows.Count <> 0 Then
+            query = "update transformer_details set
+                polarity = '" & polarity & "', rating = '" & rating & "', connection = '" & connection_type & "', primary_voltage ='" & primary_voltage & "', secondary_voltage = '" & secondary_voltage & "'
+               where id = '" & transformer_id & "'"
+
+            Dim da As New Odbc.OdbcDataAdapter(query, conn)
+            Dim dt As New DataTable
+            da.Fill(dt)
+            conn.Close()
+            Return "1"
+        End If
+
+    End Function
+
     Public Function search_transformer_id(polarity, rating, connection_type, primary_voltage, secondary_voltage)
         Dim query_search = "select * from transformer_details where polarity = '" & polarity & "' and rating = '" & rating & "' and connection = '" & connection_type & "' and primary_voltage = '" & primary_voltage & "' and secondary_voltage = '" & secondary_voltage & "'"
         Dim da_search As New Odbc.OdbcDataAdapter(query_search, conn)
